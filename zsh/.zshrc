@@ -111,3 +111,6 @@ source $ZSH/oh-my-zsh.sh
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+if [ -f ~/.aliases_work ]; then
+    . ~/.aliases_work
+fi
