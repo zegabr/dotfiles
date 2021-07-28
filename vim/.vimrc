@@ -63,7 +63,6 @@ noremap <C-a> GVgg
 
 "esc and save in jk 
 inoremap jk <ESC>
-inoremap kj <ESC>
 
 "go up, go down, 
 vnoremap J :m '>+1<CR>gv=gv

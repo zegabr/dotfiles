@@ -6,4 +6,3 @@ stow --verbose=2 -t ~/ bash
 
 stow -D --verbose=2 zsh
 stow --verbose=2 -t ~/ zsh; source ~/.zshrc
-touch ~/.aliases_work

@@ -1,19 +1,13 @@
-##ALIASES
+#LINUX
 alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y'
 alias lag='alias | grep'
 
-##COMPETITIVE
-alias m='make && make t'
-alias c='g++ -std=c++17 -O2 -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
-alias tc='time g++ -std=c++17 -O2'
-alias cw='g++ -std=c++17 -O2 -Wfatal-errors'
-
-##COMPETITIVE
-
 #-----------------------files
-alias ebash='vim ~/.bashrc'
-alias ezsh='vim ~/.zshrc'
-alias evim='vim ~/.vimrc'
+alias eb='vim ~/.bashrc'
+alias ez='vim ~/.zshrc'
+alias ev='vim ~/.vimrc'
+alias ea='vim ~/.bash_aliases'
+alias ew='vim ~/.aliases_work'
 " open vim and search for file with fzf"
 alias vimf='vim -o `fzf`'
 
@@ -30,13 +24,11 @@ alias dpsa='docker ps -a'
 alias dsa='docker stop $(docker ps -a -q)'
 #remove all
 alias drma='docker rm $(docker ps -a -q)'
-
 #logs
 alias dlf='docker logs -f'
 alias dl='docker logs'
 
 alias gw='./gradlew' # lê-se: GRADILEU 
-alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
 
 # -----------------global python
 alias py='python3'
@@ -107,4 +99,9 @@ function remaper(){
     fi
 }
 
-##ALIASES
+##COMPETITIVE/C++
+alias m='make && make t'
+alias c='g++ -std=c++17 -O2 -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
+alias tc='time g++ -std=c++17 -O2'
+alias cw='g++ -std=c++17 -O2 -Wfatal-errors'
+alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
