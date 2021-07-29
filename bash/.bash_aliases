@@ -8,6 +8,11 @@ alias ez='vim ~/.zshrc'
 alias ev='vim ~/.vimrc'
 alias ea='vim ~/.bash_aliases'
 alias ew='vim ~/.aliases_work'
+
+alias sz='source ~/.zshrc'
+alias sa='source ~/.bash_aliases'
+alias sw='source ~/.aliases_work'
+
 " open vim and search for file with fzf"
 alias vimf='vim -o `fzf`'
 
@@ -105,3 +110,20 @@ alias c='g++ -std=c++17 -O2 -Wshadow -Wall -Wno-unused-result -g -fsanitize=addr
 alias tc='time g++ -std=c++17 -O2'
 alias cw='g++ -std=c++17 -O2 -Wfatal-errors'
 alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
+
+
+
+## FZF
+
+# cdf - cd into the directory of the selected file
+cdf() {
+   local file
+   local dir
+   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
+
+#dkjiadsakldp
+
+#jdkasld
+#jdksaldo

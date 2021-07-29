@@ -7,8 +7,8 @@ set splitright splitbelow
 set hidden
 set title 
 set scrolloff=8
+set wildmode=longest,list,full
 set wildmenu
-set wildmode=longest,full
 syntax on
 set relativenumber "line numbers moving relatively
 set number
@@ -232,6 +232,9 @@ set updatetime=100
 nnoremap <leader>gs :G<CR>
 " git checkout
 nnoremap <leader>gb :GBranches<CR>
+" diffget left theirs ans yours
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gh :diffget //3<CR>
 
 " ------------------undotree ---- 
 nnoremap <F5> :UndotreeToggle<CR>
