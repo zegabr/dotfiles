@@ -122,8 +122,5 @@ cdf() {
    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
-
-#dkjiadsakldp
-
-#jdkasld
-#jdksaldo
+# cheat.sh
+alias how='cht.sh'
