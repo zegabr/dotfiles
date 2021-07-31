@@ -8,6 +8,7 @@ alias ez='vim ~/.zshrc'
 alias ev='vim ~/.vimrc'
 alias ea='vim ~/.bash_aliases'
 alias ew='vim ~/.aliases_work'
+alias dot='cd ~/dotfiles'
 
 alias sz='source ~/.zshrc'
 alias sa='source ~/.bash_aliases'
