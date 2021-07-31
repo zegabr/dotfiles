@@ -13,9 +13,6 @@ alias sz='source ~/.zshrc'
 alias sa='source ~/.bash_aliases'
 alias sw='source ~/.aliases_work'
 
-" open vim and search for file with fzf"
-alias vimf='vim -o `fzf`'
-
 #Open current day note file
 function note(){
     filename=$(date +'%a-%m-%d-%Y')

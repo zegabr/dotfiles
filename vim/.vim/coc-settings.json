@@ -3,17 +3,10 @@
         "ccls": {
             "command": "ccls",
             "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
+                "c","cpp","objc","objcpp"
             ],
             "rootPatterns": [
-                ".ccls",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
+                ".ccls","compile_commands.json",".vim/",".git/",".hg/"
             ],
             "initializationOptions": {
                 "cache": {
@@ -22,5 +15,6 @@
             }
         }
     },
-	"explorer.previewAction.onHover": false
+	"explorer.previewAction.onHover": false,
+    "explorer.quitOnOpen": true
 }
