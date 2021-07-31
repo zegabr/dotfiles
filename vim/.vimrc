@@ -1,43 +1,46 @@
-" -----------------------------PLUGINS-------------------------------------------
-" Install vim-plug if not found
+" -----------------------------plugins-------------------------------------------
+" install vim-Plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+  silent !curl -flo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
+" run PlugInstall if there are missing plugins
+autocmd vimenter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $myvimrc
 \| endif
 
 call plug#begin('~/.vim/plugged')
-" FuzzyFinder FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'stsewd/fzf-checkout.vim'
-Plug 'airblade/vim-rooter'
+    " fuzzyfinder fzf
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/remote', 'do': ':updateremoteplugins' }
+    Plug 'stsewd/fzf-checkout.vim'
+    Plug 'airblade/vim-rooter'
 
-" git
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
+    " git
+    Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive'
 
-" Undotree
-Plug 'mbbill/undotree'
+    " undotree
+    Plug 'mbbill/undotree'
+    
+    " nerd commenter
+    Plug 'preservim/nerdcommenter'
 
-" Nerd Commenter
-Plug 'preservim/nerdcommenter'
+    " conquer of completion
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Conquer of completion
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    "color scheme and fonts
+    Plug 'gruvbox-community/gruvbox'
+    Plug 'itchyny/lightline.vim'
 
-"color scheme and fonts
-Plug 'gruvbox-community/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+    " visual star search
+    Plug 'bronson/vim-visual-star-search'
 call plug#end()
 
 " -------------------------------------------------------------------------------
-"--------------------------------------SETS--------------------------------------
+"--------------------------------------sets--------------------------------------
 syntax on
 filetype on
 filetype plugin on
@@ -53,7 +56,7 @@ set title
 set scrolloff=8
 set wildmode=longest,list,full
 set wildmenu
-" Ignore files
+" ignore files
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=**/coverage/*
@@ -76,10 +79,11 @@ set smartcase "search start to not ignore cases if search for uppercase letter
 set signcolumn=yes "leftmost column, used for linting
 set colorcolumn=80
 
-set shortmess+=A "ignores swap files error
+set shortmess+=a "ignores swap files error
+set mouse=a
 
-set statusline=File:\ %F\  
-set statusline+=--Line:\ %l/%L
+set statusline=file:\ %f\  
+set statusline+=--line:\ %l/%l
 
 " sets tab width in spaces
 set softtabstop=4
@@ -91,7 +95,7 @@ set tabstop=4
 set expandtab
 set autoindent
 
-function! CPPSET()
+function! Cppset()
     set cindent
     set textwidth=0
     set nowrap
@@ -110,7 +114,7 @@ function! CPPSET()
     :iabbrev enld endl
 endfunction
 
-function! PYSET()
+function! Pyset()
     set tw=0
     set nowrap
     setlocal expandtab
@@ -122,92 +126,98 @@ function! PYSET()
 endfunction
 
 "below command is for vimrc testing while ediing it
-autocmd! bufwritepost .vimrc source $MYVIMRC
-autocmd! bufwritepre,bufread *.cpp :normal mijkgg=G'izz
-autocmd! FileType python call PYSET() 
-autocmd! Filetype cpp call CPPSET()
-autocmd! Filetype c call CPPSET()
+autocmd! bufwritepost .vimrc source $myvimrc
+autocmd! bufwritepre,bufread *.cpp :normal mijkgg=g'izz
+autocmd! filetype python call Pyset() 
+autocmd! filetype cpp call Cppset()
+autocmd! filetype c call Cppset()
 " ----------------------------------------------------------------------------
-"-----------------------------COLORS------------------------------------------
+"-----------------------------colors------------------------------------------
 set termguicolors
+let g:lightline = {
+      \ 'colorscheme': 'powerlineish',
+      \ }
+set laststatus=2
+if !has('gui_running')
+  set t_co=256
+endif
+set noshowmode
 colorscheme gruvbox
-let g:airline_theme='minimalist'
 set background=dark
 " ----------------------------------------------------------------------------
-"-----------------------------MAPS--------------------------------------------
-nnoremap <Space> <nop>
-vnoremap <Space> <nop>
+"-----------------------------maps--------------------------------------------
+nnoremap <space> <nop>
+vnoremap <space> <nop>
 let mapleader = " "
 
-"Navigate splits
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+"navigate splits
+map <c-h> <c-w>h
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
 
-"ctrl A select all file, y and p uses system clipboard
+"ctrl a select all file, y and p uses system clipboard
 set clipboard=unnamedplus
-noremap <C-a> GVgg
-nnoremap Y y$
+noremap <c-a> gvgg
+nnoremap y y$
 
 "esc and save in jk 
-inoremap jk <ESC>
+inoremap jk <esc>
 
 "go up, go down, with lines
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-inoremap <C-j> <esc>:m .+1<CR>==i
-inoremap <C-k> <esc>:m .-2<CR>==i
-nnoremap <leader>j :m .+1<CR>==
-nnoremap <leader>k :m .-2<CR>==
+vnoremap j :m '>+1<cr>gv=gv
+vnoremap k :m '<-2<cr>gv=gv
+inoremap <c-j> <esc>:m .+1<cr>==i
+inoremap <c-k> <esc>:m .-2<cr>==i
+nnoremap <leader>j :m .+1<cr>==
+nnoremap <leader>k :m .-2<cr>==
 
-"toggle word case
-inoremap <c-u> <esc>lviw~<esc>
-nnoremap <c-u> viw~<esc>
+nnoremap <right> <nop>
+nnoremap <left> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
 
-nnoremap <Right> <nop>
-nnoremap <Left> <nop>
-nnoremap <Up> <nop>
-nnoremap <Down> <nop>
-
-" jumpList mutations
+" jumplist mutations
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 "center things
-nnoremap G Gzz
+nnoremap g gzz
 nnoremap n nzz
-nnoremap N Nzz
+nnoremap n nzz
 nnoremap } }zz
 nnoremap { {zz
 nnoremap n nzzzv
-nnoremap N nzzzv
-nnoremap J mzJ'z
+nnoremap n nzzzv
+nnoremap j mzj'z
 
 "replace all ocurrence by typing old and new
-nnoremap S :%s//gI<Left><Left><Left>
+nnoremap S :%s//gi<left><left><left>
 
 "replace ocurrences of last searched word
-nnoremap <leader>r :%s///g<Left><Left>
-nnoremap <leader>rc :%s///gc<Left><Left><Left>
+nnoremap <leader>r :%s///g<left><left>
+nnoremap <leader>rc :%s///gc<left><left><left>
+" same as above, but works in a visual selection
+xnoremap <leader>r :s///g<left><left>
+xnoremap <leader>rc :s///gc<left><left><left>
 
 " alternate between opened buffers
-nnoremap <f7> :bp<CR>
-nnoremap <f8> :bn<CR>
+nnoremap <f7> :bp<cr>
+nnoremap <f8> :bn<cr>
 " close only current buffer
-nnoremap <C-f8> :w<CR>:bd<CR>
+nnoremap <c-f8> :w<cr>:bd<cr>
 
-" terminal TODO: add zsh terminal
-nnoremap <C-t> :term<CR>
+" terminal
+nnoremap <c-t> :term<cr>
 " ----------------------------------------------------------------------------
-"-----------------------------UNDOTREE----------------------------------------
+"-----------------------------undotree----------------------------------------
 set noswapfile
 set nobackup
 set nowritebackup
 set undodir=~/.undodir
 set undofile
-nnoremap <F5> :UndotreeToggle<CR>
-let g:undotree_WindowLayout = 2
+nnoremap <f5> :UndoTreeToggle<cr>
+let g:undotree_windowlayout = 2
 if has("persistent_undo")
    let target_path = expand('~/.undodir')
 
@@ -228,22 +238,22 @@ inoremap ! !<c-g>u
 inoremap . .<c-g>u
 inoremap ; ;<c-g>u
 " ----------------------------------------------------------------------------
-"-----------------------------NERDCOMMENTER-----------------------------------
+"-----------------------------nerdcommenter-----------------------------------
 filetype plugin on
-imap <C-_> <ESC><Plug>NERDCommenterToggle
-nmap <C-_> <Plug>NERDCommenterToggle
-vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
+imap <c-_> <esc><plug>NerdNommenterToggle
+nmap <c-_> <plug>NerdNommenterToggle
+vmap <c-_> <plug>NerdNommenterToggle<cr>gv
 " ----------------------------------------------------------------------------
-"-----------------------------GIT---------------------------------------------
+"-----------------------------git---------------------------------------------
 " git status
-nnoremap <leader>gs :G<CR>
+nnoremap <leader>gs :G<cr>
 " git checkout
-nnoremap <leader>gb :GBranches<CR>
+nnoremap <leader>gb :GBranches<cr>
 " diffget left theirs ans yours
-nmap <leader>gf :diffget //2<CR>
-nmap <leader>gh :diffget //3<CR>
+nmap <leader>gf :diffget //2<cr>
+nmap <leader>gh :diffget //3<cr>
 " ----------------------------------------------------------------------------
-"-----------------------------FZF---------------------------------------------
+"-----------------------------fzf---------------------------------------------
 " automatically chooses between project files and git files
 function! s:find_files()
     let git_dir = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
@@ -255,105 +265,96 @@ function! s:find_files()
 endfunction
 command! ProjectFiles execute s:find_files()
 
-nnoremap <C-p> :ProjectFiles<CR>
-noremap <C-b> :Buffers<CR>
-noremap <C-f> :Rg!<CR> 
+nnoremap <c-p> :ProjectFiles<cr>
+noremap <c-b> :Buffers<cr>
+noremap <c-f> :Rg!<cr> 
 " ----------------------------------------------------------------------------
-"-----------------------------COC---------------------------------------------
-"let g:coc_global_extensions = [
-			"\'coc-json',
-			"\'coc-fzf-preview',
-			"\'coc-explorer',
-			"\'coc-sh',
-			"\'coc-pairs',
-			"\'coc-spell-checker'
-"\]
+"-----------------------------coc---------------------------------------------
+let g:coc_global_extensions = [
+            \'coc-json',
+            \'coc-explorer',
+            \'coc-sh',
+            \'coc-yaml',
+            \'coc-spell-checker'
+\]
 
 "" this must fix possible issues with pyright not finding project root
-"autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
+autocmd filetype python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
 
-"" Better display for messages
-"set cmdheight=2
+"" better display for messages
+set cmdheight=2
 
 "" don't give |ins-completion-menu| messages.
-"set shortmess+=c
+set shortmess+=c
 
-"" Use tab for trigger completion with characters ahead and navigate.
-"" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-"inoremap <silent><expr> <TAB>
-      "\ pumvisible() ? "\<C-n>" :
-      "\ <SID>check_back_space() ? "\<TAB>" :
-      "\ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"" use tab for trigger completion with characters ahead and navigate.
+"" use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <tab>
+      \ pumvisible() ? "\<c-n>" :
+      \ <sid>check_back_space() ? "\<tab>" :
+      \ coc#refresh()
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
 
-"function! s:check_back_space() abort
-  "let col = col('.') - 1
-  "return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-"" Use <c-space> to trigger completion.
-"inoremap <silent><expr> <c-space> coc#refresh()
+"" use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
 
-"" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-"" Coc only does snippet and additional edit on confirm.
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"" use <cr> to confirm completion, `<c-g>u` means break undo chain at current position.
+"" coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
 
-"" Use `[d` and `]d` to navigate diagnostics
-"nmap <silent> [d <Plug>(coc-diagnostic-prev)
-"nmap <silent> ]d <Plug>(coc-diagnostic-next)
+"" use `[d` and `]d` to navigate diagnostics
+nmap <silent> [d <plug>(coc-diagnostic-prev)
+nmap <silent> ]d <plug>(coc-diagnostic-next)
 
-"" Remap keys for gotos
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
+"" remap keys for gotos
+nmap <silent> gd <plug>(coc-definition)
+nmap <silent> gy <plug>(coc-type-definition)
+nmap <silent> gi <plug>(coc-implementation)
+nmap <silent> gr <plug>(coc-references)
 
-"" Use K to show documentation in preview window
-"nnoremap <silent> K :call <SID>show_documentation()<CR>
+"" use k to show documentation in preview window
+nnoremap <silent> k :call <sid>show_documentation()<cr>
 
-"function! s:show_documentation()
-  "if (index(['vim','help'], &filetype) >= 0)
-    "execute 'h '.expand('<cword>')
-  "else
-    "call CocAction('doHover')
-  "endif
-"endfunction
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('dohover')
+  endif
+endfunction
 
-"" Highlight symbol under cursor on CursorHold
-"autocmd CursorHold * silent call CocActionAsync('highlight')
+"" highlight symbol under cursor on cursorhold
+autocmd cursorhold * silent call CocActionAsync('highlight')
 
-"" Remap for rename current word
-"nmap <F2> <Plug>(coc-rename)
+"" remap for rename current word
+nmap <f2> <plug>(coc-rename)
 
-"augroup mygroup
-  "autocmd!
-  "" Setup formatexpr specified filetype(s).
-  "autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  "" Update signature help on jump placeholder
-  "autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-"augroup end
+augroup mygroup
+  autocmd!
+  " setup formatexpr specified filetype(s).
+  autocmd filetype typescript,json setl formatexpr=CocAction('formatselected')
+  " update signature help on jump placeholder
+  autocmd user CocJumpPlaceholder call CocActionAsync('showsignaturehelp')
+augroup end
 
-"" Show all diagnostics.
-"nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
+"" show all diagnostics.
+nnoremap <silent><nowait> <space>d  :<c-u>CocList diagnostics<cr>
 
-"" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-"nmap <silent> <TAB> <Plug>(coc-range-select)
-"xmap <silent> <TAB> <Plug>(coc-range-select)
-"xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+"" use `:format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
 
-"" Use `:Format` to format current buffer
-"command! -nargs=0 Format :call CocAction('format')
+"" use `:or` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runcommand', 'editor.action.organizeimport')
 
-"" Use `:Fold` to fold current buffer
-"command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-"" use `:OR` for organize import of current buffer
-"command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-"" Add status line support, for integration with other plugin, checkout `:h coc-status`
-"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"" add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 ""--------------------- coc-explorer--------------------
-"nnoremap <space>e :CocCommand explorer<CR>
-"autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+nnoremap <space>e :CocCommand explorer<cr>
+autocmd bufenter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
