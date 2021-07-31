@@ -3,11 +3,12 @@ alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y
 alias lag='alias | grep'
 
 #-----------------------files
-alias eb='vim ~/.bashrc'
-alias ez='vim ~/.zshrc'
-alias ev='vim ~/.vimrc'
-alias ea='vim ~/.bash_aliases'
-alias ew='vim ~/.aliases_work'
+alias eb='nvim ~/.bashrc'
+alias ez='nvim ~/.zshrc'
+alias ev='nvim ~/.vimrc'
+alias ev='nvim ~/.config/nvim/init.vim'
+alias ea='nvim ~/.bash_aliases'
+alias ew='nvim ~/.aliases_work'
 alias dot='cd ~/dotfiles'
 
 alias sz='source ~/.zshrc'

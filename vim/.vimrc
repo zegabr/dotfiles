@@ -24,7 +24,7 @@ call plug#begin('~/.vim/plugged')
 
     " undotree
     Plug 'mbbill/undotree'
-    
+
     " nerd commenter
     Plug 'preservim/nerdcommenter'
 
@@ -40,7 +40,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " -------------------------------------------------------------------------------
-"--------------------------------------sets--------------------------------------
+"--------------------------------------SETS--------------------------------------
 syntax on
 filetype on
 filetype plugin on
@@ -56,7 +56,7 @@ set title
 set scrolloff=8
 set wildmode=longest,list,full
 set wildmenu
-" ignore files
+" Ignore files
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=**/coverage/*
@@ -79,11 +79,10 @@ set smartcase "search start to not ignore cases if search for uppercase letter
 set signcolumn=yes "leftmost column, used for linting
 set colorcolumn=80
 
-set shortmess+=a "ignores swap files error
-set mouse=a
+set shortmess+=A "ignores swap files error
 
-set statusline=file:\ %f\  
-set statusline+=--line:\ %l/%l
+set statusline=File:\ %F\  
+set statusline+=--Line:\ %l/%L
 
 " sets tab width in spaces
 set softtabstop=4
@@ -95,7 +94,7 @@ set tabstop=4
 set expandtab
 set autoindent
 
-function! Cppset()
+function! CPPSET()
     set cindent
     set textwidth=0
     set nowrap
@@ -106,15 +105,15 @@ function! Cppset()
 
     "abbreviations here
     " does not work with coc pairs
-    ":iabbrev sp ' '
-    ":iabbrev pl '\n'
+    :iabbrev sp ' '
+    :iabbrev pl '\n'
     :iabbrev ee &
     :iabbrev adn and
     :iabbrev endk endl
     :iabbrev enld endl
 endfunction
 
-function! Pyset()
+function! PYSET()
     set tw=0
     set nowrap
     setlocal expandtab
@@ -126,13 +125,13 @@ function! Pyset()
 endfunction
 
 "below command is for vimrc testing while ediing it
-autocmd! bufwritepost .vimrc source $myvimrc
-autocmd! bufwritepre,bufread *.cpp :normal mijkgg=g'izz
-autocmd! filetype python call Pyset() 
-autocmd! filetype cpp call Cppset()
-autocmd! filetype c call Cppset()
+autocmd! bufwritepost .vimrc source $MYVIMRC
+autocmd! bufwritepre,bufread *.cpp :normal mijkgg=G'izz
+autocmd! FileType python call PYSET() 
+autocmd! Filetype cpp call CPPSET()
+autocmd! Filetype c call CPPSET()
 " ----------------------------------------------------------------------------
-"-----------------------------colors------------------------------------------
+"-----------------------------COLORS------------------------------------------
 set termguicolors
 let g:lightline = {
       \ 'colorscheme': 'powerlineish',
@@ -145,79 +144,84 @@ set noshowmode
 colorscheme gruvbox
 set background=dark
 " ----------------------------------------------------------------------------
-"-----------------------------maps--------------------------------------------
-nnoremap <space> <nop>
-vnoremap <space> <nop>
+"-----------------------------MAPS--------------------------------------------
+nnoremap <Space> <nop>
+vnoremap <Space> <nop>
 let mapleader = " "
 
-"navigate splits
-map <c-h> <c-w>h
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
+"Navigate splits
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
-"ctrl a select all file, y and p uses system clipboard
+"ctrl A select all file, y and p uses system clipboard
 set clipboard=unnamedplus
-noremap <c-a> gvgg
-nnoremap y y$
+noremap <C-a> GVgg
+nnoremap Y y$
 
 "esc and save in jk 
-inoremap jk <esc>
+inoremap jk <ESC>
 
 "go up, go down, with lines
-vnoremap j :m '>+1<cr>gv=gv
-vnoremap k :m '<-2<cr>gv=gv
-inoremap <c-j> <esc>:m .+1<cr>==i
-inoremap <c-k> <esc>:m .-2<cr>==i
-nnoremap <leader>j :m .+1<cr>==
-nnoremap <leader>k :m .-2<cr>==
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==i
+inoremap <C-k> <esc>:m .-2<CR>==i
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
 
-nnoremap <right> <nop>
-nnoremap <left> <nop>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
+"toggle word case
+inoremap <c-u> <esc>lviw~<esc>
+nnoremap <c-u> viw~<esc>
 
-" jumplist mutations
+nnoremap <Right> <nop>
+nnoremap <Left> <nop>
+nnoremap <Up> <nop>
+nnoremap <Down> <nop>
+
+" jumpList mutations
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 "center things
-nnoremap g gzz
+nnoremap G Gzz
 nnoremap n nzz
-nnoremap n nzz
+nnoremap N Nzz
 nnoremap } }zz
 nnoremap { {zz
 nnoremap n nzzzv
-nnoremap n nzzzv
-nnoremap j mzj'z
+nnoremap N nzzzv
+nnoremap J mzJ'z
 
 "replace all ocurrence by typing old and new
-nnoremap S :%s//gi<left><left><left>
+nnoremap S :%s//gI<Left><Left><Left>
 
 "replace ocurrences of last searched word
-nnoremap <leader>r :%s///g<left><left>
-nnoremap <leader>rc :%s///gc<left><left><left>
+nnoremap <leader>r :%s///g<Left><Left>
+nnoremap <leader>rc :%s///gc<Left><Left><Left>
+
 " same as above, but works in a visual selection
 xnoremap <leader>r :s///g<left><left>
 xnoremap <leader>rc :s///gc<left><left><left>
 
 " alternate between opened buffers
-nnoremap <f7> :bp<cr>
-nnoremap <f8> :bn<cr>
+nnoremap <f7> :bp<CR>
+nnoremap <f8> :bn<CR>
 " close only current buffer
-nnoremap <c-f8> :w<cr>:bd<cr>
+nnoremap <C-f8> :w<CR>:bd<CR>
 
-" terminal
-nnoremap <c-t> :term<cr>
+" terminal TODO: add zsh terminal
+nnoremap <C-t> :term<CR>
 " ----------------------------------------------------------------------------
-"-----------------------------undotree----------------------------------------
+"-----------------------------UNDOTREE----------------------------------------
 set noswapfile
 set nobackup
 set nowritebackup
 set undodir=~/.undodir
 set undofile
-nnoremap <f5> :UndoTreeToggle<cr>
-let g:undotree_windowlayout = 2
+nnoremap <F5> :UndotreeToggle<CR>
+let g:undotree_WindowLayout = 2
 if has("persistent_undo")
    let target_path = expand('~/.undodir')
 
@@ -238,22 +242,22 @@ inoremap ! !<c-g>u
 inoremap . .<c-g>u
 inoremap ; ;<c-g>u
 " ----------------------------------------------------------------------------
-"-----------------------------nerdcommenter-----------------------------------
+"-----------------------------NERDCOMMENTER-----------------------------------
 filetype plugin on
-imap <c-_> <esc><plug>NerdNommenterToggle
-nmap <c-_> <plug>NerdNommenterToggle
-vmap <c-_> <plug>NerdNommenterToggle<cr>gv
+imap <C-_> <ESC><Plug>NERDCommenterToggle
+nmap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 " ----------------------------------------------------------------------------
-"-----------------------------git---------------------------------------------
+"-----------------------------GIT---------------------------------------------
 " git status
-nnoremap <leader>gs :G<cr>
+nnoremap <leader>gs :G<CR>
 " git checkout
-nnoremap <leader>gb :GBranches<cr>
+nnoremap <leader>gb :GBranches<CR>
 " diffget left theirs ans yours
-nmap <leader>gf :diffget //2<cr>
-nmap <leader>gh :diffget //3<cr>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gh :diffget //3<CR>
 " ----------------------------------------------------------------------------
-"-----------------------------fzf---------------------------------------------
+"-----------------------------FZF---------------------------------------------
 " automatically chooses between project files and git files
 function! s:find_files()
     let git_dir = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
@@ -265,9 +269,9 @@ function! s:find_files()
 endfunction
 command! ProjectFiles execute s:find_files()
 
-nnoremap <c-p> :ProjectFiles<cr>
-noremap <c-b> :Buffers<cr>
-noremap <c-f> :Rg!<cr> 
+nnoremap <C-p> :ProjectFiles<CR>
+noremap <C-b> :Buffers<CR>
+noremap <C-f> :Rg!<CR> 
 " ----------------------------------------------------------------------------
 "-----------------------------coc---------------------------------------------
 let g:coc_global_extensions = [
@@ -318,13 +322,13 @@ nmap <silent> gi <plug>(coc-implementation)
 nmap <silent> gr <plug>(coc-references)
 
 "" use k to show documentation in preview window
-nnoremap <silent> k :call <sid>show_documentation()<cr>
+nnoremap <silent> K :call <sid>show_documentation()<cr>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
-    call CocAction('dohover')
+    call CocAction('DoHover')
   endif
 endfunction
 
