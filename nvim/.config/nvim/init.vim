@@ -30,6 +30,7 @@ Plug 'preservim/nerdcommenter'
 "color scheme and fonts
 Plug 'gruvbox-community/gruvbox'
 Plug 'norcalli/nvim-colorizer.lua'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -37,9 +38,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'bronson/vim-visual-star-search'
 
 " lsp
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
-Plug 'kabouzeid/nvim-lspinstall'
+"Plug 'neovim/nvim-lspconfig'
+"Plug 'hrsh7th/nvim-compe'
+"Plug 'kabouzeid/nvim-lspinstall'
 call plug#end()
 
 " -------------------------------------------------------------------------------
