@@ -1,6 +1,8 @@
 #LINUX
 alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y'
 alias lag='alias | grep'
+alias vim='nvim'
+alias v='nvim'
 
 #-----------------------files
 alias eb='nvim ~/.bashrc'

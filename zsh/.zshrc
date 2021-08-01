@@ -115,3 +115,4 @@ if [ -f ~/.aliases_work ]; then
     . ~/.aliases_work
 fi
 export TERM=xterm-256color
+export EDITOR=nvim
