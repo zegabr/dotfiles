@@ -1,14 +1,14 @@
 #LINUX
 alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y'
 alias lag='alias | grep'
-alias vim='nvim'
+alias v='nvim'
 
 #-----------------------files
-alias eb='vim ~/.bashrc'
-alias ez='vim ~/.zshrc'
-alias ev='vim ~/.config/nvim/neovim-init.vim'
-alias ea='vim ~/.bash_aliases'
-alias ew='vim ~/.aliases_work'
+alias eb='v ~/.bashrc'
+alias ez='v ~/.zshrc'
+alias ev='v ~/.config/nvim/init.vim'
+alias ea='v ~/.bash_aliases'
+alias ew='v ~/.aliases_work'
 alias dot='cd ~/dotfiles'
 
 alias sz='source ~/.zshrc'
