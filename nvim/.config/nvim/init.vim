@@ -1,4 +1,4 @@
-" -----------------------------PLUGINS-------------------------------------------
+" -----------------------------PLUGINS---------------------------------------
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -23,6 +23,9 @@ Plug 'tpope/vim-fugitive'
 
 " Nerd Commenter
 Plug 'preservim/nerdcommenter'
+
+" nerd tree
+Plug 'preservim/nerdtree'
 
 "color scheme and fonts
 Plug 'gruvbox-community/gruvbox'
@@ -251,6 +254,7 @@ noremap <C-f> :Rg!<CR>
 "-----------------------------------------------------------------------------
 " ----------------------------EASYMOTION-------------------------------------------
 nmap f <Plug>(easymotion-bd-f)
-nmap <leader>f <Plug>(easymotion-bd-f2)
-
- 
+nmap F <Plug>(easymotion-bd-f2)
+"----------------------------------------------------------------------------------
+"------------------------------NERDTREE-----------------------------------------
+nnoremap <leader>e :NERDTreeToggle<CR>

@@ -18,7 +18,7 @@ alias sw='source ~/.aliases_work'
 #Open current day note file
 function note(){
     filename=$(date +'%a-%m-%d-%Y')
-    vim ~/notes/${filename}.txt +
+    v ~/notes/${filename}.txt +
 }
 
 #--------------------containers
