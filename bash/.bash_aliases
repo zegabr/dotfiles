@@ -17,6 +17,7 @@ alias sw='source ~/.aliases_work'
 
 #Open current day note file
 function note(){
+    cd ~/notes
     filename=$(date +'%a-%m-%d-%Y')
     v ~/notes/${filename}.txt +
 }
