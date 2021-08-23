@@ -35,7 +35,6 @@ plugins=(
     copyfile
     extract
     zsh-autosuggestions
-    k
     docker-compose
 )
 source /etc/zsh_command_not_found
