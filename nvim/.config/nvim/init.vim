@@ -1,6 +1,5 @@
 " -----------------------------PLUGINS---------------------------------------
 "  TO install vim-plug, run the vim plug install script at
-"  nvim/install-vim-plug.sh
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
