@@ -60,7 +60,8 @@ function gconfiglocal(){
     git config user.name $1
     git config user.email $2
 }
-
+alias gconfiglocal-zegabr='gconfiglocal zegabr jgsp2@cin.ufpe.br'
+ 
 # clone github repo via https
 function gclhttps(){
     git clone --recurse-submodules https://github.com/$1
