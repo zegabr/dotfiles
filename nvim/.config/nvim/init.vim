@@ -57,6 +57,7 @@ set title
 set scrolloff=8
 set wildmode=longest,list,full
 set wildmenu
+set wildignorecase
 " Ignore files
 set wildignore+=*.pyc
 set wildignore+=*_build/*
@@ -170,10 +171,12 @@ xnoremap <leader>r :s///g<left><left>
 xnoremap <leader>rc :s///gc<left><left><left>
 
 " alternate between opened buffers
-nnoremap <S-TAB> :bp<CR>
-nnoremap <TAB> :bn<CR>
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
+" TODO: this C-^ does not work
+nnoremap <up> <C-^>
 " close only current buffer
-nnoremap <C-w> :w<CR>:bd<CR>
+nnoremap <C-down> :w<CR>:bd<CR>
 
 " better tabbing
 vnoremap < <gv
