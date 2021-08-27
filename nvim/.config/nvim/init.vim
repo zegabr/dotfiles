@@ -171,8 +171,8 @@ xnoremap <leader>r :s///g<left><left>
 xnoremap <leader>rc :s///gc<left><left><left>
 
 " alternate between opened buffers
-nnoremap <left> :bp<CR>
-nnoremap <right> :bn<CR>
+nnoremap <C-left> :bp<CR>
+nnoremap <C-right> :bn<CR>
 " TODO: this C-^ does not work
 nnoremap <up> <C-^>
 " close only current buffer
