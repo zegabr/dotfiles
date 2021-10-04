@@ -1,5 +1,6 @@
 " -----------------------------PLUGINS---------------------------------------
-"  TO install vim-plug, run the vim plug install script at
+" To install vim-plug, run the vim plug install script at m/stuff/apps.sh
+
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
@@ -11,23 +12,17 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'airblade/vim-rooter'
-
 " git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-
 " Nerd Commenter
 Plug 'preservim/nerdcommenter'
-
 " nerd tree
 Plug 'preservim/nerdtree'
-
-"color scheme and fonts
-Plug 'gruvbox-community/gruvbox'
-
+" color scheme and visual customization
+Plug 'gruvbox-community/gruvbox' 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
 " easymotion
 Plug 'easymotion/vim-easymotion'
 " vim surround
@@ -36,11 +31,9 @@ Plug 'tpope/vim-surround'
 Plug 'bronson/vim-visual-star-search'
 " Undotree
 Plug 'mbbill/undotree'
-
 call plug#end()
 
-" -------------------------------------------------------------------------------
-"--------------------------------------SETS--------------------------------------
+" ============SETS (and passive mappings)============
 syntax on
 filetype on
 filetype plugin on
@@ -58,14 +51,6 @@ set scrolloff=8
 set wildmode=longest,list,full
 set wildmenu
 set wildignorecase
-" Ignore files
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=**/coverage/*
-set wildignore+=**/node_modules/*
-set wildignore+=**/android/*
-set wildignore+=**/ios/*
-set wildignore+=**/.git/*
 
 set relativenumber "line numbers moving relatively
 set number
@@ -96,20 +81,46 @@ set tabstop=4
 set expandtab
 set autoindent
 
-"below command is for vimrc testing while ediing it
-autocmd! bufwritepost .vimrc source $MYVIMRC
-" ----------------------------------------------------------------------------
-"-----------------------------COLORS------------------------------------------
-set termguicolors
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
 
+"center things
+nnoremap G Gzz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap } }zz
+nnoremap { {zz
+nnoremap n nzzzv
+nnoremap N nzzzv
+nnoremap J mzJ'z
+
+" better tabbing
+vnoremap < <gv
+vnoremap > >gv
+
+" jumpList mutations
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+"below command is for vimrc testing while ediing it
+"autocmd! bufwritepost .vimrc source $MYVIMRC
+
+" ============COLORS============
+set termguicolors
 set noshowmode
 colorscheme gruvbox
 let g:airline_theme='minimalist'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemode=':t'
 set background=dark
-" ----------------------------------------------------------------------------
-"-----------------------------MAPS--------------------------------------------
+
+" ============MAPPINGS (active mappings)============
 nnoremap <Space> <nop>
 vnoremap <Space> <nop>
 let mapleader = " "
@@ -125,7 +136,7 @@ set clipboard=unnamedplus
 noremap <C-a> GVgg
 nnoremap Y y$
 
-"esc and save in jk 
+"esc with jk 
 inoremap jk <ESC>
 
 "go up, go down, with lines
@@ -140,25 +151,6 @@ nnoremap <leader>k :m .-2<CR>==
 inoremap <c-u> <esc>lviw~<esc>
 nnoremap <c-u> viw~<esc>
 
-nnoremap <Right> <nop>
-nnoremap <Left> <nop>
-nnoremap <Up> <nop>
-nnoremap <Down> <nop>
-
-" jumpList mutations
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-
-"center things
-nnoremap G Gzz
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap } }zz
-nnoremap { {zz
-nnoremap n nzzzv
-nnoremap N nzzzv
-nnoremap J mzJ'z
-
 "replace all ocurrence by typing old and new
 nnoremap S :%s//gI<Left><Left><Left>
 
@@ -171,27 +163,18 @@ xnoremap <leader>r :s///g<left><left>
 xnoremap <leader>rc :s///gc<left><left><left>
 
 " alternate between opened buffers
-nnoremap <C-left> :bp<CR>
-nnoremap <C-right> :bn<CR>
-" TODO: this C-^ does not work
-nnoremap <up> <C-^>
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
 " close only current buffer
 nnoremap <C-down> :w<CR>:bd<CR>
 
-" better tabbing
-vnoremap < <gv
-vnoremap > >gv
-
-" resize windows
-nnoremap <M-j> :resize -2<CR>
-nnoremap <M-k> :resize +2<CR>
-nnoremap <M-h> :vertical resize -2<CR>
-nnoremap <M-l> :vertical resize +2<CR>
+" TODO: this C-^ does not work
+nnoremap <up> <C-^>
 
 " tab completion
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" ----------------------------------------------------------------------------
-"-----------------------------UNDOTREE----------------------------------------
+
+" ============UNDOTREE============
 set noswapfile
 set nobackup
 set nowritebackup
@@ -218,14 +201,14 @@ inoremap ? ?<c-g>u
 inoremap ! !<c-g>u
 inoremap . .<c-g>u
 inoremap ; ;<c-g>u
-" ----------------------------------------------------------------------------
-"-----------------------------NERDCOMMENTER-----------------------------------
+
+" ============NERDCOMMENTER============
 filetype plugin on
 imap <C-_> <ESC><Plug>NERDCommenterToggle
 nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
-" ----------------------------------------------------------------------------
-"-----------------------------GIT---------------------------------------------
+
+" ============GIT============
 " git status
 nnoremap <leader>gs :G<CR>
 " git checkout
@@ -233,8 +216,8 @@ nnoremap <leader>gb :GBranches<CR>
 " diffget left theirs ans yours
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gh :diffget //3<CR>
-" ----------------------------------------------------------------------------
-"-----------------------------FZF---------------------------------------------
+
+" ============FZF============
 " automatically chooses between project files and git files
 function! s:find_files()
     let git_dir = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
@@ -249,10 +232,10 @@ command! ProjectFiles execute s:find_files()
 nnoremap <C-p> :ProjectFiles<CR>
 noremap <C-b> :Buffers<CR>
 noremap <C-f> :Rg!<CR> 
-"-----------------------------------------------------------------------------
-" ----------------------------EASYMOTION-------------------------------------------
+
+" ============EASYMOTION============
 nmap f <Plug>(easymotion-bd-f)
 nmap F <Plug>(easymotion-bd-f2)
-"----------------------------------------------------------------------------------
-"------------------------------NERDTREE-----------------------------------------
+
+" ============NERDTREE============
 nnoremap <leader>e :NERDTreeToggle<CR>
