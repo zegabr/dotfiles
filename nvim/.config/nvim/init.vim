@@ -235,8 +235,7 @@ noremap <C-b> :Buffers<CR>
 noremap <C-f> :Rg!<CR> 
 
 " ============EASYMOTION============
-nmap f <Plug>(easymotion-bd-f)
-nmap F <Plug>(easymotion-bd-f2)
+nmap <leader>f <Plug>(easymotion-bd-f2)
 
 " ============NERDTREE============
 nnoremap <leader>e :NERDTreeToggle<CR>
