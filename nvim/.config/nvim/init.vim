@@ -110,6 +110,8 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 "below command is for vimrc testing while ediing it
 autocmd! bufwritepost *.vim source $MYVIMRC
+" wrap text when in a txt file
+autocmd! VimEnter *.txt set wrap 
 
 " ============COLORS============
 set termguicolors
