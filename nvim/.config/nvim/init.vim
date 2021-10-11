@@ -1,5 +1,5 @@
 " -----------------------------PLUGINS---------------------------------------
-" To install vim-plug, run the vim plug install script at m/stuff/apps.sh
+" To install vim-plug, run the vim plug install script at m/v.sh
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
@@ -167,8 +167,7 @@ nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
 " close only current buffer
 nnoremap <C-down> :w<CR>:bd<CR>
-
-" TODO: this C-^ does not work
+" alternate between current edited file and last edited file
 nnoremap <up> <C-^>
 
 " tab completion
