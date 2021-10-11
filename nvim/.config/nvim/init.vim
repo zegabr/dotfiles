@@ -3,40 +3,32 @@
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
+            \| PlugInstall --sync | source $MYVIMRC
+            \| endif
 
 call plug#begin(stdpath('data') . '/plugged')
-" FuzzyFinder FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'stsewd/fzf-checkout.vim'
-Plug 'airblade/vim-rooter'
-" git
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-" Nerd Commenter
-Plug 'preservim/nerdcommenter'
-" nerd tree
-Plug 'preservim/nerdtree'
-" color scheme and visual customization
-Plug 'gruvbox-community/gruvbox' 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" easymotion
-Plug 'easymotion/vim-easymotion'
-" vim surround
-Plug 'tpope/vim-surround'
-" visual star search
-Plug 'bronson/vim-visual-star-search'
-" Undotree
-Plug 'mbbill/undotree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FuzzyFinder FZF
+Plug 'junegunn/fzf.vim' " fuzzy search integration
+Plug 'stsewd/fzf-checkout.vim' " 
+Plug 'airblade/vim-rooter' " rooter
+Plug 'airblade/vim-gitgutter' " git diff signs
+Plug 'tpope/vim-fugitive' " git support
+Plug 'preservim/nerdcommenter' " Nerd Commenter
+Plug 'preservim/nerdtree' " nerd tree
+Plug 'gruvbox-community/gruvbox' " color scheme and visual customization
+Plug 'vim-airline/vim-airline' " airline: bottom status bar and tabs
+Plug 'vim-airline/vim-airline-themes' " airline themes
+Plug 'easymotion/vim-easymotion' " easymotion
+Plug 'tpope/vim-surround' " vim surround
+Plug 'bronson/vim-visual-star-search' " visual star search
+Plug 'mbbill/undotree' " Undotree
 call plug#end()
 
 " ============SETS (and passive mappings)============
 syntax on
 filetype on
 filetype plugin on
+set grepprg=rg\ --vimgrep " use rg as default grepper
 set updatetime=100
 set encoding=utf-8
 set guicursor=
@@ -184,7 +176,7 @@ set undofile
 nnoremap <F5> :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 2
 if has("persistent_undo")
-   let target_path = expand('~/.undodir')
+    let target_path = expand('~/.undodir')
 
     " create the directory and any parent directories
     " if the location does not exist.
@@ -219,6 +211,8 @@ nmap <leader>gf :diffget //2<CR>
 nmap <leader>gh :diffget //3<CR>
 
 " ============FZF============
+let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
+let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'"
 " automatically chooses between project files and git files
 function! s:find_files()
     let git_dir = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
