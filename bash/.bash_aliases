@@ -112,9 +112,9 @@ alias tc='time g++ -std=c++17 -O2'
 alias cw='g++ -std=c++17 -O2 -Wfatal-errors'
 alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
 
-
-
 ## FZF
+export FZF_DEFAULT_OPTS="--reverse --inline-info"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'"
 
 # cdf - cd into the directory of the selected file
 cdf() {
