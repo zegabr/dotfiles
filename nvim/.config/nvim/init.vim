@@ -22,6 +22,7 @@ Plug 'easymotion/vim-easymotion' " easymotion
 Plug 'tpope/vim-surround' " vim surround
 Plug 'bronson/vim-visual-star-search' " visual star search
 Plug 'mbbill/undotree' " Undotree
+Plug 'matze/vim-move' " alt j/k moves selected lines normal and visual mode
 call plug#end()
 
 " ============SETS (and passive mappings)============
@@ -132,14 +133,6 @@ nnoremap Y y$
 
 "esc with jk 
 inoremap jk <ESC>
-
-"go up, go down, with lines
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-inoremap <C-j> <esc>:m .+1<CR>==i
-inoremap <C-k> <esc>:m .-2<CR>==i
-nnoremap <leader>j :m .+1<CR>==
-nnoremap <leader>k :m .-2<CR>==
 
 "toggle word case
 inoremap <c-u> <esc>lviw~<esc>
