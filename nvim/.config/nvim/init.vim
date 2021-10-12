@@ -18,7 +18,7 @@ Plug 'preservim/nerdtree' " nerd tree
 Plug 'gruvbox-community/gruvbox' " color scheme and visual customization
 Plug 'vim-airline/vim-airline' " airline: bottom status bar and tabs
 Plug 'vim-airline/vim-airline-themes' " airline themes
-Plug 'easymotion/vim-easymotion' " easymotion
+Plug 'justinmk/vim-sneak' " alternative to easymotion (s{char}{char}) and ; or ,
 Plug 'tpope/vim-surround' " vim surround
 Plug 'bronson/vim-visual-star-search' " visual star search
 Plug 'mbbill/undotree' " Undotree
@@ -83,16 +83,6 @@ set wildignore+=**/android/*
 set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 
-"center things
-nnoremap G Gzz
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap } }zz
-nnoremap { {zz
-nnoremap n nzzzv
-nnoremap N nzzzv
-nnoremap J mzJ'z
-
 " better tabbing
 vnoremap < <gv
 vnoremap > >gv
@@ -133,10 +123,6 @@ nnoremap Y y$
 
 "esc with jk 
 inoremap jk <ESC>
-
-"toggle word case
-inoremap <c-u> <esc>lviw~<esc>
-nnoremap <c-u> viw~<esc>
 
 "replace all ocurrence by typing old and new
 nnoremap S :%s//gI<Left><Left><Left>
@@ -220,9 +206,6 @@ command! ProjectFiles execute s:find_files()
 nnoremap <C-p> :ProjectFiles<CR>
 noremap <C-b> :Buffers<CR>
 noremap <C-f> :Rg!<CR> 
-
-" ============EASYMOTION============
-nmap <leader>f <Plug>(easymotion-bd-f2)
 
 " ============NERDTREE============
 nnoremap <leader>e :NERDTreeToggle<CR>
