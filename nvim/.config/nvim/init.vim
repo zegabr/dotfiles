@@ -23,6 +23,8 @@ Plug 'tpope/vim-surround' " vim surround
 Plug 'bronson/vim-visual-star-search' " visual star search
 Plug 'mbbill/undotree' " Undotree
 Plug 'matze/vim-move' " alt j/k moves selected lines normal and visual mode
+Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
+Plug 'romgrk/fzy-lua-native' " dependency for wilder
 call plug#end()
 
 " ============SETS (and passive mappings)============
@@ -41,9 +43,6 @@ set splitright splitbelow
 set hidden
 set title 
 set scrolloff=8
-set wildmode=longest,list,full
-set wildmenu
-set wildignorecase
 
 set relativenumber "line numbers moving relatively
 set number
@@ -209,3 +208,33 @@ noremap <C-f> :Rg!<CR>
 
 " ============NERDTREE============
 nnoremap <leader>e :NERDTreeToggle<CR>
+
+" ==========WILDER================
+call wilder#setup({'modes': [':', '/', '?']})
+call wilder#set_option('use_python_remote_plugin', 0)
+call wilder#set_option('pipeline', [
+      \   wilder#branch(
+      \     wilder#cmdline_pipeline({
+      \       'fuzzy': 1,
+      \       'fuzzy_filter': wilder#lua_fzy_filter(),
+      \     }),
+      \     wilder#vim_search_pipeline(),
+      \   ),
+      \ ])
+
+call wilder#set_option('renderer', wilder#renderer_mux({
+      \ ':': wilder#popupmenu_renderer({
+      \   'highlighter': wilder#lua_fzy_highlighter(),
+      \   'left': [
+      \     ' ',
+      \     wilder#popupmenu_devicons(),
+      \   ],
+      \   'right': [
+      \     ' ',
+      \     wilder#popupmenu_scrollbar(),
+      \   ],
+      \ }),
+      \ '/': wilder#wildmenu_renderer({
+      \   'highlighter': wilder#lua_fzy_highlighter(),
+      \ }),
+      \ }))
