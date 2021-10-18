@@ -9,7 +9,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FuzzyFinder FZF
 Plug 'junegunn/fzf.vim' " fuzzy search integration
-Plug 'stsewd/fzf-checkout.vim' " 
+Plug 'stsewd/fzf-checkout.vim' "
 Plug 'airblade/vim-rooter' " rooter
 Plug 'airblade/vim-gitgutter' " git diff signs
 Plug 'tpope/vim-fugitive' " git support
@@ -25,6 +25,7 @@ Plug 'mbbill/undotree' " Undotree
 Plug 'matze/vim-move' " alt j/k moves selected lines normal and visual mode
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
 Plug 'romgrk/fzy-lua-native' " dependency for wilder
+Plug 'ntpeters/vim-better-whitespace' " trim whitespace with :StripWhiteSpace
 call plug#end()
 
 " ============SETS (and passive mappings)============
@@ -38,10 +39,10 @@ set guicursor=
 set exrc "also source vimrcs inside directory of file
 set nocompatible
 set showcmd
-set ruler 
+set ruler
 set splitright splitbelow
 set hidden
-set title 
+set title
 set scrolloff=8
 
 set relativenumber "line numbers moving relatively
@@ -60,12 +61,12 @@ set colorcolumn=80
 
 set shortmess+=A "ignores swap files error
 
-set statusline=File:\ %F\  
+set statusline=File:\ %F\
 set statusline+=--Line:\ %l/%L
 
 " sets tab width in spaces
 set softtabstop=4
-" sets width to be used when using indentation in normal mode 
+" sets width to be used when using indentation in normal mode
 set shiftwidth=4
 " width of tab char
 set tabstop=4
@@ -93,7 +94,7 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 "below command is for vimrc testing while ediing it
 autocmd! bufwritepost *.vim source $MYVIMRC
 " wrap text when in a txt file
-autocmd! VimEnter *.txt set wrap 
+autocmd! VimEnter *.txt set wrap
 
 " ============COLORS============
 set termguicolors
@@ -120,7 +121,7 @@ set clipboard=unnamedplus
 noremap <C-a> GVgg
 nnoremap Y y$
 
-"esc with jk 
+"esc with jk
 inoremap jk <ESC>
 
 "replace all ocurrence by typing old and new
@@ -204,7 +205,7 @@ command! ProjectFiles execute s:find_files()
 
 nnoremap <C-p> :ProjectFiles<CR>
 noremap <C-b> :Buffers<CR>
-noremap <C-f> :Rg!<CR> 
+noremap <C-f> :Rg!<CR>
 
 " ============NERDTREE============
 nnoremap <leader>e :NERDTreeToggle<CR>
@@ -238,3 +239,6 @@ call wilder#set_option('renderer', wilder#renderer_mux({
       \   'highlighter': wilder#lua_fzy_highlighter(),
       \ }),
       \ }))
+
+" ==========BETTER WHITESPACE================
+let g:better_whitespace_enabled=1
