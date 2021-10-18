@@ -13,6 +13,7 @@ Plug 'stsewd/fzf-checkout.vim' "
 Plug 'airblade/vim-rooter' " rooter
 Plug 'airblade/vim-gitgutter' " git diff signs
 Plug 'tpope/vim-fugitive' " git support
+Plug 'junegunn/gv.vim' " commit browser
 Plug 'preservim/nerdcommenter' " Nerd Commenter
 Plug 'preservim/nerdtree' " nerd tree
 Plug 'gruvbox-community/gruvbox' " color scheme and visual customization
@@ -136,12 +137,12 @@ xnoremap <leader>r :s///g<left><left>
 xnoremap <leader>rc :s///gc<left><left><left>
 
 " alternate between opened buffers
-nnoremap <left> :bp<CR>
-nnoremap <right> :bn<CR>
-" close only current buffer
-nnoremap <C-down> :w<CR>:bd<CR>
+nnoremap gh :bp<CR>
+nnoremap gl :bn<CR>
+" close close only current buffer
+nnoremap gj :bd<CR>
 " alternate between current edited file and last edited file
-nnoremap <up> <C-^>
+nnoremap gk <C-^>
 
 " tab completion
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
