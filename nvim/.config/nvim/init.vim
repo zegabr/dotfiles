@@ -27,6 +27,7 @@ Plug 'matze/vim-move' " alt j/k moves selected lines normal and visual mode
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
 Plug 'romgrk/fzy-lua-native' " dependency for wilder
 Plug 'ntpeters/vim-better-whitespace' " trim whitespace with :StripWhiteSpace
+Plug 'neovim/nvim-lspconfig' " lsp configuration
 call plug#end()
 
 " ============SETS (and passive mappings)============
@@ -144,9 +145,6 @@ nnoremap gj :bd<CR>
 " alternate between current edited file and last edited file
 nnoremap gk <C-^>
 
-" tab completion
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
 " ============UNDOTREE============
 set noswapfile
 set nobackup
@@ -243,3 +241,26 @@ call wilder#set_option('renderer', wilder#renderer_mux({
 
 " ==========BETTER WHITESPACE================
 let g:better_whitespace_enabled=1
+
+" ===============LSP CONFIG========================
+" PS: requires node >= 12  ====> just run: nvm install 14.4.0
+
+" python
+" npm i -g pyright
+lua require'lspconfig'.pyright.setup{}
+
+" bash
+" npm i -g bash-language-server
+lua require'lspconfig'.bashls.setup{}
+
+" usefull lsp remaps
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> [d <cmd>lua vim.diagnostic.goto_prev({float = false})<CR>
+nnoremap <silent> ]d <cmd>lua vim.diagnostic.goto_next({float = false})<CR>
+"nnoremap <silent> <space>q <cmd>lua vim.lsp.diagnostic.set_loclist()<CR> " TODO: check how to use quickfixlist vs locationlist before using this
+nnoremap <silent> <leader>F <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>R <cmd>lua vim.lsp.buf.rename()<CR>
