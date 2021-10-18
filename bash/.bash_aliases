@@ -33,7 +33,7 @@ alias drma='docker rm $(docker ps -a -q)'
 alias dlf='docker logs -f'
 alias dl='docker logs'
 
-alias gw='./gradlew' # lê-se: GRADILEU 
+alias gw='./gradlew' # lê-se: GRADILEU
 
 # -----------------global python
 alias py='python3'
@@ -61,7 +61,7 @@ function gconfiglocal(){
     git config user.email $2
 }
 alias gconfiglocal-zegabr='gconfiglocal zegabr jgsp2@cin.ufpe.br'
- 
+
 # clone github repo via https
 function gclhttps(){
     git clone --recurse-submodules https://github.com/$1
