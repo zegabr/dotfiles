@@ -41,6 +41,7 @@ set guicursor=
 set exrc "also source vimrcs inside directory of file
 set nocompatible
 set showcmd
+set showmatch " show matching open-closing symbol
 set ruler
 set splitright splitbelow
 set hidden
@@ -138,12 +139,12 @@ xnoremap <leader>r :s///g<left><left>
 xnoremap <leader>rc :s///gc<left><left><left>
 
 " alternate between opened buffers
-nnoremap gh :bp<CR>
-nnoremap gl :bn<CR>
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
 " close close only current buffer
-nnoremap gj :bd<CR>
+nnoremap <down> :w<cr>:bd<CR>
 " alternate between current edited file and last edited file
-nnoremap gk <C-^>
+nnoremap <up> <C-^>
 
 " ============UNDOTREE============
 set noswapfile
@@ -254,13 +255,13 @@ lua require'lspconfig'.pyright.setup{}
 lua require'lspconfig'.bashls.setup{}
 
 " usefull lsp remaps
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> [d <cmd>lua vim.diagnostic.goto_prev({float = false})<CR>
-nnoremap <silent> ]d <cmd>lua vim.diagnostic.goto_next({float = false})<CR>
-"nnoremap <silent> <space>q <cmd>lua vim.lsp.diagnostic.set_loclist()<CR> " TODO: check how to use quickfixlist vs locationlist before using this
-nnoremap <silent> <leader>F <cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> <leader>R <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap [d <cmd>lua vim.diagnostic.goto_prev({float = false})<CR>
+nnoremap ]d <cmd>lua vim.diagnostic.goto_next({float = false})<CR>
+"nnoremap <space>q <cmd>lua vim.lsp.diagnostic.set_loclist()<CR> " TODO: check how to use quickfixlist vs locationlist before using this
+nnoremap <leader>F <cmd>lua vim.lsp.buf.formatting_sync(nil, 100)<CR>
+nnoremap <leader>R <cmd>lua vim.lsp.buf.rename()<CR>
