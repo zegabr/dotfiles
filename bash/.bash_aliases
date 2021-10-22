@@ -22,6 +22,8 @@ function note(){
     v ~/notes/${filename}.txt +
 }
 
+alias change_java='sudo update-alternatives --config java'
+
 #--------------------containers
 alias dps='docker ps'
 alias dpsa='docker ps -a'
