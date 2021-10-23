@@ -6,6 +6,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
             \| PlugInstall --sync | source $MYVIMRC
             \| endif
 
+" TODO: update comments
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FuzzyFinder FZF
 Plug 'junegunn/fzf.vim' " fuzzy search integration
@@ -19,7 +20,6 @@ Plug 'preservim/nerdtree' " nerd tree
 Plug 'gruvbox-community/gruvbox' " color scheme and visual customization
 Plug 'vim-airline/vim-airline' " airline: bottom status bar and tabs
 Plug 'vim-airline/vim-airline-themes' " airline themes
-Plug 'justinmk/vim-sneak' " alternative to easymotion (s{char}{char}) and ; or ,
 Plug 'tpope/vim-surround' " vim surround
 Plug 'bronson/vim-visual-star-search' " visual star search
 Plug 'mbbill/undotree' " Undotree
@@ -28,8 +28,28 @@ Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
 Plug 'romgrk/fzy-lua-native' " dependency for wilder
 Plug 'ntpeters/vim-better-whitespace' " trim whitespace with :StripWhiteSpace
 Plug 'neovim/nvim-lspconfig' " lsp configuration
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'simrat39/symbols-outline.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'L3MON4D3/LuaSnip' " TODO: learn this
 call plug#end()
 
+" =========== TREESITTER ===========
+lua << EOF
+require'nvim-treesitter.configs'.setup { 
+    ensure_installed = "maintained", 
+    indent = { enable = true }, 
+    highlight = { 
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    }, 
+    incremental_selection = { enable = true }, 
+    textobjects = { enable = true }}
+EOF
 " ============SETS (and passive mappings)============
 syntax on
 filetype on
@@ -142,7 +162,7 @@ xnoremap <leader>rc :s///gc<left><left><left>
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
 " close close only current buffer
-nnoremap <down> :w<cr>:bd<CR>
+nnoremap <down> :bd<CR>
 " alternate between current edited file and last edited file
 nnoremap <up> <C-^>
 
@@ -246,13 +266,118 @@ let g:better_whitespace_enabled=1
 " ===============LSP CONFIG========================
 " PS: requires node >= 12  ====> just run: nvm install 14.4.0
 
-" python
-" npm i -g pyright
-lua require'lspconfig'.pyright.setup{}
+lua << EOF
+local function config(_config)
+    return vim.tbl_deep_extend("force", {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    }, _config or {})
+end
 
-" bash
-" npm i -g bash-language-server
-lua require'lspconfig'.bashls.setup{}
+-- python
+-- npm i -g pyright
+require'lspconfig'.pyright.setup{}
+
+-- bash
+-- npm i -g bash-language-server
+require'lspconfig'.bashls.setup{}
+
+-- typescript
+-- npm install -g typescript typescript-language-server
+require'lspconfig'.tsserver.setup(config())
+
+-- C++
+-- sudo apt-get install clangd-12
+-- sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
+require'lspconfig'.clangd.setup(config({
+    cmd = { "clangd", "--background-index", "--clang-tidy" },
+    filetypes = { "c", "cpp", "h"}
+}))
+
+-- docker
+-- npm install -g dockerfile-language-server-nodejs
+require'lspconfig'.dockerls.setup{}
+
+-- go
+require'lspconfig'.gopls.setup(config({
+    cmd = {"gopls", "serve"},
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
+}))
+
+-- vim
+-- npm install -g vim-language-server
+require'lspconfig'.vimls.setup{}
+
+-- lua
+-- git clone https://github.com/sumneko/lua-language-server
+-- cd lua-language-server
+-- git submodule update --init --recursive
+-- cd 3rd/luamake
+-- ./compile/install.sh
+-- cd ../..
+-- ./3rd/luamake/luamake rebuild
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
+
+local sumneko_root_path = '/home/ze/Downloads/lua-language-server'
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
+require'lspconfig'.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = runtime_path,
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
+require('symbols-outline').setup({
+    -- whether to highlight the currently hovered symbol
+    -- disable if your cpu usage is higher than you want it
+    -- or you just hate the highlight
+    -- default: true
+    highlight_hovered_item = true,
+
+    -- whether to show outline guides
+    -- default: true
+    show_guides = true,
+})
+EOF
 
 " usefull lsp remaps
 nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
@@ -265,3 +390,47 @@ nnoremap ]d <cmd>lua vim.diagnostic.goto_next({float = false})<CR>
 "nnoremap <space>q <cmd>lua vim.lsp.diagnostic.set_loclist()<CR> " TODO: check how to use quickfixlist vs locationlist before using this
 nnoremap <leader>F <cmd>lua vim.lsp.buf.formatting_sync(nil, 100)<CR>
 nnoremap <leader>R <cmd>lua vim.lsp.buf.rename()<CR>
+
+" ============== COMPLETION ==============
+set completeopt=menu,menuone,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+lua << EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    mapping = {
+      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-u>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<esc>'] = cmp.mapping.close(),
+      ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
+    },
+    sources = {
+        { name = 'nvim_lua' },
+      { name = 'nvim_lsp' },
+      { name = 'path' },
+      { name = 'buffer', keyword_length = 5 },
+      { name = 'luasnip' },
+    }, 
+    snippet = {
+            expand = function(args)
+                require("luasnip").lsp_expand(args.body)
+            end,
+        },
+    formatting = {
+        with_text = true,
+        menu = {
+            buffer = "[buf]",
+            nvim_lsp = "[LSP]",
+            nvim_lua = "[api]",
+            path = "[path]",
+            luasnip = "[snip]",
+            },
+        },
+    experimental = {
+        native_menu = false,
+        }
+  })
+EOF

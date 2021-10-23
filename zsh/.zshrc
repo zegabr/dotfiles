@@ -30,12 +30,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
     git
-    zsh-syntax-highlighting
-    copydir
-    copyfile
     extract
-    zsh-autosuggestions
     docker-compose
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 source /etc/zsh_command_not_found
 
@@ -78,3 +76,5 @@ export EDITOR=nvim
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias luamake=/home/ze/Downloads/lua-language-server/3rd/luamake/luamake
