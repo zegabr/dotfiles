@@ -8,18 +8,29 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " TODO: update comments
 call plug#begin(stdpath('data') . '/plugged')
+" FZF integration
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FuzzyFinder FZF
-Plug 'junegunn/fzf.vim' " fuzzy search integration
-Plug 'stsewd/fzf-checkout.vim' "
+Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter' " rooter
-Plug 'airblade/vim-gitgutter' " git diff signs
+
+" Git integration
 Plug 'tpope/vim-fugitive' " git support
+Plug 'airblade/vim-gitgutter' " git diff signs on file
 Plug 'junegunn/gv.vim' " commit browser
+Plug 'stsewd/fzf-checkout.vim' " Git branch management
+
+" Comments
 Plug 'preservim/nerdcommenter' " Nerd Commenter
+
+" Project file tree
 Plug 'preservim/nerdtree' " nerd tree
+
+" Colors and UI
 Plug 'gruvbox-community/gruvbox' " color scheme and visual customization
 Plug 'vim-airline/vim-airline' " airline: bottom status bar and tabs
 Plug 'vim-airline/vim-airline-themes' " airline themes
+
+" Utilities
 Plug 'tpope/vim-surround' " vim surround
 Plug 'bronson/vim-visual-star-search' " visual star search
 Plug 'mbbill/undotree' " Undotree
@@ -27,29 +38,19 @@ Plug 'matze/vim-move' " alt j/k moves selected lines normal and visual mode
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
 Plug 'romgrk/fzy-lua-native' " dependency for wilder
 Plug 'ntpeters/vim-better-whitespace' " trim whitespace with :StripWhiteSpace
+
+" LSP
 Plug 'neovim/nvim-lspconfig' " lsp configuration
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'simrat39/symbols-outline.nvim'
+Plug 'hrsh7th/cmp-buffer' " buffer suggestions
+Plug 'hrsh7th/cmp-path' " path suggestions
+Plug 'hrsh7th/cmp-nvim-lua' " lua suggestions
+Plug 'hrsh7th/cmp-nvim-lsp' " dependency for nvim-cmp
+Plug 'hrsh7th/nvim-cmp' " autocompletion
+Plug 'simrat39/symbols-outline.nvim' " highlight symbols on hover
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'L3MON4D3/LuaSnip' " TODO: learn this
 call plug#end()
 
-" =========== TREESITTER ===========
-lua << EOF
-require'nvim-treesitter.configs'.setup { 
-    ensure_installed = "maintained", 
-    indent = { enable = true }, 
-    highlight = { 
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    }, 
-    incremental_selection = { enable = true }, 
-    textobjects = { enable = true }}
-EOF
 " ============SETS (and passive mappings)============
 syntax on
 filetype on
@@ -62,14 +63,13 @@ set exrc "also source vimrcs inside directory of file
 set nocompatible
 set showcmd
 set showmatch " show matching open-closing symbol
-set ruler
 set splitright splitbelow
 set hidden
 set title
 set scrolloff=8
 
+set number " show line numbers
 set relativenumber "line numbers moving relatively
-set number
 set noerrorbells
 set nowrap
 set cursorline cursorcolumn
@@ -83,9 +83,6 @@ set signcolumn=yes "leftmost column, used for linting
 set colorcolumn=80
 
 set shortmess+=A "ignores swap files error
-
-set statusline=File:\ %F\
-set statusline+=--Line:\ %l/%L
 
 " sets tab width in spaces
 set softtabstop=4
@@ -119,6 +116,19 @@ autocmd! bufwritepost *.vim source $MYVIMRC
 " wrap text when in a txt file
 autocmd! VimEnter *.txt set wrap
 
+
+" =========== TREESITTER ===========
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = "maintained",
+    indent = { enable = true },
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
+    incremental_selection = { enable = true },
+    textobjects = { enable = true }}
+EOF
 " ============COLORS============
 set termguicolors
 set noshowmode
@@ -176,13 +186,11 @@ nnoremap <F5> :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 2
 if has("persistent_undo")
     let target_path = expand('~/.undodir')
-
     " create the directory and any parent directories
     " if the location does not exist.
     if !isdirectory(target_path)
         call mkdir(target_path, "p", 0700)
     endif
-
     let &undodir=target_path
     set undofile
 endif
@@ -203,11 +211,15 @@ vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 " ============GIT============
 " git status
 nnoremap <leader>gs :G<CR>
-" git checkout
+" git branch checkout/management
 nnoremap <leader>gb :GBranches<CR>
 " diffget left theirs ans yours
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gh :diffget //3<CR>
+" git log
+nmap <leader>glo :GV<CR>
+" git log in file
+"nmap <leader>glf :GV!<CR>
 
 " ============FZF============
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
@@ -413,7 +425,7 @@ lua << EOF
       { name = 'path' },
       { name = 'buffer', keyword_length = 5 },
       { name = 'luasnip' },
-    }, 
+    },
     snippet = {
             expand = function(args)
                 require("luasnip").lsp_expand(args.body)
