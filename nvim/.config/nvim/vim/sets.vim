@@ -15,7 +15,7 @@ set hidden
 set title
 set scrolloff=8
 
-"set number " show line numbers
+set number " show line numbers
 set relativenumber "line numbers moving relatively
 set noerrorbells
 set nowrap
@@ -58,7 +58,5 @@ vnoremap > >gv
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
-"below command is for vimrc testing while ediing it
-autocmd! bufwritepost ~/.config/nvim/* source $MYVIMRC
 " wrap text when in a txt file
 autocmd! VimEnter *.txt set wrap

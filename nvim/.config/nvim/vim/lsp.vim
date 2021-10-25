@@ -6,10 +6,11 @@ nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap [d <cmd>lua vim.diagnostic.goto_prev({float = false})<CR>
 nnoremap ]d <cmd>lua vim.diagnostic.goto_next({float = false})<CR>
-"nnoremap <space>q <cmd>lua vim.lsp.diagnostic.set_loclist()<CR> " TODO: check how to use quickfixlist vs locationlist before using this
+nnoremap <leader>q <cmd>lua vim.lsp.diagnostic.set_loclist()<CR> "
 nnoremap <leader>F <cmd>lua vim.lsp.buf.formatting_sync(nil, 100)<CR>
 nnoremap <leader>R <cmd>lua vim.lsp.buf.rename()<CR>
 
 " ============== COMPLETION ==============
-set completeopt=menu,menuone,noselect
+"set completeopt=menu,menuone,noselect
+set completeopt=menuone,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']

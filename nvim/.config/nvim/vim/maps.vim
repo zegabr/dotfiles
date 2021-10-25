@@ -29,3 +29,7 @@ nnoremap <right> :bn<CR>
 nnoremap <down> :bd<CR>
 " alternate between current edited file and last edited file
 nnoremap <up> <C-^>
+
+" quickfix list moves
+nnoremap <c-h> :cprev<CR>
+nnoremap <c-l> :cnext<CR>

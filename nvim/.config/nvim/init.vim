@@ -6,7 +6,6 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
             \| PlugInstall --sync | source $MYVIMRC
             \| endif
 
-" TODO: update comments
 call plug#begin(stdpath('data') . '/plugged')
 " FZF integration
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FuzzyFinder FZF
@@ -21,9 +20,6 @@ Plug 'stsewd/fzf-checkout.vim' " Git branch management
 
 " Comments
 Plug 'preservim/nerdcommenter' " Nerd Commenter
-
-" Project file tree
-Plug 'preservim/nerdtree' " nerd tree
 
 " Colors and UI
 Plug 'gruvbox-community/gruvbox' " color scheme and visual customization
@@ -54,7 +50,6 @@ call plug#end()
 lua require("zegabr.lsp")
 lua require("zegabr.treesitter")
 
-so ~/.config/nvim/vim/git.vim
 so ~/.config/nvim/vim/fzf.vim
 so ~/.config/nvim/vim/lsp.vim
 so ~/.config/nvim/vim/sets.vim
@@ -63,10 +58,18 @@ so ~/.config/nvim/vim/colors.vim
 so ~/.config/nvim/vim/wilder.vim
 so ~/.config/nvim/vim/undotree.vim
 so ~/.config/nvim/vim/nerdcommenter.vim
+so ~/.config/nvim/vim/git.vim
 
-" ============NERDTREE============
-nnoremap <leader>e :NERDTreeToggle<CR>
 " ==========BETTER WHITESPACE================
 let g:better_whitespace_enabled=1
 
-nnoremap <leader><cr> :so ~/.config/nvim/init.vim<CR>
+" below command is for vimrc testing while editing it
+autocmd! bufwritepost ~/.config/nvim/* source $MYVIMRC
+nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+
+nnoremap <leader>e :Ex<CR>
+
+let g:netrw_browse_split = 0
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+let g:netrw_localrmdir='rm -r'

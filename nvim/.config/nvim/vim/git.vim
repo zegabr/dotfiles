@@ -1,8 +1,9 @@
+
 " git status
-nnoremap <leader>gs :G<CR>
+:nnoremap <leader>gs :G<CR>
 
 " git branch checkout/management
-nnoremap <leader>gb :GBranches<CR>
+:nnoremap <leader>gb :GBranches<CR>
 
 " diffget left theirs ans yours
 nmap <leader>gf :diffget //2<CR>

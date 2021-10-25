@@ -53,7 +53,7 @@ function gclssh(){
 # ex: $ gclssh-by-id zegabr zegabr/m
 # use this when multiple ssh keys are added
 function gclssh-by-id(){
-    git clone --recurse-submodules git@github.com-$1:$2.git
+git clone --recurse-submodules git@github.com-$1:$2.git
 }
 
 # config local user and email
@@ -120,9 +120,9 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**' --glob '!build
 
 # cdf - cd into the directory of the selected file
 cdf() {
-   local file
-   local dir
-   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+    local file
+    local dir
+    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
 # cheat.sh
