@@ -143,15 +143,9 @@ nnoremap <Space> <nop>
 vnoremap <Space> <nop>
 let mapleader = " "
 
-"Navigate splits
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-"ctrl A select all file, y and p uses system clipboard
+"leader+a select all file, y and p uses system clipboard
 set clipboard=unnamedplus
-noremap <C-a> GVgg
+noremap <leader>a GVgg
 nnoremap Y y$
 
 "esc with jk
