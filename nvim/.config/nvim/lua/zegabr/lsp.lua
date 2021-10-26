@@ -78,13 +78,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 require'lspconfig'.vimls.setup{}
 
 -- lua
--- git clone https://github.com/sumneko/lua-language-server
--- cd lua-language-server
--- git submodule update --init --recursive
--- cd 3rd/luamake
--- ./compile/install.sh
--- cd ../..
--- ./3rd/luamake/luamake rebuild
+-- see github.com/zegabr/m -> v.sh  (see how I install lua language server inside ~/nvim-deps)
 local system_name
 if vim.fn.has("mac") == 1 then
     system_name = "macOS"
@@ -96,7 +90,7 @@ else
     print("Unsupported system for sumneko")
 end
 
-local sumneko_root_path = '/home/ze/Downloads/lua-language-server'
+local sumneko_root_path = '/home/ze/nvim-deps/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
 
 local runtime_path = vim.split(package.path, ';')
