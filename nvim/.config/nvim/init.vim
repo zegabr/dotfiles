@@ -59,17 +59,13 @@ so ~/.config/nvim/vim/wilder.vim
 so ~/.config/nvim/vim/undotree.vim
 so ~/.config/nvim/vim/nerdcommenter.vim
 so ~/.config/nvim/vim/git.vim
+so ~/.config/nvim/vim/netrw.vim
 
 " ==========BETTER WHITESPACE================
 let g:better_whitespace_enabled=1
 
 " below command is for vimrc testing while editing it
-autocmd! bufwritepost ~/.config/nvim/* source $MYVIMRC
+autocmd! bufwritepost ~/.config/nvim/*.vim source $MYVIMRC
+autocmd! bufwritepost ~/.config/nvim/*.lua source $MYVIMRC
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 
-nnoremap <leader>e :Ex<CR>
-
-let g:netrw_browse_split = 0
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
-let g:netrw_localrmdir='rm -r'
