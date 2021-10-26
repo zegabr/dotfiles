@@ -8,12 +8,12 @@ alias eb='v ~/.bashrc'
 alias ez='v ~/.zshrc'
 alias ev='v ~/.config/nvim/init.vim'
 alias ea='v ~/.bash_aliases'
-alias ew='v ~/.aliases_work'
+alias ew='v ~/.bash_aliases_work'
 alias dot='cd ~/dotfiles'
 
 alias sz='source ~/.zshrc'
 alias sa='source ~/.bash_aliases'
-alias sw='source ~/.aliases_work'
+alias sw='source ~/.bash_aliases_work'
 
 #Open current day note file
 function note(){

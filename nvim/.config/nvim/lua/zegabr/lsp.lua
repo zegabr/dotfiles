@@ -130,7 +130,7 @@ require'lspconfig'.pyright.setup{}
 -- bash
 -- npm i -g bash-language-server
 require'lspconfig'.bashls.setup{
-    filetypes = { "sh", "zsh", "bashrc","zshrc", "bash_aliases", "aliases_work" },
+    filetypes = { "sh", "zsh", "bashrc","zshrc", "bash_aliases", "bash_aliases_work" },
 }
 
 -- typescript
