@@ -31,5 +31,5 @@ nnoremap <down> :bd<CR>
 nnoremap <up> <C-^>
 
 " quickfix list moves
-nnoremap <c-h> :cprev<CR>
-nnoremap <c-l> :cnext<CR>
+nnoremap <C-h> :cprev<CR>zz
+nnoremap <C-l> :cnext<CR>zz
