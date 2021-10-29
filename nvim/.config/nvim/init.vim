@@ -27,13 +27,13 @@ Plug 'vim-airline/vim-airline' " airline: bottom status bar and tabs
 Plug 'vim-airline/vim-airline-themes' " airline themes
 
 " Utilities
-Plug 'tpope/vim-surround' " vim surround " TODO: learn this
-Plug 'bronson/vim-visual-star-search' " visual star search
 Plug 'mbbill/undotree' " Undotree
-Plug 'matze/vim-move' " alt j/k moves selected lines normal and visual mode
-Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
-Plug 'romgrk/fzy-lua-native' " dependency for wilder
 Plug 'ntpeters/vim-better-whitespace' " trim whitespace with :StripWhiteSpace
+Plug 'bronson/vim-visual-star-search' " visual star search
+Plug 'matze/vim-move' " alt j/k moves selected lines normal and visual mode
+Plug 'romgrk/fzy-lua-native' " dependency for wilder
+Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
+Plug 'tpope/vim-surround' " vim surround " TODO: learn this
 
 " LSP
 Plug 'neovim/nvim-lspconfig' " lsp configuration
