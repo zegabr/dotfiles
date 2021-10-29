@@ -1,3 +1,7 @@
+stow -D --verbose=2 m
+stow --verbose=2 -t ~/ m
+echo "===="
+echo
 stow -D --verbose=2 nvim
 stow --verbose=2 -t ~/ nvim
 echo "===="

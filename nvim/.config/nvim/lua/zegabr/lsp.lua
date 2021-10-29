@@ -78,7 +78,16 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 require'lspconfig'.vimls.setup{}
 
 -- lua
--- see github.com/zegabr/m -> v.sh  (see how I install lua language server inside ~/nvim-deps)
+--#install lua language server
+--cd ~/nvim-deps
+--rm -rf lua-language-server
+--git clone https://github.com/sumneko/lua-language-server
+--cd lua-language-server && git pull
+--git submodule update --init --recursive
+--cd 3rd/luamake
+--./compile/install.sh
+--cd ../..
+--./3rd/luamake/luamake rebuild
 local system_name
 if vim.fn.has("mac") == 1 then
     system_name = "macOS"
