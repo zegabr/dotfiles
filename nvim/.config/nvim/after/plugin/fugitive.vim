@@ -1,4 +1,3 @@
-
 " git status
 :nnoremap <leader>gs :G<CR>
 

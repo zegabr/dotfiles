@@ -26,4 +26,3 @@ call wilder#set_option('renderer', wilder#renderer_mux({
       \   'highlighter': wilder#lua_fzy_highlighter(),
       \ }),
       \ }))
-

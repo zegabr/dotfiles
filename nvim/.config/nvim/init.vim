@@ -50,21 +50,10 @@ call plug#end()
 lua require("zegabr.lsp")
 lua require("zegabr.treesitter")
 
-so ~/.config/nvim/vim/colors.vim
-so ~/.config/nvim/vim/netrw.vim
-so ~/.config/nvim/vim/fzf.vim
-so ~/.config/nvim/vim/sets.vim
-so ~/.config/nvim/vim/maps.vim
-so ~/.config/nvim/vim/wilder.vim
-so ~/.config/nvim/vim/undotree.vim
-so ~/.config/nvim/vim/nerdcommenter.vim
-so ~/.config/nvim/vim/git.vim
-so ~/.config/nvim/vim/lsp.vim
-
 " ==========BETTER WHITESPACE================
 let g:better_whitespace_enabled=1
 
 " below command is for vimrc testing while editing it
+nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 autocmd! bufwritepost ~/.config/nvim/*.vim source $MYVIMRC
 autocmd! bufwritepost ~/.config/nvim/*.lua source $MYVIMRC
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
