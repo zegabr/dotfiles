@@ -21,6 +21,9 @@ then
 	gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-to 6.0
 	gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 2700
 
+    # disable bluetooth on startup
+    sudo systemctl disable bluetooth.service
+
 else
     echo "this script has no settings for your OS version, sorry.."
 fi
