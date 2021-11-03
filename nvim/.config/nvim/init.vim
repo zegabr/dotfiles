@@ -57,3 +57,4 @@ let g:better_whitespace_enabled=1
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 autocmd! bufwritepost ~/.config/nvim/*.vim source $MYVIMRC
 autocmd! bufwritepost ~/.config/nvim/*.lua source $MYVIMRC
+autocmd CursorHold * update
