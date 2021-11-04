@@ -28,6 +28,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
+#  SEE https://github.com/zegabr/dotfiles/blob/main/m/m/z.sh
+#  TO CHECK HOW TO INSTALL THE zsh-autosuggestions and zsh-syntax-highlighting
 plugins=(
     git
     extract
