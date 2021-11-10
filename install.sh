@@ -1,5 +1,5 @@
-stow -D --verbose=2 m
-stow --verbose=2 -t ~/ m
+stow -D --verbose=2 scripts
+stow --verbose=2 -t ~/ scripts
 echo "===="
 echo
 stow -D --verbose=2 nvim
