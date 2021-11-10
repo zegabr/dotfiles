@@ -33,7 +33,7 @@ Plug 'bronson/vim-visual-star-search' " visual star search
 Plug 'matze/vim-move' " alt j/k moves selected lines normal and visual mode
 Plug 'romgrk/fzy-lua-native' " dependency for wilder
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
-Plug 'tpope/vim-surround' " vim surround "
+Plug 'tpope/vim-surround' " ./plugin/surround.vim
 
 " LSP
 Plug 'neovim/nvim-lspconfig' " lsp configuration
