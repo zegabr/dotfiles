@@ -63,14 +63,14 @@ cmp.setup({
         },
     },
     --experimental = {
-        --native_menu = false,
+    --native_menu = false,
     --}
 })
 
 --========== LSP CONFIG ==========
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local updated_capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- vim
 -- npm install -g vim-language-server
@@ -158,14 +158,32 @@ require'lspconfig'.clangd.setup {
 require'lspconfig'.dockerls.setup{}
 
 -- go
---require'lspconfig'.gopls.setup(config({
---cmd = {"gopls", "serve"},
---settings = {
---gopls = {
---analyses = {
---unusedparams = true,
---},
---staticcheck = true,
---},
---},
---}))
+require'lspconfig'.gopls.setup({
+    cmd = {"gopls", "serve"},
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
+})
+
+-- html css json eslint
+-- npm i -g vscode-langservers-extracted
+updated_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.html.setup {
+  capabilities = updated_capabilities,
+}
+
+require'lspconfig'.cssls.setup {
+  capabilities = updated_capabilities,
+}
+
+require'lspconfig'.jsonls.setup {
+  capabilities = updated_capabilities,
+}
+
+require'lspconfig'.eslint.setup{}
