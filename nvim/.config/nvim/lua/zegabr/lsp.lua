@@ -145,6 +145,28 @@ require'lspconfig'.bashls.setup{
 -- npm install -g typescript typescript-language-server
 require'lspconfig'.tsserver.setup{}
 
+-- html css json eslint
+-- npm i -g vscode-langservers-extracted
+updated_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.html.setup {
+    capabilities = updated_capabilities,
+}
+
+require'lspconfig'.cssls.setup {
+    capabilities = updated_capabilities,
+}
+
+require'lspconfig'.jsonls.setup {
+    capabilities = updated_capabilities,
+}
+
+require'lspconfig'.eslint.setup{}
+
+-- graphql
+--npm install -g graphql-language-service-cli
+require'lspconfig'.graphql.setup{}
+
 -- C++
 -- sudo apt-get install clangd-12
 -- sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
@@ -205,22 +227,3 @@ vim.api.nvim_command([[
 autocmd BufWritePre *.go lua GOIMPORTS(1000)
 ]])
 
--- html css json eslint
--- npm i -g vscode-langservers-extracted
-updated_capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-require'lspconfig'.html.setup {
-    capabilities = updated_capabilities,
-}
-
-require'lspconfig'.cssls.setup {
-    capabilities = updated_capabilities,
-}
-
-require'lspconfig'.jsonls.setup {
-    capabilities = updated_capabilities,
-}
-
-require'lspconfig'.eslint.setup{}
-
--- php TODO
