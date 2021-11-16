@@ -6,7 +6,8 @@ nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap [d <cmd>lua vim.diagnostic.goto_prev({float = false})<CR>
 nnoremap ]d <cmd>lua vim.diagnostic.goto_next({float = false})<CR>
-nnoremap <leader>Q <cmd>lua vim.diagnostic.setqflist()<CR> "
+nnoremap <leader>Q <cmd>lua vim.diagnostic.setqflist()<CR>
+nnoremap <leader>A <cmd>lua vim.lsp.buf.code_action<CR>
 nnoremap <leader>F <cmd>lua vim.lsp.buf.formatting_sync(nil, 100)<CR>
 nnoremap <leader>R <cmd>lua vim.lsp.buf.rename()<CR>
 
