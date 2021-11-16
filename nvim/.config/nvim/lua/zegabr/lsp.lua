@@ -223,6 +223,4 @@ require'lspconfig'.jsonls.setup {
 
 require'lspconfig'.eslint.setup{}
 
--- php
--- npm install -g intelephense
-require'lspconfig'.intelephense.setup{}
+-- php TODO
