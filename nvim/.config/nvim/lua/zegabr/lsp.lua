@@ -13,6 +13,7 @@ require('symbols-outline').setup {
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 local luasnip = require'luasnip'
+local util = require 'lspconfig/util'
 
 cmp.setup({
     mapping = {
@@ -171,9 +172,17 @@ require'lspconfig'.graphql.setup{}
 -- sudo apt-get install clangd-12
 -- sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 require'lspconfig'.clangd.setup {
-    cmd = { "clangd", "--background-index", "--clang-tidy" },
-    filetypes = { "c", "cpp", "h"}
+    cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy" },
+    filetypes = { "c", "cpp", "h", "hpp", "objc", "objcpp"},
+    root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+    single_file_support = true,
 }
+
+-- C++ alternative
+--require("lspconfig").ccls.setup {
+    ---- directory for the .ccls file
+    ----compilationDatabaseDirectory = "build",
+--}
 
 -- docker
 -- npm install -g dockerfile-language-server-nodejs
