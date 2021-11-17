@@ -73,6 +73,9 @@ if [ -f ~/.bash_aliases_work ]; then
     . ~/.bash_aliases_work
 fi
 export TERM=xterm-256color
+
+autoload -U zmv
+
 export EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
