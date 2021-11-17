@@ -44,19 +44,19 @@ Plug 'hrsh7th/cmp-nvim-lsp' " dependency for nvim-cmp
 Plug 'hrsh7th/nvim-cmp' " autocompletion
 Plug 'simrat39/symbols-outline.nvim' " highlight symbols on hover
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'L3MON4D3/LuaSnip' " TODO: learn this
+Plug 'L3MON4D3/LuaSnip' " TODO: make this work
+Plug 'saadparwaiz1/cmp_luasnip' " luasnip src
 
 " LSP for java
 " npm i -g yarn
 " sudo mkdir /usr/local/share/lombok
 " sudo wget https://projectlombok.org/downloads/lombok.jar -O /usr/local/share/lombok/lombok.jar
-" :CocInstall coc-java
+" :CocInstall coc-java coc-snippets
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " conquer of completion (ls client used for java)
 
 call plug#end()
 
 lua require("zegabr.lsp")
-source $HOME/.config/nvim/plugin/lsp.vim
 lua require("zegabr.treesitter")
 
 " ==========BETTER WHITESPACE================
