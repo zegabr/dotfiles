@@ -4,5 +4,7 @@
 "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar",
 "coc.preferences.formatOnSaveFiletypes":[
     "java"
-]
+],
+"java.import.gradle.enabled": true,
+"java.import.maven.enabled": true
 }
