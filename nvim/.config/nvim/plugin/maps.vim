@@ -7,6 +7,9 @@ let mapleader = " "
 set clipboard=unnamedplus
 noremap <leader>a GVgg
 nnoremap Y y$
+" cycle through yank history
+nmap [y <plug>(YoinkRotateBack)
+nmap ]y <plug>(YoinkRotateForward)
 
 "esc with jk
 inoremap jk <ESC>
