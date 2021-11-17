@@ -56,6 +56,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " conquer of completion (ls clie
 call plug#end()
 
 lua require("zegabr.lsp")
+source $HOME/.config/nvim/plugin/lsp.vim
 lua require("zegabr.treesitter")
 
 " ==========BETTER WHITESPACE================
