@@ -2,6 +2,7 @@
 syntax on
 filetype on
 filetype plugin on
+set modifiable " make netrw be able to modify directories
 set grepprg=rg\ --vimgrep " use rg as default grepper
 set updatetime=100
 set encoding=utf-8

@@ -5,6 +5,5 @@
 "coc.preferences.formatOnSaveFiletypes":[
     "java"
 ],
-"java.import.gradle.enabled": true,
-"java.import.maven.enabled": true
+"java.format.settings.url": "/home/ze/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
 }
