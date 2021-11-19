@@ -1,9 +1,18 @@
 {
-"codeLens.enable": true,
-"java.referencesCodeLens.enabled": true,
-"java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar",
-"coc.preferences.formatOnSaveFiletypes":[
-    "java"
-],
-"java.format.settings.url": "/home/ze/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
-}
+    "codeLens.enable": true,
+    "java.referencesCodeLens.enabled": true,
+    "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar",
+    "coc.preferences.formatOnSaveFiletypes":[
+        "java"
+    ],
+    "java.format.settings.url": "/home/ze/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
+    "explorer.width": 30,
+    "explorer.icon.enableNerdfont": false,
+    "explorer.previewAction.onHover": false,
+    "explorer.keyMappings.global": {
+        "<cr>": ["expandable?", "expand", "open"],
+        "v": "open:vsplit"
+    },
+    "explorer.file.showHiddenFiles": true,
+    "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]"}
+
