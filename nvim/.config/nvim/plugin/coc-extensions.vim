@@ -1,9 +1,3 @@
-"nnoremap <leader>e :Ex<CR>
-
-let g:netrw_browse_split = 0
-let g:netrw_banner = 1
-let g:netrw_winsize = 25
-
 
 " coc-explorer
 let g:coc_explorer_global_presets = {
@@ -39,3 +33,16 @@ let g:coc_explorer_global_presets = {
 
 nmap <leader>e :CocCommand explorer<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
