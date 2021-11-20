@@ -12,12 +12,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FuzzyFinder FZF
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter' " rooter
 
-" telescope requirements
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-
 " Git integration
 Plug 'tpope/vim-fugitive' " git support
 Plug 'airblade/vim-gitgutter' " git diff signs on file
