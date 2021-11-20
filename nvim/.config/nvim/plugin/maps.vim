@@ -1,7 +1,4 @@
 " ============MAPPINGS (active mappings)============
-nnoremap <Space> <nop>
-vnoremap <Space> <nop>
-let mapleader = " "
 
 "leader+a select all file, y and p uses system clipboard
 set clipboard=unnamedplus

@@ -59,6 +59,10 @@ call plug#end()
 lua require("zegabr.lsp")
 lua require("zegabr.treesitter")
 
+nnoremap <Space> <nop>
+vnoremap <Space> <nop>
+let mapleader = " "
+
 " ==========BETTER WHITESPACE================
 let g:better_whitespace_enabled=1
 
