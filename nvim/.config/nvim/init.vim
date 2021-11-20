@@ -42,10 +42,10 @@ Plug 'hrsh7th/cmp-path' " path suggestions
 Plug 'hrsh7th/cmp-nvim-lua' " lua suggestions
 Plug 'hrsh7th/cmp-nvim-lsp' " dependency for nvim-cmp
 Plug 'hrsh7th/nvim-cmp' " autocompletion
-Plug 'simrat39/symbols-outline.nvim' " highlight symbols on hover
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'L3MON4D3/LuaSnip' " TODO: make this work
 Plug 'saadparwaiz1/cmp_luasnip' " luasnip src
+Plug 'RRethy/vim-illuminate' " vim iluminate
 
 " LSP for java
 " npm i -g yarn

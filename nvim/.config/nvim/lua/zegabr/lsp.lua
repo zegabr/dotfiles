@@ -1,14 +1,3 @@
-require('symbols-outline').setup {
-    -- whether to highlight the currently hovered symbol
-    -- disable if your cpu usage is higher than you want it
-    -- or you just hate the highlight
-    -- default: true
-    highlight_hovered_item = true,
-
-    -- whether to show outline guides
-    -- default: true
-    show_guides = true,
-}
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
@@ -73,6 +62,7 @@ cmp.setup({
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local updated_capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
+
 -- vim
 -- npm install -g vim-language-server
 require'lspconfig'.vimls.setup{}
@@ -130,21 +120,39 @@ require'lspconfig'.sumneko_lua.setup {
             },
         },
     },
+    on_attach = function(client)
+                  -- [[ other on_attach code ]]
+                  require 'illuminate'.on_attach(client)
+                end,
 }
 
 -- python
 -- npm i -g pyright
-require'lspconfig'.pyright.setup{}
+require'lspconfig'.pyright.setup{
+    on_attach = function(client)
+                  -- [[ other on_attach code ]]
+                  require 'illuminate'.on_attach(client)
+                end,
+}
 
 -- bash
 -- npm i -g bash-language-server
 require'lspconfig'.bashls.setup{
     filetypes = { "sh", "zsh", "bashrc","zshrc", "bash_aliases", "bash_aliases_work" },
+    on_attach = function(client)
+                  -- [[ other on_attach code ]]
+                  require 'illuminate'.on_attach(client)
+                end,
 }
 
 -- typescript
 -- npm install -g typescript typescript-language-server
-require'lspconfig'.tsserver.setup{}
+require'lspconfig'.tsserver.setup{
+    on_attach = function(client)
+                  -- [[ other on_attach code ]]
+                  require 'illuminate'.on_attach(client)
+                end,
+}
 
 -- html css json eslint
 -- npm i -g vscode-langservers-extracted
@@ -176,6 +184,10 @@ require'lspconfig'.clangd.setup {
     filetypes = { "c", "cpp", "h", "hpp", "objc", "objcpp"},
     root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
     single_file_support = true,
+    on_attach = function(client)
+                  -- [[ other on_attach code ]]
+                  require 'illuminate'.on_attach(client)
+                end,
 }
 
 -- C++ alternative
@@ -200,6 +212,10 @@ require'lspconfig'.gopls.setup({
             staticcheck = true,
         },
     },
+    on_attach = function(client)
+                  -- [[ other on_attach code ]]
+                  require 'illuminate'.on_attach(client)
+                end,
 })
 
 function GOIMPORTS(timeout_ms)
