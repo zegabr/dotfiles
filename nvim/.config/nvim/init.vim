@@ -39,13 +39,14 @@ Plug 'isomoar/vim-css-to-inline'
 
 " LSP
 Plug 'neovim/nvim-lspconfig' " lsp configuration
+Plug 'hrsh7th/cmp-nvim-lsp' " dependency for nvim-cmp
 Plug 'hrsh7th/cmp-buffer' " buffer suggestions
 Plug 'hrsh7th/cmp-path' " path suggestions
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lua' " lua suggestions
-Plug 'hrsh7th/cmp-nvim-lsp' " dependency for nvim-cmp
 Plug 'hrsh7th/nvim-cmp' " autocompletion
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'L3MON4D3/LuaSnip' " TODO: make this work
+Plug 'L3MON4D3/LuaSnip' " lua snippets
 Plug 'saadparwaiz1/cmp_luasnip' " luasnip src
 Plug 'RRethy/vim-illuminate' " vim iluminate
 

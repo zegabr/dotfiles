@@ -1,66 +1,16 @@
-
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 local luasnip = require'luasnip'
 local util = require 'lspconfig/util'
 
-cmp.setup({
-    mapping = {
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-u>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<esc>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
-        ['<Tab>'] = function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            else
-                fallback()
-            end
-        end,
-        ['<S-Tab>'] = function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end,
-    },
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'path' },
-        { name = 'buffer', keyword_length = 5 },
-        { name = 'nvim_lua' },
-    },
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
-    },
-    formatting = {
-        with_text = true,
-        menu = {
-            buffer = "[buf]",
-            nvim_lsp = "[LSP]",
-            nvim_lua = "[api]",
-            path = "[path]",
-            luasnip = "[snip]",
-        },
-    },
-    --experimental = {
-    --native_menu = false,
-    --}
-})
-
 --========== LSP CONFIG ==========
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-local updated_capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+--for html css completion
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 
 -- vim
@@ -124,6 +74,7 @@ require'lspconfig'.sumneko_lua.setup {
                   -- [[ other on_attach code ]]
                   require 'illuminate'.on_attach(client)
                 end,
+    capabilities = capabilities,
 }
 
 -- python
@@ -133,6 +84,7 @@ require'lspconfig'.pyright.setup{
                   -- [[ other on_attach code ]]
                   require 'illuminate'.on_attach(client)
                 end,
+    capabilities = capabilities,
 }
 
 -- bash
@@ -143,6 +95,7 @@ require'lspconfig'.bashls.setup{
                   -- [[ other on_attach code ]]
                   require 'illuminate'.on_attach(client)
                 end,
+    capabilities = capabilities,
 }
 
 -- typescript
@@ -152,22 +105,22 @@ require'lspconfig'.tsserver.setup{
                   -- [[ other on_attach code ]]
                   require 'illuminate'.on_attach(client)
                 end,
+    capabilities = capabilities,
 }
 
 -- html css json eslint
 -- npm i -g vscode-langservers-extracted
-updated_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require'lspconfig'.html.setup {
-    capabilities = updated_capabilities,
+    capabilities = capabilities,
 }
 
 require'lspconfig'.cssls.setup {
-    capabilities = updated_capabilities,
+    capabilities = capabilities,
 }
 
 require'lspconfig'.jsonls.setup {
-    capabilities = updated_capabilities,
+    capabilities = capabilities,
 }
 
 require'lspconfig'.eslint.setup{}
@@ -188,6 +141,7 @@ require'lspconfig'.clangd.setup {
                   -- [[ other on_attach code ]]
                   require 'illuminate'.on_attach(client)
                 end,
+    capabilities = capabilities,
 }
 
 -- C++ alternative
@@ -216,6 +170,7 @@ require'lspconfig'.gopls.setup({
                   -- [[ other on_attach code ]]
                   require 'illuminate'.on_attach(client)
                 end,
+    capabilities = capabilities,
 })
 
 function GOIMPORTS(timeout_ms)
@@ -248,7 +203,49 @@ function GOIMPORTS(timeout_ms)
     end
 end
 
-vim.api.nvim_command([[
-autocmd BufWritePre *.go lua GOIMPORTS(1000)
-]])
+vim.api.nvim_command([[ autocmd BufWritePre *.go lua GOIMPORTS(1000) ]])
+
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<esc>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
+      else
+        fallback()
+      end
+    end,
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'path' },
+    { name = 'buffer', keyword_length = 5 },
+    { name = 'nvim_lua' },
+    { name = 'cmdline' },
+  },
+}
 
