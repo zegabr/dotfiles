@@ -36,6 +36,7 @@ plugins=(
     docker-compose
     zsh-autosuggestions
     zsh-syntax-highlighting
+    tmux
 )
 source /etc/zsh_command_not_found
 

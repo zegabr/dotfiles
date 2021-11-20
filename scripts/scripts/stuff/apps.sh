@@ -37,6 +37,7 @@ usb-creator-gtk \
 bat \
 fzf \
 stow \
+tmux \
 -y
 
 # GOOGLE CHROME
