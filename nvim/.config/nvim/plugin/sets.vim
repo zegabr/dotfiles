@@ -61,3 +61,6 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 " wrap text when in a txt file
 autocmd! VimEnter *.txt set wrap
+
+" ==========BETTER WHITESPACE================
+let g:better_whitespace_enabled=1

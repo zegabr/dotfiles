@@ -35,6 +35,8 @@ Plug 'romgrk/fzy-lua-native' " dependency for wilder
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
 Plug 'tpope/vim-surround' " ./plugin/surround.vim
 Plug 'svermeulen/vim-yoink' " yank history
+Plug 'isomoar/vim-css-to-inline'
+
 " LSP
 Plug 'neovim/nvim-lspconfig' " lsp configuration
 Plug 'hrsh7th/cmp-buffer' " buffer suggestions
@@ -62,12 +64,3 @@ lua require("zegabr.treesitter")
 nnoremap <Space> <nop>
 vnoremap <Space> <nop>
 let mapleader = " "
-
-" ==========BETTER WHITESPACE================
-let g:better_whitespace_enabled=1
-
-" below command is for vimrc testing while editing it
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
-autocmd! bufwritepost ~/.config/nvim/*.vim source $MYVIMRC
-autocmd! bufwritepost ~/.config/nvim/*.lua source $MYVIMRC
-autocmd CursorHold * update

@@ -34,3 +34,16 @@ nnoremap <up> <C-^>
 nnoremap <C-h> :cprev<CR>zz
 nnoremap <C-l> :cnext<CR>zz
 nnoremap <C-q> :cclose<CR>zz
+
+" below command is for vimrc testing while editing it
+nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+autocmd! bufwritepost ~/.config/nvim/*.vim source $MYVIMRC
+autocmd! bufwritepost ~/.config/nvim/*.lua source $MYVIMRC
+autocmd CursorHold * update
+
+" css to inline style
+let g:csstoinline_no_mapping = 1
+nmap <leader>is <Plug>ToInlineN
+xmap <leader>is <Plug>ToInlineV
+nmap <leader>cs <Plug>FromInlineN
+xmap <leader>cs <Plug>FromInlineV
