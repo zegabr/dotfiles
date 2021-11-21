@@ -1,5 +1,7 @@
 {
     "codeLens.enable": true,
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.virtualText": true,
     "java.referencesCodeLens.enabled": true,
     "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar",
     "coc.preferences.formatOnSaveFiletypes": [
@@ -17,7 +19,28 @@
         ],
         "v": "open:vsplit"
     },
+    "diagnostic-languageserver.filetypes": {
+        "php": [
+            "phpstan",
+            "phpcs"
+        ]
+    },
+    "diagnostic-languageserver.mergeConfig": true,
+    "diagnostic-languageserver.linters": {
+        "phpcs": {
+            "args": [
+                "--standard=PSR12",
+                "--exclude=Generic.Files.LineLength.TooLong",
+                "--report=emacs",
+                "-s",
+                "-"
+            ]
+        }
+    },
+    "phpls.path": "/usr/local/bin/intelephense",
+    "php-cs-fixer.config": ".php-cs-fixer.dist.php",
+    "php-cs-fixer.enableFormatProvider": true,
+    "intelephense.environment.phpVersion": "8",
     "explorer.file.showHiddenFiles": true,
     "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]"
-
 }
