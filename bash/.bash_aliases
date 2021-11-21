@@ -2,6 +2,7 @@
 alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y'
 alias lag='alias | grep'
 alias v='nvim'
+alias t='tmux'
 
 #-----------------------files
 alias eb='v ~/.bashrc'
@@ -9,11 +10,13 @@ alias ez='v ~/.zshrc'
 alias ev='v ~/.config/nvim/init.vim'
 alias ea='v ~/.bash_aliases'
 alias ew='v ~/.bash_aliases_work'
+alias et='v ~/.tmux.conf'
 alias dot='cd ~/dotfiles'
 
 alias sz='source ~/.zshrc'
 alias sa='source ~/.bash_aliases'
 alias sw='source ~/.bash_aliases_work'
+alias st='source ~/.tmux.conf'
 
 #Open current day note file
 function note(){
