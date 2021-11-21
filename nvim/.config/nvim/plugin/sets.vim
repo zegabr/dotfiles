@@ -15,6 +15,8 @@ set splitright splitbelow
 set hidden
 set title
 set scrolloff=8
+set list
+set listchars=tab:>\ ,trail:-
 
 set number " show line numbers
 set relativenumber "line numbers moving relatively
