@@ -47,6 +47,3 @@ nmap <leader>is <Plug>ToInlineN
 xmap <leader>is <Plug>ToInlineV
 nmap <leader>cs <Plug>FromInlineN
 xmap <leader>cs <Plug>FromInlineV
-
-" open file even if it does not exists
-map gf :edit <cfile><cr>
