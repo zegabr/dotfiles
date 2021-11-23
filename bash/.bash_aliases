@@ -2,6 +2,7 @@
 alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y'
 alias lag='alias | grep'
 alias v='nvim'
+alias vs='nvim -S'
 alias t='tmux'
 
 #-----------------------files
