@@ -84,4 +84,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias luamake=/home/ze/Downloads/lua-language-server/3rd/luamake/luamake
+
 tmux attach -t base || tmux new -s base
+bindkey -s ^f ". ~/.local/tmux-sessionizer.sh\n"

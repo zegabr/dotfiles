@@ -4,7 +4,6 @@
 
 #ADD OTHER SHORTCUT FOLDERS HERE
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/flameshot/']"
-
 # FLAMESHOT SHORTCUT
 # USE THIS IF YOU WANT TO DISABLE A BUILTIN SHORTCUT
 gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot '[]'
