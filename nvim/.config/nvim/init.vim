@@ -36,6 +36,7 @@ Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
 Plug 'tpope/vim-surround' " ./plugin/surround.vim
 Plug 'svermeulen/vim-yoink' " yank history
 Plug 'isomoar/vim-css-to-inline'
+Plug 'tpope/vim-obsession' " vim store session
 
 " LSP
 Plug 'neovim/nvim-lspconfig' " lsp configuration

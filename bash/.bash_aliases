@@ -16,7 +16,7 @@ alias dot='cd ~/dotfiles'
 alias sz='source ~/.zshrc'
 alias sa='source ~/.bash_aliases'
 alias sw='source ~/.bash_aliases_work'
-alias st='source ~/.tmux.conf'
+alias st='tmux source-file ~/.tmux.conf'
 
 #Open current day note file
 function note(){
