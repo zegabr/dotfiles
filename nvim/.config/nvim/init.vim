@@ -57,9 +57,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " conquer of completion (ls clie
 
 call plug#end()
 
-lua require("zegabr.lsp")
-lua require("zegabr.treesitter")
-
+" set leader key
 nnoremap <Space> <nop>
 vnoremap <Space> <nop>
 let mapleader = " "
+
+lua require("zegabr")
