@@ -1,4 +1,5 @@
 
+let g:coc_global_extensions = [ 'coc-explorer' ]
 " coc-explorer
 let g:coc_explorer_global_presets = {
 \   'tab': {

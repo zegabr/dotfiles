@@ -1,165 +1,138 @@
+local util = require 'lspconfig/util'
+
+-- keymaps
+local general_on_attach = function(client, bufnr)
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- Mappings.
+    local opts = { noremap=true, silent=false}
+    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    buf_set_keymap('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '<leader>Q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    buf_set_keymap('n', '<leader>A', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+
+    -- Set some keybinds conditional on server capabilities
+    if client.resolved_capabilities.document_formatting then
+        buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    elseif client.resolved_capabilities.document_range_formatting then
+        buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    end
+
+    -- Set autocommands conditional on server_capabilities
+    if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec([[
+        augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+            ]], false)
+    end
+
+
+    -- set illuminate
+    require 'illuminate'.on_attach(client)
+end
+
+-- Configure lua language server for neovim development
+local lua_settings = {
+    Lua = {
+        runtime = {
+            -- LuaJIT in the case of Neovim
+            version = 'LuaJIT',
+            path = vim.split(package.path, ';'),
+        },
+        diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = {'vim'},
+        },
+        workspace = {
+            -- Make the server aware of Neovim runtime files
+            library = {
+                [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+            },
+        },
+    }
+}
+
+local go_settings = {
+    gopls = {
+        analyses = {
+            unusedparams = true,
+        },
+    },
+    staticcheck = true,
+}
+
+-- config that activates keymaps and enables snippet support
+local function make_config()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    return {
+        -- enable snippet support
+        capabilities = capabilities,
+        -- map buffer local keybindings when the language server attaches
+        on_attach = general_on_attach,
+    }
+end
+
+-- lsp-install
+local function setup_servers()
+    require'lspinstall'.setup()
+
+    -- get all installed servers
+    local servers = require'lspinstall'.installed_servers()
+    -- ... and add manually installed servers
+    --table.insert(servers, "server here")
+
+    for _, server in pairs(servers) do
+
+        local config = make_config()
+
+        -- language specific config (server == "<name passed on lspinstall call>")
+        if server == "lua" then
+            config.settings = lua_settings
+        end
+        if server == "cpp" then
+            config.root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git");
+            config.filetypes = {"c", "cpp", "h", "hpp"}; -- we don't want objective-c and objective-cpp!
+            config.cmd = { "/home/ze/.local/share/nvim/lspinstall/cpp/./clangd/bin/clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy" };
+            config.single_file_support = true;
+        end
+        if server == "go" then
+            config.cmd = {"gopls", "serve"};
+            config.settings = go_settings;
+        end
+
+        -- end setup
+        require'lspconfig'[server].setup(config)
+    end
+end
+
+setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+    setup_servers() -- reload installed servers
+    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 local luasnip = require'luasnip'
-local util = require 'lspconfig/util'
-
---========== LSP CONFIG ==========
--- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
---for html css completion
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-
--- vim
--- npm install -g vim-language-server
-require'lspconfig'.vimls.setup{}
-
--- lua
---#install lua language server
---cd ~/nvim-deps
---rm -rf lua-language-server
---git clone https://github.com/sumneko/lua-language-server
---cd lua-language-server && git pull
---git submodule update --init --recursive
---cd 3rd/luamake
---./compile/install.sh
---cd ../..
---./3rd/luamake/luamake rebuild
-local system_name
-if vim.fn.has("mac") == 1 then
-    system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-    system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-    system_name = "Windows"
-else
-    print("Unsupported system for sumneko")
-end
-
--- TODO: change this when needed
-local sumneko_root_path = '/home/ze/nvim-deps/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
-
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-local general_on_attach = function(client)
-    -- [[ other on_attach code ]]
-    require 'illuminate'.on_attach(client)
-end
-
-require'lspconfig'.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = runtime_path,
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim'},
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-    on_attach = general_on_attach,
-    capabilities = capabilities,
-}
-
--- python
--- npm i -g pyright
-require'lspconfig'.pyright.setup{
-    on_attach = general_on_attach,
-    capabilities = capabilities,
-}
-
--- bash
--- npm i -g bash-language-server
-require'lspconfig'.bashls.setup{
-    filetypes = { "sh", "zsh", "bashrc","zshrc", "bash_aliases", "bash_aliases_work" },
-    on_attach = general_on_attach,
-    capabilities = capabilities,
-}
-
--- typescript
--- npm install -g typescript typescript-language-server
-require'lspconfig'.tsserver.setup{
-    on_attach = general_on_attach,
-    capabilities = capabilities,
-}
-
--- html css json eslint
--- npm i -g vscode-langservers-extracted
-
-require'lspconfig'.html.setup {
-    capabilities = capabilities,
-}
-
-require'lspconfig'.cssls.setup {
-    capabilities = capabilities,
-}
-
-require'lspconfig'.jsonls.setup {
-    capabilities = capabilities,
-}
-
-require'lspconfig'.eslint.setup{}
-
--- graphql
---npm install -g graphql-language-service-cli
-require'lspconfig'.graphql.setup{}
-
--- C++
--- sudo apt-get install clangd-12
--- sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
-require'lspconfig'.clangd.setup {
-    cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy" },
-    filetypes = { "c", "cpp", "h", "hpp", "objc", "objcpp"},
-    root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
-    single_file_support = true,
-    on_attach = general_on_attach,
-    capabilities = capabilities,
-}
-
--- C++ alternative
---require("lspconfig").ccls.setup {
----- directory for the .ccls file
-----compilationDatabaseDirectory = "build",
---}
-
--- docker
--- npm install -g dockerfile-language-server-nodejs
-require'lspconfig'.dockerls.setup{}
-
--- go
--- sudo snap install gopls
-require'lspconfig'.gopls.setup({
-    cmd = {"gopls", "serve"},
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-        },
-    },
-    on_attach = general_on_attach,
-    capabilities = capabilities,
-})
 
 function GOIMPORTS(timeout_ms)
     local context = { only = { "source.organizeImports" } }
