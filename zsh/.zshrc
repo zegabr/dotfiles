@@ -85,5 +85,5 @@ export NVM_DIR="$HOME/.nvm"
 
 alias luamake=/home/ze/Downloads/lua-language-server/3rd/luamake/luamake
 
-tmux attach -t base || tmux new -s base
+
 bindkey -s ^f ". ~/.local/tmux-sessionizer.sh\n"

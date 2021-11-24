@@ -3,7 +3,7 @@ alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y
 alias lag='alias | grep'
 alias v='nvim'
 alias vs='nvim -S'
-alias t='tmux'
+alias t='tmux attach -t base || tmux new -s base'
 
 #-----------------------files
 alias eb='v ~/.bashrc'
