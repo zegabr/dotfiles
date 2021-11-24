@@ -39,12 +39,18 @@ else
     print("Unsupported system for sumneko")
 end
 
+-- TODO: change this when needed
 local sumneko_root_path = '/home/ze/nvim-deps/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
+
+local general_on_attach = function(client)
+    -- [[ other on_attach code ]]
+    require 'illuminate'.on_attach(client)
+end
 
 require'lspconfig'.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
@@ -70,20 +76,14 @@ require'lspconfig'.sumneko_lua.setup {
             },
         },
     },
-    on_attach = function(client)
-                  -- [[ other on_attach code ]]
-                  require 'illuminate'.on_attach(client)
-                end,
+    on_attach = general_on_attach,
     capabilities = capabilities,
 }
 
 -- python
 -- npm i -g pyright
 require'lspconfig'.pyright.setup{
-    on_attach = function(client)
-                  -- [[ other on_attach code ]]
-                  require 'illuminate'.on_attach(client)
-                end,
+    on_attach = general_on_attach,
     capabilities = capabilities,
 }
 
@@ -91,20 +91,14 @@ require'lspconfig'.pyright.setup{
 -- npm i -g bash-language-server
 require'lspconfig'.bashls.setup{
     filetypes = { "sh", "zsh", "bashrc","zshrc", "bash_aliases", "bash_aliases_work" },
-    on_attach = function(client)
-                  -- [[ other on_attach code ]]
-                  require 'illuminate'.on_attach(client)
-                end,
+    on_attach = general_on_attach,
     capabilities = capabilities,
 }
 
 -- typescript
 -- npm install -g typescript typescript-language-server
 require'lspconfig'.tsserver.setup{
-    on_attach = function(client)
-                  -- [[ other on_attach code ]]
-                  require 'illuminate'.on_attach(client)
-                end,
+    on_attach = general_on_attach,
     capabilities = capabilities,
 }
 
@@ -137,17 +131,14 @@ require'lspconfig'.clangd.setup {
     filetypes = { "c", "cpp", "h", "hpp", "objc", "objcpp"},
     root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
     single_file_support = true,
-    on_attach = function(client)
-                  -- [[ other on_attach code ]]
-                  require 'illuminate'.on_attach(client)
-                end,
+    on_attach = general_on_attach,
     capabilities = capabilities,
 }
 
 -- C++ alternative
 --require("lspconfig").ccls.setup {
-    ---- directory for the .ccls file
-    ----compilationDatabaseDirectory = "build",
+---- directory for the .ccls file
+----compilationDatabaseDirectory = "build",
 --}
 
 -- docker
@@ -166,10 +157,7 @@ require'lspconfig'.gopls.setup({
             staticcheck = true,
         },
     },
-    on_attach = function(client)
-                  -- [[ other on_attach code ]]
-                  require 'illuminate'.on_attach(client)
-                end,
+    on_attach = general_on_attach,
     capabilities = capabilities,
 })
 
@@ -206,46 +194,45 @@ end
 vim.api.nvim_command([[ autocmd BufWritePre *.go lua GOIMPORTS(1000) ]])
 
 cmp.setup {
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-u>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<esc>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
     },
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'path' },
-    { name = 'buffer', keyword_length = 5 },
-    { name = 'nvim_lua' },
-    { name = 'cmdline' },
-  },
+    mapping = {
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-u>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<esc>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        },
+        ['<Tab>'] = function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
+            else
+                fallback()
+            end
+        end,
+        ['<S-Tab>'] = function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
+            else
+                fallback()
+            end
+        end,
+    },
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'path' },
+        { name = 'buffer', keyword_length = 5 },
+        { name = 'nvim_lua' },
+        { name = 'cmdline' },
+    },
 }
-
