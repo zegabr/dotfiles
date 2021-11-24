@@ -1,4 +1,5 @@
 
+" coc-explorer is the best explorer
 let g:coc_global_extensions = [ 'coc-explorer' ]
 " coc-explorer
 let g:coc_explorer_global_presets = {
@@ -33,5 +34,6 @@ let g:coc_explorer_global_presets = {
 \ }
 
 nmap <leader>e :CocCommand explorer<CR>
+" closes vim if explorer is the last buffer
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 

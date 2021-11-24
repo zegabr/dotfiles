@@ -50,14 +50,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'L3MON4D3/LuaSnip' " lua snippets
 Plug 'saadparwaiz1/cmp_luasnip' " luasnip src
 Plug 'RRethy/vim-illuminate' " vim iluminate
+Plug 'williamboman/nvim-lsp-installer' " lspinstaller
 
-" 
-Plug 'kabouzeid/nvim-lspinstall' " lspinstall
-
-" LSP for java
-" npm i -g yarn
-" sudo mkdir /usr/local/share/lombok
-" sudo wget https://projectlombok.org/downloads/lombok.jar -O /usr/local/share/lombok/lombok.jar
 " :CocInstall coc-explorer
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " conquer of completion (ls client used for java)
 

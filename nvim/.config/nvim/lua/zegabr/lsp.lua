@@ -66,6 +66,29 @@ local lua_settings = {
     }
 }
 
+-- java setup variables
+local java_root_files = {
+    -- Single-module projects
+    {
+        "build.xml", -- Ant
+        "pom.xml", -- Maven
+        "settings.gradle", -- Gradle
+        "settings.gradle.kts", -- Gradle
+        "Makefile",
+        "makefile",
+    },
+    -- Multi-module projects
+    { "build.gradle", "build.gradle.kts" },
+}
+local java_root_dir = function(...)
+    for _, patterns in ipairs(java_root_files) do
+        local root = util.root_pattern(unpack(patterns))(...)
+        if root then return root end
+    end
+    return util.root_pattern(".git")(...)
+end
+
+-- go setup variables
 local go_settings = {
     gopls = {
         analyses = {
@@ -87,49 +110,42 @@ local function make_config()
     }
 end
 
--- lsp-install
-local function setup_servers()
-    require'lspinstall'.setup()
+-- lsp installer
+local lsp_installer = require("nvim-lsp-installer")
 
-    -- get all installed servers
-    local servers = require'lspinstall'.installed_servers()
-    -- ... and add manually installed servers
-    --table.insert(servers, "server here")
+-- Register a handler that will be called for all installed servers.
+-- Alternatively, you may also register handlers on specific server instances instead (see example below).
+lsp_installer.on_server_ready(function(server)
+    local config = make_config()
+    local server_name = server.name
 
-    for _, server in pairs(servers) do
-
-        local config = make_config()
-
-        -- language specific config (server == "<name passed on lspinstall call>")
-        if server == "lua" then
-            config.settings = lua_settings
-        end
-        if server == "cpp" then
-            config.root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git");
-            config.filetypes = {"c", "cpp", "h", "hpp"}; -- we don't want objective-c and objective-cpp!
-            config.cmd = { "/home/ze/.local/share/nvim/lspinstall/cpp/./clangd/bin/clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy" };
-            config.single_file_support = true;
-        end
-        if server == "go" then
-            config.cmd = {"gopls", "serve"};
-            config.settings = go_settings;
-        end
-
-        -- end setup
-        require'lspconfig'[server].setup(config)
+    -- language specific config (server == "<name passed on lspinstall call>")
+    if server_name == "sumneko_lua" then
+        config.settings = lua_settings
     end
-end
+    if server_name == "jdtls" then
+        config.root_dir= java_root_dir;
+    end
+    if server_name == "clangd" then
+        config.root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile");
+        config.filetypes = {"c", "cpp", "h", "hpp"}; -- we don't want objective-c and objective-cpp!
+        config.cmd = { "/home/ze/.local/share/nvim/lsp_servers/clangd/clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy" };
+        config.single_file_support = true;
+    end
+    if server_name == "gopls" then
+        config.cmd = {"gopls", "serve"};
+        config.settings = go_settings;
+    end
 
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+    -- This setup() function is exactly the same as lspconfig's setup function.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(config)
+end)
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
+vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
+
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 local luasnip = require'luasnip'
@@ -202,10 +218,10 @@ cmp.setup {
     },
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'path' },
-        { name = 'buffer', keyword_length = 5 },
         { name = 'nvim_lua' },
+        { name = 'luasnip' },
+        { name = 'buffer', keyword_length = 5 },
         { name = 'cmdline' },
+        { name = 'path' },
     },
 }
