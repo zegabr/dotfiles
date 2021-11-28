@@ -35,7 +35,7 @@ Plug 'romgrk/fzy-lua-native' " dependency for wilder
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
 Plug 'tpope/vim-surround' " -> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
 Plug 'svermeulen/vim-yoink' " yank history
-Plug 'isomoar/vim-css-to-inline'
+"Plug 'isomoar/vim-css-to-inline'
 Plug 'tpope/vim-obsession' " vim store session
 
 " LSP

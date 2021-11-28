@@ -42,8 +42,8 @@ autocmd! bufwritepost ~/.config/nvim/*.lua source $MYVIMRC
 autocmd CursorHold * update
 
 " css to inline style
-let g:csstoinline_no_mapping = 1
-nmap <leader>is <Plug>ToInlineN
-xmap <leader>is <Plug>ToInlineV
-nmap <leader>cs <Plug>FromInlineN
-xmap <leader>cs <Plug>FromInlineV
+"let g:csstoinline_no_mapping = 1
+"nmap <leader>is <Plug>ToInlineN
+"xmap <leader>is <Plug>ToInlineV
+"nmap <leader>cs <Plug>FromInlineN
+"xmap <leader>cs <Plug>FromInlineV
