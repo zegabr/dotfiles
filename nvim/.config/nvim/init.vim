@@ -33,7 +33,7 @@ Plug 'bronson/vim-visual-star-search' " visual star search
 Plug 'matze/vim-move' " alt j/k moves selected lines normal and visual mode
 Plug 'romgrk/fzy-lua-native' " dependency for wilder
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " wilder menu
-Plug 'tpope/vim-surround' " ./plugin/surround.vim
+Plug 'tpope/vim-surround' " -> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
 Plug 'svermeulen/vim-yoink' " yank history
 Plug 'isomoar/vim-css-to-inline'
 Plug 'tpope/vim-obsession' " vim store session
@@ -53,7 +53,7 @@ Plug 'RRethy/vim-illuminate' " vim iluminate
 Plug 'williamboman/nvim-lsp-installer' " lspinstaller
 
 " :CocInstall coc-explorer
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " conquer of completion (ls client used for java)
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " conquer of completion (only here because coc-explorer)
 
 call plug#end()
 
