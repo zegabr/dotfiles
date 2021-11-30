@@ -43,7 +43,6 @@ Plug 'neovim/nvim-lspconfig' " lsp configuration
 Plug 'hrsh7th/cmp-nvim-lsp' " dependency for nvim-cmp
 Plug 'hrsh7th/cmp-buffer' " buffer suggestions
 Plug 'hrsh7th/cmp-path' " path suggestions
-Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lua' " lua suggestions
 Plug 'hrsh7th/nvim-cmp' " autocompletion
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
