@@ -66,7 +66,7 @@ local lua_settings = {
     }
 }
 
--- java setup variables
+-- java setup variables (got from https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/jdtls.lua)
 local java_root_files = {
     -- Single-module projects
     {
@@ -80,6 +80,8 @@ local java_root_files = {
     -- Multi-module projects
     { "build.gradle", "build.gradle.kts" },
 }
+
+-- got from https://github.com/kabouzeid/nvim-lspinstall/blob/main/lua/lspinstall/servers/java.lua
 local java_root_dir = function(...)
     for _, patterns in ipairs(java_root_files) do
         local root = util.root_pattern(unpack(patterns))(...)
