@@ -73,7 +73,7 @@ fi
 if [ -f ~/.bash_aliases_work ]; then
     . ~/.bash_aliases_work
 fi
-export TERM=xterm-256color
+export TERM=screen-256color
 
 autoload -U zmv
 
