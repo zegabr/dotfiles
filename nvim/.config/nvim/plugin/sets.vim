@@ -12,7 +12,6 @@ set nocompatible
 set showcmd
 set showmatch " show matching open-closing symbol
 set splitright splitbelow
-set hidden
 set title
 set scrolloff=8
 set list
