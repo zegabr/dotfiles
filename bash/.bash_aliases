@@ -4,6 +4,7 @@ alias lag='alias | grep'
 alias v='nvim'
 alias vs='nvim -S'
 alias t='tmux attach -t base || tmux new -s base'
+alias bro='browse'
 
 #-----------------------files
 alias eb='v ~/.bashrc'

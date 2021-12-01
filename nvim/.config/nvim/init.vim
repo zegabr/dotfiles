@@ -43,9 +43,7 @@ Plug 'neovim/nvim-lspconfig' " lsp configuration
 Plug 'hrsh7th/cmp-nvim-lsp' " dependency for nvim-cmp
 Plug 'hrsh7th/cmp-buffer' " buffer suggestions
 Plug 'hrsh7th/nvim-cmp' " autocompletion
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'hrsh7th/cmp-path' " path suggestions
-Plug 'onsails/lspkind-nvim'
 Plug 'hrsh7th/cmp-nvim-lua' " lua suggestions
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'L3MON4D3/LuaSnip' " lua snippets
