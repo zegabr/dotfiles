@@ -76,50 +76,6 @@ local go_settings = {
     staticcheck = true,
 }
 
--- config that activates keymaps and enables snippet support
-local function make_config()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    return {
-        -- enable snippet support
-        capabilities = capabilities,
-        -- map buffer local keybindings when the language server attaches
-        on_attach = general_on_attach,
-    }
-end
-
--- lsp installer
-local lsp_installer = require("nvim-lsp-installer")
-
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-    local config = make_config()
-    local server_name = server.name
-
-    -- language specific config (server == "<name passed on lspinstall call>")
-    if server_name == "sumneko_lua" then
-        config.settings = lua_settings
-    end
-    if server_name == "jdtls" then
-        config.root_dir = util.root_pattern(".git", "pom.xml", "build.xml", "settings.gradle", "build.gradle","Makefile","makefile");
-    end
-    if server_name == "clangd" then
-        config.root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile");
-        config.filetypes = {"c", "cpp", "h", "hpp"}; -- we don't want objective-c and objective-cpp!
-        config.cmd = { "/home/ze/.local/share/nvim/lsp_servers/clangd/clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy" };
-        config.single_file_support = true;
-    end
-    if server_name == "gopls" then
-        config.cmd = {"gopls", "serve"};
-        config.settings = go_settings;
-    end
-
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(config)
-end)
-
 function GOIMPORTS(timeout_ms)
     local context = { only = { "source.organizeImports" } }
     vim.validate { context = { context, "t", true } }
@@ -151,4 +107,48 @@ function GOIMPORTS(timeout_ms)
 end
 
 vim.api.nvim_command([[ autocmd BufWritePre *.go lua GOIMPORTS(1000) ]])
+
+-- config that activates keymaps and enables snippet support
+local function make_config()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    return {
+        -- enable snippet support
+        capabilities = capabilities,
+        -- map buffer local keybindings when the language server attaches
+        on_attach = general_on_attach,
+    }
+end
+
+-- lsp installer
+local lsp_installer = require("nvim-lsp-installer")
+
+-- Register a handler that will be called for all installed servers.
+-- Alternatively, you may also register handlers on specific server instances instead (see example below).
+lsp_installer.on_server_ready(function(server)
+    local config = make_config()
+    local server_name = server.name
+
+    -- language specific config (server == "<name passed on lspinstall call>")
+    if server_name == "sumneko_lua" then
+        config.settings = lua_settings
+    end
+    if server_name == "jdtls" then
+        config.root_dir = util.root_pattern(".git", "pom.xml", "build.xml", "settings.gradle");
+    end
+    if server_name == "clangd" then
+        config.root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile");
+        config.filetypes = {"c", "cpp", "h", "hpp"}; -- we don't want objective-c and objective-cpp!?
+        config.cmd = { "/home/ze/.local/share/nvim/lsp_servers/clangd/clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy" };
+        config.single_file_support = true;
+    end
+    if server_name == "gopls" then
+        config.cmd = {"gopls", "serve"};
+        config.settings = go_settings;
+    end
+
+    -- This setup() function is exactly the same as lspconfig's setup function.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(config)
+end)
 

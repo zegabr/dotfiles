@@ -28,6 +28,7 @@ function note(){
 }
 
 alias change_java='sudo update-alternatives --config java'
+alias change_javac='sudo update-alternatives --config javac'
 
 #--------------------containers
 alias dps='docker ps'
