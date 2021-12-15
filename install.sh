@@ -1,4 +1,4 @@
-stow -D --verbose=2 scripts
+stow -D --verbose=1 scripts
 stow --verbose=2 -t ~/ scripts
 
 echo "===="

@@ -18,7 +18,7 @@ local general_on_attach = function(client, bufnr)
     buf_set_keymap('n', '<leader>D', '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({float = true})<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next({float = true})<CR>', opts)
-    buf_set_keymap('n', '<leader>Q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    buf_set_keymap('n', '<leader>Q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
     buf_set_keymap('n', '<leader>A', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
     -- Set some keybinds conditional on server capabilities
@@ -66,30 +66,6 @@ local lua_settings = {
     }
 }
 
--- java setup variables (got from https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/jdtls.lua)
-local java_root_files = {
-    -- Single-module projects
-    {
-        "build.xml", -- Ant
-        "pom.xml", -- Maven
-        "settings.gradle", -- Gradle
-        "settings.gradle.kts", -- Gradle
-        "Makefile",
-        "makefile",
-    },
-    -- Multi-module projects
-    { "build.gradle", "build.gradle.kts" },
-}
-
--- got from https://github.com/kabouzeid/nvim-lspinstall/blob/main/lua/lspinstall/servers/java.lua
-local java_root_dir = function(...)
-    for _, patterns in ipairs(java_root_files) do
-        local root = util.root_pattern(unpack(patterns))(...)
-        if root then return root end
-    end
-    return util.root_pattern(".git")(...)
-end
-
 -- go setup variables
 local go_settings = {
     gopls = {
@@ -126,7 +102,7 @@ lsp_installer.on_server_ready(function(server)
         config.settings = lua_settings
     end
     if server_name == "jdtls" then
-        config.root_dir= java_root_dir;
+        config.root_dir = util.root_pattern(".git", "pom.xml", "build.xml", "settings.gradle", "build.gradle","Makefile","makefile");
     end
     if server_name == "clangd" then
         config.root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile");
