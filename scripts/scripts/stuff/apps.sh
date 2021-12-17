@@ -19,7 +19,7 @@ sudo rm -rf $(which nodejs)
 sudo rm -rf $(which npm)
 # install nvm to install updated node for nvim lsp
 # https://www.freecodecamp.org/news/how-to-install-node-js-on-ubuntu-and-update-npm-to-the-latest-version/
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | zsh
 nvm install 14.4.0
 nvm install --latest-npm
@@ -38,7 +38,11 @@ bat \
 fzf \
 stow \
 tmux \
+python3-pip \
 -y
+
+# nvim pugin dependency
+python3 -m pip3 install --user --upgrade pynvim
 
 # GOOGLE CHROME
 read -p "Type y if you want Google Chrome to be installed (y/n): " ans
@@ -76,3 +80,8 @@ if [ "$ans" == "y" ]; then
     sudo chmod +x /usr/local/bin/cht.sh
 fi
 
+# Jetbrains toolbox
+read -p "Type y if you want jetbrains toolbox (y/n):" ans
+if [ "$ans" == "y" ]; then
+    curl https://gist.githubusercontent.com/greeflas/431bc50c23532eee8a7d6c1d603f3921/raw | bash
+fi

@@ -20,4 +20,5 @@ echo && nvim --version | grep dev+
 cd $CURR_DIR
 
 
+python3 -m pip install --user --upgrade pynvim
 
