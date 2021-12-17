@@ -27,8 +27,10 @@ function note(){
     v ~/notes/${filename}.txt +
 }
 
-alias change_java='sudo update-alternatives --config java'
-alias change_javac='sudo update-alternatives --config javac'
+function swap-java(){
+    sudo update-alternatives --config java
+    sudo update-alternatives --config javac
+}
 
 #--------------------containers
 alias dps='docker ps'
@@ -59,7 +61,7 @@ function gclssh(){
 # ex: $ gclssh-by-id zegabr zegabr/m
 # use this when multiple ssh keys are added
 function gclssh-by-id(){
-git clone --recurse-submodules git@github.com-$1:$2.git
+    git clone --recurse-submodules git@github.com-$1:$2.git
 }
 
 # config local user and email
