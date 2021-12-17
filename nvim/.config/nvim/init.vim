@@ -41,7 +41,7 @@ Plug 'tpope/vim-obsession' " vim store session
 " LSP
 Plug 'neovim/nvim-lspconfig' " lsp configuration
 Plug 'hrsh7th/cmp-nvim-lsp' " dependency for nvim-cmp
-Plug 'hrsh8th/cmp-buffer' " buffer suggestions
+"Plug 'hrsh8th/cmp-buffer' " buffer suggestions
 Plug 'hrsh7th/nvim-cmp' " autocompletion
 Plug 'hrsh7th/cmp-path' " path suggestions
 Plug 'hrsh7th/cmp-nvim-lua' " lua suggestions
