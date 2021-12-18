@@ -47,3 +47,5 @@ autocmd CursorHold * update
 "xmap <leader>is <Plug>ToInlineV
 "nmap <leader>cs <Plug>FromInlineN
 "xmap <leader>cs <Plug>FromInlineV
+
+nmap Q <nop>
