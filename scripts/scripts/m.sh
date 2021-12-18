@@ -3,6 +3,7 @@
 
 bash setup.sh #install apps and docker
 source v.sh # install nvim building from source
+bash t.sh # install tmux plugin manager
 bash g.sh # gnome
 bash ssh.sh # setup ssh
 source z.sh # add updates zshrc, has to be called before dotfiles
