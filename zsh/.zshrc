@@ -36,7 +36,6 @@ plugins=(
     docker-compose
     zsh-autosuggestions
     zsh-syntax-highlighting
-    tmux
 )
 source /etc/zsh_command_not_found
 
@@ -74,8 +73,6 @@ if [ -f ~/.bash_aliases_work ]; then
     . ~/.bash_aliases_work
 fi
 export TERM=xterm-256color
-
-autoload -U zmv
 
 export EDITOR=nvim
 
