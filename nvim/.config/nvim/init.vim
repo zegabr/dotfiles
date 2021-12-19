@@ -50,6 +50,9 @@ Plug 'L3MON4D3/LuaSnip' " lua snippets
 Plug 'saadparwaiz1/cmp_luasnip' " luasnip src
 Plug 'RRethy/vim-illuminate' " vim iluminate
 Plug 'williamboman/nvim-lsp-installer' " lspinstaller
+Plug 'hhvm/vim-hack' " vim-hack
+"Plug 'w0rp/ale' " ale
+Plug 'desmap/ale-sensible' | Plug 'w0rp/ale'
 
 " :CocInstall coc-explorer
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " conquer of completion (only here because coc-explorer)
