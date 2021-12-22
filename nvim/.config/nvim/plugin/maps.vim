@@ -39,7 +39,7 @@ nnoremap <C-q> :cclose<CR>zz
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 autocmd! bufwritepost ~/.config/nvim/*.vim source $MYVIMRC
 autocmd! bufwritepost ~/.config/nvim/*.lua source $MYVIMRC
-autocmd CursorHold * update
+autocmd! CursorHold * update
 
 " css to inline style
 "let g:csstoinline_no_mapping = 1

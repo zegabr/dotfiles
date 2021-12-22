@@ -3,7 +3,12 @@ let g:ale_completion_enabled = 1
 " Include the linter name (e.g. 'hack' or 'hhast'), code, and message in errors
 let g:ale_echo_msg_format = '[%linter%]% [code]% %s'
 " Enable HHAST - this has security implications (see below)
-let g:ale_linters = { 'hack': ['hack', 'hhast'] }
+let g:ale_linters = { 'hack': ['hack', 'hhast']}
+let g:ale_pattern_options = {
+\   '.*\.json$': {'ale_enabled': 0},
+\   '.*some/folder/.*\.js$': {'ale_enabled': 0},
+\   '.*\.cpp$': {'ale_enabled': 0},
+\}
 nnoremap <silent> gd :ALEGoToDefinition<CR>
 nnoremap <silent> K :ALEHover<CR>
 nnoremap <silent> <leader>A :ALECodeAction<CR>
@@ -19,3 +24,4 @@ if v:version >= 801
   let g:ale_set_balloons = 1
   let balloondelay = 250
 endif
+

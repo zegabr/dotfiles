@@ -33,15 +33,11 @@ local general_on_attach = function(client, bufnr)
         vim.api.nvim_exec([[
         augroup lsp_document_highlight
         autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        autocmd! CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd! CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
             ]], false)
     end
-
-    vim.api.nvim_exec([[
-            autocmd! BufReadPost * call ALEDisable
-        ]], false)
 
     -- set illuminate
     require 'illuminate'.on_attach(client)
@@ -109,7 +105,7 @@ function GOIMPORTS(timeout_ms)
     end
 end
 
-vim.api.nvim_command([[ autocmd BufWritePre *.go lua GOIMPORTS(1000) ]])
+vim.api.nvim_command([[ autocmd! BufWritePre *.go lua GOIMPORTS(1000) ]])
 
 -- config that activates keymaps and enables snippet support
 local function make_config()
