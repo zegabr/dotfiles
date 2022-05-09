@@ -150,22 +150,3 @@ lsp_installer.on_server_ready(function(server)
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     server:setup(config)
 end)
-
--- --hackls try (didn't worked, used ALE)
---local lspconfig = require 'lspconfig'
---local configs = require 'lspconfig.configs'
--- -- Check if the config is already defined (useful when reloading this file)
---if not configs.hackls then
-    --configs.hackls = {
-        --default_config = {
-            --cmd = {'hh_client'};
-            --filetypes = {'hack'};
-            --root_dir = util.root_pattern(".hhconfig",".git");
-            --settings = {
-                --staticcheck = true,
-            --};
-        --};
-    --}
---end
---lspconfig.hackls.setup(make_config())
-
