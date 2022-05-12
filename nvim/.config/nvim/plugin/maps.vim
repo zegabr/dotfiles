@@ -49,3 +49,6 @@ autocmd! CursorHold * update
 "xmap <leader>cs <Plug>FromInlineV
 
 nmap Q <nop>
+
+" Nvim Tree
+nnoremap <Leader>e :NvimTreeToggle<cr>

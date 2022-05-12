@@ -52,6 +52,8 @@ Plug 'RRethy/vim-illuminate' " vim iluminate
 Plug 'williamboman/nvim-lsp-installer' " lspinstaller
 
 " nvim tree
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
 
