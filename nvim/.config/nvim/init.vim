@@ -51,8 +51,7 @@ Plug 'saadparwaiz1/cmp_luasnip' " luasnip src
 Plug 'RRethy/vim-illuminate' " vim iluminate
 Plug 'williamboman/nvim-lsp-installer' " lspinstaller
 
-" :CocInstall coc-explorer
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " conquer of completion (only here because coc-explorer)
+" nvim tree
 
 call plug#end()
 
