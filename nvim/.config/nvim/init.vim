@@ -7,10 +7,9 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
             \| endif
 
 call plug#begin(stdpath('data') . '/plugged')
-" FZF integration
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FuzzyFinder FZF
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter' " rooter
+" Telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Git integration
 Plug 'tpope/vim-fugitive' " git support

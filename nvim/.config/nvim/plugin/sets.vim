@@ -65,7 +65,3 @@ autocmd! VimEnter *.txt set wrap
 
 " ==========BETTER WHITESPACE================
 let g:better_whitespace_enabled=1
-
-let g:netrw_browse_split = 0
-let g:netrw_banner = 1
-let g:netrw_winsize = 25

@@ -38,6 +38,7 @@ bat \
 fzf \
 stow \
 tmux \
+fd-find \
 python3-pip \
 -y
 
