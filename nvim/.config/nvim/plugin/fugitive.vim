@@ -2,7 +2,7 @@
 :nnoremap <leader>gs :G<CR>
 
 " git branch checkout/management
-:nnoremap <leader>gb :GBranches<CR>
+:nnoremap  :GBranches<CR>
 
 " diffget left theirs ans yours
 nmap <leader>gf :diffget //2<CR>
