@@ -27,7 +27,7 @@ npm i -g yarn
 
 sudo apt install \
 git \
-xclip \
+xsel \
 build-essential \
 vlc \
 wget \
