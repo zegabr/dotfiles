@@ -1,3 +1,4 @@
+vim.cmd([[
 " git status
 :nnoremap <leader>gs :G<CR>
 
@@ -13,3 +14,4 @@ nmap <leader>glo :GV<CR>
 
 " git log in file
 "nmap <leader>glf :GV!<CR>
+]])
