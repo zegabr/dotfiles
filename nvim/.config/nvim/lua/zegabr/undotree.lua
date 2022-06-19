@@ -1,3 +1,4 @@
+vim.cmd([[
 set noswapfile
 set nobackup
 set nowritebackup
@@ -22,3 +23,4 @@ inoremap ? ?<c-g>u
 inoremap ! !<c-g>u
 inoremap . .<c-g>u
 inoremap ; ;<c-g>u
+]])
