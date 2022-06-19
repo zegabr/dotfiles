@@ -1,3 +1,5 @@
+
+vim.cmd([[
 " ============MAPPINGS (active mappings)============
 
 "leader+a select all file, y and p uses system clipboard
@@ -52,3 +54,4 @@ nmap Q <nop>
 
 " Nvim Tree
 nnoremap <Leader>e :NvimTreeToggle<cr>
+]])
