@@ -1,3 +1,4 @@
+vim.cmd([[
 " ============SETS (and passive mappings)============
 syntax on
 filetype on
@@ -65,3 +66,4 @@ autocmd! VimEnter *.txt set wrap
 
 " ==========BETTER WHITESPACE================
 let g:better_whitespace_enabled=1
+]])
