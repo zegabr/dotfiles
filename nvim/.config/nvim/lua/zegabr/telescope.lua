@@ -1,7 +1,26 @@
 local telescope = require('telescope')
---rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'
+local actions = require('telescope.actions')
+local action_state = require('telescope.actions.state')
+
+local custom_actions = {}
 telescope.setup {
     defaults = {
+        mappings = {
+          i = {
+            ['<esc>'] = actions.close,
+            ['<C-j>'] = actions.move_selection_next,
+            ['<C-k>'] = actions.move_selection_previous,
+            ['<tab>'] = actions.toggle_selection + actions.move_selection_previous,
+            ['<s-tab>'] = actions.toggle_selection + actions.move_selection_next,
+            ['<cr>'] = custom_actions.fzf_multi_select,
+          },
+          n = {
+            ['<esc>'] = actions.close,
+            ['<tab>'] = actions.toggle_selection + actions.move_selection_previous,
+            ['<s-tab>'] = actions.toggle_selection + actions.move_selection_next,
+            ['<cr>'] = custom_actions.fzf_multi_select
+          }
+        },
         vimgrep_arguments = {
             "rg",
             "--color=never",
@@ -14,9 +33,7 @@ telescope.setup {
             "--hidden",
         },
         file_ignore_patterns = {
-            "node_modules",
-            ".idea",
-            ".git",
+            "node_modules/",
         }
     },
     pickers = {
@@ -26,11 +43,7 @@ telescope.setup {
     }
 }
 
-
-local actions = require('telescope.actions')
-local action_state = require('telescope.actions.state')
-
-local custom_actions = {}
+-- workaround for multi select
 function custom_actions.fzf_multi_select(prompt_bufnr)
   local picker = action_state.get_current_picker(prompt_bufnr)
   local num_selections = table.getn(picker:get_multi_selection())
@@ -46,32 +59,10 @@ function custom_actions.fzf_multi_select(prompt_bufnr)
   end
 end
 
-require('telescope').setup {
-  defaults = {
-    file_ignore_patterns = { "node_modules", ".git" },
-    mappings = {
-      i = {
-        ['<esc>'] = actions.close,
-        ['<C-j>'] = actions.move_selection_next,
-        ['<C-k>'] = actions.move_selection_previous,
-        ['<tab>'] = actions.toggle_selection + actions.move_selection_previous,
-        ['<s-tab>'] = actions.toggle_selection + actions.move_selection_next,
-        ['<cr>'] = custom_actions.fzf_multi_select,
-      },
-      n = {
-        ['<esc>'] = actions.close,
-        ['<tab>'] = actions.toggle_selection + actions.move_selection_previous,
-        ['<s-tab>'] = actions.toggle_selection + actions.move_selection_next,
-        ['<cr>'] = custom_actions.fzf_multi_select
-      }
-    },
-  }
-}
-
 local M = {}
 
 M.project_files = function()
-  local opts = {} -- define here if you want to define something
+  local opts = {hidden=true} -- define here if you want to define something
   local ok = pcall(require"telescope.builtin".git_files, opts)
   if not ok then require"telescope.builtin".find_files(opts) end
 end

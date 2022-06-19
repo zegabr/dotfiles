@@ -1,5 +1,3 @@
-/vim/.vim/autoload/
-/vim/.vim/plugged/
 /vim/.vim/.netrwhist
 Session.vim
 tmux*.log
