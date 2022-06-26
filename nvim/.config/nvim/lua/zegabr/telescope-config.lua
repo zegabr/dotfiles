@@ -1,6 +1,5 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
-local action_state = require('telescope.actions.state')
 
 local custom_actions = {}
 telescope.setup {
@@ -43,29 +42,18 @@ telescope.setup {
     }
 }
 
--- workaround for multi select TODO: this stopped working
-function custom_actions.fzf_multi_select(prompt_bufnr)
-  local picker = action_state.get_current_picker(prompt_bufnr)
-  local num_selections = table.getn(picker:get_multi_selection())
+local builtin = require('telescope.builtin')
+local keymap = require('zegabr.keymap')
+local nnoremap = keymap.nnoremap
 
-  if num_selections > 1 then
-    local picker = action_state.get_current_picker(prompt_bufnr)
-    for _, entry in ipairs(picker:get_multi_selection()) do
-      vim.cmd(string.format("%s %s", ":e!", entry.value))
-    end
-    vim.cmd('stopinsert')
-  else
-    actions.file_edit(prompt_bufnr)
-  end
-end
-
-local M = {}
-
-M.project_files = function()
+local project_files = function()
   local opts = {hidden=true} -- define here if you want to define something
-  local ok = pcall(require"telescope.builtin".git_files, opts)
-  if not ok then require"telescope.builtin".find_files(opts) end
+  local ok = pcall(builtin.git_files, opts)
+  if not ok then builtin.find_files(opts) end
 end
 
-return M
 
+ nnoremap("<C-p>", function() project_files() end)
+ nnoremap("<C-f>", function() builtin.live_grep() end)
+ nnoremap("<C-b>", function() builtin.buffers() end)
+ nnoremap("<leader>gb", function() builtin.git_branches() end)

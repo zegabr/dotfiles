@@ -1,4 +1,4 @@
- "-----------------------------PLUGINS---------------------------------------
+ "<cr>"-----------------------------PLUGINS---------------------------------------
 " To install vim-plug, run the vim plug install script at m/v.sh
 
 " Run PlugInstall if there are missing plugins

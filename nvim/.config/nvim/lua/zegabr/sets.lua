@@ -1,6 +1,6 @@
 local set = vim.opt
 set.grepprg = "rg \\ --vimgrep"
-set.updatetime = 100
+set.updatetime = 50
 set.guicursor = ""
 set.showmatch = true
 set.splitright = true
@@ -24,6 +24,7 @@ set.shiftwidth = 4
 set.tabstop = 4
 set.expandtab = true
 set.autoindent = true
+set.hlsearch = false
 
 -- Ignore files
 set.wildignore = {

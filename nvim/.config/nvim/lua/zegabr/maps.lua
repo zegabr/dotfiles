@@ -55,8 +55,6 @@ nmap Q <nop>
 " Nvim Tree
 nnoremap <Leader>e :NvimTreeToggle<cr>
 
-
-cnoremap <silent><expr><CR> getcmdtype() == "/" && getcmdline() == "" ? "\<C-c>:nohlsearch\<CR>" : "\<CR>"
 ]])
 
 vim.cmd([[
