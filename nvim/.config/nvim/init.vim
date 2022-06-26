@@ -22,8 +22,8 @@ Plug 'preservim/nerdcommenter' " Nerd Commenter
 
 " Colors and UI
 Plug 'gruvbox-community/gruvbox' " color scheme and visual customization
-Plug 'vim-airline/vim-airline' " airline: bottom status bar and tabs
-Plug 'vim-airline/vim-airline-themes' " airline themes
+Plug 'kdheepak/tabline.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 
 " Utilities
 Plug 'mbbill/undotree' " Undotree
