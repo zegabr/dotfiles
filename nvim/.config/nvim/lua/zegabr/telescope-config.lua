@@ -21,7 +21,7 @@ telescope.setup {
             ['<cr>'] = custom_actions.fzf_multi_select
           }
         },
-        vimgrep_arguments = {
+        vimgrep_arguments = { --TODO: fix this to add regex?? this is not finding any "require(" (only "require\("), i shouldn't have to escape the parentesis
             "rg",
             "--color=never",
             "--no-heading",
@@ -43,7 +43,7 @@ telescope.setup {
     }
 }
 
--- workaround for multi select
+-- workaround for multi select TODO: this stopped working
 function custom_actions.fzf_multi_select(prompt_bufnr)
   local picker = action_state.get_current_picker(prompt_bufnr)
   local num_selections = table.getn(picker:get_multi_selection())

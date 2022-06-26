@@ -5,7 +5,7 @@ require('zegabr.plugins')
 require('zegabr.lsp')
 require('zegabr.cmp-config')
 require('zegabr.nvim-tree')
-require('zegabr.telescope')
+require('zegabr.telescope-config')
 require('zegabr.nerdcommenter')
 require('zegabr.undotree') -- this does not exits in vscode u.u
 require('zegabr.wilder-config')
