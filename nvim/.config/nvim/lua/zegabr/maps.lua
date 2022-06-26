@@ -55,3 +55,17 @@ nmap Q <nop>
 " Nvim Tree
 nnoremap <Leader>e :NvimTreeToggle<cr>
 ]])
+
+vim.cmd([[
+" ============SETS (and passive mappings)============
+" better tabbing
+vnoremap < <gv
+vnoremap > >gv
+
+" jumpList mutations
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+" wrap text when in a txt file
+autocmd! VimEnter *.txt set wrap
+]])
