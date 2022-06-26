@@ -24,9 +24,7 @@ local general_on_attach = function(client, bufnr)
 
     -- Set some keybinds conditional on server capabilities
     if client.server_capabilities.document_formatting then
-        buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    elseif client.server_capabilities.document_range_formatting then
-        buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
     end
 
     -- Set autocommands conditional on server_capabilities
@@ -37,7 +35,7 @@ local general_on_attach = function(client, bufnr)
         autocmd! CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd! CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
-            ]], false)
+        ]], false)
     end
 
     -- set illuminate
@@ -58,11 +56,11 @@ local lua_settings = {
         },
         workspace = {
             -- Make the server aware of Neovim runtime files
-            library = {
-                [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-            },
+            library = vim.api.nvim_get_runtime_file("", true),
         },
+        telemetry = {
+            enable = false,
+        }
     }
 }
 
@@ -90,10 +88,10 @@ end
 
 -- lsp installer
 local lsp_installer = require("nvim-lsp-installer")
+local lspconfig = require('lspconfig')
+lsp_installer.setup({})
 
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
+for _, server in ipairs(lsp_installer.get_installed_servers()) do
     local config = make_config()
     local server_name = server.name
 
@@ -115,7 +113,5 @@ lsp_installer.on_server_ready(function(server)
         config.settings = go_settings;
     end
 
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(config)
-end)
+    lspconfig[server_name].setup(config)
+end

@@ -39,8 +39,6 @@ nnoremap <C-q> :cclose<CR>zz
 
 " below command is for vimrc testing while editing it
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
-autocmd! bufwritepost ~/.config/nvim/*.vim source $MYVIMRC
-autocmd! bufwritepost ~/.config/nvim/*.lua source $MYVIMRC
 autocmd! CursorHold * update
 
 " css to inline style
