@@ -10,13 +10,12 @@ require('zegabr.nerdcommenter')
 require('zegabr.undotree') -- this does not exits in vscode u.u
 require('zegabr.wilder-config')
 require('zegabr.sets')
+require('zegabr.maps')
 
 -- colors
 require('zegabr.treesitter')
 require('zegabr.colors')
 
 -- utils
-require('zegabr.maps')
-require('zegabr.fugitive')
-require('zegabr.gitgutter')
+require('zegabr.gitutils')
 

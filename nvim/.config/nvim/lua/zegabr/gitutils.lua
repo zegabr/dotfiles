@@ -15,3 +15,7 @@ nnoremap("<leader>glo", ":GV<CR>")
 
 --" git log in file
 nnoremap("<leader>glf", ":GV!<CR>")
+
+-- git gutter
+nnoremap("[c", ":GitGutterPrevHunk<CR>")
+nnoremap("]c", ":GitGutterNextHunk<CR>")
