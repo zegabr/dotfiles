@@ -19,6 +19,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 echo && nvim --version | grep dev+
 cd $CURR_DIR
 
-
-python3 -m pip install --user --upgrade pynvim
+# python plugin dependencies
+python3 -m pip install --user --upgrade pynvim pyre2
 
