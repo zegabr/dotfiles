@@ -55,9 +55,5 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
 
-" set leader key
-nnoremap <Space> <nop>
-vnoremap <Space> <nop>
-let mapleader = " "
 
 lua require("zegabr")

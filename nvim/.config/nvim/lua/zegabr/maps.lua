@@ -5,6 +5,12 @@ local vnoremap = keymap.vnoremap
 local inoremap = keymap.inoremap
 
 --" ============MAPPINGS (active mappings)============
+
+--" set leader key
+nnoremap("<Space>", "<nop>")
+vnoremap("<Space>", "<nop>")
+vim.g.mapleader = " "
+
 --"leader+a select all file, y and p uses system clipboard
 nnoremap("<leader>a", "GVgg")
 nnoremap("Y", "y$")
