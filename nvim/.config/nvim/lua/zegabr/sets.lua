@@ -13,7 +13,7 @@ set.relativenumber = true
 set.wrap = false
 set.cursorline = true
 set.cursorcolumn = true
-set.hlsearch = false
+set.hlsearch = true
 set.ignorecase = true
 set.smartcase = true
 set.signcolumn = "yes"
@@ -26,11 +26,13 @@ set.expandtab = true
 set.autoindent = true
 
 -- Ignore files
-set.wildignore:append("*.pyc")
-set.wildignore:append("*_build/*")
-set.wildignore:append("**/coverage/*")
-set.wildignore:append("**/node_modules/*")
-set.wildignore:append("**/android/*")
-set.wildignore:append("**/ios/*")
-set.wildignore:append("**/.git/*")
+set.wildignore = {
+    "*.pyc",
+    "*_build/*",
+    "**/coverage/*",
+    "**/node_modules/*",
+    "**/android/*",
+    "**/ios/*",
+    "**/.git/*",
+}
 
