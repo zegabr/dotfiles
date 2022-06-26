@@ -1,17 +1,17 @@
-vim.cmd([[
-" git status
-:nnoremap <leader>gs :G<CR>
+local keymap = require('zegabr.keymap')
+local nnoremap = keymap.nnoremap
 
-" git branch checkout/management
-:nnoremap  :GBranches<CR>
+----- vim fugitive
+--" git status
+nnoremap("<leader>gs", ":G<CR>")
 
-" diffget left theirs ans yours
-nmap <leader>gf :diffget //2<CR>
-nmap <leader>gh :diffget //3<CR>
+--" diffget left theirs and yours
+nnoremap("<leader>gf", ":diffget //2<CR>")
+nnoremap("<leader>gh", ":diffget //3<CR>")
 
-" git log
-nmap <leader>glo :GV<CR>
+------ gv
+--" git log
+nnoremap("<leader>glo", ":GV<CR>")
 
-" git log in file
-"nmap <leader>glf :GV!<CR>
-]])
+--" git log in file
+nnoremap("<leader>glf", ":GV!<CR>")

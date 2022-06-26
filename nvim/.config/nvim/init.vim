@@ -15,7 +15,6 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-fugitive' " git support
 Plug 'airblade/vim-gitgutter' " git diff signs on file
 Plug 'junegunn/gv.vim' " commit browser
-Plug 'stsewd/fzf-checkout.vim' " Git branch management
 
 " Comments
 Plug 'preservim/nerdcommenter' " Nerd Commenter
