@@ -115,6 +115,10 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 } -- END_DEFAULT_OPTS
 
 
+local keymap = require('zegabr.keymap')
+local noremap = keymap.nnoremap
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 1
 vim.g.netrw_winsize = 25
+
+noremap("<Leader>e", ":NvimTreeToggle<cr>")--TODO: not opening tree in current file
