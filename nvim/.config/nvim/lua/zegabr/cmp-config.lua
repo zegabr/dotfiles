@@ -4,7 +4,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local cmp = require('cmp')
 local luasnip = require'luasnip'
 
 cmp.setup {

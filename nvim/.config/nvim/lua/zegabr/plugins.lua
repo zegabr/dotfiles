@@ -1,0 +1,1 @@
+--TODO: add packer if it is easy to install else go here https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
