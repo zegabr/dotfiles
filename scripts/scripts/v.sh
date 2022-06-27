@@ -9,8 +9,7 @@ mkdir ~/nvim-deps
 #install nvim from source
 cd ~/nvim-deps
 git clone https://github.com/neovim/neovim
-cd neovim && git pull
-rm -rf build && make distclean
+cd neovim && rm -rf build && make distclean && git pull
 # build and install
 make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install
 
