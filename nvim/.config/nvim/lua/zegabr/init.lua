@@ -1,10 +1,9 @@
--- plugins
-require('zegabr.plugins')
-
 -- basic
 require('zegabr.maps')
 require('zegabr.sets')
-require('zegabr.undotree') -- this does not exits in vscode u.u
+
+-- plugins
+require('zegabr.plugins')
 
 -- colors
 require('zegabr.treesitter')
@@ -14,6 +13,7 @@ require('zegabr.colors')
 require('zegabr.gitutils')
 
 -- ide features
+require('zegabr.undotree') -- this does not exits in vscode u.u
 require('zegabr.nerdcommenter')
 require('zegabr.telescope-config')
 require('zegabr.lsp')
