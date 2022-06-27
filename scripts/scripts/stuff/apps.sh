@@ -6,7 +6,7 @@ sudo snap install libreoffice
 sudo snap install discord
 sudo snap install telegram-desktop
 sudo snap install spotify
-sudo snap install code --classic
+#sudo snap install code --classic
 sudo snap install tree
 
 sudo apt update
@@ -27,7 +27,6 @@ npm i -g yarn
 
 sudo apt install \
 git \
-xsel \
 build-essential \
 vlc \
 wget \

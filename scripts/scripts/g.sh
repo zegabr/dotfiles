@@ -27,18 +27,3 @@ then
 else
     echo "this script has no settings for your OS version, sorry.."
 fi
-
-# gedit
-if hash gedit 2>/dev/null; then
-		gsettings set org.gnome.gedit.preferences.print print-syntax-highlighting true
-		gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
-		gsettings set org.gnome.gedit.preferences.editor bracket-matching true
-		gsettings set org.gnome.gedit.preferences.editor scheme 'oblivion'
-		gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
-		gsettings set org.gnome.gedit.preferences.editor insert-spaces true
-		gsettings set org.gnome.gedit.preferences.editor auto-indent true
-		gsettings set org.gnome.gedit.preferences.editor syntax-highlighting true
-		gsettings set org.gnome.gedit.preferences.editor tabs-size 4
-		gsettings set org.gnome.gedit.preferences.editor wrap-mode 'none'
-		echo "======my gedit setup overrided yours======="
-fi
