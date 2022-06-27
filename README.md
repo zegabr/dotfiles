@@ -5,6 +5,7 @@ my dotfiles manager
 ## What it has?
 - neovim (as an fully featured IDE) + zsh + tmux configuration
 - some scripts I use to setup my linux environment (install apps, fix dual boot problems, setup aliases etc.)
+    - maybe I should use ansible?
 
 ## if you want an adventure, here is how to use it
 - look at this [readme](https://github.com/zegabr/dotfiles/blob/main/scripts/scripts/README.md) to see what scripts do you want to run first
