@@ -25,6 +25,7 @@ set.tabstop = 4
 set.expandtab = true
 set.autoindent = true
 set.hlsearch = false
+set.spell = true
 
 -- Ignore files
 set.wildignore = {
