@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
     use('junegunn/gv.vim') --commit browser
 
     ----Comments
-    use('preservim/nerdcommenter')
+    use('tpope/vim-commentary')
 
     ----Colors and UI
     use('gruvbox-community/gruvbox')

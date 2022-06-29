@@ -14,7 +14,6 @@ require('zegabr.gitutils')
 
 -- ide features
 require('zegabr.undotree') -- this does not exits in vscode u.u
-require('zegabr.nerdcommenter')
 require('zegabr.telescope')
 require('zegabr.lsp')
 require('zegabr.cmp')

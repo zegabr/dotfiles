@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  nerdcommenter = {
-    loaded = true,
-    path = "/home/ze/.local/share/nvim/site/pack/packer/start/nerdcommenter",
-    url = "https://github.com/preservim/nerdcommenter"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -178,6 +173,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",
     url = "https://github.com/ntpeters/vim-better-whitespace"
+  },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-commentary",
+    url = "https://github.com/tpope/vim-commentary"
   },
   ["vim-fugitive"] = {
     loaded = true,
