@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
     use('junegunn/gv.vim') --commit browser
 
     ----Comments
-    use('tpope/vim-commentary')
+    use('tpope/vim-commentary') -- gcc gcgc visual gc
 
     ----Colors and UI
     use('gruvbox-community/gruvbox')
@@ -43,6 +43,7 @@ return require('packer').startup(function(use)
     ----LSP
     use('neovim/nvim-lspconfig') --lsp configuration
     use('hrsh7th/cmp-nvim-lsp') --dependency for nvim-cmp
+    use("hrsh7th/cmp-buffer")
     use('hrsh7th/nvim-cmp') --autocompletion
     use('hrsh7th/cmp-path') --path suggestions
     use('hrsh7th/cmp-nvim-lua') --lua suggestions
@@ -55,7 +56,10 @@ return require('packer').startup(function(use)
     ----nvim tree
     use('kyazdani42/nvim-web-devicons') --for file icons
     use('kyazdani42/nvim-tree.lua')
+
     if packer_bootstrap then
         require('packer').sync()
+    else
+        print("packer_bootstrap not initialized, should I do something about this??")
     end
 end)
