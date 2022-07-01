@@ -1,3 +1,5 @@
 /vim/.vim/.netrwhist
 Session.vim
 tmux*.log
+packer.nvim
+startuptime.txt
