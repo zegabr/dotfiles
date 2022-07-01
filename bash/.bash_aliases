@@ -10,11 +10,11 @@ alias sudolast='sudo !!'
 #-----------------------files
 alias eb='v ~/.bashrc'
 alias ez='v ~/.zshrc'
-alias ev='v ~/.config/nvim/'
+alias dot='cd ~/dotfiles'
+alias ev='dot && v ~/.config/nvim/lua/zegabr/init.lua'
 alias ea='v ~/.bash_aliases'
 alias ew='v ~/.bash_aliases_work'
 alias et='v ~/.tmux.conf'
-alias dot='cd ~/dotfiles'
 
 alias sz='source ~/.zshrc'
 alias sa='source ~/.bash_aliases'

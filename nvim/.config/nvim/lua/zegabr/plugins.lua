@@ -1,9 +1,9 @@
 --TODO: add packer if it is easy to install else go here https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-local packer_bootstrap = nil
+local packer_initializing = nil
 if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    packer_initializing = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 return require('packer').startup(function(use)
@@ -39,6 +39,14 @@ return require('packer').startup(function(use)
     use('gelguy/wilder.nvim', { run = ':UpdateRemotePlugins' }) --wilder menu
 
     use('tpope/vim-surround') ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
+    -- simplest way to use is:
+    -- to add pair
+    -- 1) select with any visual mode.
+    -- 2) press S<closing pair> or St<tagname>
+    -- to delete pair
+    -- 1) ds<surrounding pair>
+    -- to change pair
+    -- 1) cs<pair to be changed><new closing pair>
 
     ----LSP
     use('neovim/nvim-lspconfig') --lsp configuration
@@ -57,9 +65,7 @@ return require('packer').startup(function(use)
     use('kyazdani42/nvim-web-devicons') --for file icons
     use('kyazdani42/nvim-tree.lua')
 
-    if packer_bootstrap then
+    if packer_initializing then
         require('packer').sync()
-    else
-        print("packer_bootstrap not initialized, should I do something about this??")
     end
 end)
