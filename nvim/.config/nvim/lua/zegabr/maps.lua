@@ -49,6 +49,8 @@ nnoremap("<Leader><CR>", ":so ~/.config/nvim/init.lua<CR>")
 --" ============SETS (and passive mappings)============
 
 nnoremap("Q", "<nop>")
+
+-- fix problem where you go to a commented line and use new line command
 nnoremap("O", "O<esc>cc")
 nnoremap("o", "o<esc>cc")
 --" better tabbing
