@@ -83,3 +83,4 @@ export NVM_DIR="$HOME/.nvm"
 alias luamake=/home/ze/Downloads/lua-language-server/3rd/luamake/luamake
 
 bindkey -s ^f ". ~/.local/tmux-sessionizer.sh\n"
+bindkey -s ^z "fg\n" # go back to background process
