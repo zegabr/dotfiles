@@ -10,9 +10,11 @@ return require('packer').startup(function(use)
     use('wbthomason/packer.nvim') -- Package manager
 
     ----Telescope
+    use("BurntSushi/ripgrep")
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
     use("nvim-telescope/telescope.nvim")
+    use("AckslD/nvim-neoclip.lua")
 
     ----Git integration
     use('tpope/vim-fugitive')
@@ -32,7 +34,6 @@ return require('packer').startup(function(use)
     use('ntpeters/vim-better-whitespace') --trim whitespace with :StripWhiteSpace
     use('bronson/vim-visual-star-search')
     use('matze/vim-move') --alt j/k moves selected lines normal and visual mode
-    use('svermeulen/vim-yoink') --yank history
     use('tpope/vim-obsession') --vim store session
 
     use('romgrk/fzy-lua-native') --dependency for wilder

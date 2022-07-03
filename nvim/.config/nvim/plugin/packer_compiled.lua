@@ -129,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-neoclip.lua"] = {
+    loaded = true,
+    path = "/home/ze/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
+    url = "https://github.com/AckslD/nvim-neoclip.lua"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -158,6 +163,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
+  },
+  ripgrep = {
+    loaded = true,
+    path = "/home/ze/.local/share/nvim/site/pack/packer/start/ripgrep",
+    url = "https://github.com/BurntSushi/ripgrep"
   },
   ["tabline.nvim"] = {
     loaded = true,
@@ -218,11 +228,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-visual-star-search",
     url = "https://github.com/bronson/vim-visual-star-search"
-  },
-  ["vim-yoink"] = {
-    loaded = true,
-    path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-yoink",
-    url = "https://github.com/svermeulen/vim-yoink"
   },
   ["wilder.nvim"] = {
     loaded = true,

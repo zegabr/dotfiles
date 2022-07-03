@@ -39,7 +39,7 @@ telescope.setup {
         find_files = {
             hidden = true
         },
-    }
+    },
 }
 
 local builtin = require('telescope.builtin')
@@ -67,3 +67,8 @@ nnoremap("<leader>gl", builtin.git_commits)
 
 --" git log in file
 nnoremap("<leader>glf", builtin.git_bcommits)
+
+-- fzf through yanks
+require('neoclip').setup()
+require('telescope').load_extension("neoclip")
+nnoremap("<leader>y", "<cmd>Telescope neoclip a extra=star,plus,b<cr>")

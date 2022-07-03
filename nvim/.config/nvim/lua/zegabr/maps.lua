@@ -14,9 +14,6 @@ vim.g.mapleader = " "
 --"leader+a select all file, y and p uses system clipboard
 nnoremap("<leader>a", "GVgg")
 nnoremap("Y", "y$")
---" cycle through yank history
-nnoremap("[y", "<plug>(YoinkRotateBack)")
-nnoremap("]y", "<plug>(YoinkRotateForward)")
 
 --"esc with jk
 inoremap("jk", "<ESC>")
@@ -52,6 +49,8 @@ nnoremap("<Leader><CR>", ":so ~/.config/nvim/init.lua<CR>")
 --" ============SETS (and passive mappings)============
 
 nnoremap("Q", "<nop>")
+nnoremap("O", "O<esc>cc")
+nnoremap("o", "o<esc>cc")
 --" better tabbing
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
