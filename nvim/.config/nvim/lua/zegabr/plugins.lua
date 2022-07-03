@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
     ----Git integration
     use('tpope/vim-fugitive')
     use('airblade/vim-gitgutter')
-    use('junegunn/gv.vim') --commit browser
 
     ----Comments
     use('tpope/vim-commentary') -- gcc gcgc visual gc
