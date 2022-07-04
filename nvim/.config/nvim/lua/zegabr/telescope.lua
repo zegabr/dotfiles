@@ -1,7 +1,26 @@
 local telescope = require('telescope')
+local actions = require('telescope.actions')
 
+local custom_actions={}
 telescope.setup {
     defaults = {
+        mappings = {
+            i = {
+                ['<esc>'] = actions.close,
+                ['<C-j>'] = actions.move_selection_next,
+                ['<C-k>'] = actions.move_selection_previous,
+                ['<tab>'] = actions.toggle_selection + actions.move_selection_previous,
+                ['<s-tab>'] = actions.toggle_selection + actions.move_selection_next,
+                ['<cr>'] = custom_actions.fzf_multi_select,
+            },
+            n = {
+                ['<esc>'] = actions.close,
+                ['<tab>'] = actions.toggle_selection + actions.move_selection_previous,
+                ['<s-tab>'] = actions.toggle_selection + actions.move_selection_next,
+                ['<cr>'] = custom_actions.fzf_multi_select
+            }
+        },
+
         vimgrep_arguments = {
             "rg",
             "--color=never",
@@ -55,5 +74,5 @@ nnoremap("<leader>glf", builtin.git_bcommits)
 
 -- fzf through yanks
 require('neoclip').setup()
-require('telescope').load_extension("neoclip")
+telescope.load_extension("neoclip")
 nnoremap("<leader>y", "<cmd>Telescope neoclip a extra=star,plus,b<cr>")
