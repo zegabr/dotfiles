@@ -44,7 +44,7 @@ nnoremap("<C-l>", ":cnext<CR>zz")
 nnoremap("<C-q>", ":cclose<CR>zz")
 
 --" below command is for vimrc testing while editing it
-nnoremap("<Leader><CR>", ":so ~/.config/nvim/init.lua<CR>")
+nnoremap("<Leader><CR>", ":luafile ~/.config/nvim/init.lua<CR>")
 
 --" ============SETS (and passive mappings)============
 
