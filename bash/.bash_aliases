@@ -29,8 +29,8 @@ function note(){
 }
 
 function swap-java(){
-    sudo update-alternatives --config java
-    sudo update-alternatives --config javac
+sudo update-alternatives --config java
+sudo update-alternatives --config javac
 }
 
 #--------------------containers
@@ -62,7 +62,7 @@ function gclssh(){
 # ex: $ gclssh-by-id zegabr zegabr/m
 # use this when multiple ssh keys are added
 function gclssh-by-id(){
-    git clone --recurse-submodules git@github.com-$1:$2.git
+git clone --recurse-submodules git@github.com-$1:$2.git
 }
 
 # config local user and email
@@ -80,21 +80,21 @@ function gclhttps(){
 
 ## change keyboard numerical row mappings to its symbols
 #function remaper(){
-    #FLAG=~/REMAPER_ON_FLAG
-    #if [ ! -f "$FLAG" ]; then
-        #echo "activating remaper"
-        ##original mapping:		#new mapping
-        ##keycode 10 = 1			 exclam = '!'
-        ##keycode 11 = 2			 at = '@'
-        ##keycode 12 = 3			 numbersign = '#'
-        ##keycode 13 = 4			 dollar = '$'
-        ##keycode 14 = 5		     percent = '%'
-        ##keycode 15 = 6			 asciicircum = '^'
-        ##keycode 16 = 7			 ampersand = '&'
-        ##keycode 17 = 8			 asterisk = '*'
-        ##keycode 18 = 9			 parenleft = '('
-        ##keycode 19 = 0			 parenright = ')'
-        ##keycode 20 = minus		 underscore = '_'
+#FLAG=~/REMAPER_ON_FLAG
+#if [ ! -f "$FLAG" ]; then
+#echo "activating remaper"
+##original mapping:		#new mapping
+##keycode 10 = 1			 exclam = '!'
+##keycode 11 = 2			 at = '@'
+##keycode 12 = 3			 numbersign = '#'
+##keycode 13 = 4			 dollar = '$'
+##keycode 14 = 5		     percent = '%'
+##keycode 15 = 6			 asciicircum = '^'
+##keycode 16 = 7			 ampersand = '&'
+##keycode 17 = 8			 asterisk = '*'
+##keycode 18 = 9			 parenleft = '('
+##keycode 19 = 0			 parenright = ')'
+##keycode 20 = minus		 underscore = '_'
 
         ##commands to remap
         #xmodmap -e "keycode 10 = exclam"
@@ -109,12 +109,12 @@ function gclhttps(){
         #xmodmap -e "keycode 19 = parenright"
         #xmodmap -e "keycode 20 = underscore"
         #echo 1 > "$FLAG"
-    #else
+        #else
         #echo "deactivating remaper"
         #setxkbmap -option
         #rm "$FLAG"
-    #fi
-#}
+        #fi
+        #}
 
 ##COMPETITIVE/C++
 alias m='make && make t'
@@ -136,3 +136,19 @@ cdf() {
 
 # cheat.sh
 alias how='cht.sh'
+
+check-truecolor() {
+awk -v term_cols="${width:-$(tput cols || echo 80)}" 'BEGIN{
+s="/\\";
+for (colnum = 0; colnum<term_cols; colnum++) {
+    r = 255-(colnum*255/term_cols);
+    g = (colnum*510/term_cols);
+    b = (colnum*255/term_cols);
+    if (g>255) g = 510-g;
+        printf "\033[48;2;%d;%d;%dm", r,g,b;
+        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+        printf "%s\033[0m", substr(s,colnum%2+1,1);
+    }
+    printf "\n";
+}'
+}
