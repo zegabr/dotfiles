@@ -37,7 +37,10 @@ telescope.setup {
     },
     pickers = {
         find_files = {
-            hidden = true
+            hidden = true,
+        },
+        git_files = {
+            hidden = true,
         },
     },
 }
@@ -47,9 +50,8 @@ local keymap = require('zegabr.keymap')
 local nnoremap = keymap.nnoremap
 
 local project_files = function()
-    local opts = {hidden=true} -- define here if you want to define something
-    local ok = pcall(builtin.git_files, opts)
-    if not ok then builtin.find_files(opts) end
+    local ok = pcall(builtin.git_files)
+    if not ok then builtin.find_files() end
 end
 
 nnoremap("<C-p>", function() project_files() end)
@@ -57,8 +59,9 @@ nnoremap("<C-f>", function() builtin.grep_string({
     shorten_path = true,
     word_match = "-w",
     only_sort_text = true,
-    search = ''
+    search = '',
 }) end)
+
 nnoremap("<C-b>", function() builtin.buffers() end)
 nnoremap("<leader>gb", function() builtin.git_branches() end)
 
