@@ -1,4 +1,4 @@
 # tmux
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-sudo apt install xclip -y
+sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 # for macos: brew install reattach-to-user-namespace
+

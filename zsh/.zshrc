@@ -33,7 +33,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
     git
     extract
-    docker-compose
+    # docker-compose
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -72,7 +72,6 @@ fi
 if [ -f ~/.bash_aliases_work ]; then
     . ~/.bash_aliases_work
 fi
-export TERM=xterm-256color
 
 export EDITOR=nvim
 
@@ -84,3 +83,5 @@ alias luamake=/home/ze/Downloads/lua-language-server/3rd/luamake/luamake
 
 bindkey -s ^f ". ~/.local/tmux-sessionizer.sh\n"
 bindkey -s ^z "fg\n" # go back to background process
+
+[[ $TMUX != "" ]] && export TERM="screen-256color"
