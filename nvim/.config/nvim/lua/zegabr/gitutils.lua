@@ -5,7 +5,7 @@ local nnoremap = keymap.nnoremap
 --" git status
 nnoremap("<leader>gs", ":G<CR>")
 
---" diffget left theirs and yours
+--" diffget theirs and yours
 nnoremap("<leader>gf", ":diffget //2<CR>")
 nnoremap("<leader>gh", ":diffget //3<CR>")
 

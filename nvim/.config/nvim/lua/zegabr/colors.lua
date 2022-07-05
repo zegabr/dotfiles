@@ -2,6 +2,9 @@ vim.opt.termguicolors = true
 vim.opt.showmode = false
 vim.g.airline_theme="deus"
 vim.opt.background="dark"
+vim.opt.cursorcolumn = true
+vim.opt.signcolumn = "yes"
+vim.opt.colorcolumn = "80"
 
 require("gruvbox").setup({ -- must be called before colorshceme gruvbox
   undercurl = true,

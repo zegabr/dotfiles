@@ -12,12 +12,9 @@ set.number = true
 set.relativenumber = true
 set.wrap = false
 set.cursorline = true
-set.cursorcolumn = true
 set.hlsearch = true
 set.ignorecase = true
 set.smartcase = true
-set.signcolumn = "yes"
-set.colorcolumn = "80"
 set.shortmess:append("A")
 set.softtabstop = 4
 set.shiftwidth = 4
