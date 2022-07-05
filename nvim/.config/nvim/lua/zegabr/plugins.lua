@@ -53,6 +53,10 @@ return require('packer').startup(function(use)
     -- to change pair
     -- 1) cs<pair to be changed><new closing pair>
 
+    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use('nvim-treesitter/nvim-treesitter-textobjects')
+    use('nvim-treesitter/nvim-treesitter-context')
+
     ----LSP
     use('neovim/nvim-lspconfig') --lsp configuration
     use('hrsh7th/cmp-nvim-lsp') --dependency for nvim-cmp
@@ -60,9 +64,7 @@ return require('packer').startup(function(use)
     use('hrsh7th/nvim-cmp') --autocompletion
     use('hrsh7th/cmp-path') --path suggestions
     use('hrsh7th/cmp-nvim-lua') --lua suggestions
-    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-    use('nvim-treesitter/nvim-treesitter-textobjects')
-    use('nvim-treesitter/nvim-treesitter-context')
+
     use('L3MON4D3/LuaSnip') --lua snippets
     use('saadparwaiz1/cmp_luasnip') --luasnip src
     use('RRethy/vim-illuminate') --vim iluminate
