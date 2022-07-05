@@ -67,7 +67,7 @@ local go_settings = {
 }
 
 -- config that activates keymaps and enables snippet support
-local function make_config()
+local function make_config_branch2()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     return {
@@ -84,7 +84,7 @@ local lspconfig = require('lspconfig')
 lsp_installer.setup({})
 
 for _, server in ipairs(lsp_installer.get_installed_servers()) do
-    local config = make_config()
+    local config = make_config_branch2()
     local server_name = server.name
 
     -- language specific config (server == "<name passed on lspinstall call>")
