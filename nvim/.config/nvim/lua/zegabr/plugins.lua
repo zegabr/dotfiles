@@ -58,6 +58,7 @@ return require('packer').startup(function(use)
     use('hrsh7th/cmp-nvim-lua') --lua suggestions
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('nvim-treesitter/nvim-treesitter-textobjects')
+    use('nvim-treesitter/nvim-treesitter-context')
     use('L3MON4D3/LuaSnip') --lua snippets
     use('saadparwaiz1/cmp_luasnip') --luasnip src
     use('RRethy/vim-illuminate') --vim iluminate
