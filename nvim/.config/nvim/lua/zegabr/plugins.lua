@@ -35,6 +35,10 @@ return require('packer').startup(function(use)
     use('bronson/vim-visual-star-search')
     use('matze/vim-move') --alt j/k moves selected lines normal and visual mode
     use('tpope/vim-obsession') --vim store session
+    use {
+        'ruifm/gitlinker.nvim', -- get premalink by <leader>gy (works in visuali mode)
+        config = function() require("gitlinker").setup() end
+    }
 
     use('romgrk/fzy-lua-native') --dependency for wilder
     use('gelguy/wilder.nvim', { run = ':UpdateRemotePlugins' }) --wilder menu
@@ -64,11 +68,11 @@ return require('packer').startup(function(use)
     use('RRethy/vim-illuminate') --vim iluminate
     use('williamboman/nvim-lsp-installer') --lspinstaller
     use {
-      "j-hui/fidget.nvim",
-      event = "BufReadPre",
-      config = function()
-        require("fidget").setup {}
-      end,
+        "j-hui/fidget.nvim",
+        event = "BufReadPre",
+        config = function()
+            require("fidget").setup {}
+        end,
     }
     ----nvim tree
     use('kyazdani42/nvim-web-devicons') --for file icons
