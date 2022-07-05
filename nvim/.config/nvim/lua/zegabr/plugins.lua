@@ -1,4 +1,3 @@
---TODO: add packer if it is easy to install else go here https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 local packer_initializing = nil
@@ -25,7 +24,6 @@ return require('packer').startup(function(use)
 
     ----Colors and UI
     use('ellisonleao/gruvbox.nvim')
-
     use('kdheepak/tabline.nvim')
     use('nvim-lualine/lualine.nvim')
 
