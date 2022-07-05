@@ -61,7 +61,13 @@ return require('packer').startup(function(use)
     use('saadparwaiz1/cmp_luasnip') --luasnip src
     use('RRethy/vim-illuminate') --vim iluminate
     use('williamboman/nvim-lsp-installer') --lspinstaller
-
+    use {
+      "j-hui/fidget.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("fidget").setup {}
+      end,
+    }
     ----nvim tree
     use('kyazdani42/nvim-web-devicons') --for file icons
     use('kyazdani42/nvim-tree.lua')
