@@ -6,11 +6,11 @@ local nnoremap = keymap.nnoremap
 nnoremap("<leader>gs", ":G<CR>")
 
 --" diffget theirs and yours
-nnoremap("<leader>gf", ":diffget //2<CR>") -- theirs == left
-nnoremap("<leader>gh", ":diffget //3<CR>") -- yours == right
+nnoremap("<leader>gf", ":diffget //2<CR>") -- theirs == top
+nnoremap("<leader>gh", ":diffget //3<CR>") -- yours == bottom
 
 -- on git status buffer
--- dv == diff split with file selected
+-- ds == diff split with file selected (rebasing top diff on bottom diff)
 -- dq == go out of diff split mode
 -- gq == exit
 
