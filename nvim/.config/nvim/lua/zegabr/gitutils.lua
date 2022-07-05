@@ -15,5 +15,5 @@ nnoremap("<leader>gh", ":diffget //3<CR>") -- yours == bottom
 -- gq == exit
 
 -- git gutter
-nnoremap("[c", ":GitGutterPrevHunk<CR>")
-nnoremap("]c", ":GitGutterNextHunk<CR>")
+nnoremap("[h", ":GitGutterPrevHunk<CR>")
+nnoremap("]h", ":GitGutterNextHunk<CR>")

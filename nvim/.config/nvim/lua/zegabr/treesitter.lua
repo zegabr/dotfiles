@@ -56,11 +56,11 @@ require('nvim-treesitter.configs').setup {
             goto_next_start = {
                 [']f'] = '@function.outer',
                 -- t for type === class
-                [']t'] = '@class.outer'
+                [']c'] = '@class.outer'
             },
             goto_previous_start = {
                 ['[f'] = '@function.outer',
-                ['[t'] = '@class.outer'
+                ['[c'] = '@class.outer'
             },
         },
         swap = {

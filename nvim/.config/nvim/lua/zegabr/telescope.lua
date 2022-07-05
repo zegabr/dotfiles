@@ -50,7 +50,7 @@ local builtin = require('telescope.builtin')
 local keymap = require('zegabr.keymap')
 local nnoremap = keymap.nnoremap
 
-local project_files = function()
+local function project_files()
     local ok = pcall(builtin.git_files)
     if not ok then builtin.find_files() end
 end
