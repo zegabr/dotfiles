@@ -123,6 +123,11 @@ _G.packer_plugins = {
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
+  kokusen = {
+    loaded = true,
+    path = "/home/ze/.local/share/nvim/site/pack/packer/start/kokusen",
+    url = "/home/ze/Desktop/kokusen"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/lualine.nvim",
