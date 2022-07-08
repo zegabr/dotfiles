@@ -14,20 +14,22 @@ local on_attach = function(client, bufnr)
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local bufopts = { noremap=true, silent=true, buffer=bufnr }
-    vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
+    local bufopts = { noremap=true, silent=true, buffer=0 }
+    vim.keymap.set('n', 'gd', "<cmd>Telescope lsp_definitions<CR>", bufopts)
+    vim.keymap.set('n', 'gr', "<cmd>Telescope lsp_references<CR>", bufopts)
+    vim.keymap.set('n', 'gt', "<cmd>Telescope lsp_type_definitions<CR>", bufopts)
     vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, bufopts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
+
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<space>R', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>A', vim.lsp.buf.code_action, bufopts)
+
+    vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, bufopts)
+    vim.keymap.set('n', '<leader>A', "<cmd>Telescope lsp_code_actions<CR>", bufopts)
+
+    vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
     vim.keymap.set('n', '<leader>dl', "<cmd>Telescope diagnostics<cr>", bufopts)
 
     -- set illuminate
