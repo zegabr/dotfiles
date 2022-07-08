@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-cd ~
+CURR_DIR=$(pwd)
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
@@ -27,3 +28,5 @@ if [[ -z $TMUX ]]; then
 else
     tmux switch-client -t $selected_name
 fi
+
+cd $CURR_DIR

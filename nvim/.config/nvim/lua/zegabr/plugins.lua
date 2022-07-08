@@ -77,6 +77,7 @@ return require('packer').startup(function(use)
     ----nvim tree
     use('kyazdani42/nvim-web-devicons') --for file icons
     use('kyazdani42/nvim-tree.lua')
+    use('/home/ze/Desktop/kokusen')
 
     if packer_initializing then
         require('packer').sync()
