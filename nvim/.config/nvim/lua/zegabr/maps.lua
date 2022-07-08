@@ -20,15 +20,10 @@ inoremap("jk", "<ESC>")
 nnoremap("<C-c>", "<ESC>")
 
 --"replace all ocurrence by typing old and new
-nnoremap("S", ":%s//gI<Left><Left><Left>")
-
---"replace ocurrences of last searched word
-nnoremap("<leader>r", ":%s///g<Left><Left>")
-nnoremap("<leader>rc", ":%s///gc<Left><Left><Left>")
+nnoremap("<leader>r", ":%s//gIc<Left><Left><Left><Left>")
 
 --" same as above, but works in a visual selection
-xnoremap("<leader>r", ":s///g<left><left>")
-xnoremap("<leader>rc", ":s///gc<left><left><left>")
+xnoremap("<leader>r", ":s//Ic<Left><Left><Left>")
 
 --" alternate between opened buffers
 nnoremap("<left>", ":bp<CR>")

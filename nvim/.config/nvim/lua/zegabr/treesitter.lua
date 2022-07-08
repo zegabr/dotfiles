@@ -55,7 +55,6 @@ require('nvim-treesitter.configs').setup {
             set_jumps = true,
             goto_next_start = {
                 [']f'] = '@function.outer',
-                -- t for type === class
                 [']c'] = '@class.outer'
             },
             goto_previous_start = {
