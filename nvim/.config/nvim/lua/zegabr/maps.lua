@@ -60,4 +60,4 @@ autocmd! VimEnter *.txt set wrap
 ]])
 
 
-nnoremap("<leader><leader>k", require("kokusen").hit)
+nnoremap("<leader><leader>k", require("kokusen").weak_hit)
