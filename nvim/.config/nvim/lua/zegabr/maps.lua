@@ -59,3 +59,4 @@ autocmd! CursorHold * update
 autocmd! VimEnter *.txt set wrap
 ]])
 
+nnoremap("<leader><leader>t", "<Plug>PlenaryTestFile")
