@@ -223,6 +223,11 @@ _G.packer_plugins = {
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
   },
+  ["vim-easymotion"] = {
+    loaded = true,
+    path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-easymotion",
+    url = "https://github.com/easymotion/vim-easymotion"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-fugitive",
