@@ -233,11 +233,6 @@ _G.packer_plugins = {
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
   },
-  ["vim-illuminate"] = {
-    loaded = true,
-    path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-illuminate",
-    url = "https://github.com/RRethy/vim-illuminate"
-  },
   ["vim-move"] = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-move",
