@@ -126,7 +126,7 @@ _G.packer_plugins = {
   kokusen = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/kokusen",
-    url = "/home/ze/Desktop/kokusen"
+    url = "https://github.com/zegabr/kokusen"
   },
   ["lualine.nvim"] = {
     loaded = true,
