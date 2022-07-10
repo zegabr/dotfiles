@@ -1,25 +1,12 @@
 vim.opt.termguicolors = true
 vim.opt.showmode = false
 vim.g.airline_theme="deus"
-vim.opt.background="dark"
 vim.opt.cursorcolumn = true
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 
-require("gruvbox").setup({ -- must be called before colorshceme gruvbox
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = false, -- will make italic comments and special strings
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  contrast = "", -- can be "hard" or "soft"
-  overrides = {},
-})
-vim.cmd[[ colorscheme gruvbox ]]
+vim.opt.background="dark"
+vim.cmd[[ colorscheme base16-gruvbox-dark-hard ]]
 
 require('lualine').setup({
     options = { theme = 'gruvbox' },

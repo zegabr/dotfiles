@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
     use('tpope/vim-commentary') -- gcc gcgc visual gc
 
     ----Colors and UI
-    use('ellisonleao/gruvbox.nvim')
+    use("RRethy/nvim-base16")
     use('kdheepak/tabline.nvim')
     use('nvim-lualine/lualine.nvim')
 
