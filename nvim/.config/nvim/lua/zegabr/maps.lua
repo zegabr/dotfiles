@@ -20,10 +20,10 @@ inoremap("jk", "<ESC>")
 nnoremap("<C-c>", "<ESC>")
 
 --"replace all ocurrence by typing old and new
-nnoremap("<leader>r", ":%s//gIc<Left><Left><Left><Left>")
+nnoremap("<leader>S", ":%s//gIc<Left><Left><Left><Left>")
 
 --" same as above, but works in a visual selection
-xnoremap("<leader>r", ":s//Ic<Left><Left><Left>")
+xnoremap("<leader>S", ":s//Ic<Left><Left><Left>")
 
 --" alternate between opened buffers
 nnoremap("<left>", ":bp<CR>")

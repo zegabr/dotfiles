@@ -14,6 +14,8 @@ return require('packer').startup(function(use)
     use("nvim-lua/popup.nvim")
     use("nvim-telescope/telescope.nvim")
     use("AckslD/nvim-neoclip.lua")
+    use("ThePrimeagen/refactoring.nvim")
+
 
     ----Git integration
     use('tpope/vim-fugitive')
