@@ -2,6 +2,7 @@
 
 CURR_DIR=$(pwd)
 # dependencies
+sudo apt update && sudo apt upgrade
 sudo apt install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen xsel -y
 
 mkdir ~/nvim-deps
@@ -16,5 +17,5 @@ make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install
 cd $CURR_DIR
 
 # python plugin dependencies
-python3 -m pip install --user --upgrade pynvim pyre2
+python3 -m pip install --user --upgrade pynvim
 
