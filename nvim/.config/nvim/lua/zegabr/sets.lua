@@ -12,7 +12,7 @@ set.number = true
 set.relativenumber = true
 set.wrap = false
 set.cursorline = true
-set.hlsearch = true
+set.hlsearch = false
 set.ignorecase = true
 set.smartcase = true
 set.shortmess:append("A")

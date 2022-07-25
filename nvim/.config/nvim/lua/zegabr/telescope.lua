@@ -29,7 +29,7 @@ telescope.setup {
             "--line-number",
             "--column",
             "--smart-case",
-            "--trim", -- add this value
+            "--trim",
             "--hidden",
         },
         file_ignore_patterns = {
@@ -67,10 +67,10 @@ nnoremap("<C-b>", function() builtin.buffers() end)
 nnoremap("<leader>gb", function() builtin.git_branches() end)
 
 --" git log
-nnoremap("<leader>gl", builtin.git_commits)
+nnoremap("<leader>glo", builtin.git_commits)
 
 --" git log in file
-nnoremap("<leader>glf", builtin.git_bcommits)
+nnoremap("<leader>glof", builtin.git_bcommits)
 
 -- fzf through yanks
 require('neoclip').setup()

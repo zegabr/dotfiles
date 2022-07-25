@@ -16,7 +16,6 @@ return require('packer').startup(function(use)
     use("AckslD/nvim-neoclip.lua")
     use("ThePrimeagen/refactoring.nvim")
 
-
     ----Git integration
     use('tpope/vim-fugitive')
     use('airblade/vim-gitgutter')
@@ -91,6 +90,8 @@ return require('packer').startup(function(use)
     ----nvim tree
     use('kyazdani42/nvim-web-devicons') --for file icons
     use('kyazdani42/nvim-tree.lua')
+
+    -- my first plugin
     use('zegabr/kokusen')
 
     if packer_initializing then
