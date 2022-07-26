@@ -1,11 +1,11 @@
 #!/bin/sh
 cd ~/Downloads
 
-sudo snap install libreoffice
+# sudo snap install libreoffice
 # sudo snap install slack --classic
-sudo snap install discord
-sudo snap install telegram-desktop
-sudo snap install spotify
+# sudo snap install discord
+# sudo snap install telegram-desktop
+# sudo snap install spotify
 #sudo snap install code --classic
 sudo snap install tree
 
@@ -32,7 +32,7 @@ build-essential \
 vlc \
 wget \
 curl \
-flameshot \
+# flameshot \
 usb-creator-gtk \
 bat \
 fzf \
