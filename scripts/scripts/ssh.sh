@@ -1,4 +1,5 @@
 #!/bin/sh
+sudo apt install xclip -y
 read -p "Type y if you want to setup default ssh for git? (y/n): " ans
 if [ "$ans" == "y" ]; then
 
