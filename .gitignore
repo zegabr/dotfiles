@@ -3,3 +3,5 @@ Session.vim
 tmux*.log
 packer.nvim
 startuptime.txt
+/bin/.local/state/
+/bin/.local/share/
