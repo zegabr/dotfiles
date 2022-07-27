@@ -87,9 +87,10 @@ fi
 # fi
 
 # for windows WSL neovim to work with clipboard
-if [ $(uname -a | grep microsoft) ]; then
+if [[ $(uname -a | grep microsoft) ]]; then
     sudo curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
     sudo unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
     sudo chmod +x /tmp/win32yank.exe
     sudo sudo mv /tmp/win32yank.exe /usr/local/bin/
 fi
+

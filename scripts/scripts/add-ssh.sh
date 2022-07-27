@@ -25,6 +25,11 @@ echo "Please check if everything is ok at ~/.ssh/config"
 gedit ~/.ssh/config &
 
     xclip -selection clipboard < ~/.ssh/id_rsa_${USER_NAME}.pub
+    if [[ $(uname -a | grep microsoft) ]]; then
+        clip.exe < ~/.ssh/id_rsa_${USER_NAME}.pub
+    else
+        xclip -selection clipboard < ~/.ssh/id_rsa_${USER_NAME}.pub
+    fi
 
     echo """
     ===================================================

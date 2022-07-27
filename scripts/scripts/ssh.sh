@@ -24,12 +24,12 @@ echo
 echo "Please check if everything is ok at ~/.ssh/config"
 gedit ~/.ssh/config &
 
-    if [ $(uname -a | grep microsoft) ]; then
+    if [[ $(uname -a | grep microsoft) ]]; then
         clip.exe < ~/.ssh/id_rsa.pub
     else
         xclip -selection clipboard < ~/.ssh/id_rsa.pub
     fi
-    
+
     echo """
     ===================================================
     The ssh key is in clipboard, add it to github client
@@ -38,7 +38,7 @@ gedit ~/.ssh/config &
 
     echo """
     ===================================================
-    To clone a private repo, use 
+    To clone a private repo, use
     git clone git@github.com:repo-user/repo-name.git
     ===================================================
     """
