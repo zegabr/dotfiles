@@ -24,8 +24,12 @@ echo
 echo "Please check if everything is ok at ~/.ssh/config"
 gedit ~/.ssh/config &
 
-    xclip -selection clipboard < ~/.ssh/id_rsa.pub
-
+    if [ $(uname -a | grep microsoft) ]; then
+        clip.exe < ~/.ssh/id_rsa.pub
+    else
+        xclip -selection clipboard < ~/.ssh/id_rsa.pub
+    fi
+    
     echo """
     ===================================================
     The ssh key is in clipboard, add it to github client
