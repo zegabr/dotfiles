@@ -1,7 +1,7 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 
-local custom_actions={}
+local custom_actions = {}
 telescope.setup {
     defaults = {
         mappings = {
@@ -57,11 +57,12 @@ end
 
 nnoremap("<C-p>", function() project_files() end)
 nnoremap("<C-f>", function() builtin.grep_string({
-    shorten_path = true,
-    word_match = "-w",
-    only_sort_text = true,
-    search = '',
-}) end)
+        shorten_path = true,
+        word_match = "-w",
+        only_sort_text = true,
+        search = '',
+    })
+end)
 
 nnoremap("<C-b>", function() builtin.buffers() end)
 nnoremap("<leader>gb", function() builtin.git_branches() end)

@@ -33,4 +33,3 @@ set.wildignore = {
     "**/ios/*",
     "**/.git/*",
 }
-

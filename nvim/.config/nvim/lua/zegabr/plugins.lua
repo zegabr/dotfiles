@@ -1,8 +1,9 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 local packer_initializing = nil
 if fn.empty(fn.glob(install_path)) > 0 then
-    packer_initializing = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    packer_initializing = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+        install_path })
 end
 
 return require('packer').startup(function(use)
@@ -36,9 +37,9 @@ return require('packer').startup(function(use)
     use('matze/vim-move') --alt j/k moves selected lines normal and visual mode
 
 
-    use('easymotion/vim-easymotion',-- s{char} or S{char}{char}
+    use('easymotion/vim-easymotion', -- s{char} or S{char}{char}
         {
-            vim.cmd[[
+            vim.cmd [[
                 let g:EasyMotion_do_mapping = 0
                 let g:EasyMotion_smartcase = 1
                 nmap S <Plug>(easymotion-s2)
@@ -65,7 +66,7 @@ return require('packer').startup(function(use)
     -- to change pair
     -- 1) cs<pair to be changed><new closing pair>
 
-    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/nvim-treesitter-textobjects')
     use('nvim-treesitter/nvim-treesitter-context')
 

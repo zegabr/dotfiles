@@ -2,7 +2,7 @@
 local M = {}
 
 local function bind(op, outer_opts)
-    outer_opts = outer_opts or {noremap = true} -- vim.keymap.set already sets remap to false so this is redundant but whatever
+    outer_opts = outer_opts or { noremap = true } -- vim.keymap.set already sets remap to false so this is redundant but whatever
     return function(lhs, rhs, opts)
         opts = vim.tbl_extend("force",
             outer_opts,
@@ -12,7 +12,7 @@ local function bind(op, outer_opts)
     end
 end
 
-M.nmap = bind("n", {noremap = false})
+M.nmap = bind("n", { noremap = false })
 M.nnoremap = bind("n")
 M.vnoremap = bind("v")
 M.xnoremap = bind("x")

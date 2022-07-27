@@ -1,7 +1,6 @@
-
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 
 -- Setup nvim-cmp.
 local cmp = require('cmp')
@@ -48,4 +47,3 @@ cmp.setup {
         { name = 'path' },
     },
 }
-

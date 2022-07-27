@@ -14,7 +14,7 @@ local on_attach = function(client, bufnr)
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local bufopts = { noremap=true, silent=true, buffer=0 }
+    local bufopts = { noremap = true, silent = true, buffer = 0 }
     vim.keymap.set('n', 'gd', "<cmd>Telescope lsp_definitions<CR>", bufopts)
     vim.keymap.set('n', 'gr', "<cmd>Telescope lsp_references<CR>", bufopts)
     vim.keymap.set('n', 'gt', "<cmd>Telescope lsp_type_definitions<CR>", bufopts)
@@ -54,7 +54,7 @@ local lua_settings = {
         },
         diagnostics = {
             -- Get the language server to recognize the `vim` global
-            globals = {'vim'},
+            globals = { 'vim' },
         },
         -- workspace = {
         --     -- Make the server aware of Neovim runtime files
@@ -106,12 +106,13 @@ for _, server in ipairs(lsp_installer.get_installed_servers()) do
     end
     if server_name == "clangd" then
         config.root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile");
-        config.filetypes = {"c", "cpp", "h", "hpp"}; -- we don't want objective-c and objective-cpp!?
-        config.cmd = { "/home/ze/.local/share/nvim/lsp_servers/clangd/clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy" };
+        config.filetypes = { "c", "cpp", "h", "hpp" };  -- we don't want objective-c and objective-cpp!?
+        config.cmd = { "/home/ze/.local/share/nvim/lsp_servers/clangd/clangd", "--background-index",
+            "--suggest-missing-includes", "--clang-tidy" };
         config.single_file_support = true;
     end
     if server_name == "gopls" then
-        config.cmd = {"gopls", "serve"};
+        config.cmd = { "gopls", "serve" };
         config.settings = go_settings;
     end
 

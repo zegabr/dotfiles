@@ -1,6 +1,6 @@
 P = function(v)
-	print(vim.inspect(v))
-	return v
+    print(vim.inspect(v))
+    return v
 end
 
 -- basic
@@ -25,4 +25,3 @@ require('zegabr.lsp')
 require('zegabr.cmp')
 require('zegabr.nvim-tree')
 require('zegabr.wilder')
-
