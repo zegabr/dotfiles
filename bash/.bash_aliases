@@ -1,5 +1,5 @@
 #LINUX
-alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y'
+alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y && sudo apt --fix-broken install -y'
 alias lag='alias | grep'
 alias v='nvim'
 alias vs='nvim -S'
