@@ -1,4 +1,5 @@
 #!/bin/sh
+mkdir ~/Downloads
 cd ~/Downloads
 
 # sudo snap install libreoffice

@@ -7,7 +7,7 @@ source f.sh # install FiraCode font
 bash t.sh # install tmux plugin manager
 bash g.sh # gnome
 bash ssh.sh # setup ssh
+source d.sh # remove zshrc and create a symlink to dotfile zshrc
 source z.sh # add updates zshrc, has to be called before dotfiles
 rm ~/.zshrc
-source d.sh # remove zshrc and create a symlink to dotfile zshrc
 
