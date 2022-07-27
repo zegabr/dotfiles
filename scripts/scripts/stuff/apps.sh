@@ -6,7 +6,6 @@ cd ~/Downloads
 # sudo snap install discord
 # sudo snap install telegram-desktop
 # sudo snap install spotify
-#sudo snap install code --classic
 sudo snap install tree
 
 sudo apt update
@@ -32,7 +31,7 @@ build-essential \
 vlc \
 wget \
 curl \
-# flameshot \
+flameshot \
 usb-creator-gtk \
 bat \
 fzf \
@@ -82,7 +81,13 @@ if [ "$ans" == "y" ]; then
 fi
 
 # Jetbrains toolbox
-read -p "Type y if you want jetbrains toolbox (y/n):" ans
-if [ "$ans" == "y" ]; then
-    curl https://gist.githubusercontent.com/greeflas/431bc50c23532eee8a7d6c1d603f3921/raw | bash
+# read -p "Type y if you want jetbrains toolbox (y/n):" ans
+# if [ "$ans" == "y" ]; then
+#     curl https://gist.githubusercontent.com/greeflas/431bc50c23532eee8a7d6c1d603f3921/raw | bash
+# fi
+
+if [ $(grep Microsoft /proc/version) ]; then
+    sudo apt install xfce4 -y
+    DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+    alias pbcopy="clip.exe"
 fi
