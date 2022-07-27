@@ -5,3 +5,5 @@ packer.nvim
 startuptime.txt
 /bin/.local/state/
 /bin/.local/share/
+/bin/.local/include/
+/bin/.local/lib/
