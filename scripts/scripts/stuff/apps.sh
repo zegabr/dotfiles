@@ -89,5 +89,4 @@ fi
 if [ $(uname -a | grep microsoft) ]; then
     sudo apt install xfce4 -y
     DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
-    alias pbcopy="clip.exe"
 fi
