@@ -86,7 +86,10 @@ fi
 #     curl https://gist.githubusercontent.com/greeflas/431bc50c23532eee8a7d6c1d603f3921/raw | bash
 # fi
 
+# for windows WSL neovim to work with clipboard
 if [ $(uname -a | grep microsoft) ]; then
-    sudo apt install xfce4 -y
-    DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+    sudo curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
+    sudo unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
+    sudo chmod +x /tmp/win32yank.exe
+    sudo sudo mv /tmp/win32yank.exe /usr/local/bin/
 fi
