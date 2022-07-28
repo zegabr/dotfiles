@@ -2,8 +2,6 @@
 Usefull scripts for linux setup/productivity (at least I find it usefull).
 
 # What the scripts do
-Run `bash g.sh` for gnome settings.
-
 Run `bash setup.sh` for basic setup (take a look at the file stuff/apps.sh first so you don't install things you don't want).
 
 Run `bash ssh.sh` to setup default ssh key for github.
@@ -17,5 +15,9 @@ Run `source stuff/custom-keybindings.sh` to add keyboard shortcuts (for now it o
 Run `source c.sh` if you want my competitive setup (vim, c++ and [cp](https://github.com/zegabr/cp)) (you probably won't want it)
 
 Run `source v.sh` if you want to build neovim from source (with vim-plug instalation)
+
+Run `source t.sh` if you want tmux
+
+Run `source f.sh` for fira code fonts (must change on terminal preferences later as I didn't find how to do it automatically)
 
 Run `source m.sh` to get full setup (one liner it is!).

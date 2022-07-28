@@ -14,3 +14,4 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/p
 
 source ~/.zshrc
 echo "PLS OPEN ANOTHER TERMINAL FOR CHANGES TAKE EFFECT "
+exit
