@@ -33,9 +33,7 @@ return require('packer').startup(function(use)
     use('mbbill/undotree')
     use('ntpeters/vim-better-whitespace') --trim whitespace with :StripWhiteSpace
     use('bronson/vim-visual-star-search')
-
     use('matze/vim-move') --alt j/k moves selected lines normal and visual mode
-
 
     use('easymotion/vim-easymotion', -- s{char} or S{char}{char}
         {
@@ -72,6 +70,7 @@ return require('packer').startup(function(use)
 
     ----LSP
     use('neovim/nvim-lspconfig') --lsp configuration
+    use('williamboman/nvim-lsp-installer') --lspinstaller
     use('hrsh7th/cmp-nvim-lsp') --dependency for nvim-cmp
     use("hrsh7th/cmp-buffer")
     use('hrsh7th/nvim-cmp') --autocompletion
@@ -80,7 +79,6 @@ return require('packer').startup(function(use)
 
     use('L3MON4D3/LuaSnip') --lua snippets
     use('saadparwaiz1/cmp_luasnip') --luasnip src
-    use('williamboman/nvim-lsp-installer') --lspinstaller
     use {
         "j-hui/fidget.nvim",
         event = "BufReadPre",
