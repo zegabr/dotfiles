@@ -55,8 +55,8 @@ local function project_files()
     if not ok then builtin.find_files() end
 end
 
-nnoremap("<C-p>", function() project_files() end)
-nnoremap("<C-f>", function() builtin.grep_string({
+nnoremap("<leader>p", function() project_files() end)
+nnoremap("<leader>f", function() builtin.grep_string({
         shorten_path = true,
         word_match = "-w",
         only_sort_text = true,
@@ -64,7 +64,7 @@ nnoremap("<C-f>", function() builtin.grep_string({
     })
 end)
 
-nnoremap("<C-b>", function() builtin.buffers() end)
+nnoremap("<leader>b", function() builtin.buffers() end)
 nnoremap("<leader>gb", function() builtin.git_branches() end)
 
 --" git log

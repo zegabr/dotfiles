@@ -16,7 +16,7 @@ local nnoremap = keymap.nnoremap
 local inoremap = keymap.inoremap
 
 -- toggle
-nnoremap("<F5>", ":UndotreeToggle<CR>")
+nnoremap("<leader><leader>u", ":UndotreeToggle<CR>")
 
 --" undo break points
 inoremap(",", ",<c-g>u")
