@@ -69,8 +69,10 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter-context')
 
     ----LSP
+
+    use('williamboman/mason.nvim') --lsp configuration
+    use('williamboman/mason-lspconfig.nvim') --lsp configuration
     use('neovim/nvim-lspconfig') --lsp configuration
-    use('williamboman/nvim-lsp-installer') --lspinstaller
     use('hrsh7th/cmp-nvim-lsp') --dependency for nvim-cmp
     use("hrsh7th/cmp-buffer")
     use('hrsh7th/nvim-cmp') --autocompletion

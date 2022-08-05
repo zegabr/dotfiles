@@ -1,5 +1,3 @@
-local util = require('lspconfig/util')
-
 -- for debugging, uncomment last line, try running the lsp and run :LSPLog
 -- vim.lsp.set_log_level("debug")
 
@@ -44,77 +42,92 @@ local on_attach = function(client, bufnr)
     end
 end
 
--- Configure lua language server for neovim development
-local lua_settings = {
-    Lua = {
-        runtime = {
-            -- LuaJIT in the case of Neovim
-            version = 'LuaJIT',
-            path = vim.split(package.path, ';'),
-        },
-        diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { 'vim' },
-        },
-        -- workspace = {
-        --     -- Make the server aware of Neovim runtime files
-        --     library = vim.api.nvim_get_runtime_file("", true),
-        -- },
-        telemetry = {
-            enable = false,
-        }
-    }
-}
-
--- go setup variables
-local go_settings = {
-    gopls = {
-        analyses = {
-            unusedparams = true,
-        },
-    },
-    staticcheck = true,
-}
-
--- config that activates keymaps and enables snippet support
-local function make_config()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    return {
-        -- enable snippet support
-        capabilities = capabilities,
-        -- map buffer local keybindings when the language server attaches
-        on_attach = on_attach,
-    }
-end
 
 -- lsp installer
-local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require('lspconfig')
-lsp_installer.setup({})
 
-for _, server in ipairs(lsp_installer.get_installed_servers()) do
-    local config = make_config()
-    local server_name = server.name
+local mason = require("mason")
+mason.setup()
 
-    -- language specific config (server == "<name passed on lspinstall call>")
-    if server_name == "sumneko_lua" then
-        config.settings = lua_settings
-    end
-    if server_name == "jdtls" then
-        config.root_dir = util.root_pattern(".git", "pom.xml", "build.xml", "settings.gradle");
-    end
-    if server_name == "clangd" then
-        config.root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile");
-        config.filetypes = { "c", "cpp", "h", "hpp" };  -- we don't want objective-c and objective-cpp!?
-        config.cmd = { "/home/ze/.local/share/nvim/lsp_servers/clangd/clangd", "--background-index",
-            "--suggest-missing-includes", "--clang-tidy" };
-        config.single_file_support = true;
-    end
-    if server_name == "gopls" then
-        config.cmd = { "gopls", "serve" };
-        config.settings = go_settings;
-    end
+local mason_lspconfig = require("mason-lspconfig")
+mason_lspconfig.setup({
+    ensure_installed = {
+        "sumneko_lua",
+    },
+    automatic_installation = true,
+})
 
-    lspconfig[server_name].setup(config)
-end
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true -- enables snippet support
+
+local util = require('lspconfig/util')
+require("mason-lspconfig").setup_handlers({
+
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    function(server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup {}
+    end,
+
+    -- Next, you can provide targeted overrides for specific servers.
+    ["sumneko_lua"] = function()
+        lspconfig.sumneko_lua.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+                Lua = {
+                    runtime = {
+                        -- LuaJIT in the case of Neovim
+                        version = 'LuaJIT',
+                        path = vim.split(package.path, ';'),
+                    },
+                    diagnostics = {
+                        -- Get the language server to recognize the `vim` global
+                        globals = { 'vim' },
+                    },
+                    -- workspace = {
+                    --     -- Make the server aware of Neovim runtime files
+                    --     library = vim.api.nvim_get_runtime_file("", true),
+                    -- },
+                    telemetry = {
+                        enable = false,
+                    }
+                }
+            }
+        }
+    end,
+    ["gopls"] = function()
+        lspconfig.gopls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            cmd = { "gopls", "serve" },
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                },
+                staticcheck = true,
+            }
+        }
+    end,
+    ["jdtls"] = function()
+        lspconfig.jdtls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            root_dir = util.root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
+        }
+    end,
+    ["clangd"] = function()
+        lspconfig.clangd.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile"),
+            filetypes = { "c", "cpp", "h", "hpp" }, -- we don't want objective-c and objective-cpp!?
+            cmd = { "/home/ze/.local/share/nvim/lsp_servers/clangd/clangd", "--background-index",
+                "--suggest-missing-includes", "--clang-tidy" },
+            single_file_support = true,
+        }
+    end,
+})
