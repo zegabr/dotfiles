@@ -69,7 +69,6 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter-context')
 
     ----LSP
-
     use('williamboman/mason.nvim') --lsp configuration
     use('williamboman/mason-lspconfig.nvim') --lsp configuration
     use('neovim/nvim-lspconfig') --lsp configuration

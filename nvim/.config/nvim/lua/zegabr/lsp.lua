@@ -42,8 +42,7 @@ local on_attach = function(client, bufnr)
     end
 end
 
-
--- lsp installer
+-- lspconfig + mason
 local lspconfig = require('lspconfig')
 
 local mason = require("mason")
@@ -125,7 +124,8 @@ require("mason-lspconfig").setup_handlers({
             on_attach = on_attach,
             root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile"),
             filetypes = { "c", "cpp", "h", "hpp" }, -- we don't want objective-c and objective-cpp!?
-            cmd = { "/home/ze/.local/share/nvim/lsp_servers/clangd/clangd", "--background-index",
+            -- if does not work, use find . | grep clangd and do export PATH=$PATH:<clangd executable>
+            cmd = { "/home/ze/dotfiles/bin/.local/share/nvim/mason/packages/clangd/clangd/bin/clangd", "--background-index",
                 "--suggest-missing-includes", "--clang-tidy" },
             single_file_support = true,
         }
