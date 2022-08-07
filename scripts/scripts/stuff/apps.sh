@@ -15,7 +15,6 @@ sudo rm -rf $(which npm)
 # https://www.freecodecamp.org/news/how-to-install-node-js-on-ubuntu-and-update-npm-to-the-latest-version/
 # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | zsh
-nvm install 18
 nvm install --latest-npm
 npm i -g yarn
 nvm ls
