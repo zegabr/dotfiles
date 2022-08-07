@@ -3,22 +3,22 @@
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local bufopts = { noremap = true, silent = true, buffer = 0 }
-vim.keymap.set('n', 'gd', "<cmd>Telescope lsp_definitions<CR>", bufopts)
-vim.keymap.set('n', 'gr', "<cmd>Telescope lsp_references<CR>", bufopts)
-vim.keymap.set('n', 'gt', "<cmd>Telescope lsp_type_definitions<CR>", bufopts)
-vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, bufopts)
-vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+local bufopts = { noremap = true, silent = true }
+vim.keymap.set('n', 'gd', "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
+vim.keymap.set('n', 'gr', "<cmd>lua vim.lsp.buf.references()<CR>", bufopts)
+vim.keymap.set('n', 'gt', "<cmd>lua vim.lsp.buf.type_definitions()<CR>", bufopts)
+vim.keymap.set('n', '<leader>Q', "<cmd>lua vim.diagnostic.setloclist()<CR>", bufopts)
+vim.keymap.set('n', 'gi', "<cmd>lua vim.lsp.buf.implementation()<CR>", bufopts)
 
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+vim.keymap.set('n', 'K', "<cmd>lua vim.lsp.buf.hover()<CR>", bufopts)
+vim.keymap.set('n', '<C-k>', "<cmd>lua vim.lsp.buf.signature_help()<CR>", bufopts)
 
-vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, bufopts)
-vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, bufopts)
-vim.keymap.set('n', '<leader>A', vim.lsp.buf.code_action, bufopts)
+vim.keymap.set('n', '<leader>R', "<cmd>lua vim.lsp.buf.rename()<CR>", bufopts)
+vim.keymap.set('n', '<leader>F', "<cmd>lua vim.lsp.buf.format()<CR>", bufopts)
+vim.keymap.set('n', '<leader>A', "<cmd>lua vim.lsp.buf.code_action()<CR>", bufopts)
 
-vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, bufopts)
-vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
+vim.keymap.set('n', '<leader>d', "<cmd>lua vim.diagnostic.goto_next()<CR>", bufopts)
+vim.keymap.set('n', '<leader>D', "<cmd>lua vim.diagnostic.open_float()<CR>", bufopts)
 vim.keymap.set('n', '<leader>dl', "<cmd>Telescope diagnostics<cr>", bufopts)
 
 -- Use an on_attach function to only map the following keys
@@ -41,12 +41,8 @@ end
 
 -- lspconfig + mason
 local lspconfig = require('lspconfig')
-
-local mason = require("mason")
-mason.setup()
-
-local mason_lspconfig = require("mason-lspconfig")
-mason_lspconfig.setup({
+require("mason").setup()
+require("mason-lspconfig").setup({
     ensure_installed = {
         "sumneko_lua",
     },
@@ -56,7 +52,6 @@ mason_lspconfig.setup({
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true -- enables snippet support
 
-local util = require('lspconfig/util')
 require("mason-lspconfig").setup_handlers({
 
     -- The first entry (without a key) will be the default handler
@@ -116,7 +111,7 @@ require("mason-lspconfig").setup_handlers({
     --     lspconfig.jdtls.setup {
     --         capabilities = capabilities,
     --         on_attach = on_attach,
-    --         root_dir = util.root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
+    --         root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
     --     }
     -- end,
     --------------------------
