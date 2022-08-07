@@ -3,32 +3,29 @@
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local bufopts = { noremap = true, silent = true, buffer = 0 }
+vim.keymap.set('n', 'gd', "<cmd>Telescope lsp_definitions<CR>", bufopts)
+vim.keymap.set('n', 'gr', "<cmd>Telescope lsp_references<CR>", bufopts)
+vim.keymap.set('n', 'gt', "<cmd>Telescope lsp_type_definitions<CR>", bufopts)
+vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, bufopts)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+
+vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, bufopts)
+vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, bufopts)
+vim.keymap.set('n', '<leader>A', vim.lsp.buf.code_action, bufopts)
+
+vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, bufopts)
+vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
+vim.keymap.set('n', '<leader>dl', "<cmd>Telescope diagnostics<cr>", bufopts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local bufopts = { noremap = true, silent = true, buffer = 0 }
-    vim.keymap.set('n', 'gd', "<cmd>Telescope lsp_definitions<CR>", bufopts)
-    vim.keymap.set('n', 'gr', "<cmd>Telescope lsp_references<CR>", bufopts)
-    vim.keymap.set('n', 'gt', "<cmd>Telescope lsp_type_definitions<CR>", bufopts)
-    vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-
-    vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, bufopts)
-    vim.keymap.set('n', '<leader>A', vim.lsp.buf.code_action, bufopts)
-
-    vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
-    vim.keymap.set('n', '<leader>dl', "<cmd>Telescope diagnostics<cr>", bufopts)
 
     -- Set autocommands conditional on server_capabilities
     if client.server_capabilities.documentHighlightProvider then
@@ -96,38 +93,44 @@ require("mason-lspconfig").setup_handlers({
             }
         }
     end,
-    ["gopls"] = function()
-        lspconfig.gopls.setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            cmd = { "gopls", "serve" },
-            settings = {
-                gopls = {
-                    analyses = {
-                        unusedparams = true,
-                    },
-                },
-                staticcheck = true,
-            }
-        }
-    end,
-    ["jdtls"] = function()
-        lspconfig.jdtls.setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            root_dir = util.root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
-        }
-    end,
-    ["clangd"] = function()
-        lspconfig.clangd.setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile"),
-            filetypes = { "c", "cpp", "h", "hpp" }, -- we don't want objective-c and objective-cpp!?
-            -- if does not work, use find . | grep clangd and do export PATH=$PATH:<clangd executable>
-            cmd = { "/home/ze/dotfiles/bin/.local/share/nvim/mason/packages/clangd/clangd/bin/clangd", "--background-index",
-                "--suggest-missing-includes", "--clang-tidy" },
-            single_file_support = true,
-        }
-    end,
+
+    -- uncomment below if needed
+    -------------------------
+    -- ["gopls"] = function()
+    --     lspconfig.gopls.setup {
+    --         capabilities = capabilities,
+    --         on_attach = on_attach,
+    --         cmd = { "gopls", "serve" },
+    --         settings = {
+    --             gopls = {
+    --                 analyses = {
+    --                     unusedparams = true,
+    --                 },
+    --             },
+    --             staticcheck = true,
+    --         }
+    --     }
+    -- end,
+    ---------------------
+    -- ["jdtls"] = function()
+    --     lspconfig.jdtls.setup {
+    --         capabilities = capabilities,
+    --         on_attach = on_attach,
+    --         root_dir = util.root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
+    --     }
+    -- end,
+    --------------------------
+    -- ["clangd"] = function()
+    --     lspconfig.clangd.setup {
+    --         capabilities = capabilities,
+    --         on_attach = on_attach,
+    --         root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile"),
+    --         filetypes = { "c", "cpp", "h", "hpp" }, -- we don't want objective-c and objective-cpp!?
+    --         -- if does not work, use find . | grep clangd and do export PATH=$PATH:<clangd executable>
+    --         cmd = { "clangd",
+    --             "--background-index",
+    --             "--suggest-missing-includes", "--clang-tidy" },
+    --         single_file_support = true,
+    --     }
+    -- end,
 })
