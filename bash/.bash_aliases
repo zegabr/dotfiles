@@ -2,6 +2,7 @@
 alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y && sudo apt --fix-broken install -y'
 alias lag='alias | grep'
 alias v='nvim'
+export EDITOR=nvim
 alias vs='nvim -S'
 alias t='tmux attach -t base || tmux new -s base'
 alias bro='browse'
@@ -9,14 +10,12 @@ alias sudolast='sudo !!'
 
 #-----------------------files
 alias eb='v ~/.bashrc'
-alias ez='v ~/.zshrc'
 alias dot='cd ~/dotfiles'
 alias ev='dot && v ~/.config/nvim/init.lua'
 alias ea='v ~/.bash_aliases'
 alias ew='v ~/.bash_aliases_work'
 alias et='v ~/.tmux.conf'
 
-alias sz='source ~/.zshrc'
 alias sa='source ~/.bash_aliases'
 alias sw='source ~/.bash_aliases_work'
 alias st='tmux source-file ~/.tmux.conf'
@@ -29,29 +28,37 @@ function note(){
 }
 
 function swap-java(){
-sudo update-alternatives --config java
-sudo update-alternatives --config javac
+    sudo update-alternatives --config java
+    sudo update-alternatives --config javac
 }
 
-#--------------------containers
-alias dps='docker ps'
-alias dpsa='docker ps -a'
-#stop all
-alias dsa='docker stop $(docker ps -a -q)'
-#remove all
-alias drma='docker rm $(docker ps -a -q)'
-#logs
-alias dlf='docker logs -f'
-alias dl='docker logs'
+function activate_docker_aliases(){
+    #--------------------containers
+    alias dps='docker ps'
+    alias dpsa='docker ps -a'
+    #stop all
+    alias dsa='docker stop $(docker ps -a -q)'
+    #remove all
+    alias drma='docker rm $(docker ps -a -q)'
+    #logs
+    alias dlf='docker logs -f'
+    alias dl='docker logs'
 
-alias gw='./gradlew' # lê-se: GRADILEU
+    alias gw='./gradlew' # lê-se: GRADILEU
 
-# -----------------global python
-alias py='python3'
+    # -----------------global python
+    alias py='python3'
+}
 
 #--------------------git utilities
-alias gs='git status'
-alias guncommit='git reset HEAD~1 --soft'
+function activate_git_aliases(){
+    alias gs='git status'
+    alias guncommit='git reset HEAD~1 --soft'
+    alias gaa='git add .'
+    alias gc='git commit'
+    alias gp='git push'
+    alias gl='git pull'
+}
 
 # clone github repo via ssh
 function gclssh(){
@@ -71,7 +78,6 @@ function gconfiglocal(){
     git config user.name $1
     git config user.email $2
 }
-alias gconfiglocal-zegabr='gconfiglocal zegabr jgsp2@cin.ufpe.br'
 
 # clone github repo via https
 function gclhttps(){
@@ -117,11 +123,13 @@ function gclhttps(){
         #}
 
 ##COMPETITIVE/C++
-alias m='make && make t'
-alias c='g++ -std=c++17 -O2 -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
-alias tc='time g++ -std=c++17 -O2'
-alias cw='g++ -std=c++17 -O2 -Wfatal-errors'
-alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
+function activate_competitive_aliases() {
+    alias m='make && make t'
+    alias c='g++ -std=c++17 -O2 -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
+    alias tc='time g++ -std=c++17 -O2'
+    alias cw='g++ -std=c++17 -O2 -Wfatal-errors'
+    alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
+}
 
 ## FZF
 export FZF_DEFAULT_OPTS="--reverse --inline-info"
@@ -152,3 +160,25 @@ for (colnum = 0; colnum<term_cols; colnum++) {
     printf "\n";
 }'
 }
+
+extract () {
+    echo # TODO: add zsh extract here
+}
+
+
+if [ -f ~/.bash_aliases_work ]; then
+    . ~/.bash_aliases_work
+fi
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias luamake=/home/ze/Downloads/lua-language-server/3rd/luamake/luamake
+
+# TODO: find how to bind ctrl+key
+# bindkey -s ^f ". ~/.local/tmux-sessionizer.sh\n"
+# bindkey -s ^z "fg\n" # go back to background process
+
+[[ $TMUX != "" ]] && export TERM="screen-256color"

@@ -3,7 +3,7 @@
 my dotfiles manager
 
 ## What it has?
-- neovim (as an fully featured IDE) + zsh + tmux
+- neovim (as an fully featured IDE) + zsh + tmux (trying to migrate to be full regular bash, no zsh (its probably possible))
 
 ## if you want an adventure, here is how to use it
 - look at this [readme](https://github.com/zegabr/dotfiles/blob/main/scripts/scripts/README.md) to see what scripts do you want to run first
