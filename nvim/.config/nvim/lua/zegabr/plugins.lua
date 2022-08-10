@@ -17,9 +17,8 @@ return require('packer').startup(function(use)
     use("AckslD/nvim-neoclip.lua")
     use("ThePrimeagen/refactoring.nvim")
 
-    ----Git integration
-    use('tpope/vim-fugitive')
-    use('airblade/vim-gitgutter')
+    ----VCS integration
+    use('mhinz/vim-signify')
 
     ----Comments
     use('tpope/vim-commentary') -- gcc gcgc visual gc

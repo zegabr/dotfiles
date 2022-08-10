@@ -238,16 +238,6 @@ _G.packer_plugins = {
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-easymotion",
     url = "https://github.com/easymotion/vim-easymotion"
   },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-gitgutter"] = {
-    loaded = true,
-    path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
-    url = "https://github.com/airblade/vim-gitgutter"
-  },
   ["vim-move"] = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-move",
@@ -257,6 +247,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-obsession",
     url = "https://github.com/tpope/vim-obsession"
+  },
+  ["vim-signify"] = {
+    loaded = true,
+    path = "/home/ze/.local/share/nvim/site/pack/packer/start/vim-signify",
+    url = "https://github.com/mhinz/vim-signify"
   },
   ["vim-surround"] = {
     loaded = true,

@@ -1,12 +1,11 @@
 #LINUX
+export EDITOR=nvim
 alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y && sudo apt --fix-broken install -y'
 alias lag='alias | grep'
 alias v='nvim'
-export EDITOR=nvim
 alias vs='nvim -S'
 alias t='tmux attach -t base || tmux new -s base'
 alias bro='browse'
-alias sudolast='sudo !!'
 
 #-----------------------files
 alias eb='v ~/.bashrc'
@@ -73,7 +72,7 @@ git clone --recurse-submodules git@github.com-$1:$2.git
 }
 
 # config local user and email
-# ex: $ gconfiglocal zegabr jgsp2@cin.ufpe.br
+# ex: $ gconfiglocal <user> <email>
 function gconfiglocal(){
     git config user.name $1
     git config user.email $2
@@ -165,17 +164,13 @@ extract () {
     echo # TODO: add zsh extract here
 }
 
-
 if [ -f ~/.bash_aliases_work ]; then
     . ~/.bash_aliases_work
 fi
 
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-alias luamake=/home/ze/Downloads/lua-language-server/3rd/luamake/luamake
 
 # TODO: find how to bind ctrl+key
 # bindkey -s ^f ". ~/.local/tmux-sessionizer.sh\n"
