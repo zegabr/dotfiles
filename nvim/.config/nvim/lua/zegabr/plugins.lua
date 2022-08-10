@@ -33,7 +33,6 @@ return require('packer').startup(function(use)
     use('ntpeters/vim-better-whitespace') --trim whitespace with :StripWhiteSpace
     use('bronson/vim-visual-star-search')
     use('matze/vim-move') --alt j/k moves selected lines normal and visual mode
-
     use('easymotion/vim-easymotion', -- s{char} or S{char}{char}
         {
             vim.cmd [[
@@ -86,9 +85,6 @@ return require('packer').startup(function(use)
             require("fidget").setup {}
         end,
     }
-    ----nvim tree
-    use('kyazdani42/nvim-web-devicons') --for file icons
-    use('kyazdani42/nvim-tree.lua')
 
     -- my first plugin
     use('zegabr/kokusen')
