@@ -18,6 +18,8 @@ alias et='v ~/.tmux.conf'
 alias sa='source ~/.bash_aliases'
 alias sw='source ~/.bash_aliases_work'
 alias st='tmux source-file ~/.tmux.conf'
+# -----------------global python
+alias py='python3'
 
 #Open current day note file
 function note(){
@@ -31,33 +33,13 @@ function swap-java(){
     sudo update-alternatives --config javac
 }
 
-function activate_docker_aliases(){
-    #--------------------containers
-    alias dps='docker ps'
-    alias dpsa='docker ps -a'
-    #stop all
-    alias dsa='docker stop $(docker ps -a -q)'
-    #remove all
-    alias drma='docker rm $(docker ps -a -q)'
-    #logs
-    alias dlf='docker logs -f'
-    alias dl='docker logs'
-
-    alias gw='./gradlew' # lê-se: GRADILEU
-
-    # -----------------global python
-    alias py='python3'
-}
-
 #--------------------git utilities
-function activate_git_aliases(){
-    alias gs='git status'
-    alias guncommit='git reset HEAD~1 --soft'
-    alias gaa='git add .'
-    alias gc='git commit'
-    alias gp='git push'
-    alias gl='git pull'
-}
+alias gs='git status'
+alias guncommit='git reset HEAD~1 --soft'
+alias gaa='git add .'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git pull'
 
 # clone github repo via ssh
 function gclssh(){
@@ -122,13 +104,11 @@ function gclhttps(){
         #}
 
 ##COMPETITIVE/C++
-function activate_competitive_aliases() {
-    alias m='make && make t'
-    alias c='g++ -std=c++17 -O2 -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
-    alias tc='time g++ -std=c++17 -O2'
-    alias cw='g++ -std=c++17 -O2 -Wfatal-errors'
-    alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
-}
+alias m='make && make t'
+alias c='g++ -std=c++17 -O2 -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
+alias tc='time g++ -std=c++17 -O2'
+alias cw='g++ -std=c++17 -O2 -Wfatal-errors'
+alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
 
 ## FZF
 export FZF_DEFAULT_OPTS="--reverse --inline-info"
@@ -160,10 +140,6 @@ for (colnum = 0; colnum<term_cols; colnum++) {
 }'
 }
 
-extract () {
-    echo # TODO: add zsh extract here
-}
-
 if [ -f ~/.bash_aliases_work ]; then
     . ~/.bash_aliases_work
 fi
@@ -177,3 +153,4 @@ export NVM_DIR="$HOME/.nvm"
 # bindkey -s ^z "fg\n" # go back to background process
 
 [[ $TMUX != "" ]] && export TERM="screen-256color"
+
