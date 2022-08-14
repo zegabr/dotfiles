@@ -50,7 +50,6 @@ alias gcan!='git commit -v -a --no-edit -amend'
 alias gp='git push'
 alias gl='git pull'
 alias glo='git log --oneline --decorate'
-alias glola='git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all'
 alias grb='git rebase'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
@@ -161,13 +160,31 @@ if [ -f ~/.bash_aliases_work ]; then
     . ~/.bash_aliases_work
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# TODO: find how to bind ctrl+key
-# bindkey -s ^f ". ~/.local/tmux-sessionizer.sh\n"
+# bind ^f tmux-sessionizer
+bind '"\C-f":". ~/.local/tmux-sessionizer.sh\n"'
+bind '"\C-b":"fg\n"'
 # bindkey -s ^z "fg\n" # go back to background process
 
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 
+function extract(){
+    # Bash Function To Extract File Archives Of Various Types
+     if [ -f $1 ] ; then
+         case $1 in
+             *.tar.bz2)   tar xjf $1     ;;
+             *.tar.gz)    tar xzf $1     ;;
+             *.bz2)       bunzip2 $1     ;;
+             *.rar)       rar x $1       ;;
+             *.gz)        gunzip $1      ;;
+             *.tar)       tar xf $1      ;;
+             *.tbz2)      tar xjf $1     ;;
+             *.tgz)       tar xzf $1     ;;
+             *.zip)       unzip $1       ;;
+             *.Z)         uncompress $1  ;;
+             *.7z)        7z x $1    ;;
+             *)           echo "'$1' cannot be extracted via extract()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
