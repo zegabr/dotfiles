@@ -29,6 +29,7 @@ bat \
 fzf \
 stow \
 tmux \
+htop \
 fd-find \
 python3-pip \
 -y
