@@ -36,10 +36,27 @@ function swap-java(){
 #--------------------git utilities
 alias gs='git status'
 alias guncommit='git reset HEAD~1 --soft'
+alias ga='git add'
 alias gaa='git add .'
-alias gc='git commit'
+alias gb='git branch'
+alias gcb='git checkout -b'
+alias gco='git checkout'
+alias gd='git diff'
+alias gbd='git branch -d'
+alias gbD='git branch -D'
+alias gc='git commit -v'
+alias gc!='git commit -v --amend'
+alias gcan!='git commit -v -a --no-edit -amend'
 alias gp='git push'
 alias gl='git pull'
+alias glo='git log --oneline --decorate'
+alias glola='git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all'
+alias grb='git rebase'
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+alias grbi='git rebase -i'
+alias gsta='git stash push'
+alias gstp='git stash pop'
 
 # clone github repo via ssh
 function gclssh(){
