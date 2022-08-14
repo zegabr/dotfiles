@@ -163,7 +163,8 @@ fi
 # bind ^f tmux-sessionizer
 bind '"\C-f":". ~/.local/tmux-sessionizer.sh\n"'
 bind '"\C-b":"fg\n"'
-# bindkey -s ^z "fg\n" # go back to background process
+bind 'TAB:menu-complete'
+bind 'set show-all-if-ambiguous on'
 
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 
