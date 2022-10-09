@@ -22,6 +22,8 @@ set.tabstop = 4
 set.expandtab = true
 set.autoindent = true
 set.hlsearch = false
+set.ch = 0
+set.winbar:append("%f")
 
 -- Ignore files
 set.wildignore = {

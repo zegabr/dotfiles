@@ -45,9 +45,6 @@ nnoremap("<Leader><CR>", "<cmd>luafile %<cr>")
 
 nnoremap("Q", "<nop>")
 
--- fix problem where you go to a commented line and use new line command
-nnoremap("O", "O<esc>cc")
-nnoremap("o", "o<esc>cc")
 --" better tabbing
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")

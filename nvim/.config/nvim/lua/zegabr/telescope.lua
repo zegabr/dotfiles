@@ -64,7 +64,7 @@ nnoremap("<leader>f", function() builtin.grep_string({
     })
 end)
 
-nnoremap("<leader>bu", function() builtin.buffers() end)
+nnoremap("<leader>b", function() builtin.buffers() end)
 nnoremap("<leader>gb", function() builtin.git_branches() end)
 
 --" git log

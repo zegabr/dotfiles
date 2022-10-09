@@ -31,17 +31,7 @@ return require('packer').startup(function(use)
     ----Utilities
     use('mbbill/undotree')
     use('ntpeters/vim-better-whitespace') --trim whitespace with :StripWhiteSpace
-    use('bronson/vim-visual-star-search')
     use('matze/vim-move') --alt j/k moves selected lines normal and visual mode
-    use('easymotion/vim-easymotion', -- s{char} or S{char}{char}
-        {
-            vim.cmd [[
-                let g:EasyMotion_do_mapping = 0
-                let g:EasyMotion_smartcase = 1
-                nmap S <Plug>(easymotion-s2)
-                nmap s <Plug>(easymotion-s)
-            ]]
-        })
 
     use('tpope/vim-obsession') --vim store session
     use {
