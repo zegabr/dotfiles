@@ -11,3 +11,6 @@ my dotfiles manager
   - open nvim 1 to 3 times to have the plugins installed automatically 
     - nice tip: since I use [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer), you can manage (list/install/uninstall) language servers by running `:LspInstallInfo` inside neovim
 - look around [my neovim files](https://github.com/zegabr/dotfiles/tree/main/nvim/.config/nvim) to see how I setup my remaps (maybe one day I will document here how the workflow with these configurations should look like)
+
+## TODO:
+- try to build a minimal vimrc to use with big tech internal vscode
