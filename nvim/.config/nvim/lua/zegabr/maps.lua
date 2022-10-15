@@ -44,6 +44,7 @@ nnoremap("<Leader><CR>", "<cmd>luafile %<cr>")
 --" ============SETS (and passive mappings)============
 
 nnoremap("Q", "<nop>")
+nnoremap("<leader>v", "<C-v>")
 
 --" better tabbing
 vnoremap("<", "<gv")
@@ -51,7 +52,7 @@ vnoremap(">", ">gv")
 
 vim.cmd([[
 set clipboard=unnamedplus
-autocmd! CursorHold * update
+"autocmd! CursorHold * update
 " wrap text when in a txt file
 autocmd! VimEnter *.txt set wrap
 ]])
