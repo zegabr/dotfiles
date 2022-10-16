@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader>Q', "<cmd>lua vim.diagnostic.setloclist()<CR>", buf
 vim.keymap.set('n', 'gi', "<cmd>lua vim.lsp.buf.implementation()<CR>", bufopts)
 
 vim.keymap.set('n', 'K', "<cmd>lua vim.lsp.buf.hover()<CR>", bufopts)
-vim.keymap.set('n', '<C-k>', "<cmd>lua vim.lsp.buf.signature_help()<CR>", bufopts)
+vim.keymap.set('i', '<C-k>', "<cmd>lua vim.lsp.buf.signature_help()<CR>", bufopts)
 
 vim.keymap.set('n', '<leader>R', "<cmd>lua vim.lsp.buf.rename()<CR>", bufopts)
 vim.keymap.set('n', '<leader>F', "<cmd>lua vim.lsp.buf.format()<CR>", bufopts)
