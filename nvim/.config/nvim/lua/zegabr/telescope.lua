@@ -55,8 +55,8 @@ local function project_files()
     if not ok then builtin.find_files() end
 end
 
-nnoremap("<leader>p", function() project_files() end)
-nnoremap("<leader>f", function() builtin.grep_string({
+nnoremap("<leader><leader>p", function() project_files() end)
+nnoremap("<leader><leader>f", function() builtin.grep_string({
         shorten_path = true,
         word_match = "-w",
         only_sort_text = true,

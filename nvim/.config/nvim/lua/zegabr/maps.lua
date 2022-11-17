@@ -14,6 +14,7 @@ vim.g.mapleader = " "
 --"leader+a select all file, y and p uses system clipboard
 nnoremap("<leader>a", "GVgg")
 nnoremap("Y", "y$")
+xnoremap("<leader>p", "\"_dp")
 
 --"esc with jk
 inoremap("jk", "<ESC>")
