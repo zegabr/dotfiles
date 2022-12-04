@@ -30,6 +30,7 @@ fzf \
 stow \
 tmux \
 htop \
+screenfetch \
 fd-find \
 python3-pip \
 -y
