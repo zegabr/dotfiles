@@ -53,7 +53,10 @@ vnoremap(">", ">gv")
 
 vim.cmd([[
 set clipboard=unnamedplus
-autocmd! CursorHold * update
+augroup AUTOSAVE
+  au!
+  autocmd! InsertLeave,TextChanged,FocusLost * silent! write
+augroup END
 " wrap text when in a txt file
 autocmd! VimEnter *.txt set wrap
 ]])
