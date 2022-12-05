@@ -131,7 +131,7 @@ require("mason-lspconfig").setup_handlers({
     --------------------------
     ["rust_analyzer"] = function ()
        lspconfig.rust_analyzer.setup {
-            cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+            cmd = { "rustup", "run", "stable", "rust-analyzer" },
             settings = {
                 rust = {
                     unstable_features = true,
