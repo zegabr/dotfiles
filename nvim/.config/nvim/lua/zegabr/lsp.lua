@@ -91,41 +91,54 @@ require("mason-lspconfig").setup_handlers({
 
     -- uncomment below if needed
     -------------------------
-    -- ["gopls"] = function()
-    --     lspconfig.gopls.setup {
-    --         capabilities = capabilities,
-    --         on_attach = on_attach,
-    --         cmd = { "gopls", "serve" },
-    --         settings = {
-    --             gopls = {
-    --                 analyses = {
-    --                     unusedparams = true,
-    --                 },
-    --             },
-    --             staticcheck = true,
-    --         }
-    --     }
-    -- end,
+    ["gopls"] = function()
+        lspconfig.gopls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            cmd = { "gopls", "serve" },
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                },
+                staticcheck = true,
+            }
+        }
+    end,
     ---------------------
-    -- ["jdtls"] = function()
-    --     lspconfig.jdtls.setup {
-    --         capabilities = capabilities,
-    --         on_attach = on_attach,
-    --         root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
-    --     }
-    -- end,
+    ["jdtls"] = function()
+        lspconfig.jdtls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
+        }
+    end,
     --------------------------
-    -- ["clangd"] = function()
-    --     lspconfig.clangd.setup {
-    --         capabilities = capabilities,
-    --         on_attach = on_attach,
-    --         root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile"),
-    --         filetypes = { "c", "cpp", "h", "hpp" }, -- we don't want objective-c and objective-cpp!?
-    --         -- if does not work, use find . | grep clangd and do export PATH=$PATH:<clangd executable>
-    --         cmd = { "clangd",
-    --             "--background-index",
-    --             "--suggest-missing-includes", "--clang-tidy" },
-    --         single_file_support = true,
-    --     }
-    -- end,
+    ["clangd"] = function()
+        lspconfig.clangd.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            root_dir = require('lspconfig/util').root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile", "makefile"),
+            filetypes = { "c", "cpp", "h", "hpp" }, -- we don't want objective-c and objective-cpp!?
+            -- if does not work, use find . | grep clangd and do export PATH=$PATH:<clangd executable>
+            cmd = { "clangd",
+                "--background-index",
+                "--suggest-missing-includes", "--clang-tidy" },
+            single_file_support = true,
+        }
+    end,
+    --------------------------
+    ["rust_analyzer"] = function ()
+       lspconfig.rust_analyzer.setup {
+            cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+            settings = {
+                rust = {
+                    unstable_features = true,
+                    build_on_save = false,
+                    all_features = true,
+                },
+            }
+        }
+    end,
 })
