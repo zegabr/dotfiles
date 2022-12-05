@@ -19,6 +19,11 @@ nvm install --latest-npm
 npm i -g yarn
 nvm ls
 
+# rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustc --version
+rustup component add rust-docs
+
 sudo apt install \
 tree \
 git \
