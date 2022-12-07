@@ -55,10 +55,11 @@ vim.cmd([[
 set clipboard=unnamedplus
 augroup AUTOSAVE
   au!
-  autocmd! InsertLeave,TextChanged,FocusLost * silent! write
+  autocmd! InsertLeave,TextChanged,FocusLost * silent! update
 augroup END
 " wrap text when in a txt file
 autocmd! VimEnter *.txt set wrap
 ]])
+nnoremap("<leader>w", ":w<CR>")
 
 nnoremap("<leader><leader>t", "<Plug>PlenaryTestFile")
