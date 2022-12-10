@@ -21,3 +21,4 @@ echo
 stow -D --verbose=2 bin
 stow --verbose=2 -t ~/ bin
 sudo chmod -x ~/.local/tmux-sessionizer.sh
+sudo chmod -x ~/.local/openai.sh

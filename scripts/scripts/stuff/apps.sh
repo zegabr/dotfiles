@@ -30,6 +30,7 @@ git \
 build-essential \
 wget \
 curl \
+jq \
 bat \
 fzf \
 stow \

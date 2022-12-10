@@ -139,6 +139,8 @@ cdf() {
 
 # cheat.sh
 alias how='cht.sh'
+# openai
+alias openai='bash ~/.local/openai.sh'
 
 check-truecolor() {
 awk -v term_cols="${width:-$(tput cols || echo 80)}" 'BEGIN{
