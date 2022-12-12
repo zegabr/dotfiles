@@ -69,6 +69,9 @@ return require('packer').startup(function(use)
     use('L3MON4D3/LuaSnip') --lua snippets
     use('saadparwaiz1/cmp_luasnip') --luasnip src
 
+    use('github/copilot.vim')
+
+
     -- my first plugin
     use('zegabr/kokusen')
 
