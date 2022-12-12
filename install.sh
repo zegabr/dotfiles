@@ -1,24 +1,14 @@
-stow -D --verbose=1 scripts
-stow --verbose=2 -t ~/ scripts
+# define a list of directories to be stowed
+directories=(scripts nvim bash tmux bin)
 
-echo "===="
-echo
-stow -D --verbose=2 nvim
-stow --verbose=2 -t ~/ nvim
+# iterate over the list of directories
+for dir in ${directories[@]}
+do
+  # un-stow the directory
+  stow -D --verbose=2 $dir
+  # stow the directory in the home directory
+  stow --verbose=2 -t ~ $dir
+done
 
-echo "===="
-echo
-stow -D --verbose=2 bash
-stow --verbose=2 -t ~/ bash
-
-echo "===="
-echo
-stow -D --verbose=2 tmux
-stow --verbose=2 -t ~/ tmux
-
-echo "===="
-echo
-stow -D --verbose=2 bin
-stow --verbose=2 -t ~/ bin
 sudo chmod -x ~/.local/tmux-sessionizer.sh
 sudo chmod -x ~/.local/openai.sh
