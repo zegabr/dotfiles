@@ -18,6 +18,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | zsh
 nvm install --latest-npm
 npm i -g yarn
 nvm ls
+npm install npm@latest -g
 
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
