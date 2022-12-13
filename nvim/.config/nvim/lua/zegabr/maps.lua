@@ -43,6 +43,11 @@ nnoremap("<C-q>", ":cclose<CR>zz")
 nnoremap("<Leader><CR>", "<cmd>luafile %<cr>")
 
 --" ============SETS (and passive mappings)============
+vim.keymap.set("n", "<C-j>", "<C-d>zz")
+vim.keymap.set("n", "<C-k>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "N", "Nzz")
+
 
 nnoremap("Q", "<nop>")
 nnoremap("<leader>v", "<C-v>")
