@@ -6,7 +6,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 
 vim.opt.background = "dark"
-vim.cmd [[ colorscheme base16-gruvbox-dark-hard ]]
+vim.cmd.colorscheme("base16-gruvbox-dark-hard")
 
 require('lualine').setup({
     options = { theme = 'gruvbox' },
