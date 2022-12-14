@@ -1,6 +1,3 @@
-local keymap = require('zegabr.keymap')
-local nnoremap = keymap.nnoremap
-
 -- vim signify
-nnoremap("[h", "<plug>(signify-prev-hunk)")
-nnoremap("]h", "<plug>(signify-next-hunk)")
+vim.keymap.set("n", "[h", "<plug>(signify-prev-hunk)")
+vim.keymap.set("n", "]h", "<plug>(signify-next-hunk)")

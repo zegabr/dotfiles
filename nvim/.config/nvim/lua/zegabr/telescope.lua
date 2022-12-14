@@ -47,16 +47,14 @@ telescope.setup {
 }
 
 local builtin = require('telescope.builtin')
-local keymap = require('zegabr.keymap')
-local nnoremap = keymap.nnoremap
 
 local function project_files()
     local ok = pcall(builtin.git_files)
     if not ok then builtin.find_files() end
 end
 
-nnoremap("<leader><leader>p", function() project_files() end)
-nnoremap("<leader><leader>f", function() builtin.grep_string({
+vim.keymap.set("n", "<leader><leader>p", function() project_files() end)
+vim.keymap.set("n", "<leader><leader>f", function() builtin.grep_string({
         shorten_path = true,
         word_match = "-w",
         only_sort_text = true,
@@ -64,16 +62,16 @@ nnoremap("<leader><leader>f", function() builtin.grep_string({
     })
 end)
 
-nnoremap("<leader>b", function() builtin.buffers() end)
-nnoremap("<leader>gb", function() builtin.git_branches() end)
+vim.keymap.set("n", "<leader>b", function() builtin.buffers() end)
+vim.keymap.set("n", "<leader>gb", function() builtin.git_branches() end)
 
 --" git log
-nnoremap("<leader>glo", builtin.git_commits)
+vim.keymap.set("n", "<leader>glo", builtin.git_commits)
 
 --" git log in file
-nnoremap("<leader>glof", builtin.git_bcommits)
+vim.keymap.set("n", "<leader>glof", builtin.git_bcommits)
 
 -- fzf through yanks
 require('neoclip').setup()
 telescope.load_extension("neoclip")
-nnoremap("<leader>y", "<cmd>Telescope neoclip a extra=star,plus,b<cr>")
+vim.keymap.set("n", "<leader>y", "<cmd>Telescope neoclip a extra=star,plus,b<cr>")
