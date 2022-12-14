@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/home/ze/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
+  },
   ["fzy-lua-native"] = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/fzy-lua-native",
@@ -124,6 +129,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/kokusen",
     url = "https://github.com/zegabr/kokusen"
+  },
+  ["lsp-zero.nvim"] = {
+    loaded = true,
+    path = "/home/ze/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
+    url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -189,11 +199,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
-  },
-  ["refactoring.nvim"] = {
-    loaded = true,
-    path = "/home/ze/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
-    url = "https://github.com/ThePrimeagen/refactoring.nvim"
   },
   ripgrep = {
     loaded = true,

@@ -10,12 +10,14 @@ return require('packer').startup(function(use)
     use('wbthomason/packer.nvim') -- Package manager
 
     ----Telescope
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
     use("BurntSushi/ripgrep")
-    use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
-    use("nvim-telescope/telescope.nvim")
     use("AckslD/nvim-neoclip.lua")
-    use("ThePrimeagen/refactoring.nvim")
 
     ----VCS integration
     use('mhinz/vim-signify')
@@ -57,20 +59,29 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter-context')
 
     ----LSP
-    use('williamboman/mason.nvim') --lsp configuration
-    use('williamboman/mason-lspconfig.nvim') --lsp configuration
-    use('neovim/nvim-lspconfig') --lsp configuration
-    use('hrsh7th/cmp-nvim-lsp') --dependency for nvim-cmp
-    use("hrsh7th/cmp-buffer")
-    use('hrsh7th/nvim-cmp') --autocompletion
-    use('hrsh7th/cmp-path') --path suggestions
-    use('hrsh7th/cmp-nvim-lua') --lua suggestions
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
-    use('L3MON4D3/LuaSnip') --lua snippets
-    use('saadparwaiz1/cmp_luasnip') --luasnip src
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lua' },
+
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
+        }
+    }
 
     use('github/copilot.vim')
-
 
     -- my first plugin
     use('zegabr/kokusen')
