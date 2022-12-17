@@ -125,4 +125,4 @@ lsp.configure('sumneko_lua', {
 --     }
 -- })
 
-lsp.setup()
+lsp.setup() -- this should be the last thing
