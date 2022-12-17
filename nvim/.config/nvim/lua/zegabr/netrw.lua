@@ -2,7 +2,7 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 1
 vim.g.netrw_winsize = 25
 
-vim.keymap.set("n", "<Leader>e", ":Ex<cr>")
+vim.keymap.set("n", "<Leader>e", vim.cmd.Ex)
 -- TODO: go :h netrw
 -- learn how to use netrw to:
 -- open file: press enter
