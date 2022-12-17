@@ -38,21 +38,21 @@ lsp.setup_nvim_cmp({
 
 lsp.on_attach(function(client, bufnr)
     local bufopts = { buffer = bufnr, noremap = true, silent = true }
-    vim.keymap.set('n', 'gd', "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
-    vim.keymap.set('n', 'gr', "<cmd>lua vim.lsp.buf.references()<CR>", bufopts)
-    vim.keymap.set('n', 'gt', "<cmd>lua vim.lsp.buf.type_definitions()<CR>", bufopts)
-    vim.keymap.set('n', '<leader>Q', "<cmd>lua vim.diagnostic.setloclist()<CR>", bufopts)
-    vim.keymap.set('n', 'gi', "<cmd>lua vim.lsp.buf.implementation()<CR>", bufopts)
+    vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, bufopts)
+    vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, bufopts)
+    vim.keymap.set('n', 'gt', function() vim.lsp.buf.type_definitions() end, bufopts)
+    vim.keymap.set('n', '<leader>Q', function() vim.diagnostic.setloclist() end, bufopts)
+    vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, bufopts)
 
-    vim.keymap.set('n', 'K', "<cmd>lua vim.lsp.buf.hover()<CR>", bufopts)
-    vim.keymap.set('i', '<C-k>', "<cmd>lua vim.lsp.buf.signature_help()<CR>", bufopts)
+    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, bufopts)
+    vim.keymap.set('i', '<C-k>', function() vim.lsp.buf.signature_help() end, bufopts)
 
-    vim.keymap.set('n', '<leader>R', "<cmd>lua vim.lsp.buf.rename()<CR>", bufopts)
-    vim.keymap.set('n', '<leader>F', "<cmd>lua vim.lsp.buf.format()<CR>", bufopts)
-    vim.keymap.set('n', '<leader>A', "<cmd>lua vim.lsp.buf.code_action()<CR>", bufopts)
+    vim.keymap.set('n', '<leader>R', function() vim.lsp.buf.rename() end, bufopts)
+    vim.keymap.set('n', '<leader>F', function() vim.lsp.buf.format() end, bufopts)
+    vim.keymap.set('n', '<leader>A', function() vim.lsp.buf.code_action() end, bufopts)
 
-    vim.keymap.set('n', '<leader>d', "<cmd>lua vim.diagnostic.goto_next()<CR>", bufopts)
-    vim.keymap.set('n', '<leader>D', "<cmd>lua vim.diagnostic.open_float()<CR>", bufopts)
+    vim.keymap.set('n', '<leader>d', function() vim.diagnostic.goto_next() end, bufopts)
+    vim.keymap.set('n', '<leader>D', function() vim.diagnostic.open_float() end, bufopts)
     vim.keymap.set('n', '<leader>dl', "<cmd>Telescope diagnostics<cr>", bufopts)
 end)
 

@@ -12,7 +12,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.undodir"
 vim.opt.undofile = true
 
 -- toggle
-vim.keymap.set("n", "<leader><leader>u", ":UndotreeToggle<CR>")
+vim.keymap.set("n", "<leader><leader>u", vim.cmd.UndotreeToggle)
 
 --" undo break points
 vim.keymap.set("i", ",", ",<c-g>u")
