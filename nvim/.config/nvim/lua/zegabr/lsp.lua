@@ -59,6 +59,7 @@ end)
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true -- enables snippet support
 -- Next, you can provide targeted overrides for specific servers.
+-- use that to configure your big tech language servers
 lsp.configure('sumneko_lua', {
     capabilities = capabilities,
     settings = {
