@@ -36,7 +36,7 @@ lsp.setup_nvim_cmp({
 
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
     local bufopts = { buffer = bufnr, noremap = true, silent = true }
     vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, bufopts)
     vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, bufopts)
