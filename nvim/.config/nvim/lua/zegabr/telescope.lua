@@ -53,24 +53,24 @@ local function project_files()
     if not ok then builtin.find_files() end
 end
 
-vim.keymap.set("n", "<leader><leader>p", project_files)
+vim.keymap.set("n", "<leader><leader>p", project_files, {desc = 'project file search'})
 vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = '[H]elp' })
 vim.keymap.set("n", "<leader><leader>f", function() builtin.grep_string({
         shorten_path = true,
         word_match = "-w",
         only_sort_text = true,
         search = '',
-    })
+    }, {desc = 'project string search'})
 end)
 
-vim.keymap.set("n", "<leader>b", builtin.buffers)
-vim.keymap.set("n", "<leader>gb", builtin.git_branches)
+vim.keymap.set("n", "<leader>b", builtin.buffers, {desc = 'telescope buffers'})
+vim.keymap.set("n", "<leader>gb", builtin.git_branches, {desc = 'telescope git branchs'})
 
 --" git log
-vim.keymap.set("n", "<leader>glo", builtin.git_commits)
+vim.keymap.set("n", "<leader>glo", builtin.git_commits, {desc = 'git log'})
 
 --" git log in file
-vim.keymap.set("n", "<leader>glof", builtin.git_bcommits)
+vim.keymap.set("n", "<leader>glof", builtin.git_bcommits, {desc = 'git log current file'})
 
 --" keymaps
 vim.keymap.set("n", "<leader>tk", builtin.keymaps, {desc = 'telescope keymaps'})
