@@ -52,7 +52,8 @@ lsp.setup_nvim_cmp({
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        -- TODO: add others
+        { name = 'buffer' },
+        { name = 'path' },
     },
     snippet = {
         expand = function(args)
