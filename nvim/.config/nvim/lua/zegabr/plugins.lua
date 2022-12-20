@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
     }
     use("BurntSushi/ripgrep")
     use("nvim-lua/popup.nvim")
-    use("AckslD/nvim-neoclip.lua")
 
     ----VCS integration
     use('mhinz/vim-signify')
