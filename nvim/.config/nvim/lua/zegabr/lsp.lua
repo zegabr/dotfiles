@@ -64,22 +64,20 @@ lsp.setup_nvim_cmp({
 
 lsp.on_attach(function(_, bufnr)
     local bufopts = { buffer = bufnr, noremap = true, silent = true }
-    vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, bufopts)
-    vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, bufopts)
-    vim.keymap.set('n', 'gt', function() vim.lsp.buf.type_definitions() end, bufopts)
-    vim.keymap.set('n', '<leader>Q', function() vim.diagnostic.setloclist() end, bufopts)
-    vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, bufopts)
-
-    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, bufopts)
-    vim.keymap.set('i', '<C-k>', function() vim.lsp.buf.signature_help() end, bufopts)
-
-    vim.keymap.set('n', '<leader>R', function() vim.lsp.buf.rename() end, bufopts)
-    vim.keymap.set('n', '<leader>F', function() vim.lsp.buf.format() end, bufopts)
-    vim.keymap.set('n', '<leader>A', function() vim.lsp.buf.code_action() end, bufopts)
-
-    vim.keymap.set('n', '<leader>d', function() vim.diagnostic.goto_next() end, bufopts)
-    vim.keymap.set('n', '<leader>D', function() vim.diagnostic.open_float() end, bufopts)
-    vim.keymap.set('n', '<leader>dl', "<cmd>Telescope diagnostics<cr>", bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
+    vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols, bufopts)
+    vim.keymap.set('n', 'gw', require('telescope.builtin').lsp_workspace_symbols, bufopts)
+    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, bufopts)
+    vim.keymap.set('n', '<leader>A', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, bufopts)
+    vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
 end)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

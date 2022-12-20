@@ -53,7 +53,8 @@ local function project_files()
     if not ok then builtin.find_files() end
 end
 
-vim.keymap.set("n", "<leader><leader>p", function() project_files() end)
+vim.keymap.set("n", "<leader><leader>p", project_files)
+vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = '[H]elp' })
 vim.keymap.set("n", "<leader><leader>f", function() builtin.grep_string({
         shorten_path = true,
         word_match = "-w",
@@ -62,8 +63,8 @@ vim.keymap.set("n", "<leader><leader>f", function() builtin.grep_string({
     })
 end)
 
-vim.keymap.set("n", "<leader>b", function() builtin.buffers() end)
-vim.keymap.set("n", "<leader>gb", function() builtin.git_branches() end)
+vim.keymap.set("n", "<leader>b", builtin.buffers)
+vim.keymap.set("n", "<leader>gb", builtin.git_branches)
 
 --" git log
 vim.keymap.set("n", "<leader>glo", builtin.git_commits)
@@ -71,7 +72,5 @@ vim.keymap.set("n", "<leader>glo", builtin.git_commits)
 --" git log in file
 vim.keymap.set("n", "<leader>glof", builtin.git_bcommits)
 
--- fzf through yanks
-require('neoclip').setup()
-telescope.load_extension("neoclip")
-vim.keymap.set("n", "<leader>y", "<cmd>Telescope neoclip a extra=star,plus,b<cr>")
+--" keymaps
+vim.keymap.set("n", "<leader>tk", builtin.keymaps, {desc = 'telescope keymaps'})
