@@ -65,6 +65,15 @@ if [ "$ans" == "y" ]; then
     rm ripgrep_12.1.1_amd64.deb
 fi
 
+# GOOGLE CHROME
+read -p "Type y if you want Google Chrome to be installed (y/n): " ans
+if [ "$ans" == "y" ]; then
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+    sudo rm -rf google-chrome-stable_current_amd64.deb
+    sensible-browser 'chrome://flags/#enable-force-dark'
+fi
+
 # Cheat sheet
 read -p "Type y if you want cheat.sh to be installed (y/n): " ans
 if [ "$ans" == "y" ]; then
