@@ -19,3 +19,4 @@ my dotfiles manager
 
 ## reminder to the creator
 - custom shortcuts script doesn't work anymore so I removed it, please do it manually (probably for flameshot)
+- for minimal setup, delete/comment unwanted lines in scripts/stuff/apps.sh

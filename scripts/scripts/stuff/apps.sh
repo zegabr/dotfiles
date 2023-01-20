@@ -38,8 +38,9 @@ python3-pip \
 usb-creator-gtk \
 -y
 
-# nvim pugin dependency
-python3 -m pip3 install --user --upgrade pynvim
+sudo snap install telegram-desktop
+sudo snap install spotify
+sudo snap install libreoffice
 
 # DOCKER
 read -p "Type y if you want Docker to be installed (y/n): " ans
