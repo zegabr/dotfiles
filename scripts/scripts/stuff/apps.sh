@@ -35,6 +35,7 @@ htop \
 screenfetch \
 fd-find \
 python3-pip \
+usb-creator-gtk \
 -y
 
 # nvim pugin dependency
