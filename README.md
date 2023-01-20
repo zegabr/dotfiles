@@ -15,3 +15,7 @@ my dotfiles manager
 ## TODO:
 - try to build a minimal vimrc to use with big tech internal vscode
 - learn how to use and setup debbuger for non old languages like C (on vscode was kinda easier than clion for C, but go and rust should be fine here)
+
+
+## reminder to the creator
+- custom shortcuts script doesn't work anymore so I removed it, please do it manually (probably for flameshot)
