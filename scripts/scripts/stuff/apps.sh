@@ -13,12 +13,7 @@ sudo rm -rf $(which nodejs)
 sudo rm -rf $(which npm)
 # install nvm to install updated node for nvim lsp
 # https://www.freecodecamp.org/news/how-to-install-node-js-on-ubuntu-and-update-npm-to-the-latest-version/
-# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | zsh
-nvm install --latest-npm
-npm i -g yarn
-nvm ls
-npm install npm@latest -g
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
