@@ -18,7 +18,7 @@ vim.keymap.set("n", "<C-c>", "<ESC>", {desc = 'esc'})
 vim.keymap.set("n", "<leader>S", ":%s//gIc<Left><Left><Left><Left>", {desc = 'replace snippet normal mode'})
 
 --" same as above, but works in a visual selection
-vim.keymap.set("x", "<leader>S", ":s//Ic<Left><Left><Left>", {desc = 'replace snippet visual mode'})
+vim.keymap.set("x", "<leader>S", ":s//gIc<Left><Left><Left><Left>", {desc = 'replace snippet visual mode'})
 
 --" alternate between opened buffers
 vim.keymap.set("n", "<left>", ":bp<CR>", {desc = 'buffer prev'})
