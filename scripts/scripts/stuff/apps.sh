@@ -16,9 +16,11 @@ sudo rm -rf $(which npm)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 # rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"
 rustc --version
 rustup component add rust-docs
+rustup component add rust-analyzer
 
 sudo apt install \
 tree \
