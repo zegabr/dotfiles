@@ -28,7 +28,7 @@ local function netrw_file_or_folder_operation(op)
     if op == Operations.DELETE then
         command = string.format("!rm -rf %s", path)
     elseif op == Operations.COPY then
-        local newpath = string.sub(path, 1, string.len(path) - 1)
+        local newpath = string.sub(path, 1, string.len(path))
         command = string.format("!cp -r %s %s.copy", path, newpath)
     end
 
