@@ -3,7 +3,7 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-    'sumneko_lua',
+    'lua_ls',
     'vimls',
 })
 
@@ -84,7 +84,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true -- enables snippet support
 -- Next, you can provide targeted overrides for specific servers.
 -- use that to configure your big tech language servers
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
     capabilities = capabilities,
     settings = {
         Lua = {
@@ -121,10 +121,10 @@ lsp.configure('sumneko_lua', {
 --     }
 -- })
 ---------------------
--- lsp.configure('jdtls', {
---     capabilities = capabilities,
---     root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
--- })
+lsp.configure('jdtls', {
+    capabilities = capabilities,
+    root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
+})
 --------------------------
 -- lsp.configure('clangd', {
 --     capabilities = capabilities,
