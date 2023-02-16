@@ -11,7 +11,3 @@ require('zegabr.colors')
 
 -- plugins
 require('zegabr.plugins')
-
--- ide features
-require('zegabr.telescope')
-require('zegabr.lsp')

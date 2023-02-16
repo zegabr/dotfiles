@@ -13,7 +13,10 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        requires = { { 'nvim-lua/plenary.nvim' } },
+        config = function()
+            require('zegabr.telescope')
+        end,
     }
 
     ----VCS integration
@@ -123,7 +126,11 @@ return require('packer').startup(function(use)
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
             { 'rafamadriz/friendly-snippets' },
-        }
+            { 'nvim-telescope/telescope.nvim' }
+        },
+        config = function()
+            require('zegabr.lsp')
+        end,
     }
 
     use { 'github/copilot.vim' }
