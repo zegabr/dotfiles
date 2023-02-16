@@ -39,7 +39,6 @@ return require('packer').startup(function(use)
     }
     use {
         'kdheepak/tabline.nvim',
-        requires = {'RRethy/nvim-base16'},
         config = function()
             require('tabline').setup {
                 enable = true,
@@ -54,7 +53,6 @@ return require('packer').startup(function(use)
     }
     use {
         'nvim-lualine/lualine.nvim',
-        requires = {'kdheepak/tabline.nvim'},
         config = function()
             require('lualine').setup({
                 options = { theme = 'gruvbox' },
