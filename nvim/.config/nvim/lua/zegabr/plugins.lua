@@ -17,7 +17,12 @@ return require('packer').startup(function(use)
     }
 
     ----VCS integration
-    use { 'mhinz/vim-signify' }
+    use {
+        'mhinz/vim-signify',
+        config = function()
+            require('zegabr.gitutils')
+        end,
+    }
 
     ----Comments
     use { 'tpope/vim-commentary' } -- gcc gcgc visual gc
@@ -69,11 +74,15 @@ return require('packer').startup(function(use)
     }
 
     ----Utilities
-    use { 'mbbill/undotree' }
+    use {
+        'mbbill/undotree',
+        config = function()
+            require('zegabr.undotree') -- this does not exits in vscode u.u
+        end,
+    }
     use { 'ntpeters/vim-better-whitespace' } --trim whitespace with :StripWhiteSpace
     use { 'matze/vim-move' } --alt j/k moves selected lines normal and visual mode
-
-    use { 'tpope/vim-obsession' } --vim store session
+    use { 'tpope/vim-obsession' } --vim store session :Obsession
     use {
         'ruifm/gitlinker.nvim', -- get premalink by <leader>gy (works in visuali mode)
         config = function() require("gitlinker").setup() end
