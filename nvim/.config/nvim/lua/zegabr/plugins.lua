@@ -39,6 +39,7 @@ return require('packer').startup(function(use)
     }
     use {
         'kdheepak/tabline.nvim',
+        requires = {'RRethy/nvim-base16'},
         config = function()
             require('tabline').setup {
                 enable = true,
@@ -53,6 +54,7 @@ return require('packer').startup(function(use)
     }
     use {
         'nvim-lualine/lualine.nvim',
+        requires = {'kdheepak/tabline.nvim'},
         config = function()
             require('lualine').setup({
                 options = { theme = 'gruvbox' },
@@ -60,13 +62,14 @@ return require('packer').startup(function(use)
 
         end,
     }
+
+    -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
             require('nvim-treesitter.install').update({ with_sync = true })()
         end,
     }
-    use { 'nvim-treesitter/nvim-treesitter-context' }
     use{
         'nvim-treesitter/nvim-treesitter-textobjects',
         after = 'nvim-treesitter',
@@ -75,6 +78,7 @@ return require('packer').startup(function(use)
             require('zegabr.treesitter')
         end,
     }
+    use { 'nvim-treesitter/nvim-treesitter-context' }
 
     ----Utilities
     use {
