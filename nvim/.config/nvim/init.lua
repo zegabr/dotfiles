@@ -6,6 +6,7 @@ end
 -- basic
 require('zegabr.maps')
 require('zegabr.sets')
+require('zegabr.netrw')
 
 -- plugins
 require('zegabr.plugins')
@@ -21,5 +22,3 @@ require('zegabr.gitutils')
 require('zegabr.undotree') -- this does not exits in vscode u.u
 require('zegabr.telescope')
 require('zegabr.lsp')
-require('zegabr.netrw')
-require('zegabr.wilder')

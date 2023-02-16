@@ -39,7 +39,8 @@ return require('packer').startup(function(use)
     }
 
     use('romgrk/fzy-lua-native') --dependency for wilder
-    use('gelguy/wilder.nvim', { run = ':UpdateRemotePlugins' }) --wilder menu
+    use { 'gelguy/wilder.nvim', run = ':UpdateRemotePlugins', config = function() require('zegabr.wilder') end } --wilder menu
+
 
     use('tpope/vim-surround') ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
     -- simplest way to use is:
