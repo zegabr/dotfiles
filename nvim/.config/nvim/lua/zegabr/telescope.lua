@@ -34,6 +34,7 @@ telescope.setup {
         },
         file_ignore_patterns = {
             "node_modules/",
+            ".git/"
         }
     },
     pickers = {
@@ -53,24 +54,20 @@ local function project_files()
     if not ok then builtin.find_files() end
 end
 
-vim.keymap.set("n", "<leader><leader>p", project_files, {desc = 'project file search'})
-vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = '[H]elp' })
+vim.keymap.set('n', '<leader><leader>h', builtin.help_tags, { desc = '[H]elp' })
+vim.keymap.set("n", "<leader><leader>tk", builtin.keymaps, {desc = 'telescope keymaps'})
+
+vim.keymap.set("n", "<leader>gb", builtin.git_branches, {desc = 'telescope git branchs'})
+vim.keymap.set("n", "<leader>glo", builtin.git_commits, {desc = 'git log'})
+vim.keymap.set("n", "<leader>glof", builtin.git_bcommits, {desc = 'git log current file'})
+
+vim.keymap.set("n", "<leader><leader>b", builtin.buffers, {desc = 'telescope buffers'})
+vim.keymap.set("n", "<leader><leader>p", project_files, {desc = 'Project File Search'})
 vim.keymap.set("n", "<leader><leader>f", function() builtin.grep_string({
         shorten_path = true,
         word_match = "-w",
         only_sort_text = true,
         search = '',
-    }, {desc = 'project string search'})
+    }, {desc = 'Project String Search'})
 end)
 
-vim.keymap.set("n", "<leader>b", builtin.buffers, {desc = 'telescope buffers'})
-vim.keymap.set("n", "<leader>gb", builtin.git_branches, {desc = 'telescope git branchs'})
-
---" git log
-vim.keymap.set("n", "<leader>glo", builtin.git_commits, {desc = 'git log'})
-
---" git log in file
-vim.keymap.set("n", "<leader>glof", builtin.git_bcommits, {desc = 'git log current file'})
-
---" keymaps
-vim.keymap.set("n", "<leader>tk", builtin.keymaps, {desc = 'telescope keymaps'})
