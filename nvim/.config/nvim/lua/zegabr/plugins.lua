@@ -7,7 +7,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
-    use('wbthomason/packer.nvim') -- Package manager
+    use { 'wbthomason/packer.nvim' } -- Package manager
 
     ----Telescope
     use {
@@ -17,32 +17,32 @@ return require('packer').startup(function(use)
     }
 
     ----VCS integration
-    use('mhinz/vim-signify')
+    use { 'mhinz/vim-signify' }
 
     ----Comments
-    use('tpope/vim-commentary') -- gcc gcgc visual gc
+    use { 'tpope/vim-commentary' } -- gcc gcgc visual gc
 
     ----Colors and UI
-    use("RRethy/nvim-base16")
-    use('kdheepak/tabline.nvim')
-    use('nvim-lualine/lualine.nvim')
+    use { "RRethy/nvim-base16" }
+    use { 'kdheepak/tabline.nvim' }
+    use { 'nvim-lualine/lualine.nvim' }
 
     ----Utilities
-    use('mbbill/undotree')
-    use('ntpeters/vim-better-whitespace') --trim whitespace with :StripWhiteSpace
-    use('matze/vim-move') --alt j/k moves selected lines normal and visual mode
+    use { 'mbbill/undotree' }
+    use { 'ntpeters/vim-better-whitespace' } --trim whitespace with :StripWhiteSpace
+    use { 'matze/vim-move' } --alt j/k moves selected lines normal and visual mode
 
-    use('tpope/vim-obsession') --vim store session
+    use { 'tpope/vim-obsession' } --vim store session
     use {
         'ruifm/gitlinker.nvim', -- get premalink by <leader>gy (works in visuali mode)
         config = function() require("gitlinker").setup() end
     }
 
-    use('romgrk/fzy-lua-native') --dependency for wilder
+    use { 'romgrk/fzy-lua-native' } --dependency for wilder
     use { 'gelguy/wilder.nvim', run = ':UpdateRemotePlugins', config = function() require('zegabr.wilder') end } --wilder menu
 
 
-    use('tpope/vim-surround') ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
+    use { 'tpope/vim-surround' } ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
     -- simplest way to use is:
     -- to add pair
     -- 1) select with any visual mode.
@@ -52,9 +52,9 @@ return require('packer').startup(function(use)
     -- to change pair
     -- 1) cs<pair to be changed><new closing pair>
 
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use('nvim-treesitter/nvim-treesitter-textobjects')
-    use('nvim-treesitter/nvim-treesitter-context')
+    use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } }
+    use { 'nvim-treesitter/nvim-treesitter-textobjects' }
+    use { 'nvim-treesitter/nvim-treesitter-context' }
 
     ----LSP
     use {
@@ -79,10 +79,10 @@ return require('packer').startup(function(use)
         }
     }
 
-    use('github/copilot.vim')
+    use { 'github/copilot.vim' }
 
     -- my first plugin
-    use('zegabr/kokusen')
+    use { 'zegabr/kokusen' }
 
     if packer_initializing then
         require('packer').sync()
