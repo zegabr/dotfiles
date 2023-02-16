@@ -105,7 +105,6 @@ return require('packer').startup(function(use)
     -- to change pair
     -- 1) cs<pair to be changed><new closing pair>
 
-
     ----LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -126,7 +125,7 @@ return require('packer').startup(function(use)
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
             { 'rafamadriz/friendly-snippets' },
-            { 'nvim-telescope/telescope.nvim' }
+            { 'nvim-telescope/telescope.nvim' }, -- important since zegabr.lsp uses telescope
         },
         config = function()
             require('zegabr.lsp')
