@@ -23,9 +23,50 @@ return require('packer').startup(function(use)
     use { 'tpope/vim-commentary' } -- gcc gcgc visual gc
 
     ----Colors and UI
-    use { "RRethy/nvim-base16" }
-    use { 'kdheepak/tabline.nvim' }
-    use { 'nvim-lualine/lualine.nvim' }
+    use {
+        'RRethy/nvim-base16',
+        config = function()
+            vim.cmd.colorscheme("base16-gruvbox-dark-hard")
+        end,
+    }
+    use {
+        'kdheepak/tabline.nvim',
+        config = function()
+            require('tabline').setup {
+                enable = true,
+                options = {
+                    show_filename_only = false, -- shows base filename only instead of relative path in filename
+                    modified_icon = "+ ", -- change the default modified icon
+                    modified_italic = false, -- set to true by default; this determines whether the filename turns italic if modified
+                    show_tabs_only = false, -- this shows only tabs instead of tabs + buffers
+                }
+            }
+        end,
+    }
+    use {
+        'nvim-lualine/lualine.nvim',
+        config = function()
+            require('lualine').setup({
+                options = { theme = 'gruvbox' },
+            })
+
+        end,
+    }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            require('nvim-treesitter.install').update({ with_sync = true })()
+        end,
+    }
+    use { 'nvim-treesitter/nvim-treesitter-context' }
+    use{
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        after = 'nvim-treesitter',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        config = function()
+            require('zegabr.treesitter')
+        end,
+    }
 
     ----Utilities
     use { 'mbbill/undotree' }
@@ -52,9 +93,6 @@ return require('packer').startup(function(use)
     -- to change pair
     -- 1) cs<pair to be changed><new closing pair>
 
-    use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } }
-    use { 'nvim-treesitter/nvim-treesitter-textobjects' }
-    use { 'nvim-treesitter/nvim-treesitter-context' }
 
     ----LSP
     use {

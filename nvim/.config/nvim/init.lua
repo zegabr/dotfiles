@@ -7,13 +7,10 @@ end
 require('zegabr.maps')
 require('zegabr.sets')
 require('zegabr.netrw')
+require('zegabr.colors')
 
 -- plugins
 require('zegabr.plugins')
-
--- colors
-require('zegabr.treesitter')
-require('zegabr.colors')
 
 -- utils
 require('zegabr.gitutils')
