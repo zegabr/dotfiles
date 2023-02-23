@@ -84,6 +84,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true -- enables snippet support
 -- Next, you can provide targeted overrides for specific servers.
 -- use that to configure your big tech language servers
+--
 lsp.configure('lua_ls', {
     capabilities = capabilities,
     settings = {
@@ -91,16 +92,15 @@ lsp.configure('lua_ls', {
             runtime = {
                 -- LuaJIT in the case of Neovim
                 version = 'LuaJIT',
-                path = vim.split(package.path, ';'),
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
                 globals = { 'vim' },
             },
-            -- workspace = {
+            workspace = {
             --     -- Make the server aware of Neovim runtime files
-            --     library = vim.api.nvim_get_runtime_file("", true),
-            -- },
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
             telemetry = {
                 enable = false,
             }
@@ -121,10 +121,10 @@ lsp.configure('lua_ls', {
 --     }
 -- })
 ---------------------
-lsp.configure('jdtls', {
-    capabilities = capabilities,
-    root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
-})
+-- lsp.configure('jdtls', {
+--     capabilities = capabilities,
+--     root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
+-- })
 --------------------------
 -- lsp.configure('clangd', {
 --     capabilities = capabilities,
