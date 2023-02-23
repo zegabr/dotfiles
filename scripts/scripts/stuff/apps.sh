@@ -43,6 +43,7 @@ usb-creator-gtk \
 sudo snap install telegram-desktop
 sudo snap install spotify
 sudo snap install libreoffice
+sudo snap install slack
 
 # DOCKER
 read -p "Type y if you want Docker to be installed (y/n): " ans
