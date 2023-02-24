@@ -21,13 +21,58 @@ end
 return require('packer').startup(function(use)
     use { 'wbthomason/packer.nvim' } -- Package manager
 
+    -- Treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            require('nvim-treesitter.install').update({ with_sync = true })()
+        end,
+    }
+    use{
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        after = {'nvim-treesitter'},
+        config = function()
+            require('zegabr.treesitter')
+        end,
+    }
+    use { 'nvim-treesitter/nvim-treesitter-context' }
+
     ----Telescope
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } },
+        requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('zegabr.telescope')
+        end,
+    }
+
+    ----LSP
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        after = {'telescope.nvim'},
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
+
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lua' },
+
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
+            { 'nvim-telescope/telescope.nvim' }, -- important since zegabr.lsp uses telescope
+        },
+        config = function()
+            require('zegabr.lsp')
         end,
     }
 
@@ -72,22 +117,6 @@ return require('packer').startup(function(use)
 
         end,
     }
-    -- Treesitter
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function()
-            require('nvim-treesitter.install').update({ with_sync = true })()
-        end,
-    }
-    use{
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        after = 'nvim-treesitter',
-        requires = 'nvim-treesitter/nvim-treesitter',
-        config = function()
-            require('zegabr.treesitter')
-        end,
-    }
-    use { 'nvim-treesitter/nvim-treesitter-context' }
 
     ----Utilities
     use {
@@ -117,33 +146,6 @@ return require('packer').startup(function(use)
     -- 1) ds<surrounding pair>
     -- to change pair
     -- 1) cs<pair to be changed><new closing pair>
-
-    ----LSP
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
-
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },
-            { 'rafamadriz/friendly-snippets' },
-            { 'nvim-telescope/telescope.nvim' }, -- important since zegabr.lsp uses telescope
-        },
-        config = function()
-            require('zegabr.lsp')
-        end,
-    }
 
     use { 'github/copilot.vim' }
 

@@ -197,7 +197,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["tabline.nvim"] = {
-    config = { "\27LJ\2\nù\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\4\19show_tabs_only\1\18modified_icon\a+ \23show_filename_only\1\20modified_italic\1\1\0\1\venable\2\nsetup\ftabline\frequire\0" },
+    config = { "\27LJ\2\nù\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\4\18modified_icon\a+ \23show_filename_only\1\20modified_italic\1\19show_tabs_only\1\1\0\1\venable\2\nsetup\ftabline\frequire\0" },
     loaded = true,
     path = "/home/ze/.local/share/nvim/site/pack/packer/start/tabline.nvim",
     url = "https://github.com/kdheepak/tabline.nvim"
@@ -254,10 +254,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: undotree
-time([[Config for undotree]], true)
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20zegabr.undotree\frequire\0", "config", "undotree")
-time([[Config for undotree]], false)
+-- Config for: nvim-base16
+time([[Config for nvim-base16]], true)
+try_loadstring("\27LJ\2\nL\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\29base16-gruvbox-dark-hard\16colorscheme\bcmd\bvim\0", "config", "nvim-base16")
+time([[Config for nvim-base16]], false)
 -- Config for: lsp-zero.nvim
 time([[Config for lsp-zero.nvim]], true)
 try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15zegabr.lsp\frequire\0", "config", "lsp-zero.nvim")
@@ -272,16 +272,8 @@ try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18zegabr.
 time([[Config for wilder.nvim]], false)
 -- Config for: tabline.nvim
 time([[Config for tabline.nvim]], true)
-try_loadstring("\27LJ\2\nù\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\4\19show_tabs_only\1\18modified_icon\a+ \23show_filename_only\1\20modified_italic\1\1\0\1\venable\2\nsetup\ftabline\frequire\0", "config", "tabline.nvim")
+try_loadstring("\27LJ\2\nù\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\4\18modified_icon\a+ \23show_filename_only\1\20modified_italic\1\19show_tabs_only\1\1\0\1\venable\2\nsetup\ftabline\frequire\0", "config", "tabline.nvim")
 time([[Config for tabline.nvim]], false)
--- Config for: nvim-base16
-time([[Config for nvim-base16]], true)
-try_loadstring("\27LJ\2\nL\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\29base16-gruvbox-dark-hard\16colorscheme\bcmd\bvim\0", "config", "nvim-base16")
-time([[Config for nvim-base16]], false)
--- Config for: vim-signify
-time([[Config for vim-signify]], true)
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20zegabr.gitutils\frequire\0", "config", "vim-signify")
-time([[Config for vim-signify]], false)
 -- Config for: gitlinker.nvim
 time([[Config for gitlinker.nvim]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14gitlinker\frequire\0", "config", "gitlinker.nvim")
@@ -290,6 +282,14 @@ time([[Config for gitlinker.nvim]], false)
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21zegabr.telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
+-- Config for: undotree
+time([[Config for undotree]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20zegabr.undotree\frequire\0", "config", "undotree")
+time([[Config for undotree]], false)
+-- Config for: vim-signify
+time([[Config for vim-signify]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20zegabr.gitutils\frequire\0", "config", "vim-signify")
+time([[Config for vim-signify]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
