@@ -37,14 +37,28 @@ function swap-java(){
 #--------------------git utilities
 alias gs='git status'
 alias guncommit='git reset HEAD~1 --soft'
+function _ga_completion() {
+    files=$(git status --porcelain | awk '{print $NF}')
+    COMPREPLY=($(compgen -W "${files}" -- "${COMP_WORDS[COMP_CWORD]}"))
+}
+complete -F _ga_completion ga
 alias ga='git add'
 alias gaa='git add .'
 alias gb='git branch'
 alias gcb='git checkout -b'
+
+function _gco_completion() {
+  branches=$(git branch | awk '{print $NF}')
+  COMPREPLY=($(compgen -W "${branches}" -- "${COMP_WORDS[COMP_CWORD]}"))
+}
+complete -F _gco_completion gco
+complete -F _gco_completion gbd
+complete -F _gco_completion gbD
 alias gco='git checkout'
-alias gd='git diff'
 alias gbd='git branch -d'
 alias gbD='git branch -D'
+
+alias gd='git diff'
 alias gc='git commit -v'
 alias gc!='git commit -v --amend'
 alias gcan!='git commit -v -a --no-edit -amend'
