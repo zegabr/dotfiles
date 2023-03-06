@@ -1,7 +1,25 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
+local action_utils = require "telescope.actions.utils"
+local action_state = require "telescope.actions.state"
 
-local custom_actions = {}
+local function single_or_multi_select(prompt_bufnr)
+    local current_picker = action_state.get_current_picker(prompt_bufnr)
+    local has_multi_selection = (next(current_picker:get_multi_selection()) ~= nil)
+
+    if(has_multi_selection) then
+        -- apply function to each selection
+        action_utils.map_selections(prompt_bufnr, function (selection)
+            local filename = selection[1]
+            vim.cmd(':edit! ' .. filename)
+        end)
+
+    else
+        -- if does not have multi selection, open single file
+        actions.file_edit(prompt_bufnr)
+    end
+end
+
 telescope.setup {
     defaults = {
         mappings = {
@@ -9,16 +27,9 @@ telescope.setup {
                 ['<esc>'] = actions.close,
                 ['<C-j>'] = actions.move_selection_next,
                 ['<C-k>'] = actions.move_selection_previous,
-                ['<tab>'] = actions.toggle_selection + actions.move_selection_previous,
-                ['<s-tab>'] = actions.toggle_selection + actions.move_selection_next,
-                ['<cr>'] = custom_actions.fzf_multi_select,
+                ['<tab>'] = actions.toggle_selection,
+                ['<cr>'] = single_or_multi_select,
             },
-            n = {
-                ['<esc>'] = actions.close,
-                ['<tab>'] = actions.toggle_selection + actions.move_selection_previous,
-                ['<s-tab>'] = actions.toggle_selection + actions.move_selection_next,
-                ['<cr>'] = custom_actions.fzf_multi_select
-            }
         },
 
         vimgrep_arguments = {
