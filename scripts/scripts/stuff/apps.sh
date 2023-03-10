@@ -7,6 +7,7 @@ sudo apt update -y
 sudo apt install \
 tree \
 flameshot \
+mypaint \
 gawk \
 git \
 build-essential \
@@ -29,12 +30,22 @@ sudo snap install spotify
 sudo snap install libreoffice
 sudo snap install slack
 
-# rust
+# rust and cargo and cargo tools
 sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source "$HOME/.cargo/env"
-rustc --version
-rustup component add rust-docs
-rustup component add rust-analyzer
+gnome-terminal --wait -- bash -c "source ~/dotfiles/scripts/scripts/r.sh"
+
+# UPDATE NPM VERSION FOR NVIM
+# remove node npm and nodejs
+sudo apt remove nodejs -y
+sudo apt remove npm -y
+sudo apt update -y
+sudo rm -rf $(which node)
+sudo rm -rf $(which nodejs)
+sudo rm -rf $(which npm)
+# install nvm to install updated node for nvim lsp
+# https://www.freecodecamp.org/news/how-to-install-node-js-on-ubuntu-and-update-npm-to-the-latest-version/
+sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+gnome-terminal --wait -- bash -c "source ~/dotfiles/scripts/scripts/n.sh"
 
 # DOCKER
 read -p "Type y if you want Docker to be installed (y/n): " ans
@@ -47,14 +58,6 @@ if [ "$ans" == "y" ]; then
     sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 fi
-
-# Ripgrep (I always want this for telescope plugin)
-# read -p "Type y if you want Ripgrep to be installed (y/n): " ans
-# if [ "$ans" == "y" ]; then
-    curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb
-    sudo dpkg -i ripgrep_12.1.1_amd64.deb
-    rm ripgrep_12.1.1_amd64.deb
-# fi
 
 # GOOGLE CHROME
 read -p "Type y if you want Google Chrome to be installed (y/n): " ans
