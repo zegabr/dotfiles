@@ -8,6 +8,9 @@ alias vs='nvim -S'
 alias t='tmux attach -t base || tmux new -s base'
 alias bro='browse'
 
+# Rust
+alias l='exa'
+alias cat='bat'
 #-----------------------files
 alias eb='v ~/.bashrc'
 alias dot='cd ~/dotfiles'
