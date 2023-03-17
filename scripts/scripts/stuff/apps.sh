@@ -27,6 +27,7 @@ usb-creator-gtk \
 # tmux
 sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 
+sudo snap remove firefox
 sudo snap install discord
 sudo snap install telegram-desktop
 sudo snap install spotify
