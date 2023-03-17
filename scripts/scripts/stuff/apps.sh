@@ -14,7 +14,6 @@ build-essential \
 wget \
 curl \
 jq \
-bat \
 fzf \
 stow \
 tmux \
@@ -36,19 +35,9 @@ sudo snap install slack --classic
 
 # rust and cargo and cargo tools
 sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-gnome-terminal --wait -- bash -c "source ~/dotfiles/scripts/scripts/r.sh"
+gnome-terminal --wait -- bash -c "source ~/dotfiles/scripts/scripts/r.sh" &
 
-# UPDATE NPM VERSION FOR NVIM
-# remove node npm and nodejs
-sudo apt remove nodejs -y
-sudo apt remove npm -y
-sudo apt update -y
-sudo rm -rf $(which node)
-sudo rm -rf $(which nodejs)
-sudo rm -rf $(which npm)
-# install nvm to install updated node for nvim lsp
-# https://www.freecodecamp.org/news/how-to-install-node-js-on-ubuntu-and-update-npm-to-the-latest-version/
-sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+# pnpm
 gnome-terminal --wait -- bash -c "source ~/dotfiles/scripts/scripts/n.sh"
 
 # DOCKER

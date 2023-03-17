@@ -7,3 +7,4 @@ source v.sh # install nvim building from source
 bash ssh.sh # setup ssh
 source d.sh # simlinks things
 source ~/.bash_aliases
+source n.sh

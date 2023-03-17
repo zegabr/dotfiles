@@ -1,6 +1,6 @@
 #!/bin/sh
+# install pnpm to install updated node for nvim lsp
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 source ~/.bashrc
-nvm install --latest-npm
-npm i -g yarn
-nvm ls
-npm install npm@latest -g
+pnpm env use --global latest
+
