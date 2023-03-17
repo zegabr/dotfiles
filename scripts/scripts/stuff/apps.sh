@@ -25,10 +25,14 @@ python3-pip \
 usb-creator-gtk \
 -y
 
+# tmux
+sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
+
+sudo snap install discord
 sudo snap install telegram-desktop
 sudo snap install spotify
 sudo snap install libreoffice
-sudo snap install slack
+sudo snap install slack --classic
 
 # rust and cargo and cargo tools
 sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

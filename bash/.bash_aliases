@@ -11,6 +11,7 @@ alias bro='browse'
 # Rust
 alias l='exa'
 alias cat='bat'
+
 #-----------------------files
 alias eb='v ~/.bashrc'
 alias dot='cd ~/dotfiles'
@@ -208,4 +209,13 @@ function extract(){
      else
          echo "'$1' is not a valid file"
      fi
+}
+
+function deb-install(){
+   # telegram.deb
+   sudo dpkg -i $1
+}
+function deb-uninstall(){
+    # # telegram
+   sudo dpkg -r $1
 }
