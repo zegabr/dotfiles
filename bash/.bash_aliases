@@ -13,13 +13,15 @@ alias l='exa'
 alias cat='bat'
 
 #-----------------------files
-alias eb='v ~/.bashrc'
-alias dot='cd ~/dotfiles'
 alias ev='dot && v ~/.config/nvim/init.lua'
+alias dot='cd ~/dotfiles'
+
+alias eb='v ~/.bashrc'
 alias ea='v ~/.bash_aliases'
 alias ew='v ~/.bash_aliases_work'
 alias et='v ~/.tmux.conf'
 
+alias sb='source ~/.bashrc'
 alias sa='source ~/.bash_aliases'
 alias sw='source ~/.bash_aliases_work'
 alias st='tmux source-file ~/.tmux.conf'
