@@ -28,10 +28,10 @@ return require('packer').startup(function(use)
             require('nvim-treesitter.install').update({ with_sync = true })()
         end,
     }
-    use{
+    use {
         'nvim-treesitter/nvim-treesitter-textobjects',
         requires = 'nvim-treesitter/nvim-treesitter',
-        after = {'nvim-treesitter'},
+        after = { 'nvim-treesitter' },
         config = function()
             require('zegabr.treesitter')
         end,
@@ -51,7 +51,7 @@ return require('packer').startup(function(use)
     ----LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
-        after = {'telescope.nvim'},
+        after = { 'telescope.nvim' },
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -101,9 +101,9 @@ return require('packer').startup(function(use)
                 enable = true,
                 options = {
                     show_filename_only = false, -- shows base filename only instead of relative path in filename
-                    modified_icon = "+ ", -- change the default modified icon
-                    modified_italic = false, -- set to true by default; this determines whether the filename turns italic if modified
-                    show_tabs_only = false, -- this shows only tabs instead of tabs + buffers
+                    modified_icon = "+ ",       -- change the default modified icon
+                    modified_italic = false,    -- set to true by default; this determines whether the filename turns italic if modified
+                    show_tabs_only = false,     -- this shows only tabs instead of tabs + buffers
                 }
             }
         end,
@@ -114,7 +114,6 @@ return require('packer').startup(function(use)
             require('lualine').setup({
                 options = { theme = 'gruvbox' },
             })
-
         end,
     }
 
@@ -126,14 +125,14 @@ return require('packer').startup(function(use)
         end,
     }
     use { 'ntpeters/vim-better-whitespace' } --trim whitespace with :StripWhiteSpace
-    use { 'matze/vim-move' } --alt j/k moves selected lines normal and visual mode
-    use { 'tpope/vim-obsession' } --vim store session :Obsession
+    use { 'matze/vim-move' }                 --alt j/k moves selected lines normal and visual mode
+    use { 'tpope/vim-obsession' }            --vim store session :Obsession
     use {
-        'ruifm/gitlinker.nvim', -- get premalink by <leader>gy (works in visuali mode)
+        'ruifm/gitlinker.nvim',              -- get premalink by <leader>gy (works in visuali mode)
         config = function() require("gitlinker").setup() end
     }
 
-    use { 'romgrk/fzy-lua-native' } --dependency for wilder
+    use { 'romgrk/fzy-lua-native' }                                                                              --dependency for wilder
     use { 'gelguy/wilder.nvim', run = ':UpdateRemotePlugins', config = function() require('zegabr.wilder') end } --wilder menu
 
 

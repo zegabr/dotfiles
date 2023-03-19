@@ -15,8 +15,8 @@ vim.opt.undofile = true
 vim.keymap.set("n", "<leader><leader>u", vim.cmd.UndotreeToggle)
 
 --" undo break points
-vim.keymap.set("i", ",", ",<c-g>u", {desc = ''})
-vim.keymap.set("i", "?", "?<c-g>u", {desc = ''})
-vim.keymap.set("i", "!", "!<c-g>u", {desc = ''})
-vim.keymap.set("i", ".", ".<c-g>u", {desc = ''})
-vim.keymap.set("i", ";", ";<c-g>u", {desc = ''})
+vim.keymap.set("i", ",", ",<c-g>u", { desc = '' })
+vim.keymap.set("i", "?", "?<c-g>u", { desc = '' })
+vim.keymap.set("i", "!", "!<c-g>u", { desc = '' })
+vim.keymap.set("i", ".", ".<c-g>u", { desc = '' })
+vim.keymap.set("i", ";", ";<c-g>u", { desc = '' })
