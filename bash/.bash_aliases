@@ -9,7 +9,8 @@ alias t='tmux attach -t base || tmux new -s base'
 alias bro='browse'
 
 # Rust
-alias l='exa'
+alias l='exa -l'
+alias ls='exa'
 alias cat='bat'
 
 #-----------------------files
