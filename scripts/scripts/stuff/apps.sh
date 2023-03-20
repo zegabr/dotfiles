@@ -13,6 +13,7 @@ git \
 build-essential \
 wget \
 curl \
+speedtest-cli \
 jq \
 fzf \
 stow \
