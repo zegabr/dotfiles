@@ -4,4 +4,4 @@ source "$HOME/.cargo/env"
 rustc --version
 rustup component add rust-docs
 rustup component add rust-analyzer
-cargo install ripgrep exa du-dust bat
+cargo install ripgrep exa bat
