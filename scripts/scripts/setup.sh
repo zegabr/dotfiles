@@ -8,6 +8,7 @@ if [ "$ans" == "y" ]; then
     sudo chmod 777 /etc/default/grub
     sudo echo "GRUB_DEFAULT=saved" >> /etc/default/grub
     sudo echo "GRUB_SAVEDEFAULT=true" >> /etc/default/grub
+    sudo timedatectl set-local-rtc 1 --adjust-system-clock
     sudo update-grub
 fi
 
