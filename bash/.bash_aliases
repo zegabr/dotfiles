@@ -143,21 +143,10 @@ function gclhttps(){
 
 ##COMPETITIVE/C++
 alias m='make && make t'
-alias c='g++ -std=c++17 -O2 -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
-alias tc='time g++ -std=c++17 -O2'
-alias cw='g++ -std=c++17 -O2 -Wfatal-errors'
+alias c='g++ -std=c++17 -Ofast -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
+alias tc='time g++ -std=c++17 -Ofast'
+alias cw='g++ -std=c++17 -Ofast -Wfatal-errors'
 alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
-
-## FZF
-export FZF_DEFAULT_OPTS="--reverse --inline-info"
-export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'"
-
-# cdf - cd into the directory of the selected file
-cdf() {
-    local file
-    local dir
-    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
-}
 
 # cheat.sh
 alias how='cht.sh'
@@ -180,9 +169,16 @@ for (colnum = 0; colnum<term_cols; colnum++) {
 }'
 }
 
-if [ -f ~/.bash_aliases_work ]; then
-    . ~/.bash_aliases_work
-fi
+## FZF (used by tmux-sessionizer)
+export FZF_DEFAULT_OPTS="--reverse --inline-info"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'"
+
+# cdf - cd into the directory of the selected file
+cdf() {
+    local file
+    local dir
+    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
 
 # bind ^f tmux-sessionizer
 bind '"\C-f":". ~/.local/tmux-sessionizer.sh\n"'
@@ -222,3 +218,7 @@ function deb-uninstall(){
     # # telegram
    sudo dpkg -r $1
 }
+
+if [ -f ~/.bash_aliases_work ]; then
+    . ~/.bash_aliases_work
+fi
