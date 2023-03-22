@@ -1,6 +1,6 @@
 #LINUX
 export EDITOR=nvim
-alias update='sudo apt update && sudo apt -u upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y && sudo apt --fix-broken install -y; sudo snap refresh; source ~/scripts/r.sh'
+alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt --fix-broken install -y; sudo snap refresh; source ~/scripts/r.sh'
 alias update-nvim='source ~/scripts/v.sh'
 alias lag='alias | grep'
 alias v='nvim'
@@ -143,9 +143,9 @@ function gclhttps(){
 
 ##COMPETITIVE/C++
 alias m='make && make t'
-alias c='g++ -std=c++17 -Ofast -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
-alias tc='time g++ -std=c++17 -Ofast'
-alias cw='g++ -std=c++17 -Ofast -Wfatal-errors'
+alias c='g++ -std=c++20 -Ofast -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
+alias tc='time g++ -std=c++20 -Ofast'
+alias cw='g++ -std=c++20 -Ofast -Wfatal-errors'
 alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
 
 # cheat.sh
