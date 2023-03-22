@@ -2,6 +2,10 @@
 # FULL LINUX SETUP
 bash stuff/apps.sh # for app instalation
 
+gsettings set org.gnome.shell.ubuntu color-scheme prefer-dark
+gsettings set org.gnome.desktop.interface gtk-theme Yaru-dark
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
 # DUAL BOOT FIX
 read -p "Type y if you want GRUB to be updated (you want it if you use a dual boot)(y/n): " ans
 if [ "$ans" == "y" ]; then
