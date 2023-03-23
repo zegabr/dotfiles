@@ -1,31 +1,15 @@
 #!/bin/sh
+
 mkdir ~/Downloads
 cd ~/Downloads
 
 sudo apt update -y
 
 sudo apt install \
-tree \
 flameshot \
 mypaint \
-gawk \
-git \
-build-essential \
-wget \
-curl \
-speedtest-cli \
-jq \
-fzf \
-stow \
-tmux \
-htop \
-screenfetch \
-python3-pip \
 usb-creator-gtk \
 -y
-
-# tmux
-sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 
 sudo snap remove firefox
 sudo snap install discord
@@ -34,22 +18,21 @@ sudo snap install spotify
 sudo snap install libreoffice
 sudo snap install slack --classic
 
-# rust and cargo and cargo tools
-sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-gnome-terminal --wait -- bash -c "source ~/dotfiles/scripts/scripts/r.sh" &
-
-# pnpm
-gnome-terminal --wait -- bash -c "source ~/dotfiles/scripts/scripts/n.sh"
+gsettings set org.gnome.shell.ubuntu color-scheme prefer-dark
+gsettings set org.gnome.desktop.interface gtk-theme Yaru-dark
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
 # DOCKER
 read -p "Type y if you want Docker to be installed (y/n): " ans
 if [ "$ans" == "y" ]; then
     curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh get-docker.sh
+    sudo sh get-docker.sh --dry-run
     rm get-docker.sh
-    sudo usermod -aG docker $USER
+    # sudo usermod -aG docker $USER # this is not in the installation page anymore?
 
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    # from https://docs.docker.com/compose/install/other/
+    COMPOSE_VERSION=v2.16.0
+    sudo curl -L "https://github.com/docker/compose/releases/download/$COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 fi
 
@@ -78,3 +61,15 @@ if [[ $(uname -a | grep microsoft) ]]; then
     sudo sudo mv /tmp/win32yank.exe /usr/local/bin/
 fi
 
+# DUAL BOOT FIX
+read -p "Type y if you want GRUB to be updated (you want it if you use a dual boot)(y/n): " ans
+if [ "$ans" == "y" ]; then
+    sudo chmod 777 /etc/default/grub
+    sudo echo "GRUB_DEFAULT=saved" >> /etc/default/grub
+    sudo echo "GRUB_SAVEDEFAULT=true" >> /etc/default/grub
+    sudo timedatectl set-local-rtc 1 --adjust-system-clock
+    sudo update-grub
+fi
+
+# pnpm for nvim lsp
+gnome-terminal --wait -- bash -c "bash ~/dotfiles/scripts/scripts/n.sh"
