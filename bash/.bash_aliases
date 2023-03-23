@@ -49,7 +49,9 @@ function _ga_completion() {
     COMPREPLY=($(compgen -W "${files}" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
 complete -F _ga_completion ga
+complete -F _ga_completion gd
 alias ga='git add'
+alias gd='git diff'
 alias gaa='git add .'
 alias gb='git branch'
 alias gcb='git checkout -b'
@@ -65,13 +67,13 @@ alias gco='git checkout'
 alias gbd='git branch -d'
 alias gbD='git branch -D'
 
-alias gd='git diff'
 alias gc='git commit -v'
 alias gc!='git commit -v --amend'
 alias gcan!='git commit -v -a --no-edit -amend'
 alias gp='git push'
 alias gl='git pull'
 alias glo='git log --oneline --decorate'
+complete -F _gco_completion grb
 alias grb='git rebase'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
