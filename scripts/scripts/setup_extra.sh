@@ -34,6 +34,10 @@ if [ "$ans" == "y" ]; then
     COMPOSE_VERSION=v2.16.0
     sudo curl -L "https://github.com/docker/compose/releases/download/$COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
+
+    # TODO: maybe copy this to your ~/.bash_aliases_work or ~/.bash_aliases (TODO: need to learn how the _docker_compose completion file works)
+    # sensible-browser 'https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose'
+    # sensible-browser 'https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker'
 fi
 
 # GOOGLE CHROME
