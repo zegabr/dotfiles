@@ -1,10 +1,9 @@
 #!/bin/sh
 # m for main
 
-bash setup.sh #install apps and docker
+# core
+bash setup_core.sh #install apps and docker
 
-source v.sh # install nvim building from source
-bash ssh.sh # setup ssh
-source d.sh # simlinks things
-source ~/.bash_aliases
-source n.sh
+# extra
+bash setup_extra.sh
+bash ssh.sh # setup ssh for github
