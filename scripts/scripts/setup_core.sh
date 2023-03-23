@@ -27,8 +27,7 @@ gnome-terminal --wait -- bash -c "bash ~/dotfiles/scripts/scripts/stuff/r.sh" &
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/rust # TODO: add this when learn how to set it up
 
 # Cheat sheet
-curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
-sudo chmod +x /usr/local/bin/cht.sh
+curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
 
 # tmux
 sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
