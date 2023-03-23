@@ -150,8 +150,6 @@ alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
 
 # cheat.sh
 alias how='cht.sh'
-# openai
-alias openai='bash ~/.local/openai.sh'
 
 check-truecolor() {
 awk -v term_cols="${width:-$(tput cols || echo 80)}" 'BEGIN{
@@ -180,9 +178,12 @@ cdf() {
     file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
+# openai chatgpt
+bind '"\C-h":"bash ~/.local/openai.sh\n"'
 # bind ^f tmux-sessionizer
 bind '"\C-f":". ~/.local/tmux-sessionizer.sh\n"'
 bind '"\C-b":"fg\n"'
+# tmux open scrollback on nvim
 bind '"\C-n":"tmux capture-pane -pS -10000 > ~/.tmux_scrollback_temp && nvim -c \"$\" ~/.tmux_scrollback_temp && rm ~/.tmux_scrollback_temp\n"'
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
