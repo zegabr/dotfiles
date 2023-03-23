@@ -183,6 +183,7 @@ cdf() {
 # bind ^f tmux-sessionizer
 bind '"\C-f":". ~/.local/tmux-sessionizer.sh\n"'
 bind '"\C-b":"fg\n"'
+bind '"\C-n":"tmux capture-pane -pS -10000 > ~/.tmux_scrollback_temp && nvim ~/.tmux_scrollback_temp && rm ~/.tmux_scrollback_temp\n"'
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
 
