@@ -3,7 +3,7 @@
 CURR_DIR=$(pwd)
 # dependencies
 sudo apt update && sudo apt upgrade -y
-sudo apt install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen xsel -y
+sudo apt install ninja-build gettext libtool-bin cmake g++ pkg-config unzip curl xsel -y
 
 mkdir ~/nvim-deps
 
