@@ -20,4 +20,3 @@ my dotfiles manager
 
 ## reminder to the creator
 - should add flameshot shortcut manually
-- for minimal setup, delete/comment unwanted lines in scripts/stuff/apps.sh before running m.sh
