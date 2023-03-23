@@ -23,7 +23,7 @@ speedtest-cli \
 
 # rust and cargo and cargo tools
 sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-gnome-terminal --wait -- bash -c "bash ~/dotfiles/scripts/scripts/r.sh" &
+gnome-terminal --wait -- bash -c "bash ~/dotfiles/scripts/scripts/stuff/r.sh" &
 
 # Cheat sheet
 curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh

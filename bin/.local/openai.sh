@@ -1,9 +1,10 @@
+#!/bin/sh
 # used chatgpt to create 99% of this script
 # Set up your OpenAI API key by adding it to the openaikey file
 export OPENAI_API_KEY=$(cat ~/openaikey)
 
 # Choose the GPT-3 model to use
-model="text-davinci-003"
+model="gpt-3.5-turbo"
 
 read -p "just ask me: " prompt
 # Generate text using GPT-3
