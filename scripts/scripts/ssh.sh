@@ -20,9 +20,9 @@ IdentityFile ~/.ssh/id_rsa
 IdentitiesOnly yes
 
 " > ~/.ssh/config
-echo
-echo "Please check if everything is ok at ~/.ssh/config"
-gedit ~/.ssh/config &
+    echo
+    echo "Please check if everything is ok at ~/.ssh/config"
+    nvim ~/.ssh/config
 
     if [[ $(uname -a | grep microsoft) ]]; then
         clip.exe < ~/.ssh/id_rsa.pub
