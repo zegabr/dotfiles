@@ -2,8 +2,8 @@
 # m for main
 
 # core
-bash setup_core.sh #install apps and docker
+bash ~/dotfiles/scripts/scripts/setup_core.sh
 
 # extra
-bash setup_extra.sh
-bash ssh.sh # setup ssh for github
+bash ~/dotfiles/scripts/scripts/setup_extra.sh
+bash ~/dotfiles/scripts/scripts/stuff/ssh.sh # setup ssh for github

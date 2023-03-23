@@ -72,4 +72,4 @@ if [ "$ans" == "y" ]; then
 fi
 
 # pnpm for nvim lsp
-gnome-terminal --wait -- bash -c "bash ~/dotfiles/scripts/scripts/n.sh"
+gnome-terminal --wait -- bash -c "bash ~/dotfiles/scripts/scripts/stuff/n.sh"
