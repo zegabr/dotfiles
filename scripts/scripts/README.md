@@ -1,23 +1,14 @@
-# m
-Usefull scripts for linux setup/productivity (at least I find it usefull).
-
 # What the scripts do
-Run `bash setup.sh` for basic setup (take a look at the file stuff/apps.sh first so you don't install things you don't want).
+Run `bash setup_core.sh` for basic setup including bash aliases, nvim, tmux, starship, rust tooling like ripgrep, bat etc. I'll use this for a initial setup in work ubuntu/debian machines
 
-Run `bash ssh.sh` to setup default ssh key for github.
+Run `bash setup_extra.sh` for extra stuff I use in dual boot setup for a personal computer
 
-Run `bash add-ssh.sh` to add a new ssh key for github (usefull if you use more than one git account on the same pc).
+Run `bash stuff/ssh.sh` to setup default ssh key for github.
 
-Run `source z.sh` if you want to install zsh and [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/blob/master/README.md)
-
-Run `source stuff/custom-keybindings.sh` to add keyboard shortcuts (for now it only adds flameshot for now and it *overrides all custom shortcuts* previously added)
+Run `bash stuff/add-ssh.sh` to add a new ssh key for github (usefull if you use more than one git account on the same pc).
 
 Run `source c.sh` if you want my competitive setup (vim, c++ and [cp](https://github.com/zegabr/cp)) (you probably won't want it)
 
-Run `source v.sh` if you want to build neovim from source (with vim-plug instalation)
+Run `source v.sh` if you want to build neovim from source
 
-Run `source t.sh` if you want tmux
-
-Run `source f.sh` for fira code fonts (must change on terminal preferences later as I didn't find how to do it automatically)
-
-Run `source m.sh` to get full setup (one liner it is!). This do not install zsh anymore
+Run `source m.sh` to get full setup (one liner it is!)
