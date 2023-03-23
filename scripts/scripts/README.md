@@ -3,12 +3,8 @@ Run `bash setup_core.sh` for basic setup including bash aliases, nvim, tmux, sta
 
 Run `bash setup_extra.sh` for extra stuff I use in dual boot setup for a personal computer
 
-Run `bash stuff/ssh.sh` to setup default ssh key for github.
+Run `bash c.sh` if you want my competitive setup (vim, c++ and [cp](https://github.com/zegabr/cp)) (you probably won't want it)
 
-Run `bash stuff/add-ssh.sh` to add a new ssh key for github (usefull if you use more than one git account on the same pc).
+Run `bash m.sh` to get full setup (one liner it is!)
 
-Run `source c.sh` if you want my competitive setup (vim, c++ and [cp](https://github.com/zegabr/cp)) (you probably won't want it)
-
-Run `source v.sh` if you want to build neovim from source
-
-Run `source m.sh` to get full setup (one liner it is!)
+See stuff/ for other configuration scripts i use inside the ones mentioned above
