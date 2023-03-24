@@ -11,6 +11,8 @@ mypaint \
 usb-creator-gtk \
 -y
 
+# alternative to usb-creator-gtk : https://unetbootin.github.io/ (this one will actually download the version for me)
+
 sudo snap remove firefox
 sudo snap install discord
 sudo snap install telegram-desktop
