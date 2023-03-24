@@ -108,46 +108,46 @@ lsp.configure('lua_ls', {
     }
 })
 -------------------------
--- lsp.configure('gopls', {
---     capabilities = capabilities,
---     cmd = { "gopls", "serve" },
---     settings = {
---         gopls = {
---             analyses = {
---                 unusedparams = true,
---             },
---         },
---         staticcheck = true,
---     }
--- })
+lsp.configure('gopls', {
+    capabilities = capabilities,
+    cmd = { "gopls", "serve" },
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+        },
+        staticcheck = true,
+    }
+})
 ---------------------
--- lsp.configure('jdtls', {
---     capabilities = capabilities,
---     root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
--- })
+lsp.configure('jdtls', {
+    capabilities = capabilities,
+    root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
+})
 --------------------------
--- lsp.configure('clangd', {
---     capabilities = capabilities,
---     root_dir = require('lspconfig/util').root_pattern("compile_commands.json", "compile_flags.txt", ".git",
---         "Makefile", "makefile"),
---     filetypes = { "c", "cpp", "h", "hpp" }, -- we don't want objective-c and objective-cpp!?
---     -- if does not work, use find . | grep clangd and do export PATH=$PATH:<clangd executable>
---     cmd = { "clangd",
---         "--background-index",
---         "--suggest-missing-includes", "--clang-tidy" },
---     single_file_support = true,
--- })
+lsp.configure('clangd', {
+    capabilities = capabilities,
+    root_dir = require('lspconfig/util').root_pattern("compile_commands.json", "compile_flags.txt", ".git",
+        "Makefile", "makefile"),
+    filetypes = { "c", "cpp", "h", "hpp" }, -- we don't want objective-c and objective-cpp!?
+    -- if does not work, use find . | grep clangd and do export PATH=$PATH:<clangd executable>
+    cmd = { "clangd",
+        "--background-index",
+        "--suggest-missing-includes", "--clang-tidy" },
+    single_file_support = true,
+})
 --------------------------
--- lsp.configure('rust_analyzer', {
---     capabilities = capabilities,
---     cmd = { "rustup", "run", "stable", "rust-analyzer" },
---     settings = {
---         rust = {
---             unstable_features = true,
---             build_on_save = false,
---             all_features = true,
---         },
---     }
--- })
+lsp.configure('rust_analyzer', {
+    capabilities = capabilities,
+    cmd = { "rustup", "run", "stable", "rust-analyzer" },
+    settings = {
+        rust = {
+            unstable_features = true,
+            build_on_save = false,
+            all_features = true,
+        },
+    }
+})
 
 lsp.setup() -- this should be the last thing
