@@ -1,6 +1,6 @@
 #LINUX
 export EDITOR=nvim
-alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt --fix-broken install -y; sudo snap refresh; source ~/dotfiles/scripts/scripts/stuff/r.sh'
+alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y; sudo snap refresh; source ~/dotfiles/scripts/scripts/stuff/r.sh'
 alias update-nvim='source ~/dotfiles/scripts/scripts/stuff/v.sh'
 alias lag='alias | grep'
 alias v='nvim'

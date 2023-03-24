@@ -22,7 +22,7 @@ cargo install \
     gitui \
     speedtest-rs \
     porsmo \
-    --locked
+    --message-format short
 
 # if starship is not being started, add it to bashrc
 if [ -f ~/.bashrc ] && ! grep -q 'eval "$(starship init bash)"' ~/.bashrc; then
