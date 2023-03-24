@@ -17,7 +17,6 @@ htop \
 jq \
 python3-pip \
 neofetch \
-speedtest-cli \
 -y
 
 
