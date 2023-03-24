@@ -91,7 +91,8 @@ return require('packer').startup(function(use)
     use {
         'RRethy/nvim-base16',
         config = function()
-            vim.cmd.colorscheme("base16-gruvbox-dark-hard")
+            vim.cmd.colorscheme("base16-gruvbox-material-dark-hard")
+            -- vim.cmd.colorscheme("base16-tokyo-city-dark")
         end,
     }
     use {
