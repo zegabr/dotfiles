@@ -25,8 +25,13 @@ cargo install \
     --message-format short
 
 # if starship is not being started, add it to bashrc
-if [ -f ~/.bashrc ] && ! grep -q 'eval "$(starship init bash)"' ~/.bashrc; then
-   echo 'eval "$(starship init bash)"' >> ~/.bashrc
+if ! grep -q 'eval "$(starship init bash)"' ~/.bashrc; then
+    echo 'export STARSHIP_LOG=error' >> ~/.bashrc
+    echo 'eval "$(starship init bash)"' >> ~/.bashrc
+fi
+
+if ! grep -q 'export STARSHIP_LOG=error' ~/.bashrc; then
+    echo 'export STARSHIP_LOG=error' >> ~/.bashrc
 fi
 
 # check if RUSTC_WRAPPER is not an exported variable
