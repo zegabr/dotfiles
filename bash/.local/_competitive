@@ -1,0 +1,8 @@
+#!/bin/sh
+
+##COMPETITIVE/C++
+alias m='make && make t'
+alias c='g++ -std=c++20 -Ofast -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
+alias tc='time g++ -std=c++20 -Ofast'
+alias cw='g++ -std=c++20 -Ofast -Wfatal-errors'
+alias getcppincludepaths='g++ -E -x c++ - -v < /dev/null'
