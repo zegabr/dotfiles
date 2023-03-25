@@ -105,44 +105,6 @@ function gclhttps(){
     git clone --recurse-submodules https://github.com/$1
 }
 
-## change keyboard numerical row mappings to its symbols
-#function remaper(){
-#FLAG=~/REMAPER_ON_FLAG
-#if [ ! -f "$FLAG" ]; then
-#echo "activating remaper"
-##original mapping:		#new mapping
-##keycode 10 = 1			 exclam = '!'
-##keycode 11 = 2			 at = '@'
-##keycode 12 = 3			 numbersign = '#'
-##keycode 13 = 4			 dollar = '$'
-##keycode 14 = 5		     percent = '%'
-##keycode 15 = 6			 asciicircum = '^'
-##keycode 16 = 7			 ampersand = '&'
-##keycode 17 = 8			 asterisk = '*'
-##keycode 18 = 9			 parenleft = '('
-##keycode 19 = 0			 parenright = ')'
-##keycode 20 = minus		 underscore = '_'
-
-        ##commands to remap
-        #xmodmap -e "keycode 10 = exclam"
-        #xmodmap -e "keycode 11 = at"
-        #xmodmap -e "keycode 12 = numbersign"
-        #xmodmap -e "keycode 13 = dollar"
-        #xmodmap -e "keycode 14 = percent"
-        #xmodmap -e "keycode 15 = underscore"
-        #xmodmap -e "keycode 16 = ampersand"
-        #xmodmap -e "keycode 17 = asterisk"
-        #xmodmap -e "keycode 18 = parenleft"
-        #xmodmap -e "keycode 19 = parenright"
-        #xmodmap -e "keycode 20 = underscore"
-        #echo 1 > "$FLAG"
-        #else
-        #echo "deactivating remaper"
-        #setxkbmap -option
-        #rm "$FLAG"
-        #fi
-        #}
-
 ##COMPETITIVE/C++
 alias m='make && make t'
 alias c='g++ -std=c++20 -Ofast -Wshadow -Wall -Wno-unused-result -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG -Wno-unused-result -Wno-sign-compare -Wno-char-subscripts'
@@ -169,28 +131,73 @@ for (colnum = 0; colnum<term_cols; colnum++) {
 }'
 }
 
-## FZF (used by tmux-sessionizer)
+## FZF
 export FZF_DEFAULT_OPTS="--reverse --inline-info"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'"
 
+[[ $TMUX != "" ]] && export TERM="screen-256color"
+
 # cdf - cd into the directory of the selected file
-cdf() {
+_cdf() {
     local file
     local dir
     file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
-# openai chatgpt
-bind '"\C-h":"bash ~/.local/openai.sh\n"'
-# bind ^f tmux-sessionizer
-bind '"\C-f":". ~/.local/tmux-sessionizer.sh\n"'
-bind '"\C-b":"fg\n"'
-# tmux open scrollback on nvim
-bind '"\C-n":"tmux capture-pane -pS -10000 > ~/.tmux_scrollback_temp && nvim -c \"$\" ~/.tmux_scrollback_temp && rm ~/.tmux_scrollback_temp\n"'
-bind 'TAB:menu-complete'
-bind 'set show-all-if-ambiguous on'
+_reverse_search_fzf() {
+    selected=$(history | awk '{$1=""; print substr($0,2)}' | fzf)
+    echo "$selected"
+    eval "$selected"
+}
 
-[[ $TMUX != "" ]] && export TERM="screen-256color"
+_open_scrollback_in_neovim() {
+    tmux capture-pane -pS -10000 > ~/.tmux_scrollback_temp && nvim -c "$" ~/.tmux_scrollback_temp && rm ~/.tmux_scrollback_temp
+}
+
+_tmux_sessionizer() {
+    CURR_DIR=$(pwd)
+
+    if [[ $# -eq 1 ]]; then
+        selected=$1
+    else
+        selected=$(find ~/ ~/Desktop -mindepth 1 -maxdepth 1 -type d | fzf)
+    fi
+
+    if [[ -z $selected ]]; then
+        exit 0
+    fi
+
+    selected_name=$(basename "$selected" | tr . _)
+    tmux_running=$(pgrep tmux)
+    if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+        tmux new-session -s $selected_name -c $selected
+        exit 0
+    fi
+
+    if ! tmux has-session -t $selected_name 2> /dev/null; then
+        tmux new-session -ds $selected_name -c $selected
+    fi
+
+    if [[ -z $TMUX ]]; then
+        tmux attach-session -t $selected_name
+    else
+        tmux switch-client -t $selected_name
+    fi
+
+    cd $CURR_DIR
+}
+
+_chatgpt() {
+    # Set up your OpenAI API key by adding it to the openaikey file
+    export OPENAI_API_KEY=$(cat ~/openaikey)
+
+    read -p "ask to gpt3.5-turbo:" prompt
+    echo ===============
+     curl -s https://api.openai.com/v1/chat/completions -H "Content-Type: application/json" -H "Authorization: Bearer $OPENAI_API_KEY" -d '{
+        "model": "gpt-3.5-turbo",
+        "messages": [{"role": "user", "content": "'"$prompt"'"}]
+      }' | jq -r ".choices[0].message.content"
+}
 
 function extract(){
     # Bash Function To Extract File Archives Of Various Types
@@ -218,10 +225,19 @@ function deb-install(){
    # telegram.deb
    sudo dpkg -i $1
 }
+
 function deb-uninstall(){
-    # # telegram
+    # telegram
    sudo dpkg -r $1
 }
+
+bind '"\C-b":"fg\n"'
+bind '"\C-h":"_chatgpt\n"'
+bind '"\C-f":"_tmux_sessionizer\n"'
+bind '"\C-n":"_open_scrollback_in_neovim\n"'
+bind '"\C-r":"_reverse_search_fzf\n"'
+bind 'TAB:menu-complete'
+bind 'set show-all-if-ambiguous on'
 
 if [ -f ~/.bash_aliases_work ]; then
     . ~/.bash_aliases_work
