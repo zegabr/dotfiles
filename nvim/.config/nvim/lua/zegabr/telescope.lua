@@ -3,6 +3,7 @@ local actions = require('telescope.actions')
 local action_state = require("telescope.actions.state")
 
 local mymappings = {
+    ['<esc>'] = actions.close, -- this ensures i don't have a normal mode meaning i only press esc once to close it
     ['<C-j>'] = actions.move_selection_next,
     ['<C-k>'] = actions.move_selection_previous,
     ['<tab>'] = actions.toggle_selection,
