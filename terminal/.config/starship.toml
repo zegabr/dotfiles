@@ -42,6 +42,8 @@ deleted = "x"
 
 [directory]
 read_only = " ro"
+truncate_to_repo = false
+truncation_length = 0
 
 [docker_context]
 symbol = "docker "
