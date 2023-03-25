@@ -69,7 +69,7 @@ alias gbD='git branch -D'
 
 alias gc='git commit -v'
 alias gc!='git commit -v --amend'
-alias gcan!='git commit -v -a --no-edit -amend'
+alias gcan!='git commit -v -a --no-edit --amend'
 alias gp='git push'
 alias gl='git pull'
 alias glo='git log --oneline --decorate'
