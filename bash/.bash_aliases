@@ -12,6 +12,7 @@ alias bro='browse'
 alias l='exa -l'
 alias ls='exa'
 alias cat='bat'
+alias pomo='porsmo'
 
 #-----------------------config files shortcuts
 alias ev='dot && v ~/.config/nvim/init.lua'
