@@ -2,7 +2,7 @@
 # competitive setup
 
 #creates competitive/ at parent of m/
-cd ../
+cd ~
 rm -rf competitive/
 mkdir competitive/
 cd competitive/
