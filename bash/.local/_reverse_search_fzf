@@ -2,6 +2,6 @@
 
 _reverse_search_fzf() {
     selected=$(history | awk '{$1=""; print substr($0,2)}' | fzf)
-    echo "$selected"
+    echo "$selected" # TODO: make it replace current command line
     eval "$selected"
 }
