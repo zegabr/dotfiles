@@ -8,9 +8,11 @@ function _ga_completion() {
 }
 complete -F _ga_completion ga
 complete -F _ga_completion gd
+complete -F _ga_completion gunstage
 alias ga='git add'
 alias gd='git diff'
 alias gaa='git add .'
+alias gunstage='git restore --staged'
 alias gb='git branch'
 alias gcb='git checkout -b'
 

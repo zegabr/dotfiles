@@ -8,6 +8,10 @@ alias vs='nvim -S'
 alias t='tmux attach -t base || tmux new -s base'
 alias bro='browse'
 alias mkdir='mkdir -p'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 # Rust
 alias l='exa -l'
