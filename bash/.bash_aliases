@@ -1,6 +1,6 @@
 #LINUX
 export EDITOR=nvim
-alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y; sudo snap refresh; source ~/dotfiles/scripts/scripts/stuff/r.sh'
+alias update='sudo apt update && sudo apt full-upgrade -y; sudo snap refresh; source ~/dotfiles/scripts/scripts/stuff/r.sh'
 alias update-nvim='source ~/dotfiles/scripts/scripts/stuff/v.sh'
 alias lag='alias | grep'
 alias v='nvim'
@@ -51,7 +51,7 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**' --glob '!build
 # tmux color fix
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 
-# source ~/.local/_competitive
+source ~/.local/_competitive
 source ~/.local/_git_utils
 source ~/.local/_debian_utils
 
