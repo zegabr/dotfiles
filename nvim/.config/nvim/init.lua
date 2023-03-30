@@ -149,6 +149,10 @@ return require('packer').startup(function(use)
 
     use { 'github/copilot.vim',
     config = function ()
+       vim.cmd([[
+        imap <silent><script><expr> <tab> copilot#Accept("\<CR>")
+        let g:copilot_no_tab_map = v:false
+       ]])
     end,}
 
     -- my first plugin
