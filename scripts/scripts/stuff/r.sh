@@ -15,7 +15,6 @@ rustup component add rust-analyzer
 cargo install \
     bacon \
     ripgrep \
-    fd-find \
     starship \
     bat \
     exa \
