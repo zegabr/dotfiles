@@ -15,6 +15,8 @@ lsp.set_preferences({
     set_lsp_keymaps = false,
 })
 
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 lsp.setup_nvim_cmp({
@@ -29,34 +31,32 @@ lsp.setup_nvim_cmp({
         ['<CR>'] = cmp.mapping(
             cmp.mapping.confirm {
                 behavior = cmp.ConfirmBehavior.Replace,
-                select = true,
+                select = false,
             },
             { "i", "c" }
         ),
-        -- ['<Tab>'] = cmp.mapping(function(fallback)
-        --     if cmp.visible() then
-        --         cmp.select_next_item()
-        --     elseif luasnip.expand_or_jumpable() then
-        --         luasnip.expand_or_jump()
-        --     else
-        --         fallback()
-        --     end
-        -- end, { 'i', 's' }),
-        -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-        --     if cmp.visible() then
-        --         cmp.select_prev_item()
-        --     elseif luasnip.jumpable(-1) then
-        --         luasnip.jump(-1)
-        --     else
-        --         fallback()
-        --     end
-        -- end, { 'i', 's' }),
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                fallback()
+            end
+        end),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                fallback()
+            end
+        end),
     }),
     sources = {
-        { name = 'luasnip' },
-        { name = 'nvim_lsp' },
-        { name = 'buffer' },
+        -- Copilot Source
+        { name = "copilot",  group_index = 2 },
         { name = 'path' },
+        { name = 'nvim_lsp', keyword_length = 1 },
+        { name = 'buffer',   keyword_length = 3 },
+        { name = 'luasnip',  keyword_length = 2 },
     },
     snippet = {
         expand = function(args)
@@ -66,9 +66,9 @@ lsp.setup_nvim_cmp({
     experimental = {
         ghost_text = false,
     },
-    completion = {
-        autocomplete = false,
-    }
+    window = {
+        documentation = cmp.config.window.bordered()
+    },
 })
 
 lsp.on_attach(function(_, bufnr)

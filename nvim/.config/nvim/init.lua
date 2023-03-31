@@ -70,6 +70,23 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },
             { 'rafamadriz/friendly-snippets' },
             { 'nvim-telescope/telescope.nvim' }, -- important since zegabr.lsp uses telescope
+
+            -- copilot
+            {
+                "zbirenbaum/copilot.lua",
+                config = function()
+                    require("copilot").setup({
+                        suggestion = { enabled = false },
+                        panel = { enabled = false },
+                    })
+                end,
+            },
+            {
+                "zbirenbaum/copilot-cmp",
+                config = function()
+                    require("copilot_cmp").setup()
+                end,
+            },
         },
         config = function()
             require('zegabr.lsp')
@@ -147,13 +164,7 @@ return require('packer').startup(function(use)
     -- to change pair
     -- 1) cs<pair to be changed><new closing pair>
 
-    use { 'github/copilot.vim',
-    config = function ()
-       vim.cmd([[
-        imap <silent><script><expr> <tab> copilot#Accept("\<CR>")
-        let g:copilot_no_tab_map = v:false
-       ]])
-    end,}
+    -- use { 'github/copilot.vim' } -- TODO: undo copilot_cmp if it does not work
 
     -- my first plugin
     use { 'zegabr/kokusen' }
