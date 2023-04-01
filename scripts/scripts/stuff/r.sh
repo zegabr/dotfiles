@@ -42,3 +42,13 @@ else
     echo "RUSTC_WRAPPER is already set to " "$RUSTC_WRAPPER"
     echo "If you want to change it, please do it manually."
 fi
+
+
+# for tectonic installation TODO: find which ones are really necessary (run one by one untill tectonic is installable)
+ # sudo apt install texlive-extra-utils -y
+ # sudo apt install libicu-dev -y
+ # sudo apt install libgraphite2-dev -y
+ # sudo apt install libfcft-dev -y
+ # sudo apt install vflib3-dev -y
+ # sudo apt install libfontconfig-dev -y
+ # cargo install tectonic

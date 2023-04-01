@@ -166,6 +166,13 @@ return require('packer').startup(function(use)
 
     -- use { 'github/copilot.vim' } -- TODO: undo copilot_cmp if it does not work
 
+    use { 'lervag/vimtex',
+        config = function()
+            vim.cmd([[syntax enable]])
+            vim.g.vimtex_view_method = 'zathura'
+            vim.g.vimtex_compiler_method = 'tectonic'
+        end }
+
     -- my first plugin
     use { 'zegabr/kokusen' }
 
