@@ -3,9 +3,6 @@ vim.g.netrw_banner = 1
 vim.g.netrw_winsize = 25
 
 vim.keymap.set("n", "<Leader>e", vim.cmd.Ex)
--- TODO: go :h netrw
--- learn how to use netrw to:
--- open file: press enter
 -- - create file near current file: use %
 -- - move file or folder : just press R to rename it
 --
