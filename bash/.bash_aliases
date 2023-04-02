@@ -44,23 +44,18 @@ function note(){
     v ~/notes/${filename}.txt +
 }
 
-## FZF
-export FZF_DEFAULT_OPTS="--reverse --inline-info"
-export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'"
-
 # tmux color fix
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 
 source ~/.local/_competitive
 source ~/.local/_git_utils
 source ~/.local/_debian_utils
+source ~/.local/_fzf_utils
 
 source ~/.local/_chatgpt
 bind '"\C-h":"_chatgpt\n"'
 source ~/.local/_tmux_sessionizer
 bind '"\C-f":"_tmux_sessionizer\n"'
-source ~/.local/_reverse_search_fzf
-bind '"\C-r":"_reverse_search_fzf\n"'
 source ~/.local/_tmux_open_scrollback_on_nvim
 bind '"\C-n":"_tmux_open_scrollback_on_nvim\n"'
 

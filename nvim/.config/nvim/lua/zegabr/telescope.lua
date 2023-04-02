@@ -35,7 +35,10 @@ telescope.setup {
         },
         file_ignore_patterns = {
             "node_modules/",
-            ".git/"
+            ".git/",
+            "build/",
+            ".idea/",
+            ".dart_tools/",
         }
     },
     pickers = {
