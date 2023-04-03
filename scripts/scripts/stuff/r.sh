@@ -52,3 +52,4 @@ fi
  # sudo apt install vflib3-dev -y
  # sudo apt install libfontconfig-dev -y
  # cargo install tectonic
+ # sudo apt install zathura -y
