@@ -62,3 +62,6 @@ autocmd! VimEnter *.txt set wrap
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = 'save file' })
 
 vim.keymap.set("n", "<leader><leader>t", "<Plug>PlenaryTestFile", { desc = 'test lua file' })
+
+vim.api.nvim_set_keymap('n', '<leader><leader>%',[[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]], { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
+
