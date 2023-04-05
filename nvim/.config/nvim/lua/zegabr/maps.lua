@@ -59,6 +59,7 @@ augroup END
 " wrap text when in a txt file
 autocmd! VimEnter *.txt set wrap
 ]])
+
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = 'save file' })
 
 vim.keymap.set("n", "<leader><leader>t", "<Plug>PlenaryTestFile", { desc = 'test lua file' })

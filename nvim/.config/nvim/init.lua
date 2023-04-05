@@ -164,8 +164,6 @@ return require('packer').startup(function(use)
     -- to change pair
     -- 1) cs<pair to be changed><new closing pair>
 
-    -- use { 'github/copilot.vim' } -- TODO: undo copilot_cmp if it does not work
-
     use { 'lervag/vimtex',
         config = function()
             vim.cmd([[syntax enable]])

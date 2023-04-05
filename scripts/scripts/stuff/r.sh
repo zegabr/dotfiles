@@ -44,12 +44,11 @@ else
 fi
 
 
-# for tectonic installation TODO: find which ones are really necessary (run one by one untill tectonic is installable)
+# for vimtex neovim plugin
  # sudo apt install texlive-extra-utils -y
  # sudo apt install libicu-dev -y
  # sudo apt install libgraphite2-dev -y
- # sudo apt install libfcft-dev -y
- # sudo apt install vflib3-dev -y
  # sudo apt install libfontconfig-dev -y
+ # sudo apt install zathura biber -y
  # cargo install tectonic
- # sudo apt install zathura -y
+
