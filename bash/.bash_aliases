@@ -1,6 +1,6 @@
 #LINUX
 export EDITOR=nvim
-alias update='sudo apt update && sudo apt full-upgrade -y; sudo snap refresh; source ~/dotfiles/scripts/scripts/stuff/r.sh'
+alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y; sudo snap refresh; source ~/dotfiles/scripts/scripts/stuff/r.sh'
 alias update-nvim='source ~/dotfiles/scripts/scripts/stuff/v.sh'
 alias lag='alias | grep'
 alias v='nvim'
@@ -44,6 +44,9 @@ function note(){
     v ~/notes/${filename}.txt +
 }
 
+# for chatgpt
+export OPENAI_API_KEY=$(cat ~/openaikey)
+
 # tmux color fix
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 
@@ -52,8 +55,6 @@ source ~/.local/_git_utils
 source ~/.local/_debian_utils
 source ~/.local/_fzf_utils
 
-source ~/.local/_chatgpt
-bind '"\C-h":"_chatgpt\n"'
 source ~/.local/_tmux_sessionizer
 bind '"\C-f":"_tmux_sessionizer\n"'
 source ~/.local/_tmux_open_scrollback_on_nvim

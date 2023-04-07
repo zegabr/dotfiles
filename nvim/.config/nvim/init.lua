@@ -93,6 +93,19 @@ return require('packer').startup(function(use)
         end,
     }
 
+    -- chatgpt
+    use({
+        "jackMort/ChatGPT.nvim",
+        config = function()
+            require("chatgpt").setup()
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+    })
+
     ----VCS integration
     use {
         'mhinz/vim-signify',
