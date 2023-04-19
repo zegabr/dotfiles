@@ -84,6 +84,7 @@ return require('packer').startup(function(use)
             {
                 "zbirenbaum/copilot-cmp",
                 config = function()
+                    -- TODO: make it not work for tex files
                     require("copilot_cmp").setup()
                 end,
             },
@@ -92,23 +93,6 @@ return require('packer').startup(function(use)
             require('zegabr.lsp')
         end,
     }
-
-    -- chatgpt
-    use({
-        "jackMort/ChatGPT.nvim",
-        config = function()
-            require("chatgpt").setup({
-                keymaps = {
-                    submit = "<C-s>"
-                }
-            })
-        end,
-        requires = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
-        }
-    })
 
     ----VCS integration
     use {
