@@ -55,8 +55,7 @@ source ~/.local/_competitive
 source ~/.local/_git_utils
 source ~/.local/_debian_utils
 source ~/.local/_fzf_utils
-source ~/.local/_tmux_sessionizer
-source ~/.local/_tmux_open_scrollback_on_nvim
+source ~/.local/_tmux_utils
 
 bind '"\C-f":"_tmux_sessionizer\n"'
 bind '"\C-n":"_tmux_open_scrollback_on_nvim\n"'

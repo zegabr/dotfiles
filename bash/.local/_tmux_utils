@@ -1,5 +1,9 @@
 #!/bin/sh
 
+_tmux_open_scrollback_on_nvim() {
+    tmux capture-pane -pS -10000 > ~/.tmux_scrollback_temp && nvim -c "$" ~/.tmux_scrollback_temp && rm ~/.tmux_scrollback_temp
+}
+
 _tmux_sessionizer() {
     CURR_DIR=$(pwd)
 
