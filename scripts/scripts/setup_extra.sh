@@ -10,8 +10,14 @@ flameshot \
 mypaint \
 usb-creator-gtk \
 -y
-
 # alternative to usb-creator-gtk : https://unetbootin.github.io/ (this one will actually download the version for me)
+
+# golang
+source ~/dotfiles/scripts/scripts/stuff/g.sh
+
+# rust and cargo and cargo tools
+sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+gnome-terminal --wait -- bash -c "bash ~/dotfiles/scripts/scripts/stuff/r.sh" &
 
 sudo snap remove firefox
 sudo snap install discord
