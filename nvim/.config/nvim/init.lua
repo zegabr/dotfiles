@@ -154,7 +154,6 @@ return require('packer').startup(function(use)
     use { 'romgrk/fzy-lua-native' }                                                                              --dependency for wilder
     use { 'gelguy/wilder.nvim', run = ':UpdateRemotePlugins', config = function() require('zegabr.wilder') end } --wilder menu
 
-
     use { 'tpope/vim-surround' } ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
     -- simplest way to use is:
     -- to add pair
@@ -165,6 +164,7 @@ return require('packer').startup(function(use)
     -- to change pair
     -- 1) cs<pair to be changed><new closing pair>
 
+    -- for latex
     use { 'lervag/vimtex',
         config = function()
             vim.cmd([[syntax enable]])
@@ -183,7 +183,7 @@ return require('packer').startup(function(use)
         end }
 
     -- my first plugin
-    use { 'zegabr/kokusen' }
+    -- use { 'zegabr/kokusen' }
 
     if packer_initializing then
         require('packer').sync()

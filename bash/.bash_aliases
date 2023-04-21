@@ -55,7 +55,6 @@ source ~/.local/_competitive
 source ~/.local/_git_utils
 source ~/.local/_debian_utils
 source ~/.local/_fzf_utils
-source ~/.local/_check_true_colors
 source ~/.local/_tmux_sessionizer
 source ~/.local/_tmux_open_scrollback_on_nvim
 
