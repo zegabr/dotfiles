@@ -33,10 +33,10 @@ curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /u
 sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 
 # install nvim building from source
-source v.sh
+source ~/dotfiles/scripts/scripts/stuff/v.sh
 
 # simlinks dotfiles
-source d.sh
+source ~/dotfiles/scripts/scripts/d.sh
 
 #for work note taking
 mkdir ~/notes
