@@ -44,9 +44,6 @@ function note(){
     v ~/notes/${filename}.txt +
 }
 
-# for chatgpt
-export OPENAI_API_KEY=$(cat ~/openaikey)
-
 # tmux color fix
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 
