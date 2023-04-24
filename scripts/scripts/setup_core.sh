@@ -43,3 +43,5 @@ source ~/dotfiles/scripts/scripts/d.sh
 
 #for work note taking
 mkdir ~/notes
+
+cd ~/dotfiles
