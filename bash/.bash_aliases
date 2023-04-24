@@ -14,8 +14,8 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 # Rust
-alias l='exa -l'
-alias ls='exa'
+alias ll='exa -l'
+alias lla='exa -la'
 alias cat='bat'
 alias pomo='porsmo'
 

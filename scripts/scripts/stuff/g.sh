@@ -23,10 +23,10 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 if ! grep -q 'export GOROOT="/home/$USER/go"' ~/.bashrc; then
     printf '
-    export GOROOT="/home/$USER/go"
-    export GOPATH="/home/$USER/go/packages"
-    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-    \n' >> ~/.bashrc
+export GOROOT="/home/$USER/go"
+export GOPATH="/home/$USER/go/packages"
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+\n' >> ~/.bashrc
 fi
 
 printf "You are ready to Go!\n";
