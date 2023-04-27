@@ -13,7 +13,6 @@ usb-creator-gtk \
 # alternative to usb-creator-gtk : https://unetbootin.github.io/ (this one will actually download the version for me)
 
 sudo snap remove firefox
-sudo snap install brave
 sudo snap install discord
 sudo snap install telegram-desktop
 sudo snap install spotify
@@ -40,8 +39,16 @@ if [ "$ans" == "y" ]; then
 
 fi
 
+read -p "Type y if you want Brave to be installed (y/<anything else>): " ans
+if [ "$ans" == "y" ]; then
+    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+    sudo apt update -y
+    sudo apt install brave-browser -y
+fi
+
 # GOOGLE CHROME
-read -p "Type y if you want Google Chrome to be installed (y/n): " ans
+read -p "Type y if you want Google Chrome to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo dpkg -i google-chrome-stable_current_amd64.deb
@@ -50,7 +57,7 @@ if [ "$ans" == "y" ]; then
 fi
 
 # Cheat sheet
-read -p "Type y if you want cheat.sh to be installed (y/n): " ans
+read -p "Type y if you want cheat.sh to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
     curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
     sudo chmod +x /usr/local/bin/cht.sh
@@ -66,7 +73,7 @@ if [[ $(uname -a | grep microsoft) ]]; then
 fi
 
 # DUAL BOOT FIX
-read -p "Type y if you want GRUB to be updated (you want it if you use a dual boot)(y/n): " ans
+read -p "Type y if you want GRUB to be updated (you want it if you use a dual boot)(y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
     sudo chmod 777 /etc/default/grub
     sudo echo "GRUB_DEFAULT=saved" >> /etc/default/grub
