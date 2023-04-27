@@ -13,6 +13,7 @@ usb-creator-gtk \
 # alternative to usb-creator-gtk : https://unetbootin.github.io/ (this one will actually download the version for me)
 
 sudo snap remove firefox
+sudo snap install brave
 sudo snap install discord
 sudo snap install telegram-desktop
 sudo snap install spotify
