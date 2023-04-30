@@ -27,17 +27,37 @@ gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 # DOCKER
 read -p "Type y if you want Docker to be installed (y/n): " ans
 if [ "$ans" == "y" ]; then
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh get-docker.sh --dry-run
-    rm get-docker.sh
-    # sudo usermod -aG docker $USER # this is not in the installation page anymore?
+    sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras -y
+    sudo rm -rf /var/lib/docker
+    sudo rm -rf /var/lib/containerd
+
+    sudo apt-get update
+    sudo apt-get install -y \
+        ca-certificates \
+        curl \
+        gnupg
+    sudo install -m 0755 -d /etc/apt/keyrings
+     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+     sudo chmod a+r /etc/apt/keyrings/docker.gpg
+    echo \
+      "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+      "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
 
     # from https://docs.docker.com/compose/install/other/
     COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
     sudo curl -L "https://github.com/docker/compose/releases/download/$COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
-    sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
+    sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
 
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    newgrp docker
+    docker --version
+    docker-compose --version
 fi
 
 read -p "Type y if you want Brave to be installed (y/<anything else>): " ans
