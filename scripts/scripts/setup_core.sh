@@ -18,6 +18,8 @@ python3-pip \
 neofetch \
 -y
 
+pip install repren
+
 # FZF with install script
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install

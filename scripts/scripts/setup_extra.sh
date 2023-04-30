@@ -7,6 +7,7 @@ sudo apt update -y
 
 sudo apt install \
 flameshot \
+pandoc \
 mypaint \
 usb-creator-gtk \
 -y
