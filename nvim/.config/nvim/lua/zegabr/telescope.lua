@@ -43,9 +43,11 @@ telescope.setup {
     },
     pickers = {
         find_files = {
+            find_command = { "fd", "--strip-cwd-prefix", "--type", "f" },
             hidden = true,
         },
         git_files = {
+            find_command = { "fd", "--strip-cwd-prefix", "--type", "f" },
             hidden = true,
         },
     },
