@@ -20,10 +20,6 @@ sudo snap install spotify
 sudo snap install libreoffice
 sudo snap install slack --classic
 
-gsettings set org.gnome.shell.ubuntu color-scheme prefer-dark
-gsettings set org.gnome.desktop.interface gtk-theme Yaru-dark
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-
 # DOCKER
 read -p "Type y if you want Docker to be installed (y/n): " ans
 if [ "$ans" == "y" ]; then
@@ -104,4 +100,4 @@ if [ "$ans" == "y" ]; then
 fi
 
 # pnpm for nvim lsp
-gnome-terminal --wait -- bash -c "bash ~/dotfiles/scripts/scripts/stuff/n.sh"
+x-terminal-emulator --wait -e "bash ~/dotfiles/scripts/scripts/stuff/n.sh" &
