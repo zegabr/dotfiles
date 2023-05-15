@@ -36,6 +36,12 @@ vim.keymap.set("n", "<C-q>", ":cclose<CR>zz", { desc = 'quickfix list close' })
 --" below command is for vimrc testing while editing it
 vim.keymap.set("n", "<Leader><CR>", "<cmd>luafile %<cr>", { desc = 'source current lua file' })
 
+vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = 'save file' })
+
+vim.keymap.set("n", "<leader><leader>t", "<Plug>PlenaryTestFile", { desc = 'test lua file' })
+
+vim.api.nvim_set_keymap('n', '<leader><leader>%',[[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]], { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
+
 --" ============ PASSIVE MAPPINGS============
 vim.keymap.set("n", "<C-j>", "<C-d>zz", { desc = '' })
 vim.keymap.set("n", "<C-k>", "<C-u>zz", { desc = '' })
@@ -60,9 +66,4 @@ augroup END
 autocmd! VimEnter *.txt set wrap
 ]])
 
-vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = 'save file' })
-
-vim.keymap.set("n", "<leader><leader>t", "<Plug>PlenaryTestFile", { desc = 'test lua file' })
-
-vim.api.nvim_set_keymap('n', '<leader><leader>%',[[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]], { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
 
