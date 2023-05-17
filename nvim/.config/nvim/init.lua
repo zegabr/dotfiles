@@ -154,7 +154,7 @@ return require('packer').startup(function(use)
     use { 'romgrk/fzy-lua-native' }                                                                              --dependency for wilder
     use { 'gelguy/wilder.nvim', run = ':UpdateRemotePlugins', config = function() require('zegabr.wilder') end } --wilder menu
 
-    use { 'tpope/vim-surround' } ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
+    use { 'tpope/vim-surround' }                                                                                 ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
     -- simplest way to use is:
     -- to add pair
     -- 1) select with any visual mode.
@@ -165,22 +165,22 @@ return require('packer').startup(function(use)
     -- 1) cs<pair to be changed><new closing pair>
 
     -- for latex
-    use { 'lervag/vimtex',
-        config = function()
-            vim.cmd([[syntax enable]])
-            vim.g.vimtex_view_method = 'zathura'
-            vim.g.vimtex_compiler_method = 'tectonic'
-            vim.cmd([[
-                let g:vimtex_compiler_tectonic = {
-                    \ 'build_dir' : '',
-                    \ 'hooks' : [],
-                    \ 'options' : [
-                    \   '--keep-logs',
-                    \   '--synctex'
-                    \ ],
-                    \}
-            ]])
-        end }
+    -- use { 'lervag/vimtex',
+    --     config = function()
+    --         vim.cmd([[syntax enable]])
+    --         vim.g.vimtex_view_method = 'zathura'
+    --         vim.g.vimtex_compiler_method = 'tectonic'
+    --         vim.cmd([[
+    --             let g:vimtex_compiler_tectonic = {
+    --                 \ 'build_dir' : '',
+    --                 \ 'hooks' : [],
+    --                 \ 'options' : [
+    --                 \   '--keep-logs',
+    --                 \   '--synctex'
+    --                 \ ],
+    --                 \}
+    --         ]])
+    --     end }
 
     -- my first plugin
     -- use { 'zegabr/kokusen' }
