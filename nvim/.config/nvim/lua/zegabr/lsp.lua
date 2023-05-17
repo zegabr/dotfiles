@@ -5,6 +5,8 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     'lua_ls',
     'vimls',
+    'gopls',
+    'pyright',
 })
 
 lsp.set_preferences({
@@ -51,7 +53,6 @@ lsp.setup_nvim_cmp({
         end),
     }),
     sources = {
-        -- Copilot Source
         { name = "copilot",  group_index = 2 },
         { name = 'path' },
         { name = 'nvim_lsp', keyword_length = 1 },
@@ -94,6 +95,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true -- ena
 -- Next, you can provide targeted overrides for specific servers.
 -- use that to configure your big tech language servers
 --
+--------------------------- SERVERS
 lsp.configure('lua_ls', {
     capabilities = capabilities,
     settings = {
@@ -135,6 +137,7 @@ lsp.configure('jdtls', {
     root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
 })
 --------------------------
+-- TODO: THIS WILL HARDLY WORK FOR C++
 lsp.configure('clangd', {
     capabilities = capabilities,
     root_dir = require('lspconfig/util').root_pattern("compile_commands.json", "compile_flags.txt", ".git",
