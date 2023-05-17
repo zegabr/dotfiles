@@ -94,7 +94,7 @@ return require('packer').startup(function(use)
         end,
     }
 
-    ----VCS integration
+    -- VCS integration
     use {
         'mhinz/vim-signify',
         config = function()
@@ -102,10 +102,10 @@ return require('packer').startup(function(use)
         end,
     }
 
-    ----Comments
+    -- Comments
     use { 'tpope/vim-commentary' } -- gcc gcgc visual gc
 
-    ----Colors and UI
+    -- Colors and UI
     use {
         'RRethy/nvim-base16',
         config = function()
