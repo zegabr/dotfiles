@@ -8,7 +8,7 @@ rustup component add rust-analyzer
 cargo install bacon
 
 # utils
-cargo install ripgrep fd-find bat exa
+cargo install ripgrep fd-find bat exa tree-sitter-cli
 
 # speedtest
 sudo apt install pkg-config -y
