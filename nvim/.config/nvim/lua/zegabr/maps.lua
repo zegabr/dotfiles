@@ -8,7 +8,8 @@ vim.g.mapleader = " "
 --"leader+a select all file, y and p uses system clipboard
 vim.keymap.set("n", "<leader>a", "GVgg", { desc = 'select all file' })
 vim.keymap.set("n", "Y", "y$", { desc = 'select to the end' })
-vim.keymap.set("x", "<leader>p", "\"_dp", { desc = 'paste without losing content' })
+vim.keymap.set('v', '<leader>p', '"0p', { desc = 'paste last yanked text without losing content' })
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'paste last yanked text without losing content' })
 
 --"esc with jk
 vim.keymap.set("i", "jk", "<ESC>", { desc = 'esc' })
@@ -34,13 +35,14 @@ vim.keymap.set("n", "<C-l>", ":cnext<CR>zz", { desc = 'quickfix list prev' })
 vim.keymap.set("n", "<C-q>", ":cclose<CR>zz", { desc = 'quickfix list close' })
 
 --" below command is for vimrc testing while editing it
-vim.keymap.set("n", "<Leader><CR>", "<cmd>luafile %<cr>", { desc = 'source current lua file' })
+vim.keymap.set("n", "<Leader><CR>", ":so<cr>", { desc = 'source current lua file' })
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = 'save file' })
 
 vim.keymap.set("n", "<leader><leader>t", "<Plug>PlenaryTestFile", { desc = 'test lua file' })
 
-vim.api.nvim_set_keymap('n', '<leader><leader>%',[[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]], { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
+vim.keymap.set('n', '<leader><leader>%', [[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]],
+    { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
 
 --" ============ PASSIVE MAPPINGS============
 vim.keymap.set("n", "<C-j>", "<C-d>zz", { desc = '' })
@@ -65,5 +67,3 @@ augroup END
 " wrap text when in a txt file
 autocmd! VimEnter *.txt set wrap
 ]])
-
-
