@@ -5,7 +5,6 @@ set.guicursor = ""
 set.showmatch = true
 set.splitright = true
 set.splitbelow = true
-set.title = true
 set.scrolloff = 8
 set.modifiable = true
 set.number = true
@@ -21,7 +20,6 @@ set.shiftwidth = 4
 set.tabstop = 4
 set.expandtab = true
 set.autoindent = true
-set.hlsearch = false
 set.winbar:append("%f")
 
 -- Ignore files
