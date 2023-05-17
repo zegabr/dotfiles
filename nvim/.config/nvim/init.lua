@@ -98,7 +98,8 @@ return require('packer').startup(function(use)
     use {
         'mhinz/vim-signify',
         config = function()
-            require('zegabr.gitutils')
+            vim.keymap.set("n", "[h", "<plug>(signify-prev-hunk)", { desc = 'prev hunk' })
+            vim.keymap.set("n", "]h", "<plug>(signify-next-hunk)", { desc = 'next hunk' })
         end,
     }
 
