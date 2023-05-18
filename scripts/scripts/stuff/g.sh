@@ -17,16 +17,13 @@ curl -OJ -L --progress-bar https://golang.org/dl/${LATEST_GO_VERSION}.linux-amd6
 printf "Extracting file...\n"
 tar -xf ${LATEST_GO_VERSION}.linux-amd64.tar.gz
 
-export GOROOT="/home/$USER/go"
-export GOPATH="/home/$USER/go/packages"
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
 if ! grep -q 'export GOROOT="/home/$USER/go"' ~/.bashrc; then
     printf '
 export GOROOT="/home/$USER/go"
 export GOPATH="/home/$USER/go/packages"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 \n' >> ~/.bashrc
+source ~/.bashrc
 fi
 
 printf "You are ready to Go!\n";

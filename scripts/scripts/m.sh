@@ -6,4 +6,9 @@ bash ~/dotfiles/scripts/scripts/setup_core.sh
 
 # extra
 bash ~/dotfiles/scripts/scripts/setup_extra.sh
-bash ~/dotfiles/scripts/scripts/stuff/ssh.sh # setup ssh for github
+
+# setup ssh for github
+bash ~/dotfiles/scripts/scripts/stuff/ssh.sh
+
+# pnpm for nvim lsp
+bash ~/dotfiles/scripts/scripts/stuff/n.sh"

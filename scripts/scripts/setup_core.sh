@@ -23,7 +23,7 @@ pip install repren
 
 # FZF with install script
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+~/.fzf/install <<< $'y\nn\nn\n'
 
 # rust and cargo and cargo tools
 sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -42,7 +42,7 @@ sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 source ~/dotfiles/scripts/scripts/stuff/v.sh
 
 # simlinks dotfiles
-source ~/dotfiles/scripts/scripts/d.sh
+source ~/dotfiles/scripts/scripts/stuff/d.sh
 
 #for work note taking
 mkdir ~/notes
