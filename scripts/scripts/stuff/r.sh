@@ -10,10 +10,6 @@ cargo install bacon
 # utils
 cargo install ripgrep fd-find bat exa tree-sitter-cli
 
-# speedtest
-sudo apt install pkg-config -y
-cargo install speedtest-rs
-
 # starship
 sudo apt install cmake -y
 cargo install starship
