@@ -25,14 +25,15 @@ fi
 
 # sccache
 # check if RUSTC_WRAPPER is not an exported variable
-if ! grep -q 'export RUSTC_WRAPPER=~/.cargo/bin/sccache' ~/.bashrc; then
-    cargo install sccache
-    echo 'export RUSTC_WRAPPER=~/.cargo/bin/sccache' >> ~/.bashrc
-else
-    # get RUSTC_WRAPPER value and show to the user
-    echo "RUSTC_WRAPPER is already set to " "$RUSTC_WRAPPER"
-    echo "If you want to change it, please do it manually."
-fi
+# if ! grep -q 'export RUSTC_WRAPPER=~/.cargo/bin/sccache' ~/.bashrc; then
+#     sudo apt install libssl-dev -y
+#     cargo install sccache
+#     echo 'export RUSTC_WRAPPER=~/.cargo/bin/sccache' >> ~/.bashrc
+# else
+#     # get RUSTC_WRAPPER value and show to the user
+#     echo "RUSTC_WRAPPER is already set to " "$RUSTC_WRAPPER"
+#     echo "If you want to change it, please do it manually."
+# fi
 
 # for vimtex neovim plugin
  # sudo apt install texlive-extra-utils -y

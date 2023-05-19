@@ -27,7 +27,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # rust and cargo and cargo tools
 sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-x-terminal-emulator --wait -e "bash ~/dotfiles/scripts/scripts/stuff/r.sh" &
 
 # golang
 source ~/dotfiles/scripts/scripts/stuff/g.sh
