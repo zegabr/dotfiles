@@ -23,7 +23,7 @@ pip install repren
 
 # FZF with install script
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install <<< $'y\nn\nn\n'
+~/.fzf/install
 
 # rust and cargo and cargo tools
 sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
