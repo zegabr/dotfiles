@@ -16,6 +16,7 @@ curl -OJ -L --progress-bar https://golang.org/dl/${LATEST_GO_VERSION}.linux-amd6
 
 printf "Extracting file...\n"
 tar -xf ${LATEST_GO_VERSION}.linux-amd64.tar.gz
+rm -rf ${LATEST_GO_VERSION}.linux-amd64.tar.gz
 
 if ! grep -q 'export GOROOT="/home/$USER/go"' ~/.bashrc; then
     printf '
