@@ -8,3 +8,11 @@
     package:
       name:
         - htop
+
+  - name: Execute the script
+    expect:
+      command: git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+      responses:
+        "Do you want to enable fuzzy auto-completion?": "y"
+        "Do you want to enable key bindings?": "n"
+        "Do you want to update your shell configuration files?": "y"
