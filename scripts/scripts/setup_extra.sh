@@ -104,15 +104,6 @@ if [ "$ans" == "y" ]; then
     sudo chmod +x /usr/local/bin/cht.sh
 fi
 
-# for windows WSL neovim to work with clipboard
-if [[ $(uname -a | grep microsoft) ]]; then
-    sudo apt install xdg-utils -y
-    sudo curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
-    sudo unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
-    sudo chmod +x /tmp/win32yank.exe
-    sudo sudo mv /tmp/win32yank.exe /usr/local/bin/
-fi
-
 # DUAL BOOT FIX
 read -p "Type y if you want GRUB to be updated (you want it if you use a dual boot)(y/<anything else>): " ans
 if [ "$ans" == "y" ]; then

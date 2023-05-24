@@ -44,4 +44,6 @@ IdentitiesOnly yes
     """
 
     sensible-browser https://github.com/settings/keys
+    read -n 1 -s -r -p "Press any key to continue"
 fi
+

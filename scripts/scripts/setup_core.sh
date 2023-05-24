@@ -26,7 +26,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # rust and cargo and cargo tools
-sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
 
 # Cheat sheet
 curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
@@ -35,13 +35,13 @@ curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /u
 sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 
 # install nvim building from source
-source ~/dotfiles/scripts/scripts/stuff/v.sh
+curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/v.sh | bash
 
 # pnpm for nvim lsp
-bash ~/dotfiles/scripts/scripts/stuff/n.sh
+curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/n.sh | bash
 
 # simlinks dotfiles
-source ~/dotfiles/scripts/scripts/stuff/d.sh
+curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/d.sh | bash
 
 #for work note taking
 mkdir ~/notes

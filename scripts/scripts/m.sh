@@ -1,12 +1,13 @@
 #!/bin/sh
 # m for main
 
+# setup ssh for github
+curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/ssh.sh | bash
+
 # core
-bash ~/dotfiles/scripts/scripts/setup_core.sh
+curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_core.sh | bash
 
 # extra
-bash ~/dotfiles/scripts/scripts/setup_extra.sh
+curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_extra.sh | bash
 
-# setup ssh for github
-bash ~/dotfiles/scripts/scripts/stuff/ssh.sh
 
