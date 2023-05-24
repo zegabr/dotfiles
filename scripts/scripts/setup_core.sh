@@ -40,6 +40,9 @@ sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 # install nvim building from source
 source ~/dotfiles/scripts/scripts/stuff/v.sh
 
+# pnpm for nvim lsp
+bash ~/dotfiles/scripts/scripts/stuff/n.sh
+
 # simlinks dotfiles
 source ~/dotfiles/scripts/scripts/stuff/d.sh
 
