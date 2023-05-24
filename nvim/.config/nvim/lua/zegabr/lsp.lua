@@ -5,7 +5,6 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     'lua_ls',
     'vimls',
-    'gopls',
     'pyright',
 })
 
