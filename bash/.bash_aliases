@@ -2,9 +2,13 @@
 export EDITOR=nvim
 alias sai='sudo apt install -y'
 alias sap='sudo apt purge -y'
-alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y; source ~/dotfiles/scripts/scripts/stuff/r.sh'
 alias update-nvim='source ~/dotfiles/scripts/scripts/stuff/v.sh'
+alias update-fzf='git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install'
+alias update-rust='sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash'
+alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y; source ~/dotfiles/scripts/scripts/stuff/r.sh'
+
 alias lag='alias | grep'
+
 alias v='nvim'
 alias vs='nvim -S'
 alias t='tmux attach -t base || tmux new -s base'
@@ -13,7 +17,6 @@ alias mkdir='mkdir -p'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias .....='cd ../../../..'
 
 # Rust
 alias ll='exa -l'
@@ -22,8 +25,8 @@ alias cat='bat'
 alias pomo='porsmo'
 
 #-----------------------config files shortcuts
-alias ev='dot && v ~/.config/nvim/init.lua'
 alias dot='cd ~/dotfiles'
+alias ev='dot && v ~/.config/nvim/init.lua'
 
 alias eb='v ~/.bashrc'
 alias ea='v ~/.bash_aliases'
