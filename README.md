@@ -7,16 +7,13 @@ my dotfiles manager
 
 ## if you want an adventure, here is how to use it
 - For ssh key setup + core features like tmux, nvim, and CLI tools, run:
-    - `curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/ssh.sh | bash`
-    - `curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_core.sh | bash`
+    - `bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/ssh.sh)`
+    - `bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_core.sh)`
 - For other desktop applications on Debian distros, try:
-    - `curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_extra.sh | bash`
-
-# core
-curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_core.sh | bash
+    - `bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_extra.ss`
 
 ## TODO:
-- learn how to use and setup debbuger for languages like go and rust
+- learn how to use and setup debbuger for languages like go, rust, and maybe typescript for neovim
 
 ## reminder to the creator
 - should add flameshot shortcut manually
