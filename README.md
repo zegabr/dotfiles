@@ -15,6 +15,9 @@ my dotfiles manager
 ### For extra desktop applications on debian distros
 `bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_extra.ss`
 
+### For WSL setup with ssh and core features
+`bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/wsl.sh)`
+
 ## TODO:
 - learn how to use and setup debbuger for languages like go, rust, and maybe typescript for neovim
 
