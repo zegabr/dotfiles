@@ -96,21 +96,3 @@ if [ "$ans" == "y" ]; then
     sudo rm -rf google-chrome-stable_current_amd64.deb
     sensible-browser 'chrome://flags/#enable-force-dark'
 fi
-
-# Cheat sheet
-read -p "Type y if you want cheat.sh to be installed (y/<anything else>): " ans
-if [ "$ans" == "y" ]; then
-    curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
-    sudo chmod +x /usr/local/bin/cht.sh
-fi
-
-# DUAL BOOT FIX
-read -p "Type y if you want GRUB to be updated (you want it if you use a dual boot)(y/<anything else>): " ans
-if [ "$ans" == "y" ]; then
-    sudo chmod 777 /etc/default/grub
-    sudo echo "GRUB_DEFAULT=saved" >> /etc/default/grub
-    sudo echo "GRUB_SAVEDEFAULT=true" >> /etc/default/grub
-    sudo timedatectl set-local-rtc 1 --adjust-system-clock
-    sudo update-grub
-fi
-
