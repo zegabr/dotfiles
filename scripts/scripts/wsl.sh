@@ -11,8 +11,8 @@ sudo chmod +x /tmp/win32yank.exe
 sudo sudo mv /tmp/win32yank.exe /usr/local/bin/
 
 # setup ssh for github
-curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/ssh.sh | bash
+bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/ssh.sh)
 
 # core
-curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_core.sh | bash
+bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_core.sh)
 
