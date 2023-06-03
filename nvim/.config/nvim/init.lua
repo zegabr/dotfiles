@@ -71,23 +71,6 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
             { 'nvim-telescope/telescope.nvim' }, -- important since zegabr.lsp uses telescope
 
-            -- copilot
-            {
-                "zbirenbaum/copilot.lua",
-                config = function()
-                    require("copilot").setup({
-                        suggestion = { enabled = false },
-                        panel = { enabled = false },
-                    })
-                end,
-            },
-            {
-                "zbirenbaum/copilot-cmp",
-                config = function()
-                    -- TODO: make it not work for tex files
-                    require("copilot_cmp").setup()
-                end,
-            },
         },
         config = function()
             require('zegabr.lsp')

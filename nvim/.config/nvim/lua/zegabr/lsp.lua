@@ -16,7 +16,6 @@ lsp.set_preferences({
     set_lsp_keymaps = false,
 })
 
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
@@ -52,7 +51,6 @@ lsp.setup_nvim_cmp({
         end),
     }),
     sources = {
-        { name = "copilot",  group_index = 2 },
         { name = 'path' },
         { name = 'nvim_lsp', keyword_length = 1 },
         { name = 'buffer',   keyword_length = 3 },
