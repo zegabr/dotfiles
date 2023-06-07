@@ -59,7 +59,7 @@ if [ "$ans" == "y" ]; then
     su - ${USER}
 
     # docker compose
-    sudo apt-get install docker-compose-plugin -y
+    sudo apt install docker-compose -y
 fi
 
 read -p "Type y if you want Brave to be installed (y/<anything else>): " ans
