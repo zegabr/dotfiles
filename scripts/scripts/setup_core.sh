@@ -36,14 +36,6 @@ sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 # install nvim building from source
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/v.sh)
 
-# pnpm for nvim lsp
-(
-cd ~/Downloads/
-curl -fsSL https://get.pnpm.io/install.sh | bash -
-source ~/.bashrc
-pnpm env use --global latest
-)
-
 # simlinks dotfiles
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/d.sh)
 
