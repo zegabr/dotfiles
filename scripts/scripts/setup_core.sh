@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 mkdir ~/Downloads
 cd ~/Downloads
@@ -22,7 +22,7 @@ sudo apt install python3-pip -y
 pip install repren
 
 # FZF with install script
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install <<<"y\nn\ny\n"
 
 # rust and cargo and cargo tools
 sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash

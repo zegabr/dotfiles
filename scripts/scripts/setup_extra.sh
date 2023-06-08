@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # DUAL BOOT FIX
 read -p "Type y if you want GRUB to be updated (you want it if you use a dual boot)(y/<anything else>): " ans
