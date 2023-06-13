@@ -46,22 +46,6 @@ if [ "$ans" == "y" ]; then
     sudo apt install ./slack-desktop-"$slack_version"-amd64.deb
 fi
 
-# DOCKER
-read -p "Type y if you want Docker to be installed (y/n): " ans
-if [ "$ans" == "y" ]; then
-    # docker
-    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt update -y
-    sudo apt install docker-ce -y
-    sudo usermod -aG docker ${USER}
-    su - ${USER}
-
-    # docker compose
-    sudo apt install docker-compose -y
-fi
-
 read -p "Type y if you want Brave to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
     sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -77,4 +61,20 @@ if [ "$ans" == "y" ]; then
     sudo dpkg -i google-chrome-stable_current_amd64.deb
     sudo rm -rf google-chrome-stable_current_amd64.deb
     sensible-browser 'chrome://flags/#enable-force-dark'
+fi
+
+# DOCKER
+read -p "Type y if you want Docker to be installed (y/n): " ans
+if [ "$ans" == "y" ]; then
+    # docker
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update -y
+    sudo apt install docker-ce -y
+    sudo usermod -aG docker ${USER}
+    su - ${USER}
+
+    # docker compose
+    sudo apt install docker-compose -y
 fi
