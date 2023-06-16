@@ -1,6 +1,9 @@
 # define a list of directories to be stowed
 directories=(scripts nvim bash terminal kubuntu)
 
+# remove kde config files to be symlinked
+rm ~/.config/khotkeysrc ~/.config/kglobalshortcutsrc
+
 # iterate over the list of directories
 for dir in ${directories[@]}
 do
