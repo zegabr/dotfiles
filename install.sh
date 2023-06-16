@@ -1,5 +1,5 @@
 # define a list of directories to be stowed
-directories=(scripts nvim bash terminal)
+directories=(scripts nvim bash terminal kubuntu)
 
 # iterate over the list of directories
 for dir in ${directories[@]}
