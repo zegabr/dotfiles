@@ -9,3 +9,6 @@ do
   # stow the directory in the home directory
   stow --verbose=2 -t ~ $dir
 done
+
+source ~/.bashrc
+
