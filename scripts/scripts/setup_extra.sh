@@ -66,6 +66,9 @@ fi
 # DOCKER
 read -p "Type y if you want Docker to be installed (y/n): " ans
 if [ "$ans" == "y" ]; then
+    # docker compose
+    sudo apt install docker-compose -y
+
     # docker
     sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -74,7 +77,4 @@ if [ "$ans" == "y" ]; then
     sudo apt install docker-ce -y
     sudo usermod -aG docker ${USER}
     su - ${USER}
-
-    # docker compose
-    sudo apt install docker-compose -y
 fi
