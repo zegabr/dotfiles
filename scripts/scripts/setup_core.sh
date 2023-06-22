@@ -15,6 +15,7 @@ gawk \
 htop \
 jq \
 python3-pip \
+python3.10-venv \
 neofetch \
 -y
 
