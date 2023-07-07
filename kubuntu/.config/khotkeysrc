@@ -1045,6 +1045,9 @@ Key=Print
 Type=SHORTCUT
 Uuid={0c027c85-25ab-4f8b-9dd2-a39bf0bfd204}
 
+[DirSelect Dialog]
+DirSelectDialog Size[$d]
+
 [General]
 BrowserApplication[$d]
 ColorScheme[$d]
