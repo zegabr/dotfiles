@@ -3,49 +3,49 @@
 UPDATEGRUB=0
 read -p "Type y if you want GRUB to be updated (you want it if you use a dual boot)(y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
-    $UPDATEGRUB=1
+    UPDATEGRUB=1
 fi
 
 SLACK=0
 read -p "Type y if you want Slack to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
-    $SLACK=1
+    SLACK=1
 fi
 
 BRAVE=0
 read -p "Type y if you want Brave to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
-    $BRAVE=1
+    BRAVE=1
 fi
 
 CHROME=0
 read -p "Type y if you want Google Chrome to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
-    $CHROME=1
+    CHROME=1
 fi
 
 DOCKER=0
 read -p "Type y if you want Docker to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
-    $DOCKER=1
+    DOCKER=1
 fi
 
 DISCORD=0
 read -p "Type y if you want Discord to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
-    $DISCORD=1
+    DISCORD=1
 fi
 
 SPOTIFY=0
 read -p "Type y if you want Spotify to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
-    $SPOTIFY=1
+    SPOTIFY=1
 fi
 
 LIBREOFFICE=0
 read -p "Type y if you want Libreoffice to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
-    $LIBREOFFICE=1
+    LIBREOFFICE=1
 fi
 
 # DUAL BOOT FIX
