@@ -17,6 +17,7 @@ jq \
 python3-pip \
 python3.10-venv \
 neofetch \
+cmake \
 -y
 
 sudo apt install python3-pip -y

@@ -11,7 +11,6 @@ cargo install bacon
 cargo install ripgrep fd-find bat exa tree-sitter-cli
 
 # starship
-sudo apt install cmake -y
 cargo install starship
 # if starship is not being started, add it to bashrc
 if ! grep -q 'eval "$(starship init bash)"' ~/.bashrc; then
