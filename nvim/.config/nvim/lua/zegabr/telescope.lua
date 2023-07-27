@@ -63,7 +63,6 @@ end
 vim.keymap.set('n', '<leader><leader>h', builtin.help_tags, { desc = '[H]elp' })
 vim.keymap.set("n", "<leader><leader>tk", builtin.keymaps, { desc = 'telescope keymaps' })
 
-vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = 'telescope git branchs' })
 vim.keymap.set("n", "<leader>glo", builtin.git_commits, { desc = 'git log' })
 vim.keymap.set("n", "<leader>glof", builtin.git_bcommits, { desc = 'git log current file' })
 

@@ -73,9 +73,8 @@ lsp.on_attach(function(_, bufnr)
     local bufopts = { buffer = bufnr, noremap = true, silent = true }
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
-    vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols, bufopts)
-    vim.keymap.set('n', 'gw', require('telescope.builtin').lsp_workspace_symbols, bufopts)
-    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
+    -- vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols, bufopts)
+    -- vim.keymap.set('n', 'gw', require('telescope.builtin').lsp_workspace_symbols, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -135,17 +134,17 @@ lsp.configure('jdtls', {
 })
 --------------------------
 -- TODO: THIS WILL HARDLY WORK FOR C++
-lsp.configure('clangd', {
-    capabilities = capabilities,
-    root_dir = require('lspconfig/util').root_pattern("compile_commands.json", "compile_flags.txt", ".git",
-        "Makefile", "makefile"),
-    filetypes = { "c", "cpp", "h", "hpp" }, -- we don't want objective-c and objective-cpp!?
-    -- if does not work, use find . | grep clangd and do export PATH=$PATH:<clangd executable>
-    cmd = { "clangd",
-        "--background-index",
-        "--suggest-missing-includes", "--clang-tidy" },
-    single_file_support = true,
-})
+-- lsp.configure('clangd', {
+--     capabilities = capabilities,
+--     root_dir = require('lspconfig/util').root_pattern("compile_commands.json", "compile_flags.txt", ".git",
+--         "Makefile", "makefile"),
+--     filetypes = { "c", "cpp", "h", "hpp" }, -- we don't want objective-c and objective-cpp!?
+--     -- if does not work, use find . | grep clangd and do export PATH=$PATH:<clangd executable>
+--     cmd = { "clangd",
+--         "--background-index",
+--         "--suggest-missing-includes", "--clang-tidy" },
+--     single_file_support = true,
+-- })
 --------------------------
 lsp.configure('rust_analyzer', {
     capabilities = capabilities,
