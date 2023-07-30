@@ -39,6 +39,17 @@ alias sw='source ~/.bash_aliases_work'
 alias st='tmux source-file ~/.tmux.conf'
 # -----------------global python
 alias py='python3'
+venv-new() {
+    cd ~
+    python3 -m venv $1
+    cd -
+}
+venv-activate() {
+    source ~/$1/bin/activate
+}
+venv-deactivate(){
+    deactivate
+}
 # cheat.sh
 alias how='cht.sh'
 
