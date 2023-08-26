@@ -1,5 +1,4 @@
 {
-    "workspace.checkThirdParty": false,
     "workspace.library": [
         "/home/ze/.config/nvim",
         "/home/ze/.local/share/nvim/site",
@@ -9,11 +8,9 @@
         "/home/ze/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
         "/home/ze/.local/share/nvim/site/pack/packer/start/cmp-path",
         "/home/ze/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
-        "/home/ze/.local/share/nvim/site/pack/packer/start/copilot.vim",
         "/home/ze/.local/share/nvim/site/pack/packer/start/friendly-snippets",
         "/home/ze/.local/share/nvim/site/pack/packer/start/fzy-lua-native",
         "/home/ze/.local/share/nvim/site/pack/packer/start/gitlinker.nvim",
-        "/home/ze/.local/share/nvim/site/pack/packer/start/kokusen",
         "/home/ze/.local/share/nvim/site/pack/packer/start/lualine.nvim",
         "/home/ze/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
         "/home/ze/.local/share/nvim/site/pack/packer/start/mason.nvim",
@@ -35,9 +32,7 @@
         "/home/ze/.local/share/nvim/site/pack/packer/start/vim-surround",
         "/home/ze/.local/share/nvim/site/pack/packer/start/wilder.nvim",
         "/home/ze/.local/share/nvim/site/pack/packer/opt/lsp-zero.nvim",
-        "/home/ze/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
         "/usr/local/share/nvim/runtime",
-        "/usr/local/share/nvim/runtime/pack/dist/opt/matchit",
         "/usr/local/lib/nvim",
         "/home/ze/.local/share/nvim/site/pack/packer/start/cmp-buffer/after",
         "/home/ze/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp/after",
