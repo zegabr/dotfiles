@@ -6,7 +6,7 @@ window-is-maximized=true
 window-width=540
 
 [org/gnome/control-center]
-last-panel='background'
+last-panel='power'
 window-state=(1637, 948, false)
 
 [org/gnome/desktop/a11y/interface]
@@ -85,6 +85,9 @@ picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
 primary-color='#241f31'
 secondary-color='#000000'
 
+[org/gnome/desktop/session]
+idle-delay=uint32 900
+
 [org/gnome/desktop/sound]
 event-sounds=true
 theme-name='__custom'
@@ -125,6 +128,7 @@ search-filter-time-type='last_modified'
 show-hidden-files=true
 
 [org/gnome/nautilus/window-state]
+initial-size=(890, 550)
 maximized=true
 
 [org/gnome/settings-daemon/plugins/color]
@@ -169,7 +173,7 @@ show-screenshot-ui=@as []
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1693001747
+check-timestamp=int64 1693054518
 first-run=false
 update-notification-timestamp=int64 1693001792
 
@@ -186,8 +190,17 @@ palette=['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', '
 use-theme-colors=false
 
 [org/gtk/gtk4/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
 show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=169
+sort-column='name'
 sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+window-size=(888, 374)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
