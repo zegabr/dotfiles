@@ -298,7 +298,7 @@ return require('packer').startup(function(use)
                 if not ok then builtin.find_files() end
             end
             vim.keymap.set('n', '<leader><leader>h', builtin.help_tags, { desc = '[H]elp' })
-            vim.keymap.set("n", "<leader><leader>tk", builtin.keymaps, { desc = 'telescope keymaps' })
+            vim.keymap.set("n", "<leader><leader>k", builtin.keymaps, { desc = 'telescope keymaps' })
             vim.keymap.set("n", "<leader>glo", builtin.git_commits, { desc = 'git log' })
             vim.keymap.set("n", "<leader>glof", builtin.git_bcommits, { desc = 'git log current file' })
             vim.keymap.set("n", "<leader><leader>b", builtin.buffers, { desc = 'telescope buffers' })
