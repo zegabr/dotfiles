@@ -23,8 +23,8 @@ vim.keymap.set("n", "<leader><leader>t", "<Plug>PlenaryTestFile", { desc = 'test
 vim.keymap.set('n', '<leader><leader>%', [[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]],
     { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
 --" ============ PASSIVE MAPS============
-vim.keymap.set("n", "<C-j>", "<C-d>zz", { desc = 'passive centering' })
-vim.keymap.set("n", "<C-k>", "<C-u>zz", { desc = 'passive centering' })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = 'passive centering' })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = 'passive centering' })
 vim.keymap.set("n", "n", "nzz", { desc = 'passive centering' })
 vim.keymap.set("n", "N", "Nzz", { desc = 'passive centering' })
 vim.keymap.set("n", "Q", "<nop>", { desc = 'remove Q mapping' })

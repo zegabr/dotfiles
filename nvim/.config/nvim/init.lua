@@ -1,8 +1,8 @@
-require 'custom.debug'
-require 'custom.maps'
-require 'custom.sets'
-require 'custom.netrw'
-require 'custom.colors'
+require('custom.debug')
+require('custom.maps')
+require('custom.sets')
+require('custom.netrw')
+require('custom.colors')
 
 -- PLUGINS
 local fn = vim.fn
@@ -28,7 +28,7 @@ return require('packer').startup(function(use)
         after = { 'nvim-treesitter' },
         config = function()
             ---@diagnostic disable-next-line: missing-fields
-            require 'custom.treesitter'
+            require('custom.treesitter')
         end,
     }
     use { 'nvim-treesitter/nvim-treesitter-context' }
@@ -39,33 +39,32 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { 'nvim-lua/plenary.nvim' },
         config = function()
-            require 'custom.telescope'
+            require('custom.telescope')
         end,
     }
 
     ----LSP
     use {
-        'VonHeikemen/lsp-zero.nvim',
+        'neovim/nvim-lspconfig',
         after = { 'telescope.nvim' },
         requires = {
             -- LSP Support
-            { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
+            { 'folke/neodev.nvim' },
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
+            -- { 'hrsh7th/cmp-nvim-lua' },
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
+            { 'saadparwaiz1/cmp_luasnip' },
             { 'rafamadriz/friendly-snippets' },
-            { 'nvim-telescope/telescope.nvim' }, -- important since zegabr.lsp uses telescope
         },
         config = function()
-            require 'custom.lsp'
+            require('custom.lsp')
         end,
     }
 
@@ -74,7 +73,7 @@ return require('packer').startup(function(use)
         'mbbill/undotree',
         config = function()
             -- this does not exits in vscode u.u
-            require 'custom.undotree'
+            require('custom.undotree')
         end,
     }
     use { 'ntpeters/vim-better-whitespace' } --trim whitespace with :StripWhiteSpace
@@ -87,7 +86,7 @@ return require('packer').startup(function(use)
 
     use { 'romgrk/fzy-lua-native' } --dependency for wilder
     use { 'gelguy/wilder.nvim', run = ':UpdateRemotePlugins', config = function()
-        require 'custom.wilder'
+        require('custom.wilder')
     end }
     use { 'tpope/vim-surround' } ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
     -- simplest way to use is:
@@ -113,8 +112,9 @@ return require('packer').startup(function(use)
     -- for latex
     -- use { 'lervag/vimtex',
     --     config = function()
-    --         require 'custom.latex'
-    --     end }
+    --         require('custom.latex')
+    --     end
+    -- }
 
     -- Colors and UI
     use {
@@ -132,9 +132,9 @@ return require('packer').startup(function(use)
                 options = {
                     show_devicons = false,
                     show_filename_only = true, -- shows base filename only instead of relative path in filename
-                    modified_icon = "+ ",       -- change the default modified icon
-                    modified_italic = false,    -- set to true by default; this determines whether the filename turns italic if modified
-                    show_tabs_only = false,     -- this shows only tabs instead of tabs + buffers
+                    modified_icon = "+ ",      -- change the default modified icon
+                    modified_italic = false,   -- set to true by default; this determines whether the filename turns italic if modified
+                    show_tabs_only = false,    -- this shows only tabs instead of tabs + buffers
                 }
             }
         end,

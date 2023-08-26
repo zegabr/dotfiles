@@ -1,21 +1,8 @@
-local lsp = require("lsp-zero")
-lsp.preset("recommended")
-lsp.ensure_installed({
-    'lua_ls',
-    'vimls',
-    'pyright',
-})
-lsp.set_preferences({
-    -- comment this if you want to show diagnostics icons
-    sign_icons = {},
-    -- setting this to false so it shows the message inline
-    configure_diagnostics = false,
-    set_lsp_keymaps = false,
-})
+require('neodev').setup()
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-lsp.setup_nvim_cmp({
-    mapping = lsp.defaults.cmp_mappings({
+cmp.setup({
+    mapping = cmp.mapping.preset.insert({
         ["<C-Space>"] = cmp.mapping.complete(),
         ['<C-j>'] = cmp.mapping.scroll_docs(4),
         ['<C-k>'] = cmp.mapping.scroll_docs(-4),
@@ -56,14 +43,11 @@ lsp.setup_nvim_cmp({
             luasnip.lsp_expand(args.body)
         end,
     },
-    experimental = {
-        ghost_text = false,
-    },
-    window = {
-        documentation = cmp.config.window.bordered()
-    },
+    experimental = { ghost_text = false, },
+    window = { documentation = cmp.config.window.bordered() },
 })
-lsp.on_attach(function(_, bufnr)
+
+local on_attach = function(_, bufnr)
     local bufopts = { buffer = bufnr, noremap = true, silent = true }
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
@@ -78,63 +62,88 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, bufopts)
     vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, bufopts)
     vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
-end)
+end
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true             -- enables snippet support
--- Next, you can provide targeted overrides for specific servers.
--- use that to configure your language servers
+capabilities.textDocument.completion.completionItem.snippetSupport = true -- enables snippet support
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
---------------------------- SERVERS
-lsp.configure('lua_ls', {
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            runtime = {
-                -- LuaJIT in the case of Neovim
-                version = 'LuaJIT',
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { 'vim' },
-            },
-            workspace = {
-                --     -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-            },
-            telemetry = {
-                enable = false,
+require("mason").setup()
+local mason_lspconfig = require('mason-lspconfig')
+mason_lspconfig.setup {
+    ensure_installed = {
+        'lua_ls',
+        'vimls',
+        'pyright',
+    },
+}
+-- use this to wverride language servers settings
+local servers_settings = {
+    lua_ls = {
+        settings = {
+            Lua = {
+                runtime = {
+                    -- LuaJIT in the case of Neovim
+                    version = 'LuaJIT',
+                },
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = { 'vim' },
+                },
+                workspace = {
+                    --     -- Make the server aware of Neovim runtime files
+                    library = vim.api.nvim_get_runtime_file("", true),
+                },
+                telemetry = {
+                    enable = false,
+                }
             }
-        }
-    }
-})
--------------------------
-lsp.configure('gopls', {
-    capabilities = capabilities,
-    cmd = { "gopls", "serve" },
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
+        },
+    },
+    gopls = {
+        cmd = { "gopls", "serve" },
+        settings = {
+            gopls = {
+                analyses = {
+                    unusedparams = true,
+                },
             },
-        },
-        staticcheck = true,
-    }
-})
----------------------
-lsp.configure('jdtls', {
-    capabilities = capabilities,
-    root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
-})
-lsp.configure('rust_analyzer', {
-    capabilities = capabilities,
-    cmd = { "rustup", "run", "stable", "rust-analyzer" },
-    settings = {
-        rust = {
-            unstable_features = true,
-            build_on_save = false,
-            all_features = true,
-        },
-    }
+            staticcheck = true,
+        }
+    },
+    jdtls = {
+        -- if lombok is needed, see this: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jdtls
+        root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
+    },
+    rust_analyzer = {
+        cmd = { "rustup", "run", "stable", "rust-analyzer" },
+        settings = {
+            rust = {
+                unstable_features = true,
+                build_on_save = false,
+                all_features = true,
+            },
+        }
+    },
+}
+
+-- uncomment this if gopls is installed
+vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*.go',
+    callback = function()
+        vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+    end
 })
 
-lsp.setup()             -- this should be the last thing
+mason_lspconfig.setup_handlers {
+    function(server_name)
+        require('lspconfig')[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = (servers_settings[server_name] or {}).settings,
+            filetypes = (servers_settings[server_name] or {}).filetypes,
+            cmd = (servers_settings[server_name] or {}).cmd,
+            root_dir = (servers_settings[server_name] or {}).root_dir,
+        }
+    end
+}

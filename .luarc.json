@@ -39,6 +39,8 @@
         "/home/ze/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua/after",
         "/home/ze/.local/share/nvim/site/pack/packer/start/cmp-path/after",
         "/home/ze/.local/share/nvim/site/pack/packer/start/cmp_luasnip/after",
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
     ]
 }

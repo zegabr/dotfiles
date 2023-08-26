@@ -8,7 +8,7 @@ require('nvim-treesitter.configs').setup {
         "go",
         "html",
         "java",
-        -- "latex",
+        "latex",
         "lua",
         "markdown",
         "python",
