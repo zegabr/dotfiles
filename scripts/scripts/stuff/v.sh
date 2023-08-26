@@ -15,6 +15,3 @@ cd neovim && rm -rf build && make distclean && git pull
 make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install
 )
 
-# python plugin dependencies
-python3 -m pip install --user --upgrade pynvim
-

@@ -57,8 +57,6 @@ if [ "$UPDATEGRUB" == 1 ]; then
     sudo update-grub
 fi
 
-sudo snap remove firefox
-
 mkdir ~/Downloads
 cd ~/Downloads
 
@@ -73,11 +71,13 @@ fi
 if [ "$SPOTIFY" == 1 ]; then
     curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+    sudo apt install spotify-client -y
 fi
 
 # libreoffice
 if [ "$LIBREOFFICE" == 1 ]; then
     sudo add-apt-repository ppa:libreoffice/ppa
+    sudo apt install libreoffice -y
 fi
 
 sudo apt update -y
@@ -86,11 +86,10 @@ sudo apt install \
 flameshot \
 pandoc \
 mypaint \
-libreoffice \
-spotify-client \
-usb-creator-gtk \
 telegram-desktop \
 -y
+
+sudo apt install usb-creator-gtk -y
 # alternative to usb-creator-gtk : https://unetbootin.github.io/ (this one will actually download the version for me)
 
 if [ "$SLACK" == 1 ]; then
@@ -115,15 +114,5 @@ fi
 
 # DOCKER
 if [ "$DOCKER" == 1 ]; then
-    # docker compose
-    sudo apt install docker-compose -y
-
-    # docker
-    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt update -y
-    sudo apt install docker-ce -y
-    sudo usermod -aG docker ${USER}
-    su - ${USER}
+    sensible-browser 'https://gdevillele.github.io/engine/installation/linux/'
 fi

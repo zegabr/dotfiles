@@ -1,0 +1,204 @@
+[ca/desrt/dconf-editor]
+saved-pathbar-path='/system/proxy/'
+saved-view='/'
+window-height=500
+window-is-maximized=true
+window-width=540
+
+[org/gnome/control-center]
+last-panel='background'
+window-state=(1637, 948, false)
+
+[org/gnome/desktop/a11y/interface]
+high-contrast=false
+
+[org/gnome/desktop/app-folders]
+folder-children=['Utilities', 'YaST']
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
+categories=['X-GNOME-Utilities']
+name='X-GNOME-Utilities.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=true
+
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
+picture-uri-dark='file:///usr/share/backgrounds/gnome/blobs-d.svg'
+primary-color='#241f31'
+secondary-color='#000000'
+
+[org/gnome/desktop/calendar]
+show-weekdate=false
+
+[org/gnome/desktop/input-sources]
+current=uint32 0
+mru-sources=[('xkb', 'br'), ('xkb', 'us'), ('ibus', 'mozc-jp')]
+sources=[('xkb', 'us'), ('xkb', 'br')]
+xkb-options=@as []
+
+[org/gnome/desktop/interface]
+clock-show-seconds=false
+clock-show-weekday=true
+color-scheme='prefer-dark'
+font-antialiasing='grayscale'
+font-hinting='slight'
+show-battery-percentage=true
+
+[org/gnome/desktop/notifications]
+application-children=['firefox-esr', 'org-gnome-software', 'gnome-power-panel']
+
+[org/gnome/desktop/notifications/application/firefox-esr]
+application-id='firefox-esr.desktop'
+
+[org/gnome/desktop/notifications/application/gnome-power-panel]
+application-id='gnome-power-panel.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-software]
+application-id='org.gnome.Software.desktop'
+
+[org/gnome/desktop/peripherals/keyboard]
+numlock-state=true
+
+[org/gnome/desktop/peripherals/mouse]
+natural-scroll=false
+speed=0.25619834710743805
+
+[org/gnome/desktop/peripherals/touchpad]
+speed=0.17948717948717952
+tap-to-click=true
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/privacy]
+report-technical-problems=true
+
+[org/gnome/desktop/screensaver]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
+primary-color='#241f31'
+secondary-color='#000000'
+
+[org/gnome/desktop/sound]
+event-sounds=true
+theme-name='__custom'
+
+[org/gnome/desktop/wm/preferences]
+button-layout='appmenu:minimize,maximize,close'
+
+[org/gnome/evolution-data-server]
+migrated=true
+
+[org/gnome/gnome-system-monitor]
+current-tab='resources'
+maximized=false
+network-total-in-bits=false
+show-dependencies=false
+show-whose-processes='user'
+window-state=(782, 692, 26, 23)
+
+[org/gnome/gnome-system-monitor/disktreenew]
+col-6-visible=true
+col-6-width=0
+
+[org/gnome/maps]
+last-viewed-location=[-9.1751098375395088, -36.16111602328931]
+map-type='MapsStreetSource'
+transportation-type='pedestrian'
+window-maximized=true
+zoom-level=6
+
+[org/gnome/mutter]
+workspaces-only-on-primary=true
+
+[org/gnome/nautilus/preferences]
+always-use-location-entry=true
+default-folder-viewer='icon-view'
+migrated-gtk-settings=true
+search-filter-time-type='last_modified'
+show-hidden-files=true
+
+[org/gnome/nautilus/window-state]
+maximized=true
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=true
+night-light-schedule-automatic=false
+night-light-schedule-from=17.0
+night-light-temperature=uint32 3179
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='Print'
+command='flameshot gui'
+name='flameshot'
+
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-type='suspend'
+
+[org/gnome/shell]
+app-picker-layout=[{'org.gnome.Weather.desktop': <{'position': <0>}>, 'org.gnome.clocks.desktop': <{'position': <1>}>, 'org.gnome.Maps.desktop': <{'position': <2>}>, 'kasumi.desktop': <{'position': <3>}>, 'org.gnome.Calculator.desktop': <{'position': <4>}>, 'simple-scan.desktop': <{'position': <5>}>, 'org.gnome.Settings.desktop': <{'position': <6>}>, 'gnome-system-monitor.desktop': <{'position': <7>}>, 'org.gnome.Terminal.desktop': <{'position': <8>}>, 'Utilities': <{'position': <9>}>, 'debian-reference-common.desktop': <{'position': <10>}>, 'org.gnome.Extensions.desktop': <{'position': <11>}>, 'org.goldendict.GoldenDict.desktop': <{'position': <12>}>, 'ghcal.desktop': <{'position': <13>}>}, {'im-config.desktop': <{'position': <0>}>, 'uim.desktop': <{'position': <1>}>, 'libreoffice-calc.desktop': <{'position': <2>}>, 'libreoffice-draw.desktop': <{'position': <3>}>, 'libreoffice-impress.desktop': <{'position': <4>}>, 'libreoffice-startcenter.desktop': <{'position': <5>}>, 'setup-mozc.desktop': <{'position': <6>}>, 'mlterm.desktop': <{'position': <7>}>, 'org.gnome.Music.desktop': <{'position': <8>}>, 'shotwell.desktop': <{'position': <9>}>, 'software-properties-gtk.desktop': <{'position': <10>}>, 'org.gnome.SoundRecorder.desktop': <{'position': <11>}>, 'org.gnome.Sudoku.desktop': <{'position': <12>}>, 'org.gnome.SwellFoop.desktop': <{'position': <13>}>, 'synaptic.desktop': <{'position': <14>}>}, {'org.gnome.Tali.desktop': <{'position': <0>}>, 'org.gnome.Taquin.desktop': <{'position': <1>}>, 'org.gnome.TextEditor.desktop': <{'position': <2>}>, 'xiterm+thai.desktop': <{'position': <3>}>, 'transmission-gtk.desktop': <{'position': <4>}>}]
+disabled-extensions=@as []
+enabled-extensions=['dash-to-dock@micxgx.gmail.com']
+favorite-apps=['brave-browser.desktop', 'org.gnome.Terminal.desktop']
+welcome-dialog-last-shown-version='43.6'
+
+[org/gnome/shell/extensions/dash-to-dock]
+background-opacity=0.80000000000000004
+dash-max-icon-size=32
+dock-fixed=true
+dock-position='LEFT'
+height-fraction=0.88
+preferred-monitor=-2
+preferred-monitor-by-connector='HDMI-1-0'
+preview-size-scale=0.0
+
+[org/gnome/shell/keybindings]
+show-screenshot-ui=@as []
+
+[org/gnome/shell/world-clocks]
+locations=@av []
+
+[org/gnome/software]
+check-timestamp=int64 1693001747
+first-run=false
+update-notification-timestamp=int64 1693001792
+
+[org/gnome/system/location]
+enabled=false
+
+[org/gnome/terminal/legacy]
+theme-variant='dark'
+
+[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+background-color='rgb(23,20,33)'
+foreground-color='rgb(208,207,204)'
+palette=['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']
+use-theme-colors=false
+
+[org/gtk/gtk4/settings/file-chooser]
+show-hidden=false
+sort-directories-first=false
+
+[org/gtk/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=157
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+window-position=(26, 23)
+window-size=(1203, 902)

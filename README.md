@@ -22,6 +22,7 @@ my dotfiles manager
 
 ## TODO:
 - learn how to use and setup debbuger for languages like go, rust, and maybe typescript for neovim
-
-## reminder to the creator
-- should add flameshot shortcut manually
+- learn how to use 
+    - [ ] pandoc
+    - [ ] parallel 
+    - [ ] repren

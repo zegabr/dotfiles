@@ -6,6 +6,7 @@ alias update-nvim='source ~/dotfiles/scripts/scripts/stuff/v.sh'
 alias update-node='source ~/dotfiles/scripts/scripts/stuff/node.sh'
 alias update-rust-tools='source ~/dotfiles/scripts/scripts/stuff/r.sh'
 alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
+alias update-dump='dconf dump / > ~/dotfiles/gnome/gnome-settings'
 
 alias lag='alias | grep'
 
@@ -39,6 +40,8 @@ alias sw='source ~/.bash_aliases_work'
 alias st='tmux source-file ~/.tmux.conf'
 # -----------------global python
 alias py='python3'
+# this should be useful someday
+alias repren='~/local_python/bin/repren'
 venv-new() {
     cd ~
     python3 -m venv $1
