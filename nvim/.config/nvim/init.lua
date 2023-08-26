@@ -175,8 +175,7 @@ return require('packer').startup(function(use)
                     "go",
                     "html",
                     "java",
-                    "jq",
-                    "latex",
+                    -- "latex",
                     "lua",
                     "markdown",
                     "python",
@@ -187,16 +186,12 @@ return require('packer').startup(function(use)
                     "yaml",
                 },
                 sync_install = false,
-                auto_install = false,
+                auto_install = true,
                 indent = {
                     enable = true
                 },
                 highlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-                incremental_selection = {
-                    enable = true
                 },
                 textobjects = {
                     enable = true,
@@ -595,6 +590,7 @@ return require('packer').startup(function(use)
             require('tabline').setup {
                 enable = true,
                 options = {
+                    show_devicons = false,
                     show_filename_only = false, -- shows base filename only instead of relative path in filename
                     modified_icon = "+ ",       -- change the default modified icon
                     modified_italic = false,    -- set to true by default; this determines whether the filename turns italic if modified
