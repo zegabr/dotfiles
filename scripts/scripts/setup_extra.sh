@@ -90,7 +90,6 @@ telegram-desktop \
 -y
 
 sudo apt install usb-creator-gtk -y
-# alternative to usb-creator-gtk : https://unetbootin.github.io/ (this one will actually download the version for me)
 
 if [ "$SLACK" == 1 ]; then
     slack_version=4.32.122
@@ -102,7 +101,7 @@ if [ "$BRAVE" == 1 ]; then
     sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
     echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
     sudo apt update -y
-    sudo apt install brave-browser -y
+    sudo apt install brave-browser -y &
 fi
 
 if [ "$CHROME" == 1 ]; then
@@ -114,5 +113,5 @@ fi
 
 # DOCKER
 if [ "$DOCKER" == 1 ]; then
-    sensible-browser 'https://gdevillele.github.io/engine/installation/linux/'
+    sensible-browser 'https://gdevillele.github.io/engine/installation/linux/' &
 fi

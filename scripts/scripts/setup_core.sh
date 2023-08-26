@@ -20,8 +20,6 @@ parallel \
 -y
 
 sudo apt install python3-full -y
-python3 -m venv ~/local_python
-~/local_python/bin/pip install repren
 
 # FZF with install script
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install <<<"y\nn\ny\n"

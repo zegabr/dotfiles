@@ -20,9 +20,4 @@ my dotfiles manager
 ### For WSL setup with ssh and core features
 `bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/wsl.sh)`
 
-## TODO:
-- learn how to use and setup debbuger for languages like go, rust, and maybe typescript for neovim
-- learn how to use 
-    - [ ] pandoc
-    - [ ] parallel 
-    - [ ] repren
+<!-- ## TODO: -->

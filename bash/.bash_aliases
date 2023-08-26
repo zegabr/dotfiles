@@ -13,17 +13,16 @@ alias lag='alias | grep'
 alias v='nvim'
 alias vs='nvim -S'
 alias t='tmux attach -t base || tmux new -s base'
-alias bro='browse'
 alias mkdir='mkdir -p'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Rust
+alias l='exa'
 alias ll='exa -l'
 alias lla='exa -la'
 alias cat='bat'
-alias pomo='porsmo'
 
 #-----------------------config files shortcuts
 alias dot='cd ~/dotfiles'
@@ -40,9 +39,7 @@ alias sw='source ~/.bash_aliases_work'
 alias st='tmux source-file ~/.tmux.conf'
 # -----------------global python
 alias py='python3'
-# this should be useful someday
-alias repren='~/local_python/bin/repren'
-venv-new() {
+venv-create() {
     cd ~
     python3 -m venv $1
     cd -
@@ -50,9 +47,7 @@ venv-new() {
 venv-activate() {
     source ~/$1/bin/activate
 }
-venv-deactivate(){
-    deactivate
-}
+
 # cheat.sh
 alias how='cht.sh'
 
