@@ -87,6 +87,7 @@ flameshot \
 pandoc \
 mypaint \
 telegram-desktop \
+qbittorrent \
 -y
 
 sudo apt install mintstick -y
@@ -113,5 +114,9 @@ fi
 
 # DOCKER
 if [ "$DOCKER" == 1 ]; then
-    sensible-browser 'https://gdevillele.github.io/engine/installation/linux/' &
+    (
+    cd ~/Downloads/
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sh get-docker.sh
+    )
 fi

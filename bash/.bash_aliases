@@ -7,6 +7,8 @@ alias update-node='source ~/dotfiles/scripts/scripts/stuff/node.sh'
 alias update-rust-tools='source ~/dotfiles/scripts/scripts/stuff/r.sh'
 alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
 alias update-dump='dconf dump / > ~/dotfiles/gnome/gnome-settings'
+alias konsave='~/konsave/bin/konsave'
+alias update-konsave='konsave -e kde_ze -f && mv kde_ze.knsv ~/dotfiles/kde/kde_ze.knsv'
 
 alias lag='alias | grep'
 
