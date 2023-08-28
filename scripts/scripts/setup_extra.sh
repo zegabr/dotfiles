@@ -89,7 +89,7 @@ mypaint \
 telegram-desktop \
 -y
 
-sudo apt install usb-creator-gtk -y
+sudo apt install mintstick -y
 
 if [ "$SLACK" == 1 ]; then
     slack_version=4.32.122
