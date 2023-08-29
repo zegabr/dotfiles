@@ -15,9 +15,3 @@ source ~/.bashrc
 # for gnome
 dconf load / < ~/dotfiles/gnome/gnome-settings
 
-# for kde
-python3 -m venv ~/konsave
-~/konsave/bin/pip install konsave
-~/konsave/bin/konsave -i ~/dotfiles/kde/kde_ze.knsv
-~/konsave/bin/konsave -a kde_ze
-

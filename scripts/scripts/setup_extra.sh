@@ -6,12 +6,6 @@ if [ "$ans" == "y" ]; then
     UPDATEGRUB=1
 fi
 
-SLACK=0
-read -p "Type y if you want Slack to be installed (y/<anything else>): " ans
-if [ "$ans" == "y" ]; then
-    SLACK=1
-fi
-
 BRAVE=0
 read -p "Type y if you want Brave to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
@@ -81,22 +75,12 @@ if [ "$LIBREOFFICE" == 1 ]; then
 fi
 
 sudo apt update -y
-
-sudo apt install \
-flameshot \
-pandoc \
-mypaint \
-telegram-desktop \
-qbittorrent \
--y
-
-sudo apt install mintstick -y
-
-if [ "$SLACK" == 1 ]; then
-    slack_version=4.32.122
-    wget https://downloads.slack-edge.com/linux_releases/slack-desktop-"$slack_version"-amd64.deb
-    sudo apt install ./slack-desktop-"$slack_version"-amd64.deb
-fi
+sudo apt install -y flameshot
+sudo apt install -y pandoc
+sudo apt install -y mypaint
+sudo apt install -y telegram-desktop
+sudo apt install -y qbittorrent
+sudo apt install -y mintstick
 
 if [ "$BRAVE" == 1 ]; then
     sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -116,7 +100,9 @@ fi
 if [ "$DOCKER" == 1 ]; then
     (
     cd ~/Downloads/
+    sudo apt install docker-compose -y
     curl -fsSL https://get.docker.com -o get-docker.sh
     sh get-docker.sh
+    sudo apt install uidmap -y
     )
 fi
