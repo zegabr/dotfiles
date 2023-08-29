@@ -6,7 +6,7 @@ window-is-maximized=true
 window-width=540
 
 [org/gnome/control-center]
-last-panel='power'
+last-panel='keyboard'
 window-state=(1637, 948, false)
 
 [org/gnome/desktop/a11y/interface]
@@ -40,7 +40,7 @@ show-weekdate=false
 [org/gnome/desktop/input-sources]
 current=uint32 0
 mru-sources=[('xkb', 'br'), ('xkb', 'us'), ('ibus', 'mozc-jp')]
-sources=[('xkb', 'us'), ('xkb', 'br')]
+sources=[('xkb', 'us'), ('xkb', 'br'), ('xkb', 'us+alt-intl')]
 xkb-options=@as []
 
 [org/gnome/desktop/interface]
@@ -52,13 +52,16 @@ font-hinting='slight'
 show-battery-percentage=true
 
 [org/gnome/desktop/notifications]
-application-children=['firefox-esr', 'org-gnome-software', 'gnome-power-panel']
+application-children=['firefox-esr', 'org-gnome-software', 'gnome-power-panel', 'org-gnome-shell-extensions']
 
 [org/gnome/desktop/notifications/application/firefox-esr]
 application-id='firefox-esr.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-shell-extensions]
+application-id='org.gnome.Shell.Extensions.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-software]
 application-id='org.gnome.Software.desktop'
@@ -151,8 +154,8 @@ sleep-inactive-battery-type='suspend'
 
 [org/gnome/shell]
 app-picker-layout=[{'org.gnome.Weather.desktop': <{'position': <0>}>, 'org.gnome.clocks.desktop': <{'position': <1>}>, 'org.gnome.Maps.desktop': <{'position': <2>}>, 'kasumi.desktop': <{'position': <3>}>, 'org.gnome.Calculator.desktop': <{'position': <4>}>, 'simple-scan.desktop': <{'position': <5>}>, 'org.gnome.Settings.desktop': <{'position': <6>}>, 'gnome-system-monitor.desktop': <{'position': <7>}>, 'org.gnome.Terminal.desktop': <{'position': <8>}>, 'Utilities': <{'position': <9>}>, 'debian-reference-common.desktop': <{'position': <10>}>, 'org.gnome.Extensions.desktop': <{'position': <11>}>, 'org.goldendict.GoldenDict.desktop': <{'position': <12>}>, 'ghcal.desktop': <{'position': <13>}>}, {'im-config.desktop': <{'position': <0>}>, 'uim.desktop': <{'position': <1>}>, 'libreoffice-calc.desktop': <{'position': <2>}>, 'libreoffice-draw.desktop': <{'position': <3>}>, 'libreoffice-impress.desktop': <{'position': <4>}>, 'libreoffice-startcenter.desktop': <{'position': <5>}>, 'setup-mozc.desktop': <{'position': <6>}>, 'mlterm.desktop': <{'position': <7>}>, 'org.gnome.Music.desktop': <{'position': <8>}>, 'shotwell.desktop': <{'position': <9>}>, 'software-properties-gtk.desktop': <{'position': <10>}>, 'org.gnome.SoundRecorder.desktop': <{'position': <11>}>, 'org.gnome.Sudoku.desktop': <{'position': <12>}>, 'org.gnome.SwellFoop.desktop': <{'position': <13>}>, 'synaptic.desktop': <{'position': <14>}>}, {'org.gnome.Tali.desktop': <{'position': <0>}>, 'org.gnome.Taquin.desktop': <{'position': <1>}>, 'org.gnome.TextEditor.desktop': <{'position': <2>}>, 'xiterm+thai.desktop': <{'position': <3>}>, 'transmission-gtk.desktop': <{'position': <4>}>}]
-disabled-extensions=@as []
-enabled-extensions=['dash-to-dock@micxgx.gmail.com']
+disabled-extensions=['Vitals@CoreCoding.com']
+enabled-extensions=['dash-to-dock@micxgx.gmail.com', 'blur-my-shell@aunetx', 'dash-to-panel@jderose9.github.com', 'appindicatorsupport@rgcjonas.gmail.com']
 favorite-apps=['brave-browser.desktop', 'org.gnome.Terminal.desktop']
 welcome-dialog-last-shown-version='43.6'
 
@@ -166,6 +169,41 @@ preferred-monitor=-2
 preferred-monitor-by-connector='HDMI-1-0'
 preview-size-scale=0.0
 
+[org/gnome/shell/extensions/dash-to-panel]
+animate-appicon-hover-animation-extent={'RIPPLE': 4, 'PLANK': 4, 'SIMPLE': 1}
+appicon-margin=4
+appicon-padding=4
+available-monitors=[0]
+dot-position='BOTTOM'
+group-apps=true
+hot-keys=true
+hotkeys-overlay-combo='TEMPORARILY'
+intellihide=false
+leftbox-padding=-1
+panel-anchors='{"0":"MIDDLE"}'
+panel-element-positions='{"0":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'
+panel-lengths='{"0":100}'
+panel-sizes='{"0":43}'
+primary-monitor=0
+progress-show-count=true
+show-appmenu=false
+status-icon-padding=-1
+stockgs-keep-dash=false
+stockgs-keep-top-panel=false
+trans-use-custom-bg=false
+trans-use-custom-opacity=true
+tray-padding=-1
+window-preview-title-position='TOP'
+
+[org/gnome/shell/extensions/vitals]
+hide-zeros=true
+hot-sensors=['_memory_usage_', '_system_load_1m_', '__network-rx_max__', '_processor_usage_']
+show-fan=false
+show-storage=false
+show-system=false
+show-temperature=false
+show-voltage=false
+
 [org/gnome/shell/keybindings]
 show-screenshot-ui=@as []
 
@@ -173,7 +211,7 @@ show-screenshot-ui=@as []
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1693054518
+check-timestamp=int64 1693350676
 first-run=false
 update-notification-timestamp=int64 1693001792
 
@@ -215,3 +253,6 @@ sort-order='ascending'
 type-format='category'
 window-position=(26, 23)
 window-size=(1203, 902)
+
+[system/proxy]
+mode='none'
