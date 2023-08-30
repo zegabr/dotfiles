@@ -1,6 +1,6 @@
 #!/bin/sh
 sudo apt update -y
-sudo apt install xclip -y
+sudo apt install xclip ssh-tools -y
 read -p "Type y if you want to setup default ssh for git? (y/n): " ans
 if [ "$ans" == "y" ]; then
 
