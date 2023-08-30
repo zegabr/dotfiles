@@ -101,8 +101,9 @@ if [ "$DOCKER" == 1 ]; then
     (
     cd ~/Downloads/
     sudo apt install docker-compose -y
+    sudo apt install uidmap -y
     curl -fsSL https://get.docker.com -o get-docker.sh
     sh get-docker.sh
-    sudo apt install uidmap -y
+    dockerd-rootless-setuptool.sh install
     )
 fi
