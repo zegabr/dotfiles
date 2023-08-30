@@ -51,6 +51,7 @@ enable-hot-corners=false
 font-antialiasing='grayscale'
 font-hinting='slight'
 show-battery-percentage=true
+toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
 application-children=['firefox-esr', 'org-gnome-software', 'gnome-power-panel', 'org-gnome-shell-extensions']
@@ -145,7 +146,7 @@ night-light-temperature=uint32 3179
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
-binding='Print'
+binding='<Super>Print'
 command='flameshot gui'
 name='flameshot'
 
@@ -204,9 +205,6 @@ show-storage=false
 show-system=false
 show-temperature=false
 show-voltage=false
-
-[org/gnome/shell/keybindings]
-show-screenshot-ui=@as []
 
 [org/gnome/shell/world-clocks]
 locations=@av []

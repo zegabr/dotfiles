@@ -20,4 +20,5 @@ my dotfiles manager
 ### For WSL setup with ssh and core features
 `bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/wsl.sh)`
 
-<!-- ## TODO: -->
+## TODO:
+- should reassign print to flameshot custom shortcut, dconf doesnt seems to work 100% (probably)
