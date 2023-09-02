@@ -18,8 +18,8 @@ vim.keymap.set("n", "<C-h>", ":cprev<CR>zz", { desc = 'quickfix list next' })
 vim.keymap.set("n", "<C-l>", ":cnext<CR>zz", { desc = 'quickfix list prev' })
 vim.keymap.set("n", "<C-q>", ":cclose<CR>zz", { desc = 'quickfix list close' })
 vim.keymap.set("n", "<Leader><CR>", ":so<cr>", { desc = 'source current lua file' })
-vim.keymap.set("n", "<leader>w", ":wa<CR>", { desc = 'save all files' })
-vim.keymap.set("n", "<leader><leader>t", "<Plug>PlenaryTestFile", { desc = 'test lua file' })
+vim.keymap.set("n", "<leader>q", ":wa<CR>", { desc = 'save all files' })
+-- vim.keymap.set("n", "<leader><leader>t", "<Plug>PlenaryTestFile", { desc = 'test lua file' })
 vim.keymap.set('n', '<leader><leader>%', [[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]],
     { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
 --" ============ PASSIVE MAPS============
@@ -31,8 +31,3 @@ vim.keymap.set("n", "Q", "<nop>", { desc = 'remove Q mapping' })
 vim.keymap.set("n", "<leader>v", "<C-v>", { desc = 'enter visual-block mode' })
 vim.keymap.set("v", "<", "<gv", { desc = 'passive tabbing on visual mode' })
 vim.keymap.set("v", ">", ">gv", { desc = 'passive tabbing on visual mode' })
-vim.cmd([[
-set clipboard=unnamedplus
-" wrap text when in a txt file
-autocmd! VimEnter *.txt set wrap
-]])

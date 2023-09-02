@@ -3,7 +3,10 @@ local set = vim.opt
 set.grepprg = "rg \\ --vimgrep"
 set.updatetime = 50
 -- set.guicursor = ""
-vim.cmd [[:set guicursor=n:block,i:block,v:block]]
+vim.cmd([[:set guicursor=n:block,i:block,v:block]])
+vim.cmd([[ :set clipboard=unnamedplus ]])
+vim.cmd([[ autocmd! VimEnter *.txt set wrap ]])
+vim.cmd([[ autocmd! VimEnter *.wiki set wrap ]])
 set.showmatch = true
 set.splitright = true
 set.splitbelow = true

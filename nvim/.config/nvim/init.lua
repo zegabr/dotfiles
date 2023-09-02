@@ -116,6 +116,18 @@ return require('packer').startup(function(use)
     --     end
     -- }
 
+    use { 'vimwiki/vimwiki',
+        config = function()
+            vim.cmd([[
+                set nocompatible
+                filetype plugin on
+                syntax on
+                let g:vimwiki_list = [{'path': '~/notes/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+            ]])
+        end
+    }
+
     -- Colors and UI
     use {
         'RRethy/nvim-base16',
