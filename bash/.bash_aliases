@@ -62,16 +62,15 @@ function think(){
 function note-sync(){
     cd ~/notes
     git add .
-    git commit -m 'sync' > /dev/null
-    git pull --rebase > /dev/null
-    git push -q > /dev/null
+    git commit -m 'sync'
+    git pull --rebase
+    git push -q
 }
 # Opens instant note on private repo
 function note(){
     cd ~/notes
-    note-sync &
-    filename=$(date +'%a-%m-%d-%Y')
-    v ${filename}.md +
+    note-sync & > /dev/null
+    vs
 }
 
 # tmux color fix
