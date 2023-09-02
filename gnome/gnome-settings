@@ -6,7 +6,7 @@ window-is-maximized=true
 window-width=540
 
 [org/gnome/control-center]
-last-panel='info-overview'
+last-panel='display'
 window-state=(1637, 948, true)
 
 [org/gnome/desktop/a11y/interface]
@@ -39,7 +39,7 @@ show-weekdate=false
 
 [org/gnome/desktop/input-sources]
 current=uint32 0
-mru-sources=[('xkb', 'br'), ('xkb', 'us'), ('ibus', 'mozc-jp')]
+mru-sources=[('xkb', 'br'), ('xkb', 'us'), ('xkb', 'us+alt-intl')]
 sources=[('xkb', 'us'), ('xkb', 'br'), ('xkb', 'us+alt-intl')]
 xkb-options=@as []
 
@@ -54,13 +54,16 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['firefox-esr', 'org-gnome-software', 'gnome-power-panel', 'org-gnome-shell-extensions']
+application-children=['firefox-esr', 'org-gnome-software', 'gnome-power-panel', 'org-gnome-shell-extensions', 'org-gnome-nautilus']
 
 [org/gnome/desktop/notifications/application/firefox-esr]
 application-id='firefox-esr.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-nautilus]
+application-id='org.gnome.Nautilus.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-shell-extensions]
 application-id='org.gnome.Shell.Extensions.desktop'
@@ -105,11 +108,11 @@ migrated=true
 
 [org/gnome/gnome-system-monitor]
 current-tab='resources'
-maximized=false
+maximized=true
 network-total-in-bits=false
 show-dependencies=false
 show-whose-processes='user'
-window-state=(782, 692, 26, 23)
+window-state=(2560, 1408, 0, 32)
 
 [org/gnome/gnome-system-monitor/disktreenew]
 col-6-visible=true
@@ -125,9 +128,12 @@ zoom-level=6
 [org/gnome/mutter]
 workspaces-only-on-primary=true
 
+[org/gnome/nautilus/list-view]
+default-zoom-level='small'
+
 [org/gnome/nautilus/preferences]
 always-use-location-entry=true
-default-folder-viewer='icon-view'
+default-folder-viewer='list-view'
 migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 show-hidden-files=true
@@ -158,7 +164,7 @@ sleep-inactive-battery-type='suspend'
 app-picker-layout=[{'org.gnome.Weather.desktop': <{'position': <0>}>, 'org.gnome.clocks.desktop': <{'position': <1>}>, 'org.gnome.Maps.desktop': <{'position': <2>}>, 'kasumi.desktop': <{'position': <3>}>, 'org.gnome.Calculator.desktop': <{'position': <4>}>, 'simple-scan.desktop': <{'position': <5>}>, 'org.gnome.Settings.desktop': <{'position': <6>}>, 'gnome-system-monitor.desktop': <{'position': <7>}>, 'org.gnome.Terminal.desktop': <{'position': <8>}>, 'Utilities': <{'position': <9>}>, 'debian-reference-common.desktop': <{'position': <10>}>, 'org.gnome.Extensions.desktop': <{'position': <11>}>, 'org.goldendict.GoldenDict.desktop': <{'position': <12>}>, 'ghcal.desktop': <{'position': <13>}>}, {'im-config.desktop': <{'position': <0>}>, 'uim.desktop': <{'position': <1>}>, 'libreoffice-calc.desktop': <{'position': <2>}>, 'libreoffice-draw.desktop': <{'position': <3>}>, 'libreoffice-impress.desktop': <{'position': <4>}>, 'libreoffice-startcenter.desktop': <{'position': <5>}>, 'setup-mozc.desktop': <{'position': <6>}>, 'mlterm.desktop': <{'position': <7>}>, 'org.gnome.Music.desktop': <{'position': <8>}>, 'shotwell.desktop': <{'position': <9>}>, 'software-properties-gtk.desktop': <{'position': <10>}>, 'org.gnome.SoundRecorder.desktop': <{'position': <11>}>, 'org.gnome.Sudoku.desktop': <{'position': <12>}>, 'org.gnome.SwellFoop.desktop': <{'position': <13>}>, 'synaptic.desktop': <{'position': <14>}>}, {'org.gnome.Tali.desktop': <{'position': <0>}>, 'org.gnome.Taquin.desktop': <{'position': <1>}>, 'org.gnome.TextEditor.desktop': <{'position': <2>}>, 'xiterm+thai.desktop': <{'position': <3>}>, 'transmission-gtk.desktop': <{'position': <4>}>}]
 disabled-extensions=['Vitals@CoreCoding.com']
 enabled-extensions=['dash-to-dock@micxgx.gmail.com', 'blur-my-shell@aunetx', 'dash-to-panel@jderose9.github.com', 'appindicatorsupport@rgcjonas.gmail.com']
-favorite-apps=['brave-browser.desktop', 'org.gnome.Terminal.desktop', 'discord.desktop', 'org.telegram.desktop.desktop']
+favorite-apps=['brave-browser.desktop', 'org.gnome.Terminal.desktop', 'org.telegram.desktop.desktop', 'org.gnome.Nautilus.desktop']
 welcome-dialog-last-shown-version='43.6'
 
 [org/gnome/shell/extensions/dash-to-dock]
@@ -210,7 +216,7 @@ show-voltage=false
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1693350676
+check-timestamp=int64 1693655925
 first-run=false
 update-notification-timestamp=int64 1693001792
 
@@ -237,7 +243,7 @@ sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-size=(888, 374)
+window-size=(888, 700)
 
 [org/gtk/settings/color-chooser]
 custom-colors=[(0.86274509803921573, 0.19607843137254896, 0.18431372549019609, 1.0), (0.86274509803921573, 0.19607843137254902, 0.18431372549019609, 1.0)]
