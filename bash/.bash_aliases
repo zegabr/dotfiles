@@ -51,11 +51,27 @@ venv-activate() {
 # cheat.sh
 alias how='cht.sh'
 
-#Open current day note file
+#Open instant note
+function think(){
+    cd ~/toughts
+    filename=$(date +'%a-%m-%d-%Y')
+    v ${filename}.md +
+}
+
+#Opens personal notes dir and sync
+function note-sync(){
+    cd ~/notes
+    git add .
+    git commit -m 'sync' > /dev/null
+    git pull --rebase > /dev/null
+    git push -q > /dev/null
+}
+# Opens instant note on private repo
 function note(){
     cd ~/notes
+    note-sync &
     filename=$(date +'%a-%m-%d-%Y')
-    v ~/notes/${filename}.txt +
+    v ${filename}.md +
 }
 
 # tmux color fix

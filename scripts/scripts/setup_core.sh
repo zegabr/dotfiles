@@ -39,7 +39,11 @@ bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/
 # simlinks dotfiles
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/d.sh)
 
-#for work note taking
-mkdir ~/notes
+#for personal note taking
+git clone git@github.com:zegabr/notes.git
+
+# for instant note taking
+mkdir thoughts
+
 
 cd ~/dotfiles
