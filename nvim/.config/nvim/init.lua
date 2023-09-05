@@ -51,7 +51,7 @@ return require('packer').startup(function(use)
             -- LSP Support
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
-            { 'folke/neodev.nvim' },
+            -- { 'folke/neodev.nvim' },
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },
             { 'hrsh7th/cmp-buffer' },

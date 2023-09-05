@@ -1,4 +1,3 @@
-require('neodev').setup()
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 cmp.setup({
@@ -128,12 +127,12 @@ local servers_settings = {
 }
 
 -- uncomment this if gopls is installed
-vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = '*.go',
-    callback = function()
-        vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
-    end
-})
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--     pattern = '*.go',
+--     callback = function()
+--         vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+--     end
+-- })
 
 mason_lspconfig.setup_handlers {
     function(server_name)
