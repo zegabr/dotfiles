@@ -70,7 +70,11 @@ function note-sync(){
 function note(){
     cd ~/notes
     note-sync & > /dev/null
-    vs
+    if [ -e Session.vim ]; then
+        vs
+    else
+        v index.md
+    fi
 }
 
 # tmux color fix
