@@ -7,6 +7,7 @@ vim.cmd([[:set guicursor=n:block,i:block,v:block]])
 vim.cmd([[ :set clipboard=unnamedplus ]])
 vim.cmd([[ autocmd! VimEnter *.txt set wrap ]])
 vim.cmd([[ autocmd! VimEnter *.wiki set wrap ]])
+vim.g.vimwiki_markdown_link_ext = 1
 set.showmatch = true
 set.splitright = true
 set.splitbelow = true

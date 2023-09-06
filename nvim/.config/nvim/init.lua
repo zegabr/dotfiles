@@ -123,7 +123,8 @@ return require('packer').startup(function(use)
                 filetype plugin on
                 syntax on
                 let g:vimwiki_list = [{'path': '~/notes/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+                      \ 'syntax': 'markdown', 'ext': '.md',
+                       \ 'links_space_char': '_'}]
             ]])
         end
     }
