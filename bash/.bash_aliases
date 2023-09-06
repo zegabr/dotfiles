@@ -11,7 +11,13 @@ alias update-dump='dconf dump / > ~/dotfiles/gnome/gnome-settings'
 alias lag='alias | grep'
 
 alias v='nvim'
-alias vs='nvim -S'
+function vs(){
+    if [ -e Session.vim ]; then
+        nvim -S
+    else
+        nvim .
+    fi
+}
 alias t='tmux attach -t base || tmux new -s base'
 alias mkdir='mkdir -p'
 alias ..='cd ..'
