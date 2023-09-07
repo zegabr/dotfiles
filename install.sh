@@ -13,7 +13,11 @@ done
 source ~/.bashrc
 
 # for gnome
-dconf load / < ~/dotfiles/gnome/gnome-settings
+if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
+    dconf load / < ~/dotfiles/gnome/gnome-settings
+fi
 
 # for kde
-# cp -r ~/dotfiles/kde/.config/* ~/.config/
+if [[ "$XDG_CURRENT_DESKTOP" == *"KDE"* ]]; then
+    cp -r ~/dotfiles/kde/.config/* ~/.config/
+fi
