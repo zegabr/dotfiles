@@ -1,8 +1,0 @@
-[Adapters]
-0C:96:E6:EB:C7:A4_powered=true
-
-[Devices]
-connectedDevices=
-
-[Global]
-bluetoothBlocked=true
