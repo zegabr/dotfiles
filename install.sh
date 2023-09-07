@@ -16,4 +16,4 @@ source ~/.bashrc
 dconf load / < ~/dotfiles/gnome/gnome-settings
 
 # for kde
-cp -r ~/dotfiles/kde/.config/* ~/.config/
+# cp -r ~/dotfiles/kde/.config/* ~/.config/
