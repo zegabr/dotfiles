@@ -6,7 +6,16 @@ alias update-nvim='source ~/dotfiles/scripts/scripts/stuff/v.sh'
 alias update-node='source ~/dotfiles/scripts/scripts/stuff/node.sh'
 alias update-rust-tools='source ~/dotfiles/scripts/scripts/stuff/r.sh'
 alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
-alias update-dump='dconf dump / > ~/dotfiles/gnome/gnome-settings'
+alias update-dump-gnome='dconf dump / > ~/dotfiles/gnome/gnome-settings'
+function update-dump-kde(){
+    cp -r ~/.config/plasma* ~/dotfiles/kde/.config/
+    cp -r ~/.config/k* ~/dotfiles/kde/.config/
+    rm -rf ~/dotfiles/kde/.config/kdeconnect
+    cp -r ~/.config/Trolltech.conf ~/dotfiles/kde/.config/
+    cp -r ~/.config/touchpadxlibinputrc ~/dotfiles/kde/.config/
+    cp -r ~/.config/powermanagementprofilesrc ~/dotfiles/kde/.config/
+    cp -r ~/.config/bluedevilglobalrc ~/dotfiles/kde/.config/
+}
 
 alias lag='alias | grep'
 

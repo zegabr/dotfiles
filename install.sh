@@ -15,3 +15,5 @@ source ~/.bashrc
 # for gnome
 dconf load / < ~/dotfiles/gnome/gnome-settings
 
+# for kde
+cp -r ~/dotfiles/kde/.config/* ~/.config/
