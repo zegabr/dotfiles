@@ -18,7 +18,6 @@ function update-dump(){
         cp ~/.config/kdeglobals ~/dotfiles/kde/.config
         cp ~/.config/kglobalshortcutsrc ~/dotfiles/kde/.config
         cp ~/.config/khotkeysrc ~/dotfiles/kde/.config
-        cp ~/.config/konsolerc ~/dotfiles/kde/.config
         cp ~/.config/ktimezonedrc ~/dotfiles/kde/.config
         cp ~/.config/kwinrc ~/dotfiles/kde/.config
         cp ~/.config/kxkbrc ~/dotfiles/kde/.config
