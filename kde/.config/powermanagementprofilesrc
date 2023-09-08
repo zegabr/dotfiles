@@ -9,13 +9,10 @@ lockBeforeTurnOff=0
 idleTime=300000
 
 [AC][HandleButtonEvents]
-lidAction=1
+lidAction=64
 powerButtonAction=16
 powerDownAction=16
-
-[AC][SuspendSession]
-idleTime=900000
-suspendType=1
+triggerLidActionWhenExternalMonitorPresent=false
 
 [Battery]
 icon=battery-060
@@ -31,9 +28,11 @@ idleTime=120000
 lidAction=1
 powerButtonAction=16
 powerDownAction=16
+triggerLidActionWhenExternalMonitorPresent=false
 
 [Battery][SuspendSession]
 idleTime=600000
+suspendThenHibernate=false
 suspendType=1
 
 [LowBattery]
@@ -53,7 +52,9 @@ idleTime=60000
 lidAction=1
 powerButtonAction=16
 powerDownAction=16
+triggerLidActionWhenExternalMonitorPresent=false
 
 [LowBattery][SuspendSession]
 idleTime=300000
+suspendThenHibernate=false
 suspendType=1
