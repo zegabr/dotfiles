@@ -6,15 +6,29 @@ alias update-nvim='source ~/dotfiles/scripts/scripts/stuff/v.sh'
 alias update-node='source ~/dotfiles/scripts/scripts/stuff/node.sh'
 alias update-rust-tools='source ~/dotfiles/scripts/scripts/stuff/r.sh'
 alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
-alias update-dump-gnome='dconf dump / > ~/dotfiles/gnome/gnome-settings'
-function update-dump-kde(){
-    cp -r ~/.config/plasma* ~/dotfiles/kde/.config/
-    cp -r ~/.config/k* ~/dotfiles/kde/.config/
-    rm -rf ~/dotfiles/kde/.config/kdeconnect
-    cp -r ~/.config/Trolltech.conf ~/dotfiles/kde/.config/
-    cp -r ~/.config/touchpadxlibinputrc ~/dotfiles/kde/.config/
-    cp -r ~/.config/powermanagementprofilesrc ~/dotfiles/kde/.config/
-    cp -r ~/.config/bluedevilglobalrc ~/dotfiles/kde/.config/
+
+function update-dump(){
+    # for gnome
+    if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
+        dconf dump / > ~/dotfiles/gnome/gnome-settings
+    fi
+    # for kde
+    if [[ "$XDG_CURRENT_DESKTOP" == *"KDE"* ]]; then
+        cp ~/.config/dolphinrc ~/dotfiles/kde/.config
+        cp ~/.config/kdeglobals ~/dotfiles/kde/.config
+        cp ~/.config/kglobalshortcutsrc ~/dotfiles/kde/.config
+        cp ~/.config/khotkeysrc ~/dotfiles/kde/.config
+        cp ~/.config/konsolerc ~/dotfiles/kde/.config
+        cp ~/.config/ktimezonedrc ~/dotfiles/kde/.config
+        cp ~/.config/kwinrc ~/dotfiles/kde/.config
+        cp ~/.config/kxkbrc ~/dotfiles/kde/.config
+        cp ~/.config/plasma-localerc ~/dotfiles/kde/.config
+        cp ~/.config/powerdevilrc ~/dotfiles/kde/.config
+        cp ~/.config/powermanagementprofilesrc ~/dotfiles/kde/.config
+        cp ~/.config/touchpadxlibinputrc ~/dotfiles/kde/.config
+        cp ~/.config/Trolltech.conf ~/dotfiles/kde/.config
+        cp ~/.config/xsettingsd.conf ~/dotfiles/kde/.config
+    fi
 }
 
 alias lag='alias | grep'
@@ -34,9 +48,8 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Rust
-alias l='exa'
-alias ll='exa -l'
-alias lla='exa -la'
+alias l='exa -l'
+alias la='exa -la'
 alias cat='bat'
 
 #-----------------------config files shortcuts
