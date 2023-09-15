@@ -27,6 +27,7 @@ function update-dump(){
         cp ~/.config/touchpadxlibinputrc ~/dotfiles/kde/.config
         cp ~/.config/Trolltech.conf ~/dotfiles/kde/.config
         cp ~/.config/xsettingsd.conf ~/dotfiles/kde/.config
+        cp ~/.config/plasma-org.kde.plasma.desktop-appletsrc ~/dotfiles/kde/.config
     fi
 }
 
