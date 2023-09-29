@@ -7,6 +7,8 @@ https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
 printf "Checking latest Go version...\n";
 LATEST_GO_VERSION="$(curl --silent https://go.dev/VERSION?m=text | head -n 1)";
 LATEST_GO_DOWNLOAD_URL="https://golang.org/dl/${LATEST_GO_VERSION}.linux-amd64.tar.gz"
+# uncomment line belwo to set a different local go version
+# LATEST_GO_VERSION=1.20.1
 
 printf "cd to home ($USER) directory \n"
 cd "/home/$USER"

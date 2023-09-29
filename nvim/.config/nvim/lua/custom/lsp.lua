@@ -74,9 +74,11 @@ mason_lspconfig.setup {
         'lua_ls',
         'vimls',
         'pyright',
+        'gopls',
+        'tsserver',
     },
 }
--- use this to wverride language servers settings
+-- use this to override language servers settings
 local servers_settings = {
     lua_ls = {
         settings = {
