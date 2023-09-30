@@ -38,7 +38,7 @@ function vs(){
     if [ -e Session.vim ]; then
         nvim -S
     else
-        nvim .
+        nvim . -c Obsession
     fi
 }
 alias t='tmux attach -t base || tmux new -s base'
