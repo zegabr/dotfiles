@@ -58,6 +58,8 @@ vim.keymap.set('n', '<leader><leader>h', builtin.help_tags, { desc = '[H]elp' })
 vim.keymap.set("n", "<leader><leader>k", builtin.keymaps, { desc = 'telescope keymaps' })
 vim.keymap.set("n", "<leader><leader>glo", builtin.git_commits, { desc = 'git log' })
 vim.keymap.set("n", "<leader><leader>glof", builtin.git_bcommits, { desc = 'git log current file' })
+vim.keymap.set("n", "<leader><leader>o", builtin.oldfiles, { desc = 'find recently opened files' })
+
 vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = 'telescope buffers' })
 vim.keymap.set("n", "<leader><leader>p", project_files, { desc = 'Project File Search' })
 vim.keymap.set("n", "<leader><leader>f", function()

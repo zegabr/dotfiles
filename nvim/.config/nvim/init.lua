@@ -106,8 +106,13 @@ return require('packer').startup(function(use)
             vim.keymap.set("n", "]h", "<plug>(signify-next-hunk)", { desc = 'next hunk' })
         end,
     }
-    -- Comments
-    use { 'tpope/vim-commentary' } -- gcc gcgc visual gc
+
+    -- Comments based on tpop plugin
+    use { 'terrortylor/nvim-comment',
+        config = function()
+            require('nvim_comment').setup()
+        end
+    } -- gcc | gcgc | visual gc | gcip | dic
 
     -- for latex
     -- use { 'lervag/vimtex',
