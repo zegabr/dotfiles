@@ -72,8 +72,30 @@ venv-create() {
     python3 -m venv $1
     cd -
 }
+
+CURRENT_VENV=""
 venv-activate() {
-    source ~/$1/bin/activate
+    CURRENT_VENV="$1"
+    source ~/$CURRENT_VENV/bin/activate
+}
+venv-deactivate() {
+    deactivate
+    CURRENT_VENV=""
+}
+
+pip(){
+    if [ "$CURRENT_VENV" == "" ]; then
+        env pip "$@"
+    else
+        ~/$CURRENT_VENV/bin/pip "$@"
+    fi
+}
+pip3(){
+    if [ "$CURRENT_VENV" == "" ]; then
+        env pip3 "$@"
+    else
+        ~/$CURRENT_VENV/bin/pip3 "$@"
+    fi
 }
 
 # cheat.sh
