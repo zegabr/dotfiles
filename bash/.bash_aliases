@@ -73,30 +73,28 @@ venv-create() {
     cd -
 }
 
-CURRENT_VENV=""
 venv-activate() {
-    CURRENT_VENV="$1"
-    source ~/$CURRENT_VENV/bin/activate
+    source ~/$1/bin/activate
 }
 venv-deactivate() {
     deactivate
-    CURRENT_VENV=""
 }
 
 pip(){
-    if [ "$CURRENT_VENV" == "" ]; then
-        env pip "$@"
+    if [ -n "$VIRTUAL_ENV" ]; then
+        $VIRTUAL_ENV/bin/pip "$@"
     else
-        ~/$CURRENT_VENV/bin/pip "$@"
+        env pip "$@"
     fi
 }
 pip3(){
-    if [ "$CURRENT_VENV" == "" ]; then
-        env pip3 "$@"
+    if [ -n "$VIRTUAL_ENV" ]; then
+        $VIRTUAL_ENV/bin/pip3 "$@"
     else
-        ~/$CURRENT_VENV/bin/pip3 "$@"
+        env pip3 "$@"
     fi
 }
+
 
 # cheat.sh
 alias how='cht.sh'
