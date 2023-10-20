@@ -117,7 +117,6 @@ function note-sync(){
 # Opens instant note on private repo
 function note(){
     cd ~/notes
-    note-sync & > /dev/null
     if [ -e Session.vim ]; then
         vs
     else
