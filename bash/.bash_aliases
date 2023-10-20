@@ -69,12 +69,12 @@ alias st='tmux source-file ~/.tmux.conf'
 alias py='python3'
 venv-create() {
     cd ~
-    python3 -m venv $1
+    python3 -m venv ~/.myvenvs/$1
     cd -
 }
 
 venv-activate() {
-    source ~/$1/bin/activate
+    source ~/.myvenvs/$1/bin/activate
 }
 venv-deactivate() {
     deactivate
