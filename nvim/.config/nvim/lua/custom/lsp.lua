@@ -64,6 +64,7 @@ local on_attach = function(_, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- TODO: understand this warning
 capabilities.textDocument.completion.completionItem.snippetSupport = true -- enables snippet support
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
