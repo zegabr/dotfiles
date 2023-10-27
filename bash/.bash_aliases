@@ -99,13 +99,15 @@ pip3(){
 # cheat.sh
 alias how='cht.sh'
 
+mkdir ~/thoughts > /dev/null
 #Open instant note
 function think(){
-    cd ~/toughts
+    cd ~/thoughts
     filename=$(date +'%a-%m-%d-%Y')
     v ${filename}.md +
 }
 
+mkdir ~/notes > /dev/null
 #Opens personal notes dir and sync
 function note-sync(){
     cd ~/notes

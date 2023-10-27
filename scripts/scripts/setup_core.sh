@@ -43,6 +43,4 @@ cd ~/
 #for personal note taking
 git clone git@github.com:zegabr/notes.git
 # for instant note taking
-mkdir thoughts
-
 cd ~/dotfiles
