@@ -133,9 +133,6 @@ source ~/.local/_debian_utils
 source ~/.local/_fzf_utils
 source ~/.local/_tmux_utils
 
-bind '"\C-f":"_tmux_sessionizer\n"'
-bind '"\C-n":"_tmux_open_scrollback_on_nvim\n"'
-
 bind '"\C-b":"fg\n"'
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
