@@ -10,13 +10,16 @@ _tmux_open_scrollback_on_nvim() {
     tmux capture-pane -pS -10000 > ~/.tmux_scrollback_temp && _remove_empty_trailing_lines ~/.tmux_scrollback_temp && nvim -c "$" ~/.tmux_scrollback_temp && rm ~/.tmux_scrollback_temp
 }
 
+
+mkdir ~/work > /dev/null
+mkdir ~/projects > /dev/null
 _tmux_sessionizer() {
     CURR_DIR=$(pwd)
 
     if [[ $# -eq 1 ]]; then
         selected=$1
     else
-        selected=$(find ~/ ~/Desktop -mindepth 1 -maxdepth 1 -type d | fzf)
+        selected=$(find ~/ ~/work ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
     fi
 
     if [[ -z $selected ]]; then
