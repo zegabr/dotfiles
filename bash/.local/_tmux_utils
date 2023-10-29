@@ -1,5 +1,7 @@
 #!/bin/sh
 
+alias t='tmux attach -t base || tmux new -s base'
+
 # tmux color fix
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 
