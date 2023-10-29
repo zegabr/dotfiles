@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# tmux color fix
+[[ $TMUX != "" ]] && export TERM="screen-256color"
+
 _remove_empty_trailing_lines() {
     sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' $1
     # sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' file.txt

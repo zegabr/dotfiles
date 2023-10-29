@@ -126,9 +126,6 @@ function note(){
     fi
 }
 
-# tmux color fix
-[[ $TMUX != "" ]] && export TERM="screen-256color"
-
 # custom scripts
 source ~/.local/_competitive
 source ~/.local/_git_utils
