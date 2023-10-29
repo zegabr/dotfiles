@@ -75,6 +75,7 @@ mason_lspconfig.setup {
         'lua_ls',
         'vimls',
         'pyright',
+        'ruff_lsp',
         'gopls',
         'tsserver',
     },
