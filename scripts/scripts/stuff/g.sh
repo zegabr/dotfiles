@@ -2,8 +2,7 @@
 
 curr="$(pwd)"
 printf "Removing last go installation"
-rm -rf /home/$USER/go
-https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
+sudo rm -rf /home/$USER/go
 printf "Checking latest Go version...\n";
 LATEST_GO_VERSION="$(curl --silent https://go.dev/VERSION?m=text | head -n 1)";
 LATEST_GO_DOWNLOAD_URL="https://golang.org/dl/${LATEST_GO_VERSION}.linux-amd64.tar.gz"
