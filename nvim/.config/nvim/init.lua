@@ -165,6 +165,12 @@ return require('packer').startup(function(use)
             })
         end,
     }
+    use {
+        'David-Kunz/gen.nvim',
+        config = function()
+            -- require('gen').model = 'codellama' # default = 'mistral:instruct'
+        end,
+    }
     if packer_initializing then
         require('packer').sync()
     end

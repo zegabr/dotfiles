@@ -30,6 +30,9 @@ sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
 # Cheat sheet
 curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
 
+# ollama local llms
+bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/llm.sh)
+
 # tmux
 sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 
