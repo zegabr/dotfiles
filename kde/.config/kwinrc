@@ -26,6 +26,9 @@ padding=4
 [Tiling][213a9620-187e-58a6-b80b-85d8fb95dfce]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][b125876e-ea58-5393-ad69-ce72d103511b]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [org.kde.kdecoration2]
 library=org.kde.kwin.aurorae
 theme=kwin4_decoration_qml_plastik

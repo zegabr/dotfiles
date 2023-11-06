@@ -9,10 +9,22 @@ lockBeforeTurnOff=0
 idleTime=300000
 
 [AC][HandleButtonEvents]
-lidAction=64
+lidAction=0
 powerButtonAction=16
 powerDownAction=16
 triggerLidActionWhenExternalMonitorPresent=false
+
+[Activities][461ed940-60cb-472d-981f-4d607899926b]
+mode=None
+
+[Activities][461ed940-60cb-472d-981f-4d607899926b][SpecialBehavior]
+noScreenManagement=false
+noSuspend=true
+performAction=false
+
+[Activities][461ed940-60cb-472d-981f-4d607899926b][SpecialBehavior][ActionConfig]
+idleTime=60000
+suspendType=1
 
 [Battery]
 icon=battery-060
@@ -25,7 +37,7 @@ lockBeforeTurnOff=0
 idleTime=120000
 
 [Battery][HandleButtonEvents]
-lidAction=1
+lidAction=0
 powerButtonAction=16
 powerDownAction=16
 triggerLidActionWhenExternalMonitorPresent=false
@@ -49,7 +61,7 @@ lockBeforeTurnOff=0
 idleTime=60000
 
 [LowBattery][HandleButtonEvents]
-lidAction=1
+lidAction=0
 powerButtonAction=16
 powerDownAction=16
 triggerLidActionWhenExternalMonitorPresent=false

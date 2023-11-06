@@ -137,7 +137,7 @@ ForegroundVisited=155,89,182
 
 [General]
 BrowserApplication=brave-browser.desktop
-ColorSchemeHash=7e27a66e6ec46638e4fb9d9f6caa72c4f044c338
+ColorSchemeHash=01662607e36cd33eacc7d7d7189f69c26b9a2cc8
 
 [KDE]
 AnimationDurationFactor=0.125
@@ -153,6 +153,7 @@ PathCombo Completionmode=5
 Show Bookmarks=false
 Show Full Path=false
 Show Inline Previews=true
+Show Preview=false
 Show Speedbar=true
 Show hidden files=false
 Sort by=Name

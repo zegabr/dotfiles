@@ -1,5 +1,5 @@
 [$Version]
-update_info=konsole_globalaccel.upd:konsole_globalaccel,spectacle_shortcuts.upd:spectacle-migrate-shortcuts
+update_info=konsole_globalaccel.upd:konsole_globalaccel,spectacle_shortcuts.upd:spectacle-migrate-shortcuts,konsole.upd:konsole_globalaccel
 
 [ColorEffects:Disabled]
 ChangeSelectionColor[$d]
@@ -1055,6 +1055,7 @@ PathCombo Completionmode[$d]
 Show Bookmarks[$d]
 Show Full Path[$d]
 Show Inline Previews[$d]
+Show Preview[$d]
 Show Speedbar[$d]
 Show hidden files[$d]
 Sort by[$d]

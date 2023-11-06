@@ -43,7 +43,7 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][2][Applets][20][Configuration]
-PreloadWeight=60
+PreloadWeight=70
 popupHeight=450
 popupWidth=396
 
@@ -96,7 +96,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][2][Applets][7][Configuration]
-PreloadWeight=85
+PreloadWeight=95
 SystrayContainmentId=8
 
 [Containments][2][ConfigDialog]
@@ -169,7 +169,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][8][Applets][16][Configuration]
-PreloadWeight=65
+PreloadWeight=75
 
 [Containments][8][Applets][17]
 immutability=1
@@ -196,21 +196,21 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][8][Applets][24][Configuration]
-PreloadWeight=60
+PreloadWeight=52
 
 [Containments][8][Applets][25]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][8][Applets][25][Configuration]
-PreloadWeight=55
+PreloadWeight=47
 
 [Containments][8][Applets][26]
 immutability=1
 plugin=org.kde.plasma.mediacontroller
 
 [Containments][8][Applets][26][Configuration]
-PreloadWeight=2
+PreloadWeight=0
 
 [Containments][8][Applets][9]
 immutability=1
