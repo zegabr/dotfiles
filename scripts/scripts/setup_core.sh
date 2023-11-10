@@ -5,21 +5,13 @@ cd ~/Downloads
 
 sudo apt update -y
 
-sudo apt install \
-git \
-stow \
-tree \
-wget \
-curl \
-gawk \
-htop \
-jq \
-neofetch \
-cmake \
-parallel \
--y
-
-sudo apt install python3-full -y
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install git 
+brew install stow
+brew install htop
+brew install tree
+brew install neovim
+brew install tmux
 
 # FZF with install script
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install <<<"y\nn\ny\n"
@@ -32,9 +24,6 @@ curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /u
 
 # ollama local llms
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/llm.sh)
-
-# tmux
-sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 
 # install nvim building from source
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/v.sh)

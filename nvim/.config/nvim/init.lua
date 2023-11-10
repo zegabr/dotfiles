@@ -35,8 +35,8 @@ return require('packer').startup(function(use)
 
     ----Telescope
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        -- or                            , branch = '0.1.x',
+        'nvim-telescope/telescope.nvim',
+        -- 'nvim-telescope/telescope.nvim', tag = '0.1.3',
         requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('custom.telescope')

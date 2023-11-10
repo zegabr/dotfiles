@@ -76,7 +76,6 @@ mason_lspconfig.setup {
         'vimls',
         'pyright',
         'ruff_lsp',
-        'gopls',
         'tsserver',
     },
 }
@@ -104,21 +103,6 @@ local servers_settings = {
             }
         },
     },
-    gopls = {
-        cmd = { "gopls", "serve" },
-        settings = {
-            gopls = {
-                analyses = {
-                    unusedparams = true,
-                },
-            },
-            staticcheck = true,
-        }
-    },
-    jdtls = {
-        -- if lombok is needed, see this: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jdtls
-        root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
-    },
     rust_analyzer = {
         cmd = { "rustup", "run", "stable", "rust-analyzer" },
         settings = {
@@ -130,14 +114,6 @@ local servers_settings = {
         }
     },
 }
-
--- uncomment this if gopls is installed
-vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = '*.go',
-    callback = function()
-        vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
-    end
-})
 
 mason_lspconfig.setup_handlers {
     function(server_name)

@@ -1,6 +1,5 @@
 
 # custom scripts (aka modules)
-source ~/.local/_competitive
 source ~/.local/_git_utils
 source ~/.local/_debian_utils
 source ~/.local/_fzf_utils
@@ -34,7 +33,6 @@ alias how='cht.sh'
 alias llm-codellama='ollama run codellama'
 alias llm-mistral='ollama run mistral'
 
-bind '"\C-b":"fg\n"'
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
 
