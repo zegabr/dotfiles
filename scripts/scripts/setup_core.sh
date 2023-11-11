@@ -13,6 +13,7 @@ brew install tree
 brew install neovim
 brew install tmux
 brew install --cask rectangle
+brew install --cask devtoys
 
 # FZF with install script
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install <<<"y\nn\ny\n"
