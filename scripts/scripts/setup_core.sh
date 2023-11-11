@@ -6,12 +6,13 @@ cd ~/Downloads
 sudo apt update -y
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install git 
+brew install git
 brew install stow
 brew install htop
 brew install tree
 brew install neovim
 brew install tmux
+brew install --cask rectangle
 
 # FZF with install script
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install <<<"y\nn\ny\n"
@@ -21,12 +22,6 @@ sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
 
 # Cheat sheet
 curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
-
-# ollama local llms
-bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/llm.sh)
-
-# install nvim building from source
-bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/v.sh)
 
 # simlinks dotfiles
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/d.sh)
