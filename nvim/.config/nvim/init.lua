@@ -136,10 +136,10 @@ return require('packer').startup(function(use)
 
     -- Colors and UI
     use {
-        'RRethy/nvim-base16',
+        'ellisonleao/gruvbox.nvim',
         config = function()
-            vim.cmd.colorscheme("base16-gruvbox-material-dark-hard")
-            -- vim.cmd.colorscheme("base16-tokyo-city-dark")
+            -- vim.cmd.colorscheme("base16-gruvbox-material-dark-hard")
+            vim.cmd.colorscheme("gruvbox")
         end,
     }
     use {
