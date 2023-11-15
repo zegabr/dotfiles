@@ -18,6 +18,8 @@ vim.keymap.set("n", "<C-h>", ":cprev<CR>zz", { desc = 'quickfix list next' })
 vim.keymap.set("n", "<C-l>", ":cnext<CR>zz", { desc = 'quickfix list prev' })
 vim.keymap.set("n", "<C-q>", ":cclose<CR>zz", { desc = 'quickfix list close' })
 vim.keymap.set("n", "<Leader><CR>", ":so<cr>", { desc = 'source current lua file' })
+vim.keymap.set("n", "+", "<C-a>", { desc = 'increment' })
+vim.keymap.set("n", "-", "<C-x>", { desc = 'decrement' })
 vim.g.vimwiki_map_prefix = '<Leader><Leader>w'
 vim.keymap.set("n", "<leader>w", ":wa<CR>", { desc = 'save all files' })
 -- vim.keymap.set("n", "<leader><leader>t", "<Plug>PlenaryTestFile", { desc = 'test lua file' })
@@ -32,3 +34,4 @@ vim.keymap.set("n", "Q", "<nop>", { desc = 'remove Q mapping' })
 vim.keymap.set("n", "<leader>v", "<C-v>", { desc = 'enter visual-block mode' })
 vim.keymap.set("v", "<", "<gv", { desc = 'passive tabbing on visual mode' })
 vim.keymap.set("v", ">", ">gv", { desc = 'passive tabbing on visual mode' })
+-- TODO: look for lazivim
