@@ -61,6 +61,11 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, bufopts)
     vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, bufopts)
     vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        --buffer = bufnr,
+        pattern = { "*.ts", "*.js", "*.tsx", "*.jsx" },
+        command = "EslintFixAll",
+    })
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
