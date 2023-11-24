@@ -78,6 +78,7 @@ mason_lspconfig.setup {
         'ruff_lsp',
         'gopls',
         'tsserver',
+        'eslint',
     },
 }
 -- use this to override language servers settings
@@ -138,6 +139,13 @@ vim.api.nvim_create_autocmd('BufWritePre', {
         vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
     end
 })
+
+-- uncomment this if eslint is used
+vim.api.nvim_create_autocmd("BufWritePre", {
+        --buffer = bufnr,
+        pattern = { "*.ts", "*.js", "*.tsx", "*.jsx" },
+        command = "EslintFixAll",
+    })
 
 mason_lspconfig.setup_handlers {
     function(server_name)

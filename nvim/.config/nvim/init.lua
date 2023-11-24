@@ -4,6 +4,7 @@ require('custom.sets')
 require('custom.netrw')
 require('custom.colors')
 
+-- TODO: look for lazivim
 -- PLUGINS
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -35,7 +36,7 @@ return require('packer').startup(function(use)
 
     ----Telescope
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.3',
         -- or                            , branch = '0.1.x',
         requires = { 'nvim-lua/plenary.nvim' },
         config = function()
@@ -78,7 +79,7 @@ return require('packer').startup(function(use)
     }
     use { 'ntpeters/vim-better-whitespace' } --trim whitespace with :StripWhiteSpace
     use { 'matze/vim-move' }                 --alt j/k moves selected lines normal and visual mode
-    use { 'tpope/vim-obsession' }            --vim store session :Obsession
+    use { 'tpope/vim-obsession' }            --vim store session :Obsession TODO -> remember to add *Session.vim it to your .git/info/exclude
     use {
         'ruifm/gitlinker.nvim',              -- get premalink by <leader>gy (works in visuali mode)
         config = function() require("gitlinker").setup() end
@@ -136,12 +137,12 @@ return require('packer').startup(function(use)
 
     -- Colors and UI
     use {
-        'RRethy/nvim-base16',
+        'ellisonleao/gruvbox.nvim',
         config = function()
-            vim.cmd.colorscheme("base16-gruvbox-material-dark-hard")
-            -- vim.cmd.colorscheme("base16-tokyo-city-dark")
+            vim.cmd.colorscheme("gruvbox")
         end,
     }
+
     use {
         'kdheepak/tabline.nvim',
         config = function()

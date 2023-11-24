@@ -34,4 +34,3 @@ vim.keymap.set("n", "Q", "<nop>", { desc = 'remove Q mapping' })
 vim.keymap.set("n", "<leader>v", "<C-v>", { desc = 'enter visual-block mode' })
 vim.keymap.set("v", "<", "<gv", { desc = 'passive tabbing on visual mode' })
 vim.keymap.set("v", ">", ">gv", { desc = 'passive tabbing on visual mode' })
--- TODO: look for lazivim

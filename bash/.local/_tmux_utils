@@ -7,7 +7,8 @@ alias t='tmux attach -t base || tmux new -s base'
 
 _remove_empty_trailing_lines() {
     sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' $1
-    # sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' file.txt
+    # below for macos
+    # sed -i '' -e ':a' -e '/^\n*$/{$d;N;};/\n$/ba' $1
 }
 
 
