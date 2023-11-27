@@ -11,7 +11,7 @@ complete -F _ga_completion gd
 complete -F _ga_completion gunstage
 alias ga='git add'
 alias gd='git diff'
-alias gaa='git add .'
+alias gaa='git add --all'
 alias gunstage='git restore --staged'
 alias gb='git branch'
 alias gcb='git checkout -b'
@@ -28,6 +28,7 @@ alias gbd='git branch -d'
 alias gbD='git branch -D'
 
 alias gc='git commit -v -s'
+alias gca='git commit -v -s -a'
 alias gc!='git commit -v -s --amend'
 alias gcan!='git commit -v -a -s --no-edit --amend'
 alias gp='git push'
@@ -46,6 +47,11 @@ function gclssh(){
     git clone --recurse-submodules git@github.com:$1.git
 }
 
+# clone github repo via https
+function gclhttps(){
+    git clone --recurse-submodules https://github.com/$1
+}
+
 # clone github repo via ssh using ssh config id
 # ex: $ gclssh-by-id zegabr zegabr/m
 # use this when multiple ssh keys are added
@@ -58,9 +64,4 @@ git clone --recurse-submodules git@github.com-$1:$2.git
 function gconfiglocal(){
     git config user.name $1
     git config user.email $2
-}
-
-# clone github repo via https
-function gclhttps(){
-    git clone --recurse-submodules https://github.com/$1
 }
