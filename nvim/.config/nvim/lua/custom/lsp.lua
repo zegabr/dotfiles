@@ -76,7 +76,7 @@ mason_lspconfig.setup {
         'vimls',
         'pyright',
         'ruff_lsp',
-        'gopls',
+        -- 'gopls',
         'tsserver',
         'eslint',
     },
@@ -132,13 +132,13 @@ local servers_settings = {
     },
 }
 
--- uncomment this if gopls is installed
-vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = '*.go',
-    callback = function()
-        vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
-    end
-})
+-- uncomment this if gopls is installed TODO: add it to a function inside setuphandlers
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--     pattern = '*.go',
+--     callback = function()
+--         vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+--     end
+-- })
 
 -- uncomment this if eslint is used
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -151,7 +151,11 @@ mason_lspconfig.setup_handlers {
     function(server_name)
         require('lspconfig')[server_name].setup {
             capabilities = capabilities,
-            on_attach = on_attach,
+            on_attach = function()
+                on_attach()
+                -- // TODO: create a map from server name to additional functions, add gopls, tsserver and more if needed
+                -- only use if the server_name is inside the map, whis way i wont need to keep uncommenting the extra methods
+            end,
             settings = (servers_settings[server_name] or {}).settings,
             filetypes = (servers_settings[server_name] or {}).filetypes,
             cmd = (servers_settings[server_name] or {}).cmd,
