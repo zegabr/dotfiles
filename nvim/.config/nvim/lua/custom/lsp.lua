@@ -76,7 +76,6 @@ mason_lspconfig.setup {
         'vimls',
         'pyright',
         'ruff_lsp',
-        -- 'gopls',
         'tsserver',
         'eslint',
     },
@@ -114,7 +113,15 @@ local servers_settings = {
                 },
             },
             staticcheck = true,
-        }
+        },
+        extra_on_attatch = function()
+            vim.api.nvim_create_autocmd('BufWritePre', {
+                pattern = '*.go',
+                callback = function()
+                    vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+                end
+            })
+        end
     },
     jdtls = {
         -- if lombok is needed, see this: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jdtls
@@ -130,22 +137,16 @@ local servers_settings = {
             },
         }
     },
+    eslint = {
+        extra_on_attatch = function()
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                --buffer = bufnr,
+                pattern = { "*.ts", "*.js", "*.tsx", "*.jsx" },
+                command = "EslintFixAll",
+            })
+        end
+    },
 }
-
--- uncomment this if gopls is installed TODO: add it to a function inside setuphandlers
--- vim.api.nvim_create_autocmd('BufWritePre', {
---     pattern = '*.go',
---     callback = function()
---         vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
---     end
--- })
-
--- uncomment this if eslint is used
-vim.api.nvim_create_autocmd("BufWritePre", {
-        --buffer = bufnr,
-        pattern = { "*.ts", "*.js", "*.tsx", "*.jsx" },
-        command = "EslintFixAll",
-    })
 
 mason_lspconfig.setup_handlers {
     function(server_name)
@@ -153,8 +154,7 @@ mason_lspconfig.setup_handlers {
             capabilities = capabilities,
             on_attach = function()
                 on_attach()
-                -- // TODO: create a map from server name to additional functions, add gopls, tsserver and more if needed
-                -- only use if the server_name is inside the map, whis way i wont need to keep uncommenting the extra methods
+                servers_settings[server_name].extra_on_attatch()
             end,
             settings = (servers_settings[server_name] or {}).settings,
             filetypes = (servers_settings[server_name] or {}).filetypes,
