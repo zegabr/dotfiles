@@ -6,49 +6,56 @@ require('custom.colors')
 
 -- TODO: look for lazivim
 -- PLUGINS
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-local packer_initializing = nil
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_initializing = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-        install_path })
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
-return require('packer').startup(function(use)
-    use { 'wbthomason/packer.nvim' } -- Package manager
+vim.opt.rtp:prepend(lazypath)
+
+local plugins = {
+    { 'wbthomason/packer.nvim' }, -- Package manager
 
     -- Treesitter
-    use {
+    {
         'nvim-treesitter/nvim-treesitter',
         run = function()
             require('nvim-treesitter.install').update({ with_sync = true })()
         end,
-    }
-    use {
+    },
+    {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        requires = 'nvim-treesitter/nvim-treesitter',
+        dependencies = 'nvim-treesitter/nvim-treesitter',
         after = { 'nvim-treesitter' },
         config = function()
             ---@diagnostic disable-next-line: missing-fields
             require('custom.treesitter')
         end,
-    }
-    use { 'nvim-treesitter/nvim-treesitter-context' }
+    },
+    { 'nvim-treesitter/nvim-treesitter-context' },
 
     ----Telescope
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.3',
+    {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.3',
         -- or                            , branch = '0.1.x',
-        requires = { 'nvim-lua/plenary.nvim' },
+        dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('custom.telescope')
         end,
-    }
+    },
 
     ----LSP
-    use {
+    {
         'neovim/nvim-lspconfig',
         after = { 'telescope.nvim' },
-        requires = {
+        dependencies = {
             -- LSP Support
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
@@ -67,30 +74,34 @@ return require('packer').startup(function(use)
         config = function()
             require('custom.lsp')
         end,
-    }
+    },
 
     ----Utilities
-    use {
+    {
         'mbbill/undotree',
         config = function()
             -- this does not exits in vscode u.u
             require('custom.undotree')
         end,
-    }
-    use { 'ntpeters/vim-better-whitespace' } --trim whitespace with :StripWhiteSpace
-    use { 'matze/vim-move' }                 --alt j/k moves selected lines normal and visual mode
-    use { 'tpope/vim-obsession' }            --vim store session :Obsession TODO -> remember to add *Session.vim it to your .git/info/exclude
-    use {
-        'ruifm/gitlinker.nvim',              -- get premalink by <leader>gy (works in visuali mode)
+    },
+    { 'ntpeters/vim-better-whitespace' }, --trim whitespace with :StripWhiteSpace
+    { 'matze/vim-move' },                 --alt j/k moves selected lines normal and visual mode
+    { 'tpope/vim-obsession' },            --vim store session :Obsession TODO -> remember to add *Session.vim it to your .git/info/exclude
+    {
+        'ruifm/gitlinker.nvim',           -- get premalink by <leader>gy (works in visuali mode)
         config = function() require("gitlinker").setup() end
-    }
+    },
 
-    use { 'romgrk/fzy-lua-native' } --dependency for wilder
-    use { 'gelguy/wilder.nvim', run = ':UpdateRemotePlugins', config = function()
-        require('custom.wilder')
-    end }
-    use { 'tpope/vim-surround' } ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
-    -- simplest way to use is:
+    { 'romgrk/fzy-lua-native' }, --dependency for wilder
+    {
+        'gelguy/wilder.nvim',
+        run = ':UpdateRemotePlugins',
+        config = function()
+            require('custom.wilder')
+        end
+    },
+    { 'tpope/vim-surround' }, ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
+    -- simplest way to  i,s:
     -- to add pair
     -- 1) select with any visual mode.
     -- 2) press S<closing pair> or St<tagname>
@@ -100,29 +111,31 @@ return require('packer').startup(function(use)
     -- 1) cs<pair to be changed><new closing pair>
 
     -- VCS integration (better than git signs)
-    use {
+    {
         'mhinz/vim-signify',
         config = function()
             vim.keymap.set("n", "[h", "<plug>(signify-prev-hunk)", { desc = 'prev hunk' })
             vim.keymap.set("n", "]h", "<plug>(signify-next-hunk)", { desc = 'next hunk' })
         end,
-    }
+    },
 
     -- Comments based on tpop plugin
-    use { 'terrortylor/nvim-comment',
+    {
+        'terrortylor/nvim-comment',
         config = function()
             require('nvim_comment').setup()
         end
-    } -- gcc | gcgc | visual gc | gcip | dic
+    }, -- gcc | gcgc | visual gc | gcip | dic
 
     -- for latex
-    -- use { 'lervag/vimtex',
+    --  { 'lervag/vimtex',
     --     config = function()
     --         require('custom.latex')
     --     end
-    -- }
+    -- },
 
-    use { 'vimwiki/vimwiki',
+    {
+        'vimwiki/vimwiki',
         config = function()
             vim.cmd([[
                 set nocompatible
@@ -133,17 +146,17 @@ return require('packer').startup(function(use)
                        \ 'links_space_char': '_'}]
             ]])
         end
-    }
+    },
 
     -- Colors and UI
-    use {
+    {
         'ellisonleao/gruvbox.nvim',
         config = function()
             vim.cmd.colorscheme("gruvbox")
         end,
-    }
+    },
 
-    use {
+    {
         'kdheepak/tabline.nvim',
         config = function()
             require('tabline').setup {
@@ -157,22 +170,25 @@ return require('packer').startup(function(use)
                 }
             }
         end,
-    }
-    use {
+    },
+    {
         'nvim-lualine/lualine.nvim',
         config = function()
             require('lualine').setup({
                 options = { theme = 'gruvbox' },
             })
         end,
-    }
-    use {
+    },
+    {
         'David-Kunz/gen.nvim',
         config = function()
             -- require('gen').model = 'codellama' # default = 'mistral:instruct'
         end,
-    }
-    if packer_initializing then
-        require('packer').sync()
-    end
-end)
+    },
+}
+
+local opts = {
+
+
+}
+require("lazy").setup(plugins, opts)
