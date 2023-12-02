@@ -10,6 +10,7 @@ brew install htop
 brew install tree
 brew install neovim
 brew install tmux
+brew install fd
 brew install --cask rectangle
 brew install --cask devtoys
 
