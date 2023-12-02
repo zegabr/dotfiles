@@ -124,6 +124,7 @@ local servers_settings = {
         end
     },
     jdtls = {
+        -- cmd = '/home/ze/.local/share/nvim/mason/packages/jdtls'
         -- if lombok is needed, see this: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jdtls
         root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
     },
