@@ -4,7 +4,6 @@ require('custom.sets')
 require('custom.netrw')
 require('custom.colors')
 
--- TODO: look for lazivim
 -- PLUGINS
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -20,30 +19,30 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    { 'wbthomason/packer.nvim' }, -- Package manager
-
     -- Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
+        build = function()
             require('nvim-treesitter.install').update({ with_sync = true })()
         end,
     },
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        dependencies = 'nvim-treesitter/nvim-treesitter',
-        after = { 'nvim-treesitter' },
+        dependencies = {
+            'nvim-treesitter',
+            'nvim-treesitter/nvim-treesitter',
+        },
         config = function()
             ---@diagnostic disable-next-line: missing-fields
             require('custom.treesitter')
         end,
     },
-    { 'nvim-treesitter/nvim-treesitter-context' },
+    { 'nvim-treesitter/nvim-treesitter-context', },
 
     ----Telescope
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.3',
+        version = '0.1.3',
         -- or                            , branch = '0.1.x',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
@@ -54,8 +53,8 @@ local plugins = {
     ----LSP
     {
         'neovim/nvim-lspconfig',
-        after = { 'telescope.nvim' },
         dependencies = {
+            { 'telescope.nvim' },
             -- LSP Support
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
@@ -86,7 +85,7 @@ local plugins = {
     },
     { 'ntpeters/vim-better-whitespace' }, --trim whitespace with :StripWhiteSpace
     { 'matze/vim-move' },                 --alt j/k moves selected lines normal and visual mode
-    { 'tpope/vim-obsession' },            --vim store session :Obsession TODO -> remember to add *Session.vim it to your .git/info/exclude
+    { 'tpope/vim-obsession', },           --vim store session :Obsession TODO -> remember to add *Session.vim it to your .git/info/exclude
     {
         'ruifm/gitlinker.nvim',           -- get premalink by <leader>gy (works in visuali mode)
         config = function() require("gitlinker").setup() end
@@ -95,7 +94,7 @@ local plugins = {
     { 'romgrk/fzy-lua-native' }, --dependency for wilder
     {
         'gelguy/wilder.nvim',
-        run = ':UpdateRemotePlugins',
+        build = ':UpdateRemotePlugins',
         config = function()
             require('custom.wilder')
         end
@@ -123,16 +122,20 @@ local plugins = {
     {
         'terrortylor/nvim-comment',
         config = function()
-            require('nvim_comment').setup()
+            require('nvim_comment').setup({
+                comment_chunk_text_object = "gc",
+            })
         end
     }, -- gcc | gcgc | visual gc | gcip | dic
 
     -- for latex
-    --  { 'lervag/vimtex',
-    --     config = function()
-    --         require('custom.latex')
-    --     end
-    -- },
+    {
+        'lervag/vimtex',
+        ft = 'tex',
+        config = function()
+            require('custom.latex')
+        end
+    },
 
     {
         'vimwiki/vimwiki',
