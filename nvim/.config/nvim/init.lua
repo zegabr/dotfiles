@@ -75,6 +75,9 @@ local plugins = {
         end,
     },
 
+    -- java
+    use { 'mfussenegger/nvim-jdtls' }
+
     ----Utilities
     {
         'mbbill/undotree',
