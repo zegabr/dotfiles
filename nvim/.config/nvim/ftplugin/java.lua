@@ -1,8 +1,14 @@
--- TODO: change this if needed
+local jdtls_ok, _ = pcall(require, "jdtls")
+if not jdtls_ok then
+    vim.notify "JDTLS not found, install with `:LspInstall jdtls`"
+    return
+end
 local config_dir = vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/config_linux/')
 local path_to_lombok = vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/lombok.jar')
+-- TODO: change this if needed
 local path_to_jar =
-vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.600.v20231012-1237.jar')
+    vim.fn.expand(
+        '~/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.600.v20231012-1237.jar')
 
 local root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" })
 if root_dir == "" then
@@ -35,27 +41,44 @@ local config = {
     settings = {
         java = {
             signatureHelp = { enabled = true },
+            completion = {
+                favoriteStaticMembers = {
+                    "org.hamcrest.MatcherAssert.assertThat",
+                    "org.hamcrest.Matchers.*",
+                    "org.hamcrest.CoreMatchers.*",
+                    "org.junit.jupiter.api.Assertions.*",
+                    "java.util.Objects.requireNonNull",
+                    "java.util.Objects.requireNonNullElse",
+                    "org.mockito.Mockito.*",
+                },
+                importOrder = {
+                    "java",
+                    "javax",
+                    "com",
+                    "org"
+                },
+            },
+            sources = {
+                organizeImports = {
+                    starThreshold = 9999,
+                    staticStarThreshold = 9999,
+                },
+            },
             import = { enabled = true },
-            rename = { enabled = true }
-        }
+            rename = { enabled = true },
+            format = {
+                enabled = true,
+                settings = {
+                    url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
+                    profile = "GoogleStyle",
+                },
+            },
+        },
     },
     init_options = {
         bundles = {}
     }
 }
 
--- TODO: test removing this
--- config['on_attach'] = function(client, bufnr)
-    -- require "lsp_signature".on_attach({
-        -- bind = true, -- This is mandatory, otherwise border config won't get registered.
-        -- floating_window_above_cur_line = false,
-        -- padding = '',
-        -- handler_opts = {
-            -- border = "rounded"
-        -- }
-    -- }, bufnr)
--- end
-
--- This starts a new client & server,
--- or attaches to an existing client & server depending on the `root_dir`.
+-- This starts a new client & server, or attaches to an existing client & server depending on the `root_dir`.
 require('jdtls').start_or_attach(config)
