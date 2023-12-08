@@ -154,7 +154,9 @@ mason_lspconfig.setup_handlers {
             capabilities = capabilities,
             on_attach = function()
                 on_attach()
-                servers_settings[server_name].extra_on_attatch()
+                if servers_settings[server_name] ~= nil and servers_settings[server_name].extra_on_attach ~= nil then
+                    servers_settings[server_name].extra_on_attatch()
+                end
             end,
             settings = (servers_settings[server_name] or {}).settings,
             filetypes = (servers_settings[server_name] or {}).filetypes,
