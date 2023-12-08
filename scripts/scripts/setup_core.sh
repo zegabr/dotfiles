@@ -47,4 +47,10 @@ if grep -q 'zegabr' "~/.ssh/config"; then
     # For personal note taking
     git clone git@github.com:zegabr/notes.git
 fi
+
+### For extra desktop applications on desktpp debian distros (this if checks if it is not a wsl nor a macos, if chatpt is right)
+if [[ "$XDG_SESSION_TYPE" == "wayland" || "$XDG_SESSION_TYPE" == "x11" ]] && [[ -z "$WSL_DISTRO_NAME" ]] && [[ "$(uname)" != "Darwin" ]] then
+    bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_extra.sh)
+fi
+
 cd ~/dotfiles
