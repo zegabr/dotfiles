@@ -28,3 +28,5 @@ function note-sync(){
     git pull --rebase
     git push -q
 }
+
+alias todo='nvim ~/notes/work_todo.md'
