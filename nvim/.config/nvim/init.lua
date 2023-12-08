@@ -76,7 +76,10 @@ local plugins = {
     },
 
     -- java
-    use { 'mfussenegger/nvim-jdtls' }
+    {
+        'mfussenegger/nvim-jdtls',
+        ft = 'java',
+    },
 
     ----Utilities
     {

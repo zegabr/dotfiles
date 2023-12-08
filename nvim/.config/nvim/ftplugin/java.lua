@@ -1,11 +1,9 @@
 -- TODO: change this if needed
-local jdtls_dir = '/home/ze/.local/share/nvim/mason/packages/jdtls/'
-local config_dir = jdtls_dir .. 'config_linux'
-local plugins_dir = jdtls_dir .. 'plugins/'
-local path_to_jar = plugins_dir .. 'org.eclipse.equinox.launcher.cocoa.macosx.x86_64_1.2.700.v20221108-1024.jar'
+local config_dir = '~/.local/share/nvim/mason/packages/jdtls/config_linux/'
+local path_to_jar =
+'~/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.600.v20231012-1237.jar'
 
-local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
-local root_dir = require("jdtls.setup").find_root(root_markers)
+local root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" })
 if root_dir == "" then
     return
 end
@@ -15,12 +13,41 @@ local workspace_dir = vim.fn.stdpath('data') .. '/site/java/workspace-root/' .. 
 os.execute("mkdir " .. workspace_dir)
 
 local config = {
-    cmd = { jdtls_dir },
-    root_dir = vim.fs.dirname(vim.fs.find(root_markers, { upward = true })[1]),
+    cmd = {
+        --
+        "java", -- Or the absolute path '/path/to/java11_or_newer/bin/java'
+        "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+        "-Dosgi.bundles.defaultStartLevel=4",
+        "-Declipse.product=org.eclipse.jdt.ls.core.product",
+        "-Dlog.protocol=true",
+        "-Dlog.level=ALL",
+        "-Xms1g",
+        "--add-modules=ALL-SYSTEM",
+        "--add-opens",
+        "java.base/java.util=ALL-UNNAMED",
+        "--add-opens",
+        "java.base/java.lang=ALL-UNNAMED",
+        --
+        "-jar",
+        path_to_jar,
+        "-configuration", config_dir,
+    },
+    root_dir = root_dir,
+    settings = {
+        java = {
+            signatureHelp = { enabled = true },
+            import = { enabled = true },
+            rename = { enabled = true }
+        }
+    },
+    init_options = {
+        bundles = {}
+    }
 }
 
+-- TODO: test removing this
 config['on_attach'] = function(client, bufnr)
-    require 'keymaps'.map_java_keys(bufnr);
+    require 'keymaps'.map_java_keys(bufnr)
     require "lsp_signature".on_attach({
         bind = true, -- This is mandatory, otherwise border config won't get registered.
         floating_window_above_cur_line = false,
