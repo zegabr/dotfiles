@@ -16,3 +16,6 @@ bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/
 # core
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_core.sh)
 
+# cheat sheet:
+# wsl --list
+# wsl --unregister <name>
