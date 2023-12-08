@@ -124,9 +124,12 @@ local servers_settings = {
         end
     },
     jdtls = {
-        cmd = { '~/.local/share/nvim/mason/packages/jdtls/jdtls' },
+        cmd = { vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/jdtls') },
         -- if lombok is needed, see this: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jdtls
         root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
+        extra_on_attatch = function()
+            -- vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, bufopts) -- TODO
+        end,
     },
     rust_analyzer = {
         cmd = { "rustup", "run", "stable", "rust-analyzer" },
