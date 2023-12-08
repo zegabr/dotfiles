@@ -68,10 +68,10 @@ local config = {
             rename = { enabled = true },
             format = {
                 enabled = true,
-                settings = {
-                    url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
-                    profile = "GoogleStyle",
-                },
+                -- settings = { -- TODO: find how to use this https://github.com/google/google-java-format
+                --    url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
+                --    profile = "GoogleStyle",
+                -- },
             },
         },
     },
