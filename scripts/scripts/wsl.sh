@@ -13,6 +13,12 @@ sudo sudo mv /tmp/win32yank.exe /usr/local/bin/
 # core
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_core.sh)
 
-# cheat sheet:
-# wsl --list
-# wsl --unregister <name>
+# install cheat sheet
+# 1- enable wsl and hyper-v in windows features
+# 2- enable virtualization mode on bios
+# 3- install distro via store
+#
+# uninstall cheat sheet:
+# 1- uninstall via start menu
+# 2- wsl --list
+# 3- wsl --unregister <name>
