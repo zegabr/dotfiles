@@ -193,6 +193,16 @@ local plugins = {
             -- require('gen').model = 'codellama' # default = 'mistral:instruct'
         end,
     },
+    {
+        "AckslD/nvim-neoclip.lua",
+        dependencies = {
+            { 'nvim-telescope/telescope.nvim' },
+        },
+        config = function()
+            require('neoclip').setup()
+            vim.keymap.set("n", '"', require('telescope').extensions.neoclip.default, { desc = 'Telescope Neoclip' })
+        end,
+    },
 }
 
 local opts = {
