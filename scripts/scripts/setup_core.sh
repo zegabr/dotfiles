@@ -30,8 +30,19 @@ sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
 # Cheat sheet
 curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
 
-# ollama local llms
-bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/llm.sh)
+# Check if GPU command is available
+if command_exists lspci; then
+    # Check if the output of lspci contains "VGA"
+    if lspci | grep -i -q "VGA"; then
+        echo "GPU found on this system."
+        # ollama local llms
+        bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/llm.sh)
+    else
+        echo "No GPU found on this system."
+    fi
+else
+    echo "lspci command not found. Unable to check for GPU."
+fi
 
 # tmux
 sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y

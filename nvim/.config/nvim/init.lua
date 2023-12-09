@@ -129,7 +129,6 @@ local plugins = {
         'terrortylor/nvim-comment',
         config = function()
             require('nvim_comment').setup({
-                comment_chunk_text_object = "gc",
             })
         end
     }, -- gcc | gcgc | visual gc | gcip | dic
