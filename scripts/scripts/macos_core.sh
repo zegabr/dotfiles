@@ -29,7 +29,7 @@ sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 # simlinks dotfiles
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/d.sh)
 
-if grep -q 'zegabr' "~/.ssh/config"; then
+if grep zegabr ~/.ssh/config; then
     cd ~/
     # For personal note taking
     git clone git@github.com:zegabr/notes.git
