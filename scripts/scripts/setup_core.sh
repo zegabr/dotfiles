@@ -65,4 +65,6 @@ fi
     [[ "$(uname)" != "Darwin" ]] && \
     bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_extra.sh)
 
+source .bashrc && update-rust-tools
+
 cd ~/dotfiles
