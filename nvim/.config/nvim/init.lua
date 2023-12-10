@@ -124,14 +124,14 @@ local plugins = {
         end,
     },
 
-    -- Comments based on tpop plugin
+    -- Comments based on tpope plugin
     {
         'terrortylor/nvim-comment',
         config = function()
             require('nvim_comment').setup({
             })
         end
-    }, -- gcc | gcgc | visual gc | gcip | dic
+    }, -- gcc | gcic | visual gc | gcip | dic
 
     -- for latex
     {
@@ -163,27 +163,32 @@ local plugins = {
             vim.cmd.colorscheme("gruvbox")
         end,
     },
-
     {
-        'kdheepak/tabline.nvim',
+        'akinsho/bufferline.nvim',
+        version = "*",
+        dependencies = 'nvim-tree/nvim-web-devicons',
         config = function()
-            require('tabline').setup {
-                enable = true,
+            vim.opt.termguicolors = true
+            require("bufferline").setup({
                 options = {
-                    show_devicons = false,
-                    show_filename_only = true, -- shows base filename only instead of relative path in filename
-                    modified_icon = "+ ",      -- change the default modified icon
-                    modified_italic = false,   -- set to true by default; this determines whether the filename turns italic if modified
-                    show_tabs_only = false,    -- this shows only tabs instead of tabs + buffers
-                }
-            }
+                    modified_icon = '+',
+                    show_buffer_icons = false,
+                    show_buffer_close_icons = false,
+                    show_close_icon = false,
+                    tab_size = 10,
+                },
+            })
         end,
     },
     {
         'nvim-lualine/lualine.nvim',
         config = function()
             require('lualine').setup({
-                options = { theme = 'gruvbox' },
+                options = {
+                    theme = 'gruvbox',
+                    section_separators = { left = '', right = '' },
+                    component_separators = { left = '', right = '' },
+                },
             })
         end,
     },
