@@ -5,39 +5,19 @@ if not jdtls_ok then
 end
 local config_dir = vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/config_linux/')
 local path_to_lombok = vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/lombok.jar')
--- TODO: change this if needed
-local path_to_jar =
-    vim.fn.expand(
-        '~/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.600.v20231012-1237.jar')
-
-local root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" })
-if root_dir == "" then
-    return
-end
-
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-local workspace_dir = vim.fn.stdpath('data') .. '/site/java/workspace-root/' .. project_name
-os.execute("mkdir " .. workspace_dir)
+local workspace_dir = vim.fn.expand('~/.cache/jdtls/workspace/') .. project_name
+os.execute("mkdir -p" .. workspace_dir)
 
 local config = {
     cmd = {
-        --
-        "java", -- Or the absolute path '/path/to/java11_or_newer/bin/java'
-        "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-        "-Dosgi.bundles.defaultStartLevel=4",
-        "-Declipse.product=org.eclipse.jdt.ls.core.product",
-        "-Dlog.protocol=true",
-        "-Dlog.level=ALL",
-        '-javaagent:' .. path_to_lombok,
-        "-Xms1g",
-        "--add-modules=ALL-SYSTEM",
-        "--add-opens", "java.base/java.util=ALL-UNNAMED",
-        "--add-opens", "java.base/java.lang=ALL-UNNAMED",
-        "-jar", path_to_jar,
+        vim.fn.expand('~/.local/share/nvim/mason/bin/jdtls'), -- install via mason
+        '-data', workspace_dir,
         "-configuration", config_dir,
-        "-data", workspace_dir,
+        '-javaagent:' .. path_to_lombok,
+        "--jvm-arg=" .. string.format( "-javaagent:%s", path_to_lombok)
     },
-    root_dir = root_dir,
+    root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
     settings = {
         java = {
             signatureHelp = { enabled = true },
@@ -68,10 +48,13 @@ local config = {
             rename = { enabled = true },
             format = {
                 enabled = true,
-                -- settings = { -- TODO: find how to use this https://github.com/google/google-java-format
-                --    url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
-                --    profile = "GoogleStyle",
-                -- },
+                settings = {
+                    -- Use Google Java style guidelines for formatting
+                    -- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
+                    -- and place it in the ~/.local/share/eclipse directory
+                    -- url = "/.local/share/eclipse/eclipse-java-google-style.xml",
+                    -- profile = "GoogleStyle",
+                },
             },
         },
     },

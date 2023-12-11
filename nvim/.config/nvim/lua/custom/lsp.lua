@@ -123,6 +123,10 @@ local servers_settings = {
             })
         end
     },
+    -- jdtls = {
+    --     -- cmd = { vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/jdtls') },
+    --     -- root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle", "build.gradle"),
+    -- },
     rust_analyzer = {
         cmd = { "rustup", "run", "stable", "rust-analyzer" },
         settings = {
