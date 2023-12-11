@@ -123,16 +123,6 @@ local servers_settings = {
             })
         end
     },
-    jdtls = {
-        cmd = { vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/jdtls') },
-        root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle"),
-        extra_on_attatch = function()
-            vim.keymap.set('n', '<leader>F', function()
-                vim.lsp.buf.format()
-                require('jdtls').organize_imports()
-            end, bufopts)
-        end,
-    },
     rust_analyzer = {
         cmd = { "rustup", "run", "stable", "rust-analyzer" },
         settings = {
