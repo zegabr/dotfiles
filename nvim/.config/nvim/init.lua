@@ -1,7 +1,6 @@
 require('custom.debug')
 require('custom.maps')
 require('custom.sets')
-require('custom.netrw')
 
 -- PLUGINS
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

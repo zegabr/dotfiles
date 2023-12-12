@@ -35,5 +35,18 @@ return {
     -- 1) ds<surrounding pair>
     -- to change pair
     -- 1) cs<pair to be changed><new closing pair>
-    { 'f-person/git-blame.nvim' },
+    {
+        'f-person/git-blame.nvim',
+        config = function()
+            require('gitblame').setup({ enabled = false, })
+            -- :GitBlameToggle when needed
+        end
+    },
+    {
+        'stevearc/oil.nvim',
+        config = function()
+            require("oil").setup()
+            vim.keymap.set("n", "<Leader>e", ":Oil<CR>", {desc = "open file tree"})
+        end
+    },
 }
