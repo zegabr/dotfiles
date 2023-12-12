@@ -82,6 +82,10 @@ mason_lspconfig.setup {
 }
 -- use this to override language servers settings
 local servers_settings = {
+    vimls = {},
+    pyright = {},
+    ruff_lsp = {},
+    tsserver = {},
     lua_ls = {
         settings = {
             Lua = {
@@ -148,8 +152,7 @@ local servers_settings = {
     },
 }
 
-mason_lspconfig.setup_handlers { -- will only run for installed servers
-    function(server_name)
+for server_name in pairs(servers_settings) do
         require('lspconfig')[server_name].setup {
             capabilities = capabilities,
             on_attach = function()
@@ -163,5 +166,8 @@ mason_lspconfig.setup_handlers { -- will only run for installed servers
             cmd = (servers_settings[server_name] or {}).cmd,
             root_dir = (servers_settings[server_name] or {}).root_dir,
         }
-    end
-}
+end
+-- mason_lspconfig.setup_handlers { -- will only run for installed servers
+--     function(server_name)
+--     end
+-- }
