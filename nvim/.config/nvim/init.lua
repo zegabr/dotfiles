@@ -33,7 +33,6 @@ local plugins = {
             'nvim-treesitter/nvim-treesitter',
         },
         config = function()
-            ---@diagnostic disable-next-line: missing-fields
             require('custom.treesitter')
         end,
     },
@@ -156,6 +155,23 @@ local plugins = {
             ]])
         end
     },
+    {
+        -- this will only work well on nvidia gpu
+        'David-Kunz/gen.nvim',
+        config = function()
+            -- require('gen').model = 'codellama' # default = 'mistral:instruct'
+        end,
+    },
+    {
+        "AckslD/nvim-neoclip.lua",
+        dependencies = {
+            { 'nvim-telescope/telescope.nvim' },
+        },
+        config = function()
+            require('neoclip').setup()
+            vim.keymap.set("n", '"', require('telescope').extensions.neoclip.default, { desc = 'Telescope Neoclip' })
+        end,
+    },
 
     -- Colors and UI
     {
@@ -190,23 +206,6 @@ local plugins = {
                     component_separators = { left = '', right = '' },
                 },
             })
-        end,
-    },
-    {
-        -- this will only work well on nvidia gpu
-        'David-Kunz/gen.nvim',
-        config = function()
-            -- require('gen').model = 'codellama' # default = 'mistral:instruct'
-        end,
-    },
-    {
-        "AckslD/nvim-neoclip.lua",
-        dependencies = {
-            { 'nvim-telescope/telescope.nvim' },
-        },
-        config = function()
-            require('neoclip').setup()
-            vim.keymap.set("n", '"', require('telescope').extensions.neoclip.default, { desc = 'Telescope Neoclip' })
         end,
     },
 }
