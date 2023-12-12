@@ -137,9 +137,6 @@ local plugins = {
     {
         'lervag/vimtex',
         ft = 'tex',
-        config = function()
-            require('custom.latex')
-        end
     },
 
     {
@@ -212,7 +209,6 @@ local plugins = {
 }
 
 local opts = {
-
 
 }
 require("lazy").setup(plugins, opts)
