@@ -11,7 +11,7 @@ os.execute("mkdir -p " .. workspace_dir)
 
 local google_java_format_path = vim.fn.expand('~/.local/share/') .. 'eclipse/'
 if not vim.loop.fs_stat(google_java_format_path) then
-    print('BAIXANDO OOOGLE JAVA FORMAT')
+    print('DOWNLOADING GOOGLE JAVA FORMAT')
     os.execute("mkdir -p " .. google_java_format_path)
     vim.fn.system({
         "curl",
@@ -74,6 +74,8 @@ local config = {
 
 -- This starts a new client & server, or attaches to an existing client & server depending on the `root_dir`.
 require('jdtls').start_or_attach(config)
+
+-- TODO: this is a copy from lsp.lua, refactor later to reuse this (or don't, fuck java)
 local bufnr = vim.api.nvim_get_current_buf()
 local bufopts = { buffer = bufnr, noremap = true, silent = true }
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
