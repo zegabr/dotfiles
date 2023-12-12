@@ -38,7 +38,5 @@ local plugins = {
     require('custom.colors'),
 }
 
-local opts = {
-
-}
+local opts = {}
 require("lazy").setup(plugins, opts)
