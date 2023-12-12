@@ -9,13 +9,19 @@ cmp.setup({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         },
-        ['<CR>'] = cmp.mapping(
-            cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = false,
-            },
-            { "i", "c" }
-        ),
+        ['<CR>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                local entry = cmp.get_selected_entry()
+                if not entry then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                    cmp.confirm()
+                else
+                    cmp.confirm()
+                end
+            else
+                fallback()
+            end
+        end, { "i", "s", "c", }),
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
