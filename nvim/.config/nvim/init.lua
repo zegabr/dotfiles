@@ -20,24 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     -- Treesitter
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = function()
-            require('nvim-treesitter.install').update({ with_sync = true })()
-        end,
-    },
-    {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        dependencies = {
-            'nvim-treesitter',
-            'nvim-treesitter/nvim-treesitter',
-        },
-        config = function()
-            require('custom.treesitter')
-        end,
-    },
-    { 'nvim-treesitter/nvim-treesitter-context', },
-
+    require('custom.treesitter'),
     ----Telescope
     {
         'nvim-telescope/telescope.nvim',
