@@ -63,10 +63,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
--- TODO: understand this warning
-capabilities.textDocument.completion.completionItem.snippetSupport = true -- enables snippet support
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("mason").setup()
 local mason_lspconfig = require('mason-lspconfig')
@@ -80,25 +77,23 @@ mason_lspconfig.setup {
         'eslint',
     },
 }
--- use this to override language servers settings
+
+-- Use this to override language servers settings.
+-- Also using this, you should add all servers you want to attach to the list.
+-- Did this becuase I didn't want to auto setup jdtls, as i'm usin nvim-jdtls for that.
+-- removing a server from the table below will assure it is not set automatically
 local servers_settings = {
     vimls = {},
-    pyright = {},
-    ruff_lsp = {},
-    tsserver = {},
     lua_ls = {
         settings = {
             Lua = {
                 runtime = {
-                    -- LuaJIT in the case of Neovim
                     version = 'LuaJIT',
                 },
                 diagnostics = {
-                    -- Get the language server to recognize the `vim` global
                     globals = { 'vim' },
                 },
                 workspace = {
-                    --     -- Make the server aware of Neovim runtime files
                     library = vim.api.nvim_get_runtime_file("", true),
                     checkThirdParty = false,
                 },
@@ -108,6 +103,9 @@ local servers_settings = {
             }
         },
     },
+    pyright = {},
+    ruff_lsp = {},
+    tsserver = {},
     gopls = {
         cmd = { "gopls", "serve" },
         settings = {
@@ -127,10 +125,6 @@ local servers_settings = {
             })
         end
     },
-    -- jdtls = {
-    --     -- cmd = { vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/jdtls') },
-    --     -- root_dir = require('lspconfig/util').root_pattern(".git", "pom.xml", "build.xml", "settings.gradle", "build.gradle"),
-    -- },
     rust_analyzer = {
         cmd = { "rustup", "run", "stable", "rust-analyzer" },
         settings = {
@@ -153,21 +147,24 @@ local servers_settings = {
 }
 
 for server_name in pairs(servers_settings) do
-        require('lspconfig')[server_name].setup {
-            capabilities = capabilities,
-            on_attach = function()
-                on_attach()
-                if servers_settings[server_name] ~= nil and servers_settings[server_name].extra_on_attach ~= nil then
-                    servers_settings[server_name].extra_on_attatch()
-                end
-            end,
-            settings = (servers_settings[server_name] or {}).settings,
-            filetypes = (servers_settings[server_name] or {}).filetypes,
-            cmd = (servers_settings[server_name] or {}).cmd,
-            root_dir = (servers_settings[server_name] or {}).root_dir,
-        }
+    require('lspconfig')[server_name].setup {
+        capabilities = capabilities,
+        on_attach = function()
+            on_attach()
+            if servers_settings[server_name] ~= nil and servers_settings[server_name].extra_on_attach ~= nil then
+                servers_settings[server_name].extra_on_attatch()
+            end
+        end,
+        settings = (servers_settings[server_name] or {}).settings,
+        filetypes = (servers_settings[server_name] or {}).filetypes,
+        cmd = (servers_settings[server_name] or {}).cmd,
+        root_dir = (servers_settings[server_name] or {}).root_dir,
+    }
 end
 -- mason_lspconfig.setup_handlers { -- will only run for installed servers
 --     function(server_name)
 --     end
 -- }
+return {
+    on_attach = on_attach,
+}
