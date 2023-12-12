@@ -7,7 +7,19 @@ local config_dir = vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/confi
 local path_to_lombok = vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/lombok.jar')
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.fn.expand('~/.cache/jdtls/workspace/') .. project_name
-os.execute("mkdir -p" .. workspace_dir)
+os.execute("mkdir -p " .. workspace_dir)
+
+local google_java_format_path = vim.fn.expand('~/.local/share/') .. 'eclipse/'
+if not vim.loop.fs_stat(google_java_format_path) then
+    print('BAIXANDO OOOGLE JAVA FORMAT')
+    os.execute("mkdir -p " .. google_java_format_path)
+    vim.fn.system({
+        "curl",
+        "-o",
+        google_java_format_path .. 'eclipse-java-google-style.xml',
+        "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    })
+end
 
 local config = {
     cmd = {
@@ -49,10 +61,7 @@ local config = {
             format = {
                 enabled = true,
                 settings = {
-                    -- Use Google Java style guidelines for formatting
-                    -- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
-                    -- and place it in the ~/.local/share/eclipse directory
-                    -- url = "/.local/share/eclipse/eclipse-java-google-style.xml",
+                    -- url = "~/.local/share/eclipse/eclipse-java-google-style.xml", -- uncomment this if used
                     -- profile = "GoogleStyle",
                 },
             },
