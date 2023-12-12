@@ -14,6 +14,7 @@ curl \
 gawk \
 htop \
 jq \
+tidy \
 neofetch \
 cmake \
 parallel \

@@ -29,6 +29,7 @@ local plugins = {
     require('custom.editor'),
     require('custom.undotree'), -- this does not exists on other editors
     require('custom.wilder'),
+    require('custom.rest'), -- see exmaples here https://github.com/rest-nvim/rest.nvim/tree/main/tests
     -- Latex
     require('custom.tex'),
     -- vimwiki
