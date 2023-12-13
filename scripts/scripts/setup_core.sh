@@ -63,4 +63,8 @@ fi
 
 source .bashrc && update-rust-tools
 
+if [ ! -e "~/.bash_aliases_work" ]; then
+    echo "#!/bin/bash\n" > ~/.bash_aliases_work
+else
+
 cd ~/dotfiles
