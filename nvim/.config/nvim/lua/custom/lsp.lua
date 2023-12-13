@@ -36,7 +36,6 @@ return {
         -- Did this becuase I didn't want to auto setup jdtls, as i'm usin nvim-jdtls for that.
         -- removing a server from the table below will assure it is not set automatically
         local servers_settings = {
-            vimls = {},
             lua_ls = {
                 settings = {
                     Lua = {
@@ -55,9 +54,6 @@ return {
                     }
                 },
             },
-            pyright = {},
-            ruff_lsp = {},
-            tsserver = {},
             gopls = {
                 cmd = { "gopls", "serve" },
                 settings = {
@@ -98,22 +94,29 @@ return {
             },
         }
 
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local externally_attached = {
+            jdtls = true,
+        }
 
-        for server_name in pairs(servers_settings) do
-            require('lspconfig')[server_name].setup {
-                capabilities = capabilities,
-                on_attach = function(_, bufnr)
-                    require('custom.maps').on_attach(_, bufnr)
-                    if servers_settings[server_name] ~= nil and servers_settings[server_name].extra_on_attach ~= nil then
-                        servers_settings[server_name].extra_on_attatch()
-                    end
-                end,
-                settings = (servers_settings[server_name] or {}).settings,
-                filetypes = (servers_settings[server_name] or {}).filetypes,
-                cmd = (servers_settings[server_name] or {}).cmd,
-                root_dir = (servers_settings[server_name] or {}).root_dir,
-            }
-        end
+        mason_lspconfig.setup_handlers { -- will only run for installed servers
+            function(server_name)
+                if externally_attached[server_name] ~= nil then
+                    return -- make sure externally_attached servers are not attached by lspconfig
+                end
+                require('lspconfig')[server_name].setup {
+                    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                    on_attach = function(_, bufnr)
+                        require('custom.maps').on_attach(_, bufnr)
+                        if servers_settings[server_name] ~= nil and servers_settings[server_name].extra_on_attach ~= nil then
+                            servers_settings[server_name].extra_on_attatch()
+                        end
+                    end,
+                    settings = (servers_settings[server_name] or {}).settings,
+                    filetypes = (servers_settings[server_name] or {}).filetypes,
+                    cmd = (servers_settings[server_name] or {}).cmd,
+                    root_dir = (servers_settings[server_name] or {}).root_dir,
+                }
+            end
+        }
     end,
 }
