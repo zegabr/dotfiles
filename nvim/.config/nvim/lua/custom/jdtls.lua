@@ -78,6 +78,6 @@ return {
 
         -- This starts a new client & server, or attaches to an existing client & server depending on the `root_dir`.
         require('jdtls').start_or_attach(config)
-        require('custom.utils').on_attach(_, vim.api.nvim_get_current_buf())
+        require('custom.maps').on_attach(_, vim.api.nvim_get_current_buf())
     end
 }

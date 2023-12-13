@@ -47,12 +47,11 @@ return {
                             globals = { 'vim' },
                         },
                         workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true),
                             checkThirdParty = false,
+                            library = {
+                                vim.env.VIMRUNTIME
+                            }
                         },
-                        telemetry = {
-                            enable = false,
-                        }
                     }
                 },
             },
@@ -104,8 +103,8 @@ return {
         for server_name in pairs(servers_settings) do
             require('lspconfig')[server_name].setup {
                 capabilities = capabilities,
-                on_attach = function()
-                    require('custom.utils').on_attach()
+                on_attach = function(_, bufnr)
+                    require('custom.maps').on_attach(_, bufnr)
                     if servers_settings[server_name] ~= nil and servers_settings[server_name].extra_on_attach ~= nil then
                         servers_settings[server_name].extra_on_attatch()
                     end
