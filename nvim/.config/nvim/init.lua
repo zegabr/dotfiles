@@ -24,7 +24,9 @@ local plugins = {
     ----LSP
     require('custom.cmp'),
     require('custom.lsp'),
-    require('custom.jdtls'), -- works better than configuring through lsp
+    -- java setup.
+    require('custom.jdtls'), -- if using this, setup using_nvim_jdtls = true on lsp.lua
+    require('custom.jdtls2'),-- if using this, setup using_nvim_jdtls = false on lsp.lua
     -- Editor (things I'll hardly modify)
     require('custom.editor'),
     require('custom.undotree'), -- this does not exists on other editors

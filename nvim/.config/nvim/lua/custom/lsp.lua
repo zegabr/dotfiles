@@ -98,13 +98,18 @@ return {
             }
         }
 
+        local using_nvim_jdtls = true
+        if not using_nvim_jdtls then
+            require('java').setup()
+        end
+
         local externally_attached = {
-            jdtls = true,
+            jdtls = using_nvim_jdtls,
         }
 
         mason_lspconfig.setup_handlers { -- will only run for installed servers
             function(server_name)
-                if externally_attached[server_name] ~= nil then
+                if externally_attached[server_name] ~= nil and externally_attached[server_name] == true then
                     return -- make sure externally_attached servers are not attached by lspconfig
                 end
                 require('lspconfig')[server_name].setup {
