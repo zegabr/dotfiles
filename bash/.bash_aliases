@@ -1,12 +1,12 @@
 
 # custom scripts (aka modules)
-source ~/.local/_competitive
-source ~/.local/_git_utils
-source ~/.local/_debian_utils
-source ~/.local/_fzf_utils
-source ~/.local/_tmux_utils
-source ~/.local/_python_utils
-source ~/.local/_note_system
+source ~/.local/_competitive.sh
+source ~/.local/_git_utils.sh
+source ~/.local/_debian_utils.sh
+source ~/.local/_fzf_utils.sh
+source ~/.local/_tmux_utils.sh
+source ~/.local/_python_utils.sh
+source ~/.local/_note_system.sh
 
 # Rust
 alias l='exa -l'

@@ -28,6 +28,7 @@ return {
                 'ruff_lsp',
                 'tsserver',
                 'eslint',
+                'bashls',
             },
         }
 
@@ -92,6 +93,9 @@ return {
                     })
                 end
             },
+            bashls = {
+                filetypes = { 'sh', '.bash_aliases', '.bashrc', '.bash_aliases_work', },
+            }
         }
 
         local externally_attached = {
