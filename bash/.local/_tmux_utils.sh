@@ -18,15 +18,15 @@ _tmux_open_scrollback_on_nvim() {
 bind '"\C-n":"_tmux_open_scrollback_on_nvim\n"'
 
 
-mkdir ~/work > /dev/null
-mkdir ~/personal > /dev/null
+mkdir ~/work/test > /dev/null
+mkdir ~/personal/test > /dev/null
 _tmux_sessionizer() {
     CURR_DIR=$(pwd)
 
     if [[ $# -eq 1 ]]; then
         selected=$1
     else
-        selected=$(find ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
+        selected=$(find ~/ ~/work ~/work/test ~/personal ~/personal/test -mindepth 1 -maxdepth 1 -type d | fzf)
     fi
 
     if [[ -z $selected ]]; then
