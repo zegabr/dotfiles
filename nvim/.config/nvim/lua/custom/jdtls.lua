@@ -2,9 +2,11 @@ return {
     'mfussenegger/nvim-jdtls',
     ft = 'java',
     config = function()
-        local jdtls_ok, _ = pcall(require, "jdtls")
-        if not jdtls_ok then
-            vim.notify "JDTLS not found, install with `:LspInstall jdtls`"
+        local path_to_jdtls = vim.fn.expand('~/.local/share/nvim/mason/bin/') .. 'jdtls'
+        if not vim.loop.fs_stat(path_to_jdtls) then
+            vim.notify "JDTLS not found, running `:LspInstall jdtls`"
+            vim.cmd([[:LspInstall jdtls]])
+            vim.notify "JDTLS installed, please restart nvim"
             return
         end
         local config_dir = vim.fn.expand('~/.local/share/nvim/mason/packages/jdtls/config_linux/')
@@ -27,7 +29,7 @@ return {
 
         local config = {
             cmd = {
-                vim.fn.expand('~/.local/share/nvim/mason/bin/jdtls'), -- install via mason
+                path_to_jdtls, -- install via mason
                 '-data', workspace_dir,
                 "-configuration", config_dir,
                 '-javaagent:' .. path_to_lombok,
