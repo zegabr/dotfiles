@@ -1,7 +1,7 @@
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
-        { 'telescope.nvim' },
+        {'nvim-telescope/telescope.nvim'},
         -- LSP Support
         { 'williamboman/mason.nvim' },
         { 'williamboman/mason-lspconfig.nvim' },

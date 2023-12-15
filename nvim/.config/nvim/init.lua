@@ -24,6 +24,7 @@ local plugins = {
     ----LSP
     require('custom.cmp'),
     require('custom.lsp'),
+    -- require('custom.copilot'),
     -- java setup.
     require('custom.jdtls'), -- if using this, setup using_nvim_jdtls = true on lsp.lua
     require('custom.jdtls2'),-- if using this, setup using_nvim_jdtls = false on lsp.lua
