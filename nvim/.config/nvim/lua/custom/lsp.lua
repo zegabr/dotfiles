@@ -1,7 +1,7 @@
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
-        {'nvim-telescope/telescope.nvim'},
+        { 'nvim-telescope/telescope.nvim' },
         -- LSP Support
         { 'williamboman/mason.nvim' },
         { 'williamboman/mason-lspconfig.nvim' },
@@ -33,9 +33,6 @@ return {
         }
 
         -- Use this to override language servers settings.
-        -- Also using this, you should add all servers you want to attach to the list.
-        -- Did this becuase I didn't want to auto setup jdtls, as i'm usin nvim-jdtls for that.
-        -- removing a server from the table below will assure it is not set automatically
         local servers_settings = {
             lua_ls = {
                 settings = {
@@ -65,8 +62,9 @@ return {
                     },
                     staticcheck = true,
                 },
-                extra_on_attatch = function()
+                extra_on_attatch = function(bufnr)
                     vim.api.nvim_create_autocmd('BufWritePre', {
+                        buffer = bufnr,
                         pattern = '*.go',
                         callback = function()
                             vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
@@ -85,9 +83,9 @@ return {
                 }
             },
             eslint = {
-                extra_on_attatch = function()
+                extra_on_attatch = function(bufnr)
                     vim.api.nvim_create_autocmd("BufWritePre", {
-                        --buffer = bufnr,
+                        buffer = bufnr,
                         pattern = { "*.ts", "*.js", "*.tsx", "*.jsx" },
                         command = "EslintFixAll",
                     })
@@ -103,7 +101,7 @@ return {
             require('java').setup()
         end
 
-        local externally_attached = {
+        local externally_attached = { -- will not be setup via mason_lspconfig
             jdtls = using_nvim_jdtls,
         }
 
@@ -117,7 +115,7 @@ return {
                     on_attach = function(_, bufnr)
                         require('custom.maps').on_attach(_, bufnr)
                         if servers_settings[server_name] ~= nil and servers_settings[server_name].extra_on_attach ~= nil then
-                            servers_settings[server_name].extra_on_attatch()
+                            servers_settings[server_name].extra_on_attatch(vim.api.nvim_get_current_buf())
                         end
                     end,
                     settings = (servers_settings[server_name] or {}).settings,

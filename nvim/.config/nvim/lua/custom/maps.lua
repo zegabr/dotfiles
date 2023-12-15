@@ -20,7 +20,6 @@ vim.keymap.set("n", "<C-q>", ":cclose<CR>zz", { desc = 'quickfix list close' })
 vim.keymap.set("n", "<Leader><CR>", ":so<cr>", { desc = 'source current lua file' })
 vim.keymap.set("n", "+", "<C-a>", { desc = 'increment' })
 vim.keymap.set("n", "-", "<C-x>", { desc = 'decrement' })
-vim.g.vimwiki_map_prefix = '<Leader><Leader>v'
 vim.keymap.set("n", "<leader>w", ":wa<CR>", { desc = 'save all files' })
 -- vim.keymap.set("n", "<leader><leader>t", "<Plug>PlenaryTestFile", { desc = 'test lua file' })
 vim.keymap.set('n', '<leader><leader>%', [[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]],
@@ -40,10 +39,10 @@ vim.keymap.set("v", ">", ">gv", { desc = 'passive tabbing on visual mode' })
 return {
     on_attach = function(_, bufnr)
         local bufopts = { buffer = bufnr, noremap = true, silent = true }
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+        vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, bufopts)
         vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
-        -- vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols, bufopts)
-        -- vim.keymap.set('n', 'gw', require('telescope.builtin').lsp_workspace_symbols, bufopts)
+        vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols, bufopts)
+        vim.keymap.set('n', 'gws', require('telescope.builtin').lsp_workspace_symbols, bufopts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
         vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)

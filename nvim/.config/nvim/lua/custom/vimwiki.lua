@@ -1,6 +1,7 @@
 return {
     'vimwiki/vimwiki',
     config = function()
+        vim.g.vimwiki_map_prefix = '<Leader><Leader>v'
         vim.cmd([[
                 set nocompatible
                 filetype plugin on
