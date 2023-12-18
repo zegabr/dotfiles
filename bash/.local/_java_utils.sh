@@ -18,5 +18,5 @@ mvn-build(){
 }
 
 mvn-spring-run(){
-    sudo mvn clean spring-boot:run
+    sudo mvn clean spring-boot:run -e
 }
