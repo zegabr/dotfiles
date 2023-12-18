@@ -1,6 +1,12 @@
 #!/bin/sh
 # wsl
 #
+# install cheat sheet
+# 1- enable wsl and hyper-v in windows features
+# 2- enable virtualization mode on bios
+# 3- install distro via store
+# 4- run wsl --update on powershell (to make sure gui libs are installed and yank/paste works as expected)
+#
 
 # for windows WSL neovim to work with clipboard
 sudo apt update -y
@@ -13,12 +19,6 @@ sudo sudo mv /tmp/win32yank.exe /usr/local/bin/
 # core
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_core.sh)
 
-# install cheat sheet
-# 1- enable wsl and hyper-v in windows features
-# 2- enable virtualization mode on bios
-# 3- install distro via store
-# 4- run wsl --update on powershell
-#
 # uninstall cheat sheet:
 # 1- uninstall via start menu
 # 2- wsl --list
