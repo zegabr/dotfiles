@@ -34,9 +34,10 @@ vim.keymap.set('n', '<leader><leader>%', [[:let @+ = fnamemodify(resolve(expand(
     { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
 
 return {
-    on_attach = function(_, bufnr)
+    on_attach = function(bufnr)
         local bufopts = { buffer = bufnr, noremap = true, silent = true }
-        vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, bufopts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+        -- vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, bufopts) -- comment this when using java
         vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
         vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols, bufopts)
         vim.keymap.set('n', 'gws', require('telescope.builtin').lsp_workspace_symbols, bufopts)
@@ -49,9 +50,5 @@ return {
         vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, bufopts)
         vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, bufopts)
         vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
-    end,
-    definiiton_fix_for_java = function(_, bufnr) -- this is only for jdtls which does not work well with telescope definition
-        local bufopts = { buffer = bufnr, noremap = true, silent = true }
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     end,
 }

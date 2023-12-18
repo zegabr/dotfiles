@@ -112,10 +112,11 @@ return {
                 end
                 require('lspconfig')[server_name].setup {
                     capabilities = require('cmp_nvim_lsp').default_capabilities(),
-                    on_attach = function(_, bufnr)
-                        require('custom.maps').on_attach(_, bufnr)
+                    on_attach = function()
+                        local bufnr = vim.api.nvim_get_current_buf()
+                        require('custom.maps').on_attach(bufnr)
                         if servers_settings[server_name] ~= nil and servers_settings[server_name].extra_on_attach ~= nil then
-                            servers_settings[server_name].extra_on_attatch(vim.api.nvim_get_current_buf())
+                            servers_settings[server_name].extra_on_attatch(bufnr)
                         end
                     end,
                     settings = (servers_settings[server_name] or {}).settings,
