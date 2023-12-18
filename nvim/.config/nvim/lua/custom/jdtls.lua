@@ -38,26 +38,6 @@ return {
             root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
             settings = {
                 java = {
-                    configuration = {
-                        -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-                        -- And search for `interface RuntimeOption`
-                        -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
-                        runtimes = {
-                            {
-                                name = "javaSE-1.8",
-                                -- path = "/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java",
-                                path = "/usr/lib/jvm/java-8-openjdk-amd64/",
-                            },
-                            {
-                                name = "javaSE-11",
-                                path = "/usr/lib/jvm/java-11-openjdk-amd64/",
-                            },
-                            {
-                                name = "JavaSE-17",
-                                path = "/usr/lib/jvm/java-17-openjdk-amd64/",
-                            },
-                        }
-                    },
                     signatureHelp = { enabled = true },
                     completion = {
                         favoriteStaticMembers = {
