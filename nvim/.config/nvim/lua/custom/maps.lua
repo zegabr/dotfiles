@@ -53,4 +53,8 @@ return {
         vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, bufopts)
         vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
     end,
+    definiiton_fix_for_java = function (_, bufnr)
+        local bufopts = { buffer = bufnr, noremap = true, silent = true }
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    end,
 }

@@ -38,6 +38,29 @@ return {
             root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
             settings = {
                 java = {
+                    eclipse = {
+                        downloadSources = true,
+                    },
+                    configuration = {
+                        updateBuildConfiguration = "interactive",
+                        runtimes = {
+                            {
+                                name = "JavaSE-17",
+                                path = vim.fn.expand("/usr/lib/jvm/java-17-openjdk-amd64/"),
+                            },
+                            {
+                                name = "JavaSE-11",
+                                path = vim.fn.expand("/usr/lib/jvm/java-11-openjdk-amd64/"),
+                            },
+                            {
+                                name = "JavaSE-1.8",
+                                path = vim.fn.expand("/usr/lib/jvm/java-8-openjdk-amd64/"),
+                            },
+                        },
+                    },
+                    maven = {
+                        downloadSources = true,
+                    },
                     signatureHelp = { enabled = true },
                     completion = {
                         favoriteStaticMembers = {
@@ -81,5 +104,6 @@ return {
         -- This starts a new client & server, or attaches to an existing client & server depending on the `root_dir`.
         require('jdtls').start_or_attach(config)
         require('custom.maps').on_attach(nil, vim.api.nvim_get_current_buf())
+        require('custom.maps').definiiton_fix_for_java(nil, vim.api.nvim_get_current_buf())
     end
 }

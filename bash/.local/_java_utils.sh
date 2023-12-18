@@ -14,9 +14,9 @@ mvn-build-test(){
 }
 
 mvn-build(){
-    sudo mvn package -Dmaven.test.skip
+    sudo mvn clean install -Dmaven.test.skip
 }
 
 mvn-spring-run(){
-    sudo mvn clean spring-boot:run -e
+    sudo mvn clean spring-boot:run
 }
