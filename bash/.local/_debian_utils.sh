@@ -83,15 +83,6 @@ deb-uninstall(){
    sudo dpkg -r $1
 }
 
-swap-java(){
-    sudo update-alternatives --config java
-    sudo update-alternatives --config javac
-}
-
-swap-javac(){ # if java is in the latest, only need to change javac for each other version used
-    sudo update-alternatives --config javac
-}
-
 check-truecolor() {
 awk -v term_cols="${width:-$(tput cols || echo 80)}" 'BEGIN{
 s="/\\";

@@ -18,6 +18,8 @@ tidy \
 neofetch \
 cmake \
 parallel \
+zip \
+unzip \
 -y
 
 sudo apt install python3-full -y

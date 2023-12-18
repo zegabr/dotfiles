@@ -17,6 +17,7 @@ bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/
 # 1- enable wsl and hyper-v in windows features
 # 2- enable virtualization mode on bios
 # 3- install distro via store
+# 4- run wsl --update on powershell
 #
 # uninstall cheat sheet:
 # 1- uninstall via start menu
