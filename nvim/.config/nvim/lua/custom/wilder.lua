@@ -2,6 +2,17 @@ return {
     'gelguy/wilder.nvim',
     dependencies = { 'romgrk/fzy-lua-native' },
     build = ':UpdateRemotePlugins',
+    init = function()
+        vim.opt.wildignore = {
+            "*.pyc",
+            "*_build/*",
+            "**/coverage/*",
+            "**/node_modules/*",
+            "**/android/*",
+            "**/ios/*",
+            "**/.git/*",
+        }
+    end,
     config = function()
         local wilder = require('wilder')
         wilder.setup({ modes = { ':', '/', '?' } })

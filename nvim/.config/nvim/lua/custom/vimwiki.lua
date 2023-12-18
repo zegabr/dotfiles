@@ -1,7 +1,11 @@
 return {
     'vimwiki/vimwiki',
-    config = function()
+    init = function()
+        -- this should run before load
         vim.g.vimwiki_map_prefix = '<Leader><Leader>v'
+        vim.g.vimwiki_markdown_link_ext = 1
+    end,
+    config = function()
         vim.cmd([[
                 set nocompatible
                 filetype plugin on
