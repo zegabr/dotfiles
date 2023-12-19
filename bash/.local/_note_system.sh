@@ -10,23 +10,27 @@ function think(){
     v ${filename}.md +
 }
 
-# Opens instant note on private repo
+# Opens instant note on private repo, go back after finishes
 function note(){
-    cd ~/notes
-    if [ -e Session.vim ]; then
-        vs
-    else
-        v index.md
-    fi
+    (
+        cd ~/notes
+        if [ -e Session.vim ]; then
+            vs
+        else
+            v index.md
+        fi
+    )
 }
 
-#Opens personal notes dir and sync
+#Opens personal notes dir and sync, comes back after finishes
 function note-sync(){
-    cd ~/notes
-    git add .
-    git commit -m 'sync'
-    git pull --rebase
-    git push -q
+    (
+        cd ~/notes
+        git add .
+        git commit -m 'sync'
+        git pull --rebase
+        git push -q
+    )
 }
 
 alias todo='nvim ~/notes/work_todo.md'
