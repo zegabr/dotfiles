@@ -26,7 +26,19 @@ _tmux_sessionizer() {
     if [[ $# -eq 1 ]]; then
         selected=$1
     else
-        selected=$(find ~/ ~/work ~/work/test ~/personal ~/personal/test -mindepth 1 -maxdepth 1 -type d | fzf)
+        # the /mnt/ is for using on windows pc in case jetbrains ides are needed -> work on nvim via wsl, build and run via jetbrains
+        selected=$(find \
+            ~/ \
+            /mnt/c/Users/JosePereira/Documents/work/ \
+            /mnt/c/Users/JosePereira/Documents/ \
+            ~/work \
+            ~/work/test \
+            ~/personal \
+            ~/personal/test \
+            -mindepth 1 \
+            -maxdepth 1 \
+            -type d \
+            | fzf)
     fi
 
     if [[ -z $selected ]]; then
