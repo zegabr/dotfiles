@@ -37,6 +37,7 @@ local plugins = {
     require('custom.tex'),
     -- vimwiki
     require('custom.vimwiki'),
+    -- ollama llms
     require('custom.llm'),
     -- Colors and UI
     require('custom.colors'),
