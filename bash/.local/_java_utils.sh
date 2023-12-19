@@ -10,13 +10,13 @@ swap-javac(){ # if java is in the latest, only need to change javac for each oth
 }
 
 mvn-build-test(){
-    sudo mvn package
+    mvn package
 }
 
 mvn-build(){
-    sudo mvn clean install -Dmaven.test.skip
+    mvn clean install -Dmaven.test.skip
 }
 
 mvn-spring-run(){
-    sudo mvn clean spring-boot:run
+    mvn clean spring-boot:run
 }
