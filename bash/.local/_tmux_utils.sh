@@ -42,7 +42,7 @@ _tmux_sessionizer() {
     fi
 
     if [[ -z $selected ]]; then
-        exit 0
+        return 0
     fi
 
     selected_name=$(basename "$selected" | tr . _)
