@@ -1,5 +1,16 @@
 return {
     "hrsh7th/nvim-cmp",
+    dependencies = {
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+        -- { 'hrsh7th/cmp-nvim-lua' },
+        -- Snippets
+        { 'L3MON4D3/LuaSnip' },
+        { 'saadparwaiz1/cmp_luasnip' },
+        { 'rafamadriz/friendly-snippets' },
+
+    },
     event = { "InsertEnter", "CmdlineEnter" },
     config = function()
         local cmp = require('cmp')
@@ -35,7 +46,7 @@ return {
                 end),
                 ['<S-Tab>'] = cmp.mapping(function(fallback)
                     if cmp.visible() then
-                        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select})
+                        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
                     else
                         fallback()
                     end
