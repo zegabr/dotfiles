@@ -1,17 +1,17 @@
 --" ============ACTIVE MAPS============
-vim.keymap.set("n", "<Space>", "<nop>", { desc = '' })
-vim.keymap.set("v", "<Space>", "<nop>", { desc = '' })
+vim.keymap.set("n", "<Space>", "<nop>", {silent = true, desc = '' })
+vim.keymap.set("v", "<Space>", "<nop>", {silent = true, desc = '' })
 
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>a", "GVgg", { desc = 'select all file' })
-vim.keymap.set("n", "Y", "y$", { desc = 'yank to the end' })
-vim.keymap.set('v', '<leader>p', '"0p', { desc = 'paste last yanked text without losing content' })
-vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'paste last yanked text without losing content' })
+vim.keymap.set("n", "<leader>a", "GVgg", {silent = true, desc = 'select all file' })
+vim.keymap.set("n", "Y", "y$", {silent = true, desc = 'yank to the end' })
+vim.keymap.set('v', '<leader>p', '"0p', {silent = true, desc = 'paste last yanked text without losing content' })
+vim.keymap.set('x', '<leader>p', [["_dP]], {silent = true, desc = 'paste last yanked text without losing content' })
 vim.keymap.set("n", "<leader>w", ":wa<CR>", { desc = 'save all files' })
 
-vim.keymap.set("i", "jk", "<ESC>", { desc = 'esc' })
-vim.keymap.set("n", "<C-c>", "<ESC>", { desc = 'esc' })
+vim.keymap.set("i", "jk", "<ESC>", {silent = true, desc = 'esc' })
+vim.keymap.set("n", "<C-c>", "<ESC>", {silent = true, desc = 'esc' })
 
 vim.keymap.set("n", "<leader>S", ":%s//gIc<Left><Left><Left><Left>", { desc = 'replace snippet normal mode' })
 vim.keymap.set("x", "<leader>S", ":s//gIc<Left><Left><Left><Left>", { desc = 'replace snippet visual mode' })
@@ -27,8 +27,8 @@ vim.keymap.set("n", "<C-l>", ":cnext<CR>zz", { desc = 'quickfix list prev' })
 vim.keymap.set("n", "<C-q>", ":cclose<CR>zz", { desc = 'quickfix list close' })
 
 vim.keymap.set("n", "<Leader><CR>", ":so<cr>", { desc = 'source current lua file' })
-vim.keymap.set("n", "+", "<C-a>", { desc = 'increment' })
-vim.keymap.set("n", "-", "<C-x>", { desc = 'decrement' })
+vim.keymap.set("n", "+", "<C-a>", {silent = true, desc = 'increment' })
+vim.keymap.set("n", "-", "<C-x>", {silent = true, desc = 'decrement' })
 
 vim.keymap.set('n', '<leader><leader>%', [[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]],
     { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
