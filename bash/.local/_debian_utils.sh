@@ -5,7 +5,15 @@ export EDITOR=nvim
 alias lag='alias | grep'
 
 alias v='nvim'
+
 function vs(){
+    if [ -d ".git" ]; then
+        if ! grep -q "*Session.vim" ".git/info/exclude"; then
+            echo "*Session.vim" >> ".git/info/exclude"
+        fi
+    else
+        echo "No .git folder found in the current directory, Session.vim will be created here"
+    fi
     if [ -e Session.vim ]; then
         nvim -S
     else
