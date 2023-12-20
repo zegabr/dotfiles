@@ -1,17 +1,17 @@
 --" ============ACTIVE MAPS============
-vim.keymap.set("n", "<Space>", "<nop>", {silent = true, desc = '' })
-vim.keymap.set("v", "<Space>", "<nop>", {silent = true, desc = '' })
+vim.keymap.set("n", "<Space>", "<nop>", { silent = true, desc = '' })
+vim.keymap.set("v", "<Space>", "<nop>", { silent = true, desc = '' })
 
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>a", "GVgg", {silent = true, desc = 'select all file' })
-vim.keymap.set("n", "Y", "y$", {silent = true, desc = 'yank to the end' })
-vim.keymap.set('v', '<leader>p', '"0p', {silent = true, desc = 'paste last yanked text without losing content' })
-vim.keymap.set('x', '<leader>p', [["_dP]], {silent = true, desc = 'paste last yanked text without losing content' })
+vim.keymap.set("n", "<leader>a", "GVgg", { silent = true, desc = 'select all file' })
+vim.keymap.set("n", "Y", "y$", { silent = true, desc = 'yank to the end' })
+vim.keymap.set('v', '<leader>p', '"0p', { silent = true, desc = 'paste last yanked text without losing content' })
+vim.keymap.set('x', '<leader>p', [["_dP]], { silent = true, desc = 'paste last yanked text without losing content' })
 vim.keymap.set("n", "<leader>w", ":wa<CR>", { desc = 'save all files' })
 
-vim.keymap.set("i", "jk", "<ESC>", {silent = true, desc = 'esc' })
-vim.keymap.set("n", "<C-c>", "<ESC>", {silent = true, desc = 'esc' })
+vim.keymap.set("i", "jk", "<ESC>", { silent = true, desc = 'esc' })
+vim.keymap.set("n", "<C-c>", "<ESC>", { silent = true, desc = 'esc' })
 
 vim.keymap.set("n", "<leader>S", ":%s//gIc<Left><Left><Left><Left>", { desc = 'replace snippet normal mode' })
 vim.keymap.set("x", "<leader>S", ":s//gIc<Left><Left><Left><Left>", { desc = 'replace snippet visual mode' })
@@ -27,17 +27,20 @@ vim.keymap.set("n", "<C-l>", ":cnext<CR>zz", { desc = 'quickfix list prev' })
 vim.keymap.set("n", "<C-q>", ":cclose<CR>zz", { desc = 'quickfix list close' })
 
 vim.keymap.set("n", "<Leader><CR>", ":so<cr>", { desc = 'source current lua file' })
-vim.keymap.set("n", "+", "<C-a>", {silent = true, desc = 'increment' })
-vim.keymap.set("n", "-", "<C-x>", {silent = true, desc = 'decrement' })
+vim.keymap.set("n", "+", "<C-a>", { silent = true, desc = 'increment' })
+vim.keymap.set("n", "-", "<C-x>", { silent = true, desc = 'decrement' })
 
 vim.keymap.set('n', '<leader><leader>%', [[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]],
     { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
 
 return {
----@diagnostic disable-next-line: unused-local
+    ---@diagnostic disable-next-line: unused-local
     on_attach = function(client, bufnr)
         local bufopts = { buffer = bufnr, noremap = true, silent = true }
         vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, bufopts)
+        if vim.bo.filetype == 'java' then -- fix for java
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+        end
         vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
         vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols, bufopts)
         vim.keymap.set('n', 'gws', require('telescope.builtin').lsp_workspace_symbols, bufopts)
@@ -50,9 +53,5 @@ return {
         vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, bufopts)
         vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, bufopts)
         vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
-    end,
-    definiiton_fix_for_java = function(bufnr) -- this is only for jdtls which does not work well with telescope lsp_definition
-        local bufopts = { buffer = bufnr, noremap = true, silent = true }
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     end,
 }

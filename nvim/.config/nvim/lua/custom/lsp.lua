@@ -29,16 +29,11 @@ return {
 
         -- Use this to override language servers settings.
         local server_settings = require('custom.lsp_servers_settings').server_settings
-        -- use this to not override settings
-        local externally_attached = require('custom.lsp_servers_settings').externally_attached
 
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         mason_lspconfig.setup_handlers { -- will only run for installed servers
             function(server_name)
-                if externally_attached[server_name] and externally_attached[server_name] == true then
-                    return -- make sure externally_attached servers are not attached by lspconfig
-                end
                 require('lspconfig')[server_name].setup {
                     capabilities = capabilities,
                     ---@diagnostic disable-next-line: unused-local

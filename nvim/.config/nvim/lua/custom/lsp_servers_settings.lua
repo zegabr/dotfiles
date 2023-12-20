@@ -1,14 +1,6 @@
-local using_nvim_jdtls = true -- make this false if using nvim-java
-if not using_nvim_jdtls then
-    require('java').setup()
-end
-
 return {
-    externally_attached = { -- will not be setup via mason_lspconfig
-        jdtls = using_nvim_jdtls,
-    },
-
     server_settings = {
+
         lua_ls = {
             settings = {
                 Lua = {
@@ -60,7 +52,7 @@ return {
 
         bashls = {
             filetypes = { 'sh', '.bash_aliases', '.bashrc', '.bash_aliases_work', '.profile', '.bash_profile' },
-        }
-    },
+        },
 
+    },
 }
