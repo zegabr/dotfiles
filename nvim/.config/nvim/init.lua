@@ -17,31 +17,33 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+    -- Colors and UI
+    require('custom.colors'),
     -- Treesitter
     require('custom.treesitter'),
     ----Telescope
     require('custom.telescope'),
-    ----LSP
-    require('custom.cmp'),
-    require('custom.lsp'),
-    -- require('custom.copilot'),
-
-    -- java setup.
-    -- require('custom.jdtls'), -- if using this, setup using_nvim_jdtls = true on lsp.lua
-    require('custom.nvim-java'),-- if using this, setup using_nvim_jdtls = false on lsp.lua
     -- Editor (things I'll hardly modify)
     require('custom.editor'),
     require('custom.undotree'), -- this does not exists on other editors
     require('custom.wilder'),
+    require('custom.git'), -- git specific plugins
+    ----LSP (code editing)
+    require('custom.cmp'),
+    require('custom.lsp'),
+    require('custom.nvim-java'),
+    -- require('custom.jdtls'),
+    -- require('custom.copilot'),
+
+    -- ollama llms
+    require('custom.llm'),
+
+    -- Http files
     require('custom.rest'), -- see exmaples here https://github.com/rest-nvim/rest.nvim/tree/main/tests
     -- Latex
     require('custom.tex'),
     -- vimwiki
     require('custom.vimwiki'),
-    -- ollama llms
-    require('custom.llm'),
-    -- Colors and UI
-    require('custom.colors'),
 }
 
 local opts = {}

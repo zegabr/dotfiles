@@ -26,32 +26,21 @@ return {
 
     { 'ntpeters/vim-better-whitespace' }, --trim whitespace with :StripWhiteSpace
     { 'matze/vim-move' },                 --alt j/k moves selected lines normal and visual mode
-    { 'tpope/vim-obsession', },           --vim store session :Obsession TODO -> remember to add *Session.vim it to your .git/info/exclude
-    {
-        'ruifm/gitlinker.nvim',           -- get premalink by <leader>gy (works in visuali mode)
-        config = function() require("gitlinker").setup() end
-    },
+    { 'tpope/vim-obsession', },           --vim store session :Obsession TODO -> remember to add *Session.vim it to your .git/info/exclude (my 'vs' bash alias already does that for me)
 
     -- Comments
-    { 'tpope/vim-commentary', }, -- gcc | gcgc | visual gc
+    { 'tpope/vim-commentary', }, -- <count>gcc | gcgc | visual gc
 
     -- Surround
     { 'tpope/vim-surround' }, ---> https://www.youtube.com/watch?v=NsHAG4GmZYQ&list=WL&index=19
-    -- simplest way to  i,s:
-    -- to add pair
+    -- simplest way to use it:
+    -- TO ADD PAIR:
     -- 1) select with any visual mode.
     -- 2) press S<closing pair> or St<tagname>
-    -- to delete pair
+    -- TO DELETE PAIR:
     -- 1) ds<surrounding pair>
-    -- to change pair
+    -- TO CHANGE PAIR:
     -- 1) cs<pair to be changed><new closing pair>
-    {
-        'f-person/git-blame.nvim',
-        config = function()
-            require('gitblame').setup({ enabled = false, })
-            -- :GitBlameToggle when needed
-        end
-    },
     {
         'stevearc/oil.nvim',
         config = function()
