@@ -4,7 +4,7 @@ vim.cmd([[ :set clipboard=unnamedplus ]])
 vim.cmd([[ autocmd! VimEnter *.txt set wrap ]])
 vim.cmd([[ autocmd! VimEnter *.wiki set wrap ]])
 vim.opt.grepprg = "rg \\ --vimgrep"
-vim.opt.updatetime = 50
+vim.opt.updatetime = 100
 vim.opt.showmatch = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
