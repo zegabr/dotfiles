@@ -45,6 +45,7 @@ return {
                     "node_modules/",
                     ".git/",
                     "build/",
+                    "target/",
                     ".idea/",
                     ".dart_tools/",
                 }
