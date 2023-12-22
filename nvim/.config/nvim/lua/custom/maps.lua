@@ -36,6 +36,8 @@ function CdoMacro(char)
     -- Execute the command in Neovim
     vim.cmd(command)
 end
+
+vim.cmd([[command! -nargs=1 CdoMacro lua CdoMacro(<f-args>)]])
 -- Runs defined macro into all files of quickfixlist
 function CfdoMacro(char)
     -- Build the command string
@@ -43,8 +45,7 @@ function CfdoMacro(char)
     -- Execute the command in Neovim
     vim.cmd(command)
 end
-
-vim.cmd([[command! -nargs=1 CdoMacro lua CdoMacro(<f-args>)]])
+vim.cmd([[command! -nargs=1 CfdoMacro lua CfdoMacro(<f-args>)]])
 
 vim.keymap.set("n", "<Leader><CR>", ":so<cr>", { desc = 'source current lua file' })
 vim.keymap.set("n", "+", "<C-a>", { silent = true, desc = 'increment' })
