@@ -26,6 +26,16 @@ vim.keymap.set("n", "<C-h>", ":cprev<CR>zz", { desc = 'quickfix list next' })
 vim.keymap.set("n", "<C-l>", ":cnext<CR>zz", { desc = 'quickfix list prev' })
 vim.keymap.set("n", "<C-q>", ":cclose<CR>zz", { desc = 'quickfix list close' })
 
+-- Runs defined macro into all entries of quickfixlist
+function CdoMacro(char)
+    -- Build the command string
+    local command = string.format(':cdo execute "norm @%s" | update', char)
+    -- Execute the command in Neovim
+    vim.cmd(command)
+end
+
+vim.cmd([[command! -nargs=1 CdoMacro lua CdoMacro(<f-args>)]])
+
 vim.keymap.set("n", "<Leader><CR>", ":so<cr>", { desc = 'source current lua file' })
 vim.keymap.set("n", "+", "<C-a>", { silent = true, desc = 'increment' })
 vim.keymap.set("n", "-", "<C-x>", { silent = true, desc = 'decrement' })
