@@ -43,6 +43,7 @@ return {
                 },
                 file_ignore_patterns = {
                     "node_modules/",
+                    "Session.vim",
                     ".git/",
                     "build/",
                     "target/",
