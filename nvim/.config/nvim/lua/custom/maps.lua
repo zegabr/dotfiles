@@ -1,12 +1,12 @@
 --" ============ACTIVE MAPS============
 vim.keymap.set("n", "<Space>", "<nop>", { silent = true, desc = '' })
-vim.keymap.set("v", "<Space>", "<nop>", { silent = true, desc = '' })
+vim.keymap.set("x", "<Space>", "<nop>", { silent = true, desc = '' })
 
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>a", "GVgg", { silent = true, desc = 'select all file' })
 vim.keymap.set("n", "Y", "y$", { silent = true, desc = 'yank to the end' })
-vim.keymap.set('v', '<leader>p', '"0p', { silent = true, desc = 'paste last yanked text without losing content' })
+vim.keymap.set('x', '<leader>p', '"0p', { silent = true, desc = 'paste last yanked text without losing content' })
 vim.keymap.set('x', '<leader>p', [["_dP]], { silent = true, desc = 'paste last yanked text without losing content' })
 vim.keymap.set("n", "<leader>w", ":wa<CR>", { desc = 'save all files' })
 
