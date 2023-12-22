@@ -16,6 +16,9 @@ vim.keymap.set("n", "<C-c>", "<ESC>", { silent = true, desc = 'esc' })
 vim.keymap.set("n", "<leader>S", ":%s//gIc<Left><Left><Left><Left>", { desc = 'replace snippet normal mode' })
 vim.keymap.set("x", "<leader>S", ":s//gIc<Left><Left><Left><Left>", { desc = 'replace snippet visual mode' })
 
+-- run this, type macro character and press enter
+vim.keymap.set("x", "<leader>m", ":norm @", { desc = 'run macro per line on visual mode' })
+
 -- this is how i adapted with using bufferline, this way i can quickly manage opened buffers iterating between them and deleting the ones i don't want
 vim.keymap.set("n", "<left>", ":bp<CR>", { desc = 'buffer prev' })
 vim.keymap.set("n", "<right>", ":bn<CR>", { desc = 'buffer next' })
