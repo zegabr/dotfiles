@@ -48,6 +48,3 @@ local plugins = {
 
 local opts = {}
 require("lazy").setup(plugins, opts)
-
--- useful to know:
--- visual select lines + :norm @<x> to run a macro in multiple lines
