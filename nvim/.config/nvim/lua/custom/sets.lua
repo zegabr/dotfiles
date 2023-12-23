@@ -2,7 +2,7 @@
 vim.cmd([[:set guicursor=n:block,i:block,v:block]])
 vim.cmd([[ :set clipboard=unnamedplus ]])
 vim.cmd([[ autocmd! VimEnter *.txt set wrap ]])
-vim.cmd([[ autocmd! VimEnter *.wiki set wrap ]])
+vim.cmd([[ autocmd! VimEnter *.md set wrap ]])
 vim.opt.grepprg = "rg \\ --vimgrep"
 vim.opt.updatetime = 100
 vim.opt.showmatch = true
