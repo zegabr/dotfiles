@@ -1,3 +1,4 @@
+
 --" ============ACTIVE MAPS============
 vim.keymap.set("n", "<Space>", "<nop>", { silent = true, desc = '' })
 vim.keymap.set("x", "<Space>", "<nop>", { silent = true, desc = '' })
@@ -29,8 +30,6 @@ vim.keymap.set("n", "<C-q>", ":cclose<CR>zz", { desc = 'quickfix list close' })
 vim.keymap.set("n", "<Leader><CR>", ":so<cr>", { desc = 'source current lua file' })
 vim.keymap.set("n", "+", "<C-a>", { silent = true, desc = 'increment' })
 vim.keymap.set("n", "-", "<C-x>", { silent = true, desc = 'decrement' })
-
-
 
 return {
     ---@diagnostic disable-next-line: unused-local

@@ -1,6 +1,5 @@
 require('custom.debug')
 require('custom.maps')
-require('custom.toolbox') -- add this to custom.editor
 require('custom.sets')
 
 -- PLUGINS

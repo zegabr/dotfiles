@@ -22,6 +22,7 @@ return {
                 ['<C-k>'] = cmp.mapping.scroll_docs(-4),
                 ['<esc>'] = cmp.mapping {
                     i = cmp.mapping.abort(),
+                    -- c = cmp.mapping.close(),
                 },
                 ['<CR>'] = cmp.mapping(function(fallback)
                     if cmp.visible() then

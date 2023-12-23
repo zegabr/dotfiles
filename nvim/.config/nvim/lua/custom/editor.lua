@@ -4,6 +4,10 @@ return {
         config = function()
             vim.keymap.set('n', '<leader><leader>%', require('toolbox').copy_filename,
                 { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
+            vim.keymap.set('n', '<leader>S', require('toolbox').search_replace_snippet_on_file,
+                { noremap = true, silent = true, desc = 'global replace snippet normal mode' })
+            vim.keymap.set("x", "<leader>S", ":SearchReplaceSnippetRange<CR>",
+                { desc = 'global replace snippet visual mode' })
             vim.keymap.set("x", "<leader>m", ":MultiLineMacro ", { desc = 'run macro per line on visual mode' })
         end
     },
@@ -28,7 +32,7 @@ return {
                     },
                 },
             })
-            vim.keymap.set({'n','x'}, '"', require('telescope').extensions.neoclip.default, { desc = 'Telescope Neoclip' })
+            vim.keymap.set("n", '"', require('telescope').extensions.neoclip.default, { desc = 'Telescope Neoclip' })
         end,
     },
 
