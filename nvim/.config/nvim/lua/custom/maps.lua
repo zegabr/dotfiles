@@ -1,4 +1,3 @@
-
 --" ============ACTIVE MAPS============
 vim.keymap.set("n", "<Space>", "<nop>", { silent = true, desc = '' })
 vim.keymap.set("x", "<Space>", "<nop>", { silent = true, desc = '' })
