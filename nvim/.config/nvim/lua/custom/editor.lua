@@ -2,9 +2,10 @@ return {
     {
         'zegabr/toolbox.nvim',
         config = function()
-            vim.keymap.set('n', '<leader><leader>%', require('toolbox').copy_filename,
+            require('toolbox')
+            vim.keymap.set('n', '<leader><leader>%', ":CopyFilename<CR>",
                 { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
-            vim.keymap.set('n', '<leader>S', require('toolbox').search_replace_snippet_on_file,
+            vim.keymap.set('n', '<leader>S', ":SearchReplaceSnippetFile<CR>",
                 { noremap = true, silent = true, desc = 'global replace snippet normal mode' })
             vim.keymap.set("x", "<leader>S", ":SearchReplaceSnippetRange<CR>",
                 { desc = 'global replace snippet visual mode' })
