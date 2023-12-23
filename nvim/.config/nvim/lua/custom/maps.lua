@@ -1,6 +1,7 @@
 --" ============ACTIVE MAPS============
 vim.keymap.set("n", "<Space>", "<nop>", { silent = true, desc = '' })
 vim.keymap.set("x", "<Space>", "<nop>", { silent = true, desc = '' })
+vim.keymap.set("n", "Q", "<nop>", { desc = 'remove Q mapping' })
 
 vim.g.mapleader = " "
 
@@ -9,15 +10,11 @@ vim.keymap.set("n", "Y", "y$", { silent = true, desc = 'yank to the end' })
 vim.keymap.set('x', '<leader>p', '"0p', { silent = true, desc = 'paste last yanked text without losing content' })
 vim.keymap.set('x', '<leader>p', [["_dP]], { silent = true, desc = 'paste last yanked text without losing content' })
 vim.keymap.set("n", "<leader>w", ":wa<CR>", { desc = 'save all files' })
+vim.keymap.set("n", "<leader>v", "<C-v>", { desc = 'enter visual-block mode' })
+vim.keymap.set("n", "gv", "`[v`]", { desc = 'select last pasted text' })
 
 vim.keymap.set("i", "jk", "<ESC>", { silent = true, desc = 'esc' })
 vim.keymap.set("n", "<C-c>", "<ESC>", { silent = true, desc = 'esc' })
-
-vim.keymap.set("n", "<leader>S", ":%s//gIc<Left><Left><Left><Left>", { desc = 'replace snippet normal mode' })
-vim.keymap.set("x", "<leader>S", ":s//gIc<Left><Left><Left><Left>", { desc = 'replace snippet visual mode' })
-
--- run this, type macro character and press enter
-vim.keymap.set("x", "<leader>m", ":norm @", { desc = 'run macro per line on visual mode' })
 
 -- this is how i adapted with using bufferline, this way i can quickly manage opened buffers iterating between them and deleting the ones i don't want
 vim.keymap.set("n", "<left>", ":bp<CR>", { desc = 'buffer prev' })
@@ -29,30 +26,11 @@ vim.keymap.set("n", "<C-h>", ":cprev<CR>zz", { desc = 'quickfix list next' })
 vim.keymap.set("n", "<C-l>", ":cnext<CR>zz", { desc = 'quickfix list prev' })
 vim.keymap.set("n", "<C-q>", ":cclose<CR>zz", { desc = 'quickfix list close' })
 
--- Runs defined macro into all entries of quickfixlist
-function CdoMacro(char)
-    -- Build the command string
-    local command = string.format(':cdo execute "norm @%s" | update', char)
-    -- Execute the command in Neovim
-    vim.cmd(command)
-end
-
-vim.cmd([[command! -nargs=1 CdoMacro lua CdoMacro(<f-args>)]])
--- Runs defined macro into all files of quickfixlist
-function CfdoMacro(char)
-    -- Build the command string
-    local command = string.format(':cfdo execute "norm @%s" | update', char)
-    -- Execute the command in Neovim
-    vim.cmd(command)
-end
-vim.cmd([[command! -nargs=1 CfdoMacro lua CfdoMacro(<f-args>)]])
-
 vim.keymap.set("n", "<Leader><CR>", ":so<cr>", { desc = 'source current lua file' })
 vim.keymap.set("n", "+", "<C-a>", { silent = true, desc = 'increment' })
 vim.keymap.set("n", "-", "<C-x>", { silent = true, desc = 'decrement' })
 
-vim.keymap.set('n', '<leader><leader>%', [[:let @+ = fnamemodify(resolve(expand('%:p')), ':~:.')<CR>]],
-    { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
+
 
 return {
     ---@diagnostic disable-next-line: unused-local

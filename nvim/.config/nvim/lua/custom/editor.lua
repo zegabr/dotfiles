@@ -1,5 +1,13 @@
 return {
     {
+        'zegabr/toolbox.nvim',
+        config = function()
+            vim.keymap.set('n', '<leader><leader>%', require('toolbox').copy_filename,
+                { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
+            vim.keymap.set("x", "<leader>m", ":MultiLineMacro ", { desc = 'run macro per line on visual mode' })
+        end
+    },
+    {
         'mhinz/vim-signify',
         config = function()
             vim.keymap.set("n", "[h", "<plug>(signify-prev-hunk)", { desc = 'prev hunk' })
@@ -20,7 +28,7 @@ return {
                     },
                 },
             })
-            vim.keymap.set("n", '"', require('telescope').extensions.neoclip.default, { desc = 'Telescope Neoclip' })
+            vim.keymap.set({'n','x'}, '"', require('telescope').extensions.neoclip.default, { desc = 'Telescope Neoclip' })
         end,
     },
 
