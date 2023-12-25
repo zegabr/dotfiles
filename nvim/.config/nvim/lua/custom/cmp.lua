@@ -14,15 +14,13 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     config = function()
         local cmp = require('cmp')
-        local luasnip = require('luasnip')
         cmp.setup({
             mapping = cmp.mapping.preset.insert({
                 ["<C-Space>"] = cmp.mapping.complete(),
-                ['<C-j>'] = cmp.mapping.scroll_docs(4),
-                ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-k>'] = cmp.mapping.scroll_docs(-4), -- not working on wsl
+                ['<C-j>'] = cmp.mapping.scroll_docs(4),  -- use hover twice so we don't need this
                 ['<esc>'] = cmp.mapping {
                     i = cmp.mapping.abort(),
-                    -- c = cmp.mapping.close(),
                 },
                 ['<CR>'] = cmp.mapping(function(fallback)
                     if cmp.visible() then
@@ -60,7 +58,7 @@ return {
             },
             snippet = {
                 expand = function(args)
-                    luasnip.lsp_expand(args.body)
+                    require('luasnip').lsp_expand(args.body)
                 end,
             },
         })

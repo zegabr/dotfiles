@@ -42,7 +42,7 @@ return {
         vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols, bufopts)
         vim.keymap.set('n', 'gws', require('telescope.builtin').lsp_workspace_symbols, bufopts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts) -- sometimes need to use it twice to move inside it
         vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set('n', '<leader>Q', vim.diagnostic.setqflist, bufopts)
         vim.keymap.set('n', '<leader>A', vim.lsp.buf.code_action, bufopts)
