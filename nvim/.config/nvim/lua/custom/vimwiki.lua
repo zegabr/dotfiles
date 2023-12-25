@@ -1,5 +1,6 @@
 return {
     'vimwiki/vimwiki',
+    ft = 'md',
     init = function()
         -- this should run before load
         vim.g.vimwiki_map_prefix = '<Leader><Leader>v'

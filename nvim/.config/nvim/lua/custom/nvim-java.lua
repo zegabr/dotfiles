@@ -1,5 +1,6 @@
 return {
     'nvim-java/nvim-java',
+    ft = 'java',
     dependencies = {
         'nvim-java/lua-async-await',
         'nvim-java/nvim-java-core',

@@ -1,3 +1,4 @@
+vim.loader.enable()
 require('custom.debug')
 require('custom.maps')
 require('custom.sets')
