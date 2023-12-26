@@ -12,7 +12,7 @@ tree \
 wget \
 curl \
 gawk \
-htop \
+btop \
 jq \
 tidy \
 neofetch \
@@ -20,7 +20,10 @@ cmake \
 parallel \
 zip \
 unzip \
+unar \
 -y
+
+sudo apt install tldr && tldr -u
 
 sudo apt install python3-full -y
 
