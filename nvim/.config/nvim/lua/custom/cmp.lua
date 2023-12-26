@@ -6,7 +6,11 @@ return {
         { 'hrsh7th/cmp-nvim-lsp' },
         -- { 'hrsh7th/cmp-nvim-lua' },
         -- Snippets
-        { 'L3MON4D3/LuaSnip' },
+        {
+            'L3MON4D3/LuaSnip',
+            event = 'InsertEnter',
+            build = "make install_jsregexp",
+        },
         { 'saadparwaiz1/cmp_luasnip' },
         { 'rafamadriz/friendly-snippets' },
 

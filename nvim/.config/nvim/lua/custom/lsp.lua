@@ -3,7 +3,10 @@ return {
     dependencies = {
         { 'nvim-telescope/telescope.nvim' },
         -- LSP Support
-        { 'williamboman/mason.nvim' },
+        {
+            'williamboman/mason.nvim',
+            cmd = 'Mason',
+        },
         { 'williamboman/mason-lspconfig.nvim' },
         -- { 'folke/neodev.nvim' },
         -- Autocompletion

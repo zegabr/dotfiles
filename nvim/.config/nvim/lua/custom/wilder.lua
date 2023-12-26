@@ -1,6 +1,7 @@
 return {
     'gelguy/wilder.nvim',
     dependencies = { 'romgrk/fzy-lua-native' },
+    keys = { ':', '/', '?', },
     build = ':UpdateRemotePlugins',
     init = function()
         vim.opt.wildignore = {

@@ -20,6 +20,7 @@ return { -- for lazy
     {
         'akinsho/bufferline.nvim',
         version = "*",
+        event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             vim.opt.termguicolors = true
             require("bufferline").setup({
@@ -35,6 +36,7 @@ return { -- for lazy
     },
     {
         'nvim-lualine/lualine.nvim',
+        event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             require('lualine').setup({
                 extensions = {},

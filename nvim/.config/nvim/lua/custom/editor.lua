@@ -14,6 +14,7 @@ return {
     },
     {
         'mhinz/vim-signify',
+        event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             vim.keymap.set("n", "[h", "<plug>(signify-prev-hunk)", { desc = 'prev hunk' })
             vim.keymap.set("n", "]h", "<plug>(signify-next-hunk)", { desc = 'next hunk' })
