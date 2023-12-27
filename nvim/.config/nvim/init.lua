@@ -32,7 +32,7 @@ local plugins = {
     ----LSP (code editing)
     require('custom.cmp'),
     require('custom.lsp'),
-    require('custom.nvim-java'),
+    -- require('custom.nvim-java'),
     -- require('custom.jdtls'),
     -- require('custom.copilot'),
 
