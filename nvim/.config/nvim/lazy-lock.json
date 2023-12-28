@@ -25,7 +25,7 @@
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
   "rest.nvim": { "branch": "main", "commit": "84e81a19ab24ccf05c9233d34d4dfce61c233abe" },
   "telescope.nvim": { "branch": "master", "commit": "54930e1abfc94409e1bb9266e752ef8379008592" },
-  "toolbox.nvim": { "branch": "main", "commit": "9e034d2e84048948c067d20bbd42f12187ec64f7" },
+  "toolbox.nvim": { "branch": "main", "commit": "97a912b1037401cad2ef5170fac8b6feafdca655" },
   "undotree": { "branch": "master", "commit": "36ff7abb6b60980338344982ad4cdf03f7961ecd" },
   "vim-better-whitespace": { "branch": "master", "commit": "1b22dc57a2751c7afbc6025a7da39b7c22db635d" },
   "vim-commentary": { "branch": "master", "commit": "e87cd90dc09c2a203e13af9704bd0ef79303d755" },

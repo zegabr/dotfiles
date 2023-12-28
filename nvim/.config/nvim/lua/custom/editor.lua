@@ -2,7 +2,6 @@ return {
     {
         'zegabr/toolbox.nvim',
         config = function()
-            require('toolbox')
             vim.keymap.set('n', '<leader><leader>%', ":CopyFilename<CR>",
                 { noremap = true, silent = true, desc = 'copy current file name to clipboard' })
             vim.keymap.set('n', '<leader>S', ":SearchReplaceSnippetFile<CR>",
