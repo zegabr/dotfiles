@@ -4,6 +4,7 @@
 # dependencies
 sudo apt update && sudo apt upgrade -y
 sudo apt install ninja-build gettext libtool-bin cmake g++ pkg-config unzip xsel -y
+pip3 install --break-system-packages --upgrade pynvim
 
 mkdir ~/nvim-deps
 
