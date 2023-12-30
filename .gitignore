@@ -7,4 +7,4 @@ startuptime.txt
 /bin/.local/share/
 /bin/.local/include/
 /bin/.local/lib/
-nvim/.config/nvim/plugin/packer_compiled.lua
+*lazy-lock.json
