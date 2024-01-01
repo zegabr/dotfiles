@@ -6,8 +6,8 @@ return {
         { 'hrsh7th/cmp-nvim-lsp' },
         { 'hrsh7th/cmp-nvim-lua' },
         -- Snippets
-        -- { 'SirVer/ultisnips' },
-        -- { 'quangnguyen30192/cmp-nvim-ultisnips' },
+
+        { 'quangnguyen30192/cmp-nvim-ultisnips' },
     },
     event = { "InsertEnter", "CmdlineEnter" },
     config = function()
@@ -51,15 +51,15 @@ return {
             sources = {
                 { name = 'path' },
                 { name = 'nvim_lsp', keyword_length = 1 },
-                -- { name = 'ultisnips',  keyword_length = 2 },
+                { name = 'ultisnips',  keyword_length = 2 },
                 { name = 'nvim_lua',  keyword_length = 3 },
                 { name = 'buffer',   keyword_length = 3 },
             },
-            -- snippet = {
-            --     expand = function(args)
-            --         vim.fn["UltiSnips#Anon"](args.body)
-            --     end,
-            -- },
+            snippet = {
+                expand = function(args)
+                    vim.fn["UltiSnips#Anon"](args.body)
+                end,
+            },
         })
     end
 }
