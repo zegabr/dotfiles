@@ -6,11 +6,12 @@ return {
         { 'hrsh7th/cmp-nvim-lsp' },
         { 'hrsh7th/cmp-nvim-lua' },
         -- Snippets
-        -- { 'SirVer/ultisnips' },
-        -- { 'quangnguyen30192/cmp-nvim-ultisnips' },
+        { "L3MON4D3/LuaSnip",        build = "make install_jsregexp" },
+        { 'saadparwaiz1/cmp_luasnip' },
     },
     event = { "InsertEnter", "CmdlineEnter" },
     config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
         local cmp = require('cmp')
         cmp.setup({
             mapping = cmp.mapping.preset.insert({
@@ -51,16 +52,15 @@ return {
             sources = {
                 { name = 'path' },
                 { name = 'nvim_lsp', keyword_length = 1 },
-                -- { name = 'ultisnips',  keyword_length = 2 },
-                { name = 'nvim_lua',  keyword_length = 3 },
+                { name = 'luasnip',  keyword_length = 2 },
+                { name = 'nvim_lua', keyword_length = 3 },
                 { name = 'buffer',   keyword_length = 3 },
             },
-            -- snippet = {
-            --     expand = function(args)
-            --         vim.fn["UltiSnips#Anon"](args.body)
-            --     end,
-            -- },
+            snippet = {
+                expand = function(args)
+                    require 'luasnip'.lsp_expand(args.body)
+                end
+            },
         })
     end
 }
-
