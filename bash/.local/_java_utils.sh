@@ -17,7 +17,7 @@ mvn-package(){ # TODO test this
     mvn clean package -DskipTests
 }
 mvn-spring-run(){
-    mvn clean package spring-boot:run -DskipTests -Dspring-boot.run.profiles=$1
+    mvn spring-boot:run -DskipTests -Dspring-boot.run.profiles=$1
 }
 # mvn-spring-run3(){
 #     # find the jar inside target folder
