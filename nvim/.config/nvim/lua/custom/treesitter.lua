@@ -29,6 +29,7 @@ return {
                 "yaml",
                 "json",
                 "http",
+                "vimdoc",
             },
             sync_install = false,
             auto_install = true,

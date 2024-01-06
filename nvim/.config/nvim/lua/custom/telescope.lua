@@ -1,6 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
-    version = '0.1.3', -- or , branch = '0.1.x',
+    branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
     cmd = 'Telescope',
     config = function()
@@ -64,19 +64,18 @@ return {
         end
         vim.keymap.set('n', '<leader><leader>h', builtin.help_tags, { desc = '[H]elp' })
         vim.keymap.set("n", "<leader><leader>k", builtin.keymaps, { desc = 'telescope keymaps' })
-        vim.keymap.set("n", "<leader><leader>glo", builtin.git_commits, { desc = 'git log' })
-        vim.keymap.set("n", "<leader><leader>glof", builtin.git_bcommits, { desc = 'git log current file' })
+
+        -- use this more, it's a good replacement for leaning harpoon, if used with :bp :bn and :bd
+        vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = 'telescope buffers' })
         vim.keymap.set("n", "<leader><leader>o", builtin.oldfiles, { desc = 'find recently opened files' })
 
-        vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = 'telescope buffers' })
         vim.keymap.set("n", "<leader><leader>p", project_files, { desc = 'Project File Search' })
         vim.keymap.set("n", "<leader><leader>f", function()
             builtin.grep_string({
                 shorten_path = true,
-                word_match = "-w",
-                only_sort_text = true,
                 search = '',
             }, { desc = 'Project String Search' })
         end)
+        -- TODO: add leadreleader f to search for visual selected text (better than copying and pasting into usual grep_string)
     end,
 }
