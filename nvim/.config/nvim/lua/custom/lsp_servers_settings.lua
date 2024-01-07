@@ -29,7 +29,7 @@ return {
                 },
                 staticcheck = true,
             },
-            extra_on_attatch = function(bufnr)
+            extra_on_attach = function(bufnr)
                 vim.api.nvim_create_autocmd('BufWritePre', {
                     buffer = bufnr,
                     pattern = '*.go',
@@ -41,7 +41,7 @@ return {
         },
 
         eslint = {
-            extra_on_attatch = function(bufnr)
+            extra_on_attach = function(bufnr)
                 vim.api.nvim_create_autocmd("BufWritePre", {
                     buffer = bufnr,
                     pattern = { "*.ts", "*.js", "*.tsx", "*.jsx" },

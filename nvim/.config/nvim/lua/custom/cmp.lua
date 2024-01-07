@@ -16,8 +16,6 @@ return {
         cmp.setup({
             mapping = cmp.mapping.preset.insert({
                 ["<C-Space>"] = cmp.mapping.complete(),
-                ['<C-k>'] = cmp.mapping.scroll_docs(-4), -- not working on wsl
-                ['<C-j>'] = cmp.mapping.scroll_docs(4),  -- use hover twice so we don't need this
                 ['<esc>'] = cmp.mapping {
                     i = cmp.mapping.abort(),
                 },
