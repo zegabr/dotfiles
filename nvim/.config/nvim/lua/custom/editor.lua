@@ -75,4 +75,11 @@ return {
             vim.keymap.set("n", "<Leader>e", ":Oil<CR>", { desc = "open file tree" })
         end
     },
+    {
+        "j-hui/fidget.nvim",
+        tag = "v1.0.0",
+        opts = {
+            -- options
+        },
+    }
 }

@@ -11,11 +11,6 @@ return {
         -- { 'folke/neodev.nvim' },
         -- Autocompletion
         { 'hrsh7th/nvim-cmp' },
-        {
-            "j-hui/fidget.nvim",
-            tag = "v1.0.0",
-            options = {},
-        }
     },
     config = function()
         require("mason").setup()
