@@ -17,10 +17,10 @@ vim.keymap.set("i", "jk", "<ESC>", { silent = true, desc = 'esc' })
 vim.keymap.set("n", "<C-c>", "<ESC>", { silent = true, desc = 'esc' })
 
 -- this is how i adapted with using bufferline, this way i can quickly manage opened buffers iterating between them and deleting the ones i don't want
-vim.keymap.set("n", "<left>", ":bp<CR>", { desc = 'buffer prev' })
-vim.keymap.set("n", "<right>", ":bn<CR>", { desc = 'buffer next' })
-vim.keymap.set("n", "<down>", ":bd<CR>", { desc = 'buffer close' })
-vim.keymap.set("n", "<up>", "<C-^>", { desc = 'buffer last' })
+vim.keymap.set("n", "<M-h>", ":bp<CR>", { desc = 'buffer prev' })
+vim.keymap.set("n", "<M-l>", ":bn<CR>", { desc = 'buffer next' })
+vim.keymap.set("n", "<M-m>", ":bd<CR>", { desc = 'buffer close' })
+vim.keymap.set("n", "<M-i>", "<C-^>", { desc = 'buffer last' })
 
 vim.keymap.set("n", "<C-h>", ":cprev<CR>zz", { desc = 'quickfix list next' })
 vim.keymap.set("n", "<C-l>", ":cnext<CR>zz", { desc = 'quickfix list prev' })
