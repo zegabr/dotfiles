@@ -10,7 +10,13 @@ venv-create() {
 }
 
 venv-activate() {
-    source ~/.myvenvs/$1/bin/activate
+    selected=$(find \
+            ~/.myvenvs/ \
+            -mindepth 1 \
+            -maxdepth 1 \
+            -type d \
+            | fzf)
+    source $selected/bin/activate
 }
 
 venv-deactivate() {
