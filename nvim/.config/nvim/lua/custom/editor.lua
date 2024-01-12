@@ -38,17 +38,7 @@ return {
     },
 
     { 'ntpeters/vim-better-whitespace' }, --trim whitespace with :StripWhiteSpace
-    {
-        'matze/vim-move',
-        config = function()
-            -- redundant remap just in case
-            -- TODO: add the primeagen version and remove this
-            vim.keymap.set("n", "<M-h>", ":bp<CR>", { desc = 'buffer prev' })
-            vim.keymap.set("n", "<M-l>", ":bn<CR>", { desc = 'buffer next' })
-            vim.keymap.set("n", "<M-m>", ":bd<CR>", { desc = 'buffer close' })
-            vim.keymap.set("n", "<M-i>", "<C-^>", { desc = 'buffer last' })
-        end
-    },                          --alt j/k moves selected lines normal and visual mode
+
     { 'tpope/vim-obsession', }, --vim store session :Obsession TODO -> remember to add *Session.vim it to your .git/info/exclude (my 'vs' bash alias already does that for me)
 
     -- Comments
