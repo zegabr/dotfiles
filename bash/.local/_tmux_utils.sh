@@ -26,11 +26,8 @@ _tmux_sessionizer() {
     if [[ $# -eq 1 ]]; then
         selected=$1
     else
-        # the /mnt/ is for using on windows pc in case jetbrains ides are needed -> work on nvim via wsl, build and run via jetbrains
         selected=$(find \
             ~/ \
-            /mnt/c/Users/JosePereira/Documents/work/ \
-            /mnt/c/Users/JosePereira/Documents/ \
             ~/work \
             ~/work/test \
             ~/personal \
