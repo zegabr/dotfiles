@@ -8,7 +8,7 @@ return {
             cmd = 'Mason',
         },
         { 'williamboman/mason-lspconfig.nvim' },
-        -- { 'folke/neodev.nvim' },
+
         -- Autocompletion
         { 'hrsh7th/nvim-cmp' },
     },

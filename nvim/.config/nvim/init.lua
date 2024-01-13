@@ -28,21 +28,25 @@ local plugins = {
     require('custom.editor'),
     require('custom.undotree'), -- this does not exists on other editors
     require('custom.wilder'),
-    require('custom.git'), -- git specific plugins
+
     ----LSP (code editing)
     require('custom.cmp'),
     require('custom.lsp'),
-    -- require('custom.copilot'),
 
     -- ollama llms
     require('custom.llm'),
-
-    -- Http files
-    require('custom.rest'), -- see exmaples here https://github.com/rest-nvim/rest.nvim/tree/main/tests
-    -- Latex
-    require('custom.tex'),
     -- vimwiki
     require('custom.vimwiki'),
+    -- Http files
+    require('custom.rest'), -- see exmaples here https://github.com/rest-nvim/rest.nvim/tree/main/tests
+
+
+    -- git specific plugins
+    require('custom.git'),
+
+    -- not used much
+    -- require('custom.latex'), -- requires some cargo packages found on ../../../scripts/scripts/stuff/r.sh
+    -- require('custom.copilot'),
 }
 
 local opts = {}
