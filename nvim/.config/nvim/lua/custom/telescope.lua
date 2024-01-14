@@ -76,6 +76,5 @@ return {
                 search = '',
             }, { desc = 'Project String Search' })
         end)
-        -- TODO: add leadreleader f to search for visual selected text (better than copying and pasting into usual grep_string)
     end,
 }

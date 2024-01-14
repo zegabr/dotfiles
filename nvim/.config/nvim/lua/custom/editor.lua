@@ -39,7 +39,7 @@ return {
 
     { 'ntpeters/vim-better-whitespace' }, --trim whitespace with :StripWhiteSpace
 
-    { 'tpope/vim-obsession', }, --vim store session :Obsession TODO -> remember to add *Session.vim it to your .git/info/exclude (my 'vs' bash alias already does that for me)
+    { 'tpope/vim-obsession', },           --vim store session :Obsession TODO -> remember to add *Session.vim it to your .git/info/exclude (my 'vs' bash alias already does that for me)
 
     -- Comments
     { 'tpope/vim-commentary', }, -- <count>gcc | gcgc | visual gc
@@ -81,5 +81,5 @@ return {
         opts = {
             -- options
         },
-    }
+    },
 }

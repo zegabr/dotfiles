@@ -64,8 +64,8 @@ return { -- for lazy
                 sections = {
                     lualine_a = { "mode" },
                     lualine_b = { "branch", "diff", "diagnostics", },
-                    -- lualine_c = { "filename" },
-                    lualine_c = { "vim.fn.fnamemodify(vim.fn.resolve(vim.fn.expand('%:p')), ':~:.')" }, -- seems like better filename resolving for wsl
+                    lualine_c = { "filename" },
+                    -- lualine_c = { "vim.fn.fnamemodify(vim.fn.resolve(vim.fn.expand('%:p')), ':~:.')" }, -- seems like better filename resolving for wsl
                     lualine_x = { "encoding", },
                     lualine_y = { "progress" },
                     lualine_z = { "location" }
