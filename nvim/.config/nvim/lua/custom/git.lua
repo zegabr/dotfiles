@@ -18,11 +18,4 @@ return { -- specific plugins to work with git, doesn't allow mercurial
             -- :GitBlameToggle when needed
         end
     },
-    {
-        'tpope/vim-fugitive',
-        config = function()
-            -- if this don't work, try removing vim session
-            vim.keymap.set("n", "<leader>G", ":Git<CR>", { desc = 'Git fugitive' })
-        end
-    },
 }
