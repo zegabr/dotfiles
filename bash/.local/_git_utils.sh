@@ -1,5 +1,6 @@
 #!/bin/sh
 
+alias lg='lazygit'
 alias gs='git status'
 alias guncommit='git reset HEAD~1 --soft'
 function _ga_completion() {

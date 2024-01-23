@@ -54,6 +54,9 @@ bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/
 # simlinks dotfiles
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/d.sh)
 
+# install lazygit
+bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/lazygit.sh)
+
 if grep zegabr ~/.ssh/config; then
     cd ~/
     # For personal note taking
