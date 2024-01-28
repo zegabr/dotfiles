@@ -11,8 +11,10 @@ return {
 
         -- Autocompletion
         { 'hrsh7th/nvim-cmp' },
+        { "folke/neodev.nvim",                opts = {} },
     },
     config = function()
+        require("neodev").setup({})
         require("mason").setup()
         local mason_lspconfig = require('mason-lspconfig')
         mason_lspconfig.setup {
