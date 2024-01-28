@@ -16,8 +16,8 @@ vim.keymap.set("n", "gv", "`[v`]", { desc = 'select last pasted text' })
 -- move lines up or down
 vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv", { desc = 'move lines up' })
 vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv", { desc = 'move lines down' })
-vim.keymap.set("n", "<M-j>", "ddp==", { desc = 'move lines down' })
-vim.keymap.set("n", "<M-k>", "ddkP==", { desc = 'move lines up' })
+vim.keymap.set("n", "<M-j>", ":m+<cr>", { desc = 'move lines down' })
+vim.keymap.set("n", "<M-k>", ":m-2<cr>", { desc = 'move lines up' })
 
 vim.keymap.set("i", "jk", "<ESC>", { silent = true, desc = 'esc' })
 vim.keymap.set("n", "<C-c>", "<ESC>", { silent = true, desc = 'esc' })
