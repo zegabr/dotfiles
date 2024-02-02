@@ -26,4 +26,15 @@ return { -- specific plugins to work with git, doesn't allow mercurial
             -- :GitBlameToggle when needed
         end
     },
+
+    {
+        "kdheepak/lazygit.nvim",
+        enabled = is_git_repo(),
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            vim.keymap.set("n", "<leader>G", ":LazyGit<CR>", { silent = true, desc = 'LazyGit toggle' })
+        end
+    },
 }
