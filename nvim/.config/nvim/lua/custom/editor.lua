@@ -82,4 +82,6 @@ return {
             -- options
         },
     },
+
+    { "uga-rosa/ccc.nvim" },
 }
