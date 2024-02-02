@@ -32,6 +32,7 @@ local plugins = {
     ----LSP (code editing)
     require('custom.cmp'),
     require('custom.lsp'),
+    require('custom.neogen'),
 
     -- ollama llms
     require('custom.llm'),
