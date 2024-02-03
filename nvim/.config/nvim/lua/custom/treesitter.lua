@@ -11,15 +11,10 @@ return {
     config = function()
         require('nvim-treesitter.configs').setup {
             ensure_installed = {
-                "bash",
-                "comment",
-                "lua",
-                "vim",
-                "vimdoc",
-                "diff",
-                "gitcommit",
-                "markdown",
-                "markdown_inline",
+                -- essential
+                "bash", "comment", "lua", "luadoc", "vim", "vimdoc", "diff", "gitcommit", "markdown", "markdown_inline", "xml", "yaml",
+                -- most used
+                "javascript", "typescript", "go", "c", "cpp", "python", "kotlin", "java", "html", "jsdoc", "rust", "sql", "tsx",
             },
             sync_install = false,
             auto_install = true, -- works since i will have treesitter cli installed
