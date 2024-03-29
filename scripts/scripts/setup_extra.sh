@@ -6,12 +6,6 @@ if [ "$ans" == "y" ]; then
     UPDATEGRUB=1
 fi
 
-BRAVE=0
-read -p "Type y if you want Brave to be installed (y/<anything else>): " ans
-if [ "$ans" == "y" ]; then
-    BRAVE=1
-fi
-
 CHROME=0
 read -p "Type y if you want Google Chrome to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
@@ -82,13 +76,6 @@ sudo apt install -y mypaint
 sudo apt install -y telegram-desktop
 sudo apt install -y qbittorrent
 sudo apt install -y mintstick
-
-if [ "$BRAVE" == 1 ]; then
-    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-    sudo apt update -y
-    sudo apt install brave-browser -y
-fi
 
 if [ "$CHROME" == 1 ]; then
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

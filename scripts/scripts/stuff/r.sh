@@ -8,7 +8,7 @@ rustup component add rust-analyzer
 cargo install bacon
 
 # utils
-cargo install ripgrep fd-find bat exa tree-sitter-cli
+cargo install bat exa tree-sitter-cli
 
 # starship
 cargo install starship

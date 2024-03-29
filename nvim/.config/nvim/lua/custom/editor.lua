@@ -83,5 +83,6 @@ return {
         },
     },
 
+    -- color picker
     { "uga-rosa/ccc.nvim" },
 }
