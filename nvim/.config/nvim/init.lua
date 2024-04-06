@@ -506,7 +506,6 @@ local plugins = {
                 -- Snippets
                 { "L3MON4D3/LuaSnip" },
             },
-            event = { "InsertEnter", "CmdlineEnter" },
             config = function()
                 require("luasnip.loaders.from_vscode").lazy_load() -- from luasnip
                 local cmp = require('cmp')
@@ -575,7 +574,67 @@ local plugins = {
                 { 'hrsh7th/nvim-cmp' },
                 { "folke/neodev.nvim",                opts = {} },
             },
-            config = function()
+            opts = function(_, opts)
+                return vim.tbl_deep_extend("force", opts, {
+                    servers = {
+                        lua_ls = {
+                            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                            settings = {
+                                Lua = {
+                                    runtime = {
+                                        version = 'LuaJIT',
+                                    },
+                                    diagnostics = {
+                                        globals = { 'vim' },
+                                    },
+                                    workspace = {
+                                        checkThirdParty = false,
+                                        library = {
+                                            vim.env.VIMRUNTIME
+                                        }
+                                    },
+                                }
+                            },
+                        },
+                        bashls = {
+                            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                            filetypes = { 'sh', '.bash_aliases', '.bashrc', '.bash_aliases_work', '.profile', '.bash_profile' },
+                        },
+                        gopls = {
+                            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                            settings = {
+                                gopls = {
+                                    analyses = {
+                                        unusedparams = true,
+                                    },
+                                },
+                                staticcheck = true,
+                            },
+                            extra_on_attach = function(bufnr)
+                                vim.api.nvim_create_autocmd('BufWritePre', {
+                                    buffer = bufnr,
+                                    pattern = '*.go',
+                                    callback = function()
+                                        vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+                                    end
+                                })
+                            end
+                        },
+
+                        eslint = {
+                            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                            extra_on_attach = function(bufnr)
+                                vim.api.nvim_create_autocmd("BufWritePre", {
+                                    buffer = bufnr,
+                                    pattern = { "*.ts", "*.js", "*.tsx", "*.jsx" },
+                                    command = "EslintFixAll",
+                                })
+                            end
+                        },
+                    },
+                })
+            end,
+            config = function(_, opts)
                 require("neodev").setup({})
                 require("mason").setup()
                 local mason_lspconfig = require('mason-lspconfig')
@@ -612,82 +671,10 @@ local plugins = {
                     end,
                 })
 
-                -- Use this to override language servers settings or add an extra_on_attach
-                local server_settings = {
-                    lua_ls = {
-                        settings = {
-                            Lua = {
-                                runtime = {
-                                    version = 'LuaJIT',
-                                },
-                                diagnostics = {
-                                    globals = { 'vim' },
-                                },
-                                workspace = {
-                                    checkThirdParty = false,
-                                    library = {
-                                        vim.env.VIMRUNTIME
-                                    }
-                                },
-                            }
-                        },
-                    },
-
-                    gopls = {
-                        settings = {
-                            gopls = {
-                                analyses = {
-                                    unusedparams = true,
-                                },
-                            },
-                            staticcheck = true,
-                        },
-                        extra_on_attach = function(bufnr)
-                            vim.api.nvim_create_autocmd('BufWritePre', {
-                                buffer = bufnr,
-                                pattern = '*.go',
-                                callback = function()
-                                    vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
-                                end
-                            })
-                        end
-                    },
-
-                    eslint = {
-                        extra_on_attach = function(bufnr)
-                            vim.api.nvim_create_autocmd("BufWritePre", {
-                                buffer = bufnr,
-                                pattern = { "*.ts", "*.js", "*.tsx", "*.jsx" },
-                                command = "EslintFixAll",
-                            })
-                        end
-                    },
-
-                    bashls = {
-                        filetypes = { 'sh', '.bash_aliases', '.bashrc', '.bash_aliases_work', '.profile', '.bash_profile' },
-                    },
-
-                }
-
-                local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-                mason_lspconfig.setup_handlers { -- will only run for installed servers
-                    function(server_name)
-                        require('lspconfig')[server_name].setup {
-                            capabilities = capabilities,
-                            ---@diagnostic disable-next-line: unused-local
-                            on_attach = function(client, bufnr) -- only extra stuff
-                                if server_settings[server_name] and server_settings[server_name].extra_on_attach then
-                                    server_settings[server_name].extra_on_attach(bufnr)
-                                end
-                            end,
-                            settings = (server_settings[server_name] or {}).settings,
-                            filetypes = (server_settings[server_name] or {}).filetypes,
-                            cmd = (server_settings[server_name] or {}).cmd,
-                            root_dir = (server_settings[server_name] or {}).root_dir,
-                        }
-                    end
-                }
+                local lspconfig = require("lspconfig")
+                for server_name, server_opts in pairs(opts.servers or {}) do
+                    lspconfig[server_name].setup(server_opts)
+                end
             end,
         },
 
