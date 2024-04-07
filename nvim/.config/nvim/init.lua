@@ -642,6 +642,7 @@ local plugins = {
                     ensure_installed = {
                         'lua_ls',
                         'vimls',
+                        'bashls',
                     },
                 }
 
