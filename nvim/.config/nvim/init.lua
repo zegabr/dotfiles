@@ -125,7 +125,8 @@ local plugins = {
             end,
         },
         {
-            'akinsho/bufferline.nvim',
+            -- 'akinsho/bufferline.nvim',
+            "zegabr/bufferline.nvim",
             version = "*",
             event = { 'BufReadPre', 'BufNewFile' },
             config = function()
