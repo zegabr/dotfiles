@@ -125,9 +125,7 @@ local plugins = {
             end,
         },
         {
-            -- 'akinsho/bufferline.nvim',
-            "zegabr/bufferline.nvim",
-            version = "*",
+            'akinsho/bufferline.nvim',
             event = { 'BufReadPre', 'BufNewFile' },
             config = function()
                 vim.opt.termguicolors = true
@@ -346,23 +344,24 @@ local plugins = {
                 vim.keymap.set("n", "]h", "<plug>(signify-next-hunk)", { desc = 'next hunk' })
             end,
         },
-        {
-            "AckslD/nvim-neoclip.lua",
-            dependencies = { 'nvim-telescope/telescope.nvim' },
-            config = function()
-                require('neoclip').setup({
-                    keys = {
-                        telescope = {
-                            i = {
-                                paste_behind = '<cr>', -- paste on select, why not?
-                                paste = '<c-p>',       -- this is pasting at end of line (TODO: test on linux)
-                            },
-                        },
-                    },
-                })
-                vim.keymap.set("n", '"', require('telescope').extensions.neoclip.default, { desc = 'Telescope Neoclip' })
-            end,
-        },
+        -- {
+        -- 
+        --     "AckslD/nvim-neoclip.lua",
+        --     dependencies = { 'nvim-telescope/telescope.nvim' },
+        --     config = function()
+        --         require('neoclip').setup({
+        --             keys = {
+        --                 telescope = {
+        --                     i = {
+        --                         paste_behind = '<cr>', -- paste on select, why not?
+        --                         paste = '<c-p>',       -- this is pasting at end of line (TODO: test on linux)
+        --                     },
+        --                 },
+        --             },
+        --         })
+        --         vim.keymap.set("n", '"', require('telescope').extensions.neoclip.default, { desc = 'Telescope Neoclip' })
+        --     end,
+        -- },
 
         { 'ntpeters/vim-better-whitespace' }, --trim whitespace with :StripWhiteSpace
 
