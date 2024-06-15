@@ -345,7 +345,7 @@ local plugins = {
             end,
         },
         -- {
-        -- 
+        --
         --     "AckslD/nvim-neoclip.lua",
         --     dependencies = { 'nvim-telescope/telescope.nvim' },
         --     config = function()
@@ -397,8 +397,18 @@ local plugins = {
                         ["_"] = "actions.open_cwd",
                         ["g."] = "actions.toggle_hidden",
                     },
+                    float = {
+                        -- Padding around the floating window
+                        padding = 2,
+                        max_width = 0,
+                        max_height = 0,
+                        border = "rounded",
+                        win_options = {
+                            winblend = 0,
+                        },
+                    },
                 })
-                vim.keymap.set("n", "<Leader>e", ":Oil<CR>", { desc = "open file tree" })
+                vim.keymap.set("n", "<Leader>e", require('oil').open_float, { desc = "open file tree" })
             end
         },
         {
