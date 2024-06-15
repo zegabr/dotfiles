@@ -23,6 +23,7 @@ parallel \
 zip \
 unzip \
 unar \
+libfontconfig-dev \
 -y
 
 sudo apt install tldr && tldr -u

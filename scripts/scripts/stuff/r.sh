@@ -6,6 +6,7 @@ rustc --version
 rustup component add rust-docs
 rustup component add rust-analyzer
 cargo install bacon
+cargo install alacritty
 
 # utils
 cargo install bat exa tree-sitter-cli
