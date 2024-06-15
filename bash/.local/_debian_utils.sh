@@ -12,7 +12,9 @@ function vs(){
             echo "*.session.vim" >> ".git/info/exclude"
         fi
     else
-        echo "No .git folder found in the current directory, .session.vim will be created here"
+        if [ ! -f ".session.vim" ]; then  # Check if .session.vim file exists
+            echo "No .git folder found in the current directory, .session.vim will be created here"
+        fi
     fi
     if [ -e .session.vim ]; then
         nvim -S .session.vim
