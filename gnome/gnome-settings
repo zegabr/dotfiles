@@ -5,9 +5,45 @@ window-height=500
 window-is-maximized=true
 window-width=540
 
+[com/ubuntu/update-notifier]
+show-apport-crashes=false
+
+[desktop/gnome/applications/browser]
+exec='/opt/google/chrome/google-chrome'
+
+[desktop/gnome/remote-access]
+enabled=false
+
+[desktop/gnome/url-handlers/about]
+command='/opt/google/chrome/google-chrome %s'
+
+[desktop/gnome/url-handlers/http]
+command='/opt/google/chrome/google-chrome %s'
+
+[desktop/gnome/url-handlers/https]
+command='/opt/google/chrome/google-chrome %s'
+
+[desktop/gnome/url-handlers/unknown]
+command='/opt/google/chrome/google-chrome %s'
+
+[org/blueman/plugins/powermanager]
+auto-power-on=false
+
+[org/cinnamon/settings-daemon/peripherals/touchpad]
+scroll-method='two-finger-scrolling'
+
+[org/gnome/baobab/preferences]
+excluded-uris=['file:///google', 'file:///home', 'file:///auto', 'file:///dev']
+
 [org/gnome/control-center]
-last-panel='display'
+last-panel='keyboard'
 window-state=(1637, 948, true)
+
+[org/gnome/deja-dup]
+prompt-check='disabled'
+
+[org/gnome/desktop/a11y]
+always-show-universal-access-status=true
 
 [org/gnome/desktop/a11y/interface]
 high-contrast=false
@@ -26,6 +62,10 @@ categories=['X-SuSE-YaST']
 name='suse-yast.directory'
 translate=true
 
+[org/gnome/desktop/applications/terminal]
+exec='/usr/bin/alacritty'
+exec-arg='--working-directory'
+
 [org/gnome/desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
@@ -39,8 +79,9 @@ show-weekdate=false
 
 [org/gnome/desktop/input-sources]
 current=uint32 0
-mru-sources=[('xkb', 'br'), ('xkb', 'us'), ('xkb', 'us+alt-intl')]
-sources=[('xkb', 'us'), ('xkb', 'br'), ('xkb', 'us+alt-intl')]
+mru-sources=[('xkb', 'us'), ('xkb', 'br'), ('xkb', 'us+alt-intl')]
+per-window=false
+sources=[('xkb', 'us')]
 xkb-options=@as []
 
 [org/gnome/desktop/interface]
@@ -50,17 +91,41 @@ color-scheme='prefer-dark'
 enable-hot-corners=false
 font-antialiasing='grayscale'
 font-hinting='slight'
+gtk-theme='Adwaita-dark'
 show-battery-percentage=true
 toolkit-accessibility=false
 
+[org/gnome/desktop/lockdown]
+disable-show-password=true
+
+[org/gnome/desktop/media-handling]
+automount=false
+autorun-never=true
+
 [org/gnome/desktop/notifications]
-application-children=['firefox-esr', 'org-gnome-software', 'gnome-power-panel', 'org-gnome-shell-extensions', 'org-gnome-nautilus']
+application-children=['firefox-esr', 'org-gnome-software', 'gnome-power-panel', 'org-gnome-shell-extensions', 'org-gnome-nautilus', 'google-chrome', 'chrome-mdpkiolbdkhdjpekfbkbmhigcaggjagi-default', 'org-gnome-terminal', 'chrome-apkjikbjlghbonboeaehkeoadefnfjmb-default', 'gnome-network-panel', 'org-gnome-characters']
+show-in-lock-screen=true
+
+[org/gnome/desktop/notifications/application/chrome-apkjikbjlghbonboeaehkeoadefnfjmb-default]
+application-id='chrome-apkjikbjlghbonboeaehkeoadefnfjmb-Default.desktop'
+
+[org/gnome/desktop/notifications/application/chrome-mdpkiolbdkhdjpekfbkbmhigcaggjagi-default]
+application-id='chrome-mdpkiolbdkhdjpekfbkbmhigcaggjagi-Default.desktop'
 
 [org/gnome/desktop/notifications/application/firefox-esr]
 application-id='firefox-esr.desktop'
 
+[org/gnome/desktop/notifications/application/gnome-network-panel]
+application-id='gnome-network-panel.desktop'
+
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
+
+[org/gnome/desktop/notifications/application/google-chrome]
+application-id='google-chrome.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-characters]
+application-id='org.gnome.Characters.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-nautilus]
 application-id='org.gnome.Nautilus.desktop'
@@ -70,6 +135,9 @@ application-id='org.gnome.Shell.Extensions.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-software]
 application-id='org.gnome.Software.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-terminal]
+application-id='org.gnome.Terminal.desktop'
 
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=true
@@ -84,14 +152,26 @@ tap-to-click=true
 two-finger-scrolling-enabled=true
 
 [org/gnome/desktop/privacy]
+old-files-age=uint32 30
+recent-files-max-age=-1
 report-technical-problems=true
+
+[org/gnome/desktop/remote-access]
+enabled=false
 
 [org/gnome/desktop/screensaver]
 color-shading-type='solid'
+idle-activation-enabled=true
+lock-delay=0
+lock-enabled=true
 picture-options='zoom'
 picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
 primary-color='#241f31'
 secondary-color='#000000'
+ubuntu-lock-on-suspend=true
+
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
 
 [org/gnome/desktop/session]
 idle-delay=uint32 900
@@ -100,11 +180,27 @@ idle-delay=uint32 900
 event-sounds=true
 theme-name='__custom'
 
+[org/gnome/desktop/wm/keybindings]
+switch-applications=['<Super>Tab']
+switch-applications-backward=['<Shift><Super>Tab']
+switch-windows=['<Alt>Tab']
+switch-windows-backward=['<Shift><Alt>Tab']
+
 [org/gnome/desktop/wm/preferences]
 button-layout='appmenu:minimize,maximize,close'
 
 [org/gnome/evolution-data-server]
 migrated=true
+
+[org/gnome/gedit/preferences/editor]
+scheme='cobalt'
+
+[org/gnome/gedit/state/window]
+bottom-panel-size=140
+side-panel-active-page='GeditWindowDocumentsPanel'
+side-panel-size=200
+size=(900, 700)
+state=43908
 
 [org/gnome/gnome-system-monitor]
 current-tab='resources'
@@ -112,11 +208,14 @@ maximized=true
 network-total-in-bits=false
 show-dependencies=false
 show-whose-processes='user'
-window-state=(2560, 1408, 0, 32)
+window-state=(700, 500)
 
 [org/gnome/gnome-system-monitor/disktreenew]
 col-6-visible=true
 col-6-width=0
+columns-order=[5]
+sort-col=1
+sort-order=0
 
 [org/gnome/maps]
 last-viewed-location=[-9.1751098375395088, -36.16111602328931]
@@ -136,11 +235,22 @@ always-use-location-entry=true
 default-folder-viewer='list-view'
 migrated-gtk-settings=true
 search-filter-time-type='last_modified'
+show-delete-permanently=true
 show-hidden-files=true
 
 [org/gnome/nautilus/window-state]
 initial-size=(890, 550)
-maximized=true
+maximized=false
+
+[org/gnome/portal/filechooser/chrome-mdpkiolbdkhdjpekfbkbmhigcaggjagi-Default]
+last-folder-path='/home/zezin/Downloads'
+
+[org/gnome/portal/filechooser/google-chrome]
+last-folder-path='/home/zezin/Documents'
+
+[org/gnome/settings-daemon/peripherals/touchpad]
+disable-while-typing=true
+scroll-method='two-finger-scrolling'
 
 [org/gnome/settings-daemon/plugins/color]
 night-light-enabled=true
@@ -149,12 +259,22 @@ night-light-schedule-from=17.0
 night-light-temperature=uint32 3179
 
 [org/gnome/settings-daemon/plugins/media-keys]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>Print'
 command='flameshot gui'
 name='flameshot'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Control><Alt>t'
+command='alacritty'
+name='alacritty'
+
+[org/gnome/settings-daemon/plugins/media-keys/mic-mute]
+action='/usr/local/bin/mic-mute-toggle.sh'
+binding='0xf8'
+name='Microphone Mute'
 
 [org/gnome/settings-daemon/plugins/power]
 sleep-inactive-ac-type='nothing'
@@ -163,8 +283,7 @@ sleep-inactive-battery-type='suspend'
 [org/gnome/shell]
 app-picker-layout=[{'org.gnome.Weather.desktop': <{'position': <0>}>, 'org.gnome.clocks.desktop': <{'position': <1>}>, 'org.gnome.Maps.desktop': <{'position': <2>}>, 'kasumi.desktop': <{'position': <3>}>, 'org.gnome.Calculator.desktop': <{'position': <4>}>, 'simple-scan.desktop': <{'position': <5>}>, 'org.gnome.Settings.desktop': <{'position': <6>}>, 'gnome-system-monitor.desktop': <{'position': <7>}>, 'org.gnome.Terminal.desktop': <{'position': <8>}>, 'Utilities': <{'position': <9>}>, 'debian-reference-common.desktop': <{'position': <10>}>, 'org.gnome.Extensions.desktop': <{'position': <11>}>, 'org.goldendict.GoldenDict.desktop': <{'position': <12>}>, 'ghcal.desktop': <{'position': <13>}>}, {'im-config.desktop': <{'position': <0>}>, 'uim.desktop': <{'position': <1>}>, 'libreoffice-calc.desktop': <{'position': <2>}>, 'libreoffice-draw.desktop': <{'position': <3>}>, 'libreoffice-impress.desktop': <{'position': <4>}>, 'libreoffice-startcenter.desktop': <{'position': <5>}>, 'setup-mozc.desktop': <{'position': <6>}>, 'mlterm.desktop': <{'position': <7>}>, 'org.gnome.Music.desktop': <{'position': <8>}>, 'shotwell.desktop': <{'position': <9>}>, 'software-properties-gtk.desktop': <{'position': <10>}>, 'org.gnome.SoundRecorder.desktop': <{'position': <11>}>, 'org.gnome.Sudoku.desktop': <{'position': <12>}>, 'org.gnome.SwellFoop.desktop': <{'position': <13>}>, 'synaptic.desktop': <{'position': <14>}>}, {'org.gnome.Tali.desktop': <{'position': <0>}>, 'org.gnome.Taquin.desktop': <{'position': <1>}>, 'org.gnome.TextEditor.desktop': <{'position': <2>}>, 'xiterm+thai.desktop': <{'position': <3>}>, 'transmission-gtk.desktop': <{'position': <4>}>}]
 disabled-extensions=['Vitals@CoreCoding.com']
-enabled-extensions=['dash-to-dock@micxgx.gmail.com', 'blur-my-shell@aunetx', 'dash-to-panel@jderose9.github.com', 'appindicatorsupport@rgcjonas.gmail.com']
-favorite-apps=['brave-browser.desktop', 'org.gnome.Terminal.desktop', 'org.telegram.desktop.desktop', 'org.gnome.Nautilus.desktop']
+last-selected-power-profile='performance'
 welcome-dialog-last-shown-version='43.6'
 
 [org/gnome/shell/extensions/dash-to-dock]
@@ -191,7 +310,8 @@ leftbox-padding=-1
 panel-anchors='{"0":"MIDDLE"}'
 panel-element-positions='{"0":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'
 panel-lengths='{"0":100}'
-panel-sizes='{"0":43}'
+panel-positions='{"0":"BOTTOM"}'
+panel-sizes='{"0":32}'
 primary-monitor=0
 progress-show-count=true
 show-appmenu=false
@@ -211,6 +331,9 @@ show-storage=false
 show-system=false
 show-temperature=false
 show-voltage=false
+
+[org/gnome/shell/keybindings]
+show-screenshot-ui=['Print']
 
 [org/gnome/shell/world-clocks]
 locations=@av []
@@ -239,10 +362,11 @@ show-hidden=false
 show-size-column=true
 show-type-column=true
 sidebar-width=169
-sort-column='name'
+sort-column='modified'
 sort-directories-first=false
-sort-order='ascending'
+sort-order='descending'
 type-format='category'
+view-type='list'
 window-size=(888, 700)
 
 [org/gtk/settings/color-chooser]
@@ -256,12 +380,14 @@ show-hidden=false
 show-size-column=true
 show-type-column=true
 sidebar-width=157
-sort-column='name'
+sort-column='modified'
 sort-directories-first=false
-sort-order='ascending'
+sort-order='descending'
 type-format='category'
-window-position=(26, 23)
+window-position=(1319, 590)
 window-size=(1203, 902)
 
 [system/proxy]
+autoconfig-url='https://proxyconfig.corp.google.com/proxy.pac'
 mode='none'
+use-same-proxy=false
