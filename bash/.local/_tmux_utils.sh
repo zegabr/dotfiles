@@ -63,5 +63,5 @@ _tmux_sessionizer() {
 bind '"\C-f":"_tmux_sessionizer\n"'
 
 if ! [ -z "$PROJECT" ]; then
-  hgd $PROJECT
+  cd $PROJECT
 fi
