@@ -23,6 +23,7 @@ parallel \
 zip \
 unzip \
 unar \
+diodon \
 -y
 
 sudo apt install tldr && tldr -u
@@ -34,15 +35,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install <
 
 # Cheat sheet
 curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
-
-# Check if GPU command is available
-if command -v nvidia-smi &> /dev/null; then
-    echo "nvidia-smi command exists, you have an NVIDIA GPU."
-    # ollama local llms
-    bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/llm.sh)
-else
-    echo "nvidia-smi command not found, you may not have an NVIDIA GPU or the NVIDIA GPU drivers are not installed."
-fi
 
 # tmux
 sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y

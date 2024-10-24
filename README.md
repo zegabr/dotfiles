@@ -26,7 +26,7 @@ my dotfiles manager
 `bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/macos_core.sh)`
 
 ## TODO:
-- should reassign print to flameshot custom shortcut, dconf doesn't seems to work 100% 
+- should reassign 'print to flameshot' and 'diodon' to custom shortcut
 
 ### 4- For other rust cool tools
 `sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash`
