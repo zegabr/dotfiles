@@ -36,6 +36,18 @@ if [ "$ans" == "y" ]; then
     LIBREOFFICE=1
 fi
 
+TELEGRAM=0
+read -p "Type y if you want telegram to be installed (y/<anything else>): " ans
+if [ "$ans" == "y" ]; then
+    TELEGRAM=1
+fi
+
+QBITTORRENT=0
+read -p "[DON'T INSTALL IN CORP DEVICES]Type y if you want qbittorrent to be installed (y/<anything else>): " ans
+if [ "$ans" == "y" ]; then
+    QBITTORRENT=1
+fi
+
 # DUAL BOOT FIX
 if [ "$UPDATEGRUB" == 1 ]; then
     sudo chmod 777 /etc/default/grub
@@ -69,12 +81,20 @@ if [ "$LIBREOFFICE" == 1 ]; then
     sudo apt install libreoffice -y
 fi
 
+# qbittorret
+if [ "$QBITTORRENT" == 1 ]; then
+    sudo apt install qbittorrent -y
+fi
+
+# telegram
+if [ "$TELEGRAM" == 1 ]; then
+    sudo apt install -y telegram-desktop
+fi
+
 sudo apt update -y
 sudo apt install -y flameshot
 sudo apt install -y pandoc
 sudo apt install -y mypaint
-sudo apt install -y telegram-desktop
-sudo apt install -y qbittorrent
 sudo apt install -y mintstick
 
 if [ "$CHROME" == 1 ]; then
