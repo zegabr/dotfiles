@@ -27,6 +27,8 @@ alias sai='sudo apt install -y'
 alias sap='sudo apt purge -y'
 alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
 
+alias via-ui='~/Downloads/via*.AppImage'
+alias vial-ui='~/Downloads/Vial*.AppImage'
 alias update-nvim='source ~/dotfiles/scripts/scripts/stuff/v.sh'
 alias update-node='source ~/dotfiles/scripts/scripts/stuff/node.sh'
 alias update-rust-tools='source ~/dotfiles/scripts/scripts/stuff/r.sh'
