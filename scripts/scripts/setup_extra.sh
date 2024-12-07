@@ -92,7 +92,7 @@ if [ "$TELEGRAM" == 1 ]; then
 fi
 
 sudo apt update -y
-sudo apt install -y flameshot
+# sudo apt install -y flameshot
 sudo apt install -y pandoc
 sudo apt install -y mypaint
 sudo apt install -y mintstick
