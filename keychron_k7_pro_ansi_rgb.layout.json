@@ -1,6 +1,6 @@
 {
-    "tapping":
-        "term": 300,
+    "tapping": {
+        "term": 350,
     },
   "name": "Keychron K7 Pro ANSI RGB",
   "vendorProductId": 875823728,
@@ -18,9 +18,9 @@
     "",
     "",
     "",
-    "",
-    "",
-    ""
+    "me{KC_ENT}",
+    "infrontof",
+    "bigboard"
   ],
   "layers": [
     [
@@ -296,15 +296,15 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
+      "MACRO(15)",
       "KC_NO",
       "KC_NO",
       "KC_NO",
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
+      "MACRO(14)",
+      "MACRO(13)",
       "KC_NO",
       "KC_NO",
       "KC_NO",
