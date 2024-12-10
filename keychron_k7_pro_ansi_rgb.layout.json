@@ -1,6 +1,7 @@
 {
     "tapping": {
         "term": 350,
+        "permissive_hold": true,
     },
   "name": "Keychron K7 Pro ANSI RGB",
   "vendorProductId": 875823728,
