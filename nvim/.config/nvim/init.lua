@@ -611,6 +611,9 @@ local plugins = {
                                 })
                             end
                         },
+                        pyright = {
+
+                        },
 
                         eslint = {
                             capabilities = require('cmp_nvim_lsp').default_capabilities(),

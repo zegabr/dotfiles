@@ -115,3 +115,10 @@ if [ "$DOCKER" == 1 ]; then
     dockerd-rootless-setuptool.sh install
     )
 fi
+
+
+# qmk setup
+  # 735  sai python3-pip
+  # 736  python3 -m pip install --user qmk
+  # 737  qmk setup
+  # 738  /home/ze/.local/bin/qmk setup
