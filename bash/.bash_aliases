@@ -28,10 +28,6 @@ alias sa='source ~/.bash_aliases'
 alias sw='source ~/.bash_aliases_work'
 alias st='tmux source-file ~/.tmux.conf'
 
-# llms
-alias llm-codellama='ollama run codellama'
-alias llm-mistral='ollama run mistral'
-
 bind '"\C-b":"fg\n"'
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'

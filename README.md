@@ -31,5 +31,5 @@ my dotfiles manager
 ### 4- For other rust cool tools
 `sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash`
 
-`bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/r.sh)`
+`source <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/r.sh)`
 

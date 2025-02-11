@@ -13,13 +13,11 @@ ripgrep \
 fd-find \
 wget \
 curl \
-gawk \
 btop \
 jq \
 tidy \
 neofetch \
 cmake \
-parallel \
 zip \
 unzip \
 unar \
@@ -36,26 +34,17 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install <
 # tmux
 sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 
-# install nvim building from source
+# install nvim building from source TODO: chekc if this is still needed
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/v.sh)
 
 # simlinks dotfiles
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/d.sh)
-
-# install lazygit
-bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/lazygit.sh)
 
 if grep zegabr ~/.ssh/config; then
     cd ~/
     # For personal note taking
     git clone git@github.com:zegabr/notes.git
 fi
-
-### For extra desktop applications on desktpp debian distros (this if checks if it is not a wsl nor a macos, if chatpt is right)
-[[ "$XDG_SESSION_TYPE" == "wayland" || "$XDG_SESSION_TYPE" == "x11" ]] && \
-    [[ -z "$WSL_DISTRO_NAME" ]] && \
-    [[ "$(uname)" != "Darwin" ]] && \
-    bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup_extra.sh)
 
 source ~/.bashrc
 

@@ -47,6 +47,26 @@ read -p "[DON'T INSTALL IN CORP DEVICES]Type y if you want qbittorrent to be ins
 if [ "$ans" == "y" ]; then
     QBITTORRENT=1
 fi
+FLAMESHOT=0
+read -p "Type y if you want FLAMESHOT to be installed (y/<anything else>): " ans
+if [ "$ans" == "y" ]; then
+    FLAMESHOT=1
+fi
+PANDOC=0
+read -p "Type y if you want PANDOC to be installed (y/<anything else>): " ans
+if [ "$ans" == "y" ]; then
+    PANDOC=1
+fi
+MYPAINT=0
+read -p "Type y if you want MYPAINT to be installed (y/<anything else>): " ans
+if [ "$ans" == "y" ]; then
+    MYPAINT=1
+fi
+MINTSTICK=0
+read -p "Type y if you want MINTSTICK to be installed (y/<anything else>): " ans
+if [ "$ans" == "y" ]; then
+    MINTSTICK=1
+fi
 
 # DUAL BOOT FIX
 if [ "$UPDATEGRUB" == 1 ]; then
@@ -78,24 +98,42 @@ fi
 # libreoffice
 if [ "$LIBREOFFICE" == 1 ]; then
     sudo add-apt-repository ppa:libreoffice/ppa
+    sudo apt update -y
     sudo apt install libreoffice -y
 fi
 
 # qbittorret
 if [ "$QBITTORRENT" == 1 ]; then
+    sudo apt update -y
     sudo apt install qbittorrent -y
 fi
 
 # telegram
 if [ "$TELEGRAM" == 1 ]; then
+    sudo apt update -y
     sudo apt install -y telegram-desktop
 fi
 
-sudo apt update -y
-# sudo apt install -y flameshot
-sudo apt install -y pandoc
-sudo apt install -y mypaint
-sudo apt install -y mintstick
+# flameshow
+if [ "$FLAMESHOT" == 1 ]; then
+    sudo apt update -y
+    sudo apt install -y flameshot
+fi
+# pandoc
+if [ "$PANDOC" == 1 ]; then
+    sudo apt update -y
+    sudo apt install -y pandoc
+fi
+# mypaint
+if [ "$MYPAINT" == 1 ]; then
+    sudo apt update -y
+    sudo apt install -y mypaint
+fi
+# mintstick
+if [ "$MINTSTICK" == 1 ]; then
+    sudo apt update -y
+    sudo apt install -y mintstick
+fi
 
 if [ "$CHROME" == 1 ]; then
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

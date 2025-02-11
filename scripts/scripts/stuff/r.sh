@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# TODO: must be run with source
+
 # rust tools
 source "$HOME/.cargo/env"
 rustc --version
