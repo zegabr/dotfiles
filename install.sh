@@ -12,14 +12,3 @@ done
 
 source ~/.bashrc
 
-# for gnome
-if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
-    dconf load / < ~/dotfiles/gnome/gnome-settings
-    echo "gnome profile set, probably need to logout and login again"
-fi
-
-# for kde
-if [[ "$XDG_CURRENT_DESKTOP" == *"KDE"* ]]; then
-    cp -r ~/dotfiles/kde/.config/* ~/.config/
-    echo "kde profile set, probably need to logout and login again"
-fi

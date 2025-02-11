@@ -40,30 +40,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-function update-dump(){
-    # for gnome
-    if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
-        dconf dump / > ~/dotfiles/gnome/gnome-settings
-    fi
-    # for kde
-    if [[ "$XDG_CURRENT_DESKTOP" == *"KDE"* ]]; then
-        cp ~/.config/dolphinrc ~/dotfiles/kde/.config
-        cp ~/.config/kdeglobals ~/dotfiles/kde/.config
-        cp ~/.config/kglobalshortcutsrc ~/dotfiles/kde/.config
-        cp ~/.config/khotkeysrc ~/dotfiles/kde/.config
-        cp ~/.config/ktimezonedrc ~/dotfiles/kde/.config
-        cp ~/.config/kwinrc ~/dotfiles/kde/.config
-        cp ~/.config/kxkbrc ~/dotfiles/kde/.config
-        cp ~/.config/plasma-localerc ~/dotfiles/kde/.config
-        cp ~/.config/powerdevilrc ~/dotfiles/kde/.config
-        cp ~/.config/powermanagementprofilesrc ~/dotfiles/kde/.config
-        cp ~/.config/touchpadxlibinputrc ~/dotfiles/kde/.config
-        cp ~/.config/Trolltech.conf ~/dotfiles/kde/.config
-        cp ~/.config/xsettingsd.conf ~/dotfiles/kde/.config
-        cp ~/.config/plasma-org.kde.plasma.desktop-appletsrc ~/dotfiles/kde/.config
-    fi
-}
-
 extract(){
     # Bash Function To Extract File Archives Of Various Types
      if [ -f $1 ] ; then
