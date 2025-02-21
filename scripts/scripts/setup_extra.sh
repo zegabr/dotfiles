@@ -57,11 +57,6 @@ read -p "Type y if you want PANDOC to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
     PANDOC=1
 fi
-MYPAINT=0
-read -p "Type y if you want MYPAINT to be installed (y/<anything else>): " ans
-if [ "$ans" == "y" ]; then
-    MYPAINT=1
-fi
 MINTSTICK=0
 read -p "Type y if you want MINTSTICK to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
@@ -123,11 +118,6 @@ fi
 if [ "$PANDOC" == 1 ]; then
     sudo apt update -y
     sudo apt install -y pandoc
-fi
-# mypaint
-if [ "$MYPAINT" == 1 ]; then
-    sudo apt update -y
-    sudo apt install -y mypaint
 fi
 # mintstick
 if [ "$MINTSTICK" == 1 ]; then
