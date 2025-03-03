@@ -34,7 +34,7 @@ bind 'set show-all-if-ambiguous on'
 
 a ()
 {
-    FUNCTIONS=$(declare -f | grep "()" | awk '{print $1}' | awk '!/^_/ && !/[=;]/ && !/local/ && !/eval/ && {print $0}')
+    FUNCTIONS=$(declare -f | grep "()" | awk '{print $1}' | awk '!/^_/ && !/[=;]/ && !/local/ && !/eval/ {print $0}')
     ALIASES=$(alias | awk '{print $2}' | awk -F'=' '{print $1}')
     SELECTED=$(echo "$FUNCTIONS\n$ALIASES" | fzf)
     eval $SELECTED
