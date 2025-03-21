@@ -34,7 +34,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install <
 # tmux
 sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 
-# install nvim building from source TODO: chekc if this is still needed
+# install nvim building from source TODO: check if this is still needed
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/v.sh)
 
 # simlinks dotfiles
