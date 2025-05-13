@@ -53,3 +53,5 @@ if [ ! -e "~/.bash_aliases_work" ]; then
 else
 
 cd ~/dotfiles
+
+# test
