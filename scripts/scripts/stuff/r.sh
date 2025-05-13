@@ -3,21 +3,33 @@
 # TODO: must be run with source
 
 # rust tools
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"
 rustc --version
 rustup component add rust-docs
 rustup component add rust-analyzer
-cargo install bacon
+$HOME/.cargo/bin/cargo install bacon
 
 # alacritty
 sai libfontconfig-dev
-cargo install alacritty
+$HOME/.cargo/bin/cargo install alacritty
+cat <<EOF > ~/Desktop/Alacritty.desktop
+[Desktop Entry]
+Type=Application
+TryExec=alacritty
+Exec=~/.cargo/bin/alacritty
+Icon=Alacritty
+Terminal=false
+Categories=System;TerminalEmulator;
+Name=Alacritty
+GenericName=Terminal
+Comment=A cross-platform, GPU enhanced terminal emulator
+EOF
 
 # utils
-cargo install bat exa tree-sitter-cli
+$HOME/.cargo/bin/cargo install bat exa tree-sitter-cli
 
 # starship
-cargo install starship
+$HOME/.cargo/bin/cargo install starship
 # if starship is not being started, add it to bashrc
 if ! grep -q 'eval "$(starship init bash)"' ~/.bashrc; then
     echo 'export STARSHIP_LOG=error' >> ~/.bashrc
