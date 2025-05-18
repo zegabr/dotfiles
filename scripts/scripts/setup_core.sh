@@ -6,22 +6,22 @@ cd ~/Downloads
 sudo apt update -y
 
 sudo apt install \
-git \
-stow \
-tree \
-ripgrep \
-fd-find \
-wget \
-curl \
 btop \
-jq \
-tidy \
-neofetch \
 cmake \
-zip \
-unzip \
-unar \
+curl \
 diodon \
+fd-find \
+git \
+jq \
+neofetch \
+ripgrep \
+stow \
+tidy \
+tree \
+unar \
+unzip \
+wget \
+zip \
 -y
 
 # install and update tldr
