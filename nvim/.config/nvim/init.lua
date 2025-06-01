@@ -780,26 +780,26 @@ local plugins = {
             end
         },
 
-        {
-            'f-person/git-blame.nvim',
-            cmd = 'GitBlameToggle',
-            enabled = is_git_repo(),
-            config = function()
-                require('gitblame').setup({ enabled = false, })
-                -- :GitBlameToggle when needed
-            end
-        },
+        -- {
+        --     'f-person/git-blame.nvim',
+        --     cmd = 'GitBlameToggle',
+        --     enabled = is_git_repo(),
+        --     config = function()
+        --         require('gitblame').setup({ enabled = false, })
+        --         -- :GitBlameToggle when needed
+        --     end
+        -- },
 
-        {
-            "kdheepak/lazygit.nvim",
-            enabled = is_git_repo(),
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-            },
-            config = function()
-                vim.keymap.set("n", "<leader>G", ":LazyGit<CR>", { silent = true, desc = 'LazyGit toggle' })
-            end
-        },
+        -- {
+        --     "kdheepak/lazygit.nvim",
+        --     enabled = is_git_repo(),
+        --     dependencies = {
+        --         "nvim-lua/plenary.nvim",
+        --     },
+        --     config = function()
+        --         vim.keymap.set("n", "<leader>G", ":LazyGit<CR>", { silent = true, desc = 'LazyGit toggle' })
+        --     end
+        -- },
     },
 
     -- {-- requires some cargo packages found on ../../../scripts/scripts/stuff/r.sh
