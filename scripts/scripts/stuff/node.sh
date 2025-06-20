@@ -11,3 +11,5 @@ sudo apt-get update -y
 sudo apt-get install nodejs -y
 
 npm install tree-sitter-cli
+
+rm -rf node_modules package.json package-lock.json
