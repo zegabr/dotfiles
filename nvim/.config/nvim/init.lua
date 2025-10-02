@@ -676,9 +676,9 @@ local plugins = {
                     end,
                 })
 
-                local lspconfig = require("lspconfig")
+                local lspconfig = vim.lsp.config
                 for server_name, server_opts in pairs(opts.servers or {}) do
-                    lspconfig[server_name].setup(server_opts)
+                    lspconfig( server_name, server_opts)
                 end
             end,
         },
