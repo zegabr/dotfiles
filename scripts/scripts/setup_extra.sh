@@ -6,6 +6,12 @@ if [ "$ans" == "y" ]; then
     UPDATEGRUB=1
 fi
 
+AMDGPU=0
+read -p "Type y if you are using amd gpu (y/<anything else>): " ans
+if [ "$ans" == "y" ]; then
+    AMDGPU=1
+fi
+
 CHROME=0
 read -p "Type y if you want Google Chrome to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
@@ -80,6 +86,54 @@ if [ "$DISCORD" == 1 ]; then
     wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
     sudo apt install -y ./discord.deb
     rm ./discord.deb
+fi
+
+# amd
+if [ "$AMDGPU" == 1 ]; then
+    echo " ----- checking amd gpu is recognized ----"
+    lspci | grep VGA
+    sudo apt update -y && sudo apt full-upgrade -y
+    sudo apt install linux-generic dkms mesa-utils -y
+    sudo dpkg --add-architecture i386
+    sudo apt update -y
+    sudo apt install -y firmware-amd-graphics
+    sudo apt install -y flatpak
+    sudo apt install -y gnome-software-plugin-flatpak
+    sudo apt install -y libdrm-amdgpu1
+    sudo apt install -y libdrm2:i386
+    sudo apt install -y libgl1-mesa-dri:i386
+    sudo apt install -y libvulkan1
+    sudo apt install -y libvulkan1:i386
+    sudo apt install -y lutris
+    sudo apt install -y mangohud
+    sudo apt install -y mesa-utils
+    sudo apt install -y mesa-utils-extra
+    sudo apt install -y mesa-va-drivers
+    sudo apt install -y mesa-vdpau-drivers
+    sudo apt install -y mesa-vulkan-drivers
+    sudo apt install -y mesa-vulkan-drivers:i386
+    sudo apt install -y protonup-qt
+    sudo apt install -y radeontop
+    sudo apt install -y steam
+    sudo apt install -y vainfo
+    sudo apt install -y vdpauinfo
+    sudo apt install -y vulkan-tools
+    sudo apt install -y vulkan-validationlayers
+    sudo apt install -y wine-stable
+    sudo apt install -y winetricks
+
+    sudo apt install -y gamemode
+    sudo systemctl enable --now gamemoded
+
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak install -y flathub com.discordapp.Discord
+
+    # Enable fsync and futex2 if kernel supports it
+    if uname -r | grep -qE '6\.'; then
+      echo "Your kernel likely supports fsync/futex2 (good for Proton)."
+    else
+      echo "Consider upgrading to a newer kernel for better gaming performance."
+    fi
 fi
 
 # spotify
