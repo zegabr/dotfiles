@@ -29,6 +29,7 @@ alias bbalanced='powerprofilesctl set balanced'
 alias bperf='powerprofilesctl set performance'
 
 alias sap='sudo apt purge -y'
+alias sai='sudo apt install -y'
 alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
 
 alias via-ui='~/Downloads/via*.AppImage'

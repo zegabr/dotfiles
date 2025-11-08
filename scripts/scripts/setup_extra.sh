@@ -83,9 +83,10 @@ cd ~/Downloads
 
 # discord
 if [ "$DISCORD" == 1 ]; then
-    wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
-    sudo apt install -y ./discord.deb
-    rm ./discord.deb
+    sudo apt update -y
+    sudo apt install -y flatpak
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak install -y flathub com.discordapp.Discord
 fi
 
 # amd
@@ -96,7 +97,6 @@ if [ "$AMDGPU" == 1 ]; then
     sudo apt install linux-generic dkms mesa-utils -y
     sudo dpkg --add-architecture i386
     sudo apt update -y
-    sudo apt install -y firmware-amd-graphics
     sudo apt install -y flatpak
     sudo apt install -y gnome-software-plugin-flatpak
     sudo apt install -y libdrm-amdgpu1
@@ -105,7 +105,6 @@ if [ "$AMDGPU" == 1 ]; then
     sudo apt install -y libvulkan1
     sudo apt install -y libvulkan1:i386
     sudo apt install -y lutris
-    sudo apt install -y mangohud
     sudo apt install -y mesa-utils
     sudo apt install -y mesa-utils-extra
     sudo apt install -y mesa-va-drivers
@@ -126,7 +125,6 @@ if [ "$AMDGPU" == 1 ]; then
     sudo systemctl enable --now gamemoded
 
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    flatpak install -y flathub com.discordapp.Discord
 
     # Enable fsync and futex2 if kernel supports it
     if uname -r | grep -qE '6\.'; then
