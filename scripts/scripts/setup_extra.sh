@@ -157,8 +157,7 @@ fi
 
 # telegram
 if [ "$TELEGRAM" == 1 ]; then
-    sudo apt update -y
-    sudo apt install -y telegram-desktop
+    snap install telegram-desktop
 fi
 
 # flameshow
