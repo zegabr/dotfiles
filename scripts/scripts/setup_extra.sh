@@ -114,9 +114,7 @@ fi
 
 # steam
 if [ "$STEAM" == 1 ]; then
-    sudo apt install -y flatpak
-    sudo apt install -y gamemode
-    sudo apt install -y gnome-software-plugin-flatpak
+    sudo apt update -y && sudo apt full-upgrade -y
     sudo apt install -y libc6:i386
     sudo apt install -y libncurses6:i386
     sudo apt install -y libstdc++6:i386
@@ -129,12 +127,14 @@ if [ "$STEAM" == 1 ]; then
     sudo apt install -y wine32
     sudo apt install -y wine64
     sudo apt install -y winetricks
-    sudo systemctl enable --now gamemoded
+
+    sudo apt install -y flatpak
+    sudo apt install -y gnome-software-plugin-flatpak
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub net.davidotek.pupgui2
     # Enable fsync and futex2 if kernel supports it
     if uname -r | grep -qE '6\.'; then
-      echo "Your kernel likely supports fsync/futex2 (good for Proton)."
+      echo "Your kernel likely supports fsync/futex2 (good for Proton). MUST INSTALL MANUALLY VIA UI"
     else
       echo "Consider upgrading to a newer kernel for better gaming performance."
     fi
