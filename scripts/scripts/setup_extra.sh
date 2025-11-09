@@ -30,12 +30,6 @@ if [ "$ans" == "y" ]; then
     DISCORD=1
 fi
 
-SPOTIFY=0
-read -p "Type y if you want Spotify to be installed (y/<anything else>): " ans
-if [ "$ans" == "y" ]; then
-    SPOTIFY=1
-fi
-
 LIBREOFFICE=0
 read -p "Type y if you want Libreoffice to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
@@ -53,16 +47,13 @@ read -p "[DON'T INSTALL IN CORP DEVICES]Type y if you want qbittorrent to be ins
 if [ "$ans" == "y" ]; then
     QBITTORRENT=1
 fi
-FLAMESHOT=0
-read -p "Type y if you want FLAMESHOT to be installed (y/<anything else>): " ans
-if [ "$ans" == "y" ]; then
-    FLAMESHOT=1
-fi
+
 PANDOC=0
 read -p "Type y if you want PANDOC to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
     PANDOC=1
 fi
+
 MINTSTICK=0
 read -p "Type y if you want MINTSTICK to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
@@ -96,14 +87,23 @@ if [ "$AMDGPU" == 1 ]; then
     sudo apt update -y && sudo apt full-upgrade -y
     sudo apt install linux-generic dkms mesa-utils -y
     sudo dpkg --add-architecture i386
+
     sudo apt update -y
     sudo apt install -y flatpak
     sudo apt install -y gnome-software-plugin-flatpak
+    sudo apt install -y libc6:i386
     sudo apt install -y libdrm-amdgpu1
     sudo apt install -y libdrm2:i386
     sudo apt install -y libgl1-mesa-dri:i386
+    sudo apt install -y libgl1:i386
+    sudo apt install -y libglu1-mesa:i386
+    sudo apt install -y libncurses6:i386
+    sudo apt install -y libstdc++6:i386
     sudo apt install -y libvulkan1
     sudo apt install -y libvulkan1:i386
+    sudo apt install -y libx11-6:i386
+    sudo apt install -y libxext6:i386
+    sudo apt install -y libxrandr2:i386
     sudo apt install -y lutris
     sudo apt install -y mesa-utils
     sudo apt install -y mesa-utils-extra
@@ -111,7 +111,6 @@ if [ "$AMDGPU" == 1 ]; then
     sudo apt install -y mesa-vdpau-drivers
     sudo apt install -y mesa-vulkan-drivers
     sudo apt install -y mesa-vulkan-drivers:i386
-    sudo apt install -y protonup-qt
     sudo apt install -y radeontop
     sudo apt install -y steam
     sudo apt install -y vainfo
@@ -119,12 +118,15 @@ if [ "$AMDGPU" == 1 ]; then
     sudo apt install -y vulkan-tools
     sudo apt install -y vulkan-validationlayers
     sudo apt install -y wine-stable
+    sudo apt install -y wine32
+    sudo apt install -y wine64
     sudo apt install -y winetricks
 
     sudo apt install -y gamemode
     sudo systemctl enable --now gamemoded
 
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak install flathub net.davidotek.pupgui2
 
     # Enable fsync and futex2 if kernel supports it
     if uname -r | grep -qE '6\.'; then
@@ -132,14 +134,6 @@ if [ "$AMDGPU" == 1 ]; then
     else
       echo "Consider upgrading to a newer kernel for better gaming performance."
     fi
-fi
-
-# spotify
-if [ "$SPOTIFY" == 1 ]; then
-    curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-    echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-    sudo apt update -y
-    sudo apt install spotify-client -y
 fi
 
 # libreoffice
@@ -160,16 +154,12 @@ if [ "$TELEGRAM" == 1 ]; then
     snap install telegram-desktop
 fi
 
-# flameshow
-if [ "$FLAMESHOT" == 1 ]; then
-    sudo apt update -y
-    sudo apt install -y flameshot
-fi
 # pandoc
 if [ "$PANDOC" == 1 ]; then
     sudo apt update -y
     sudo apt install -y pandoc
 fi
+
 # mintstick
 if [ "$MINTSTICK" == 1 ]; then
     sudo apt update -y
