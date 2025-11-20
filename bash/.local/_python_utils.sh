@@ -23,7 +23,7 @@ venv-deactivate() {
     deactivate
 }
 
-pip(){
+function pip() {
     if [ -n "$VIRTUAL_ENV" ]; then
         $VIRTUAL_ENV/bin/pip "$@"
     else
@@ -31,7 +31,7 @@ pip(){
     fi
 }
 
-pip3(){
+function pip3() {
     if [ -n "$VIRTUAL_ENV" ]; then
         $VIRTUAL_ENV/bin/pip3 "$@"
     else
