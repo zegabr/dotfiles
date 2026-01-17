@@ -6,7 +6,7 @@ cd ~/Downloads
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install git
 brew install stow
-brew install htop
+brew install btop
 brew install tree
 brew install neovim
 brew install tmux

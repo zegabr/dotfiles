@@ -187,10 +187,6 @@ local plugins = {
     { -- Treesitter
         'nvim-treesitter/nvim-treesitter',
         event = { 'BufReadPre', 'BufNewFile' },
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-            'nvim-treesitter/nvim-treesitter-context',
-        },
         build = function()
             require('nvim-treesitter.install').update({ with_sync = true })()
         end,
@@ -203,40 +199,40 @@ local plugins = {
                     "javascript", "typescript", "go", "c", "cpp", "python", "kotlin", "java", "html", "jsdoc", "rust", "sql", "tsx",
                 },
                 sync_install = false,
-                auto_install = true, -- works since i will have treesitter cli installed
+                -- auto_install = true, -- works since i will have treesitter cli installed
                 indent = { enable = true },
                 highlight = { enable = true, },
-                textobjects = {
-                    enable = true,
-                    select = {
-                        enable = true,
-                        -- Automatically jump forward to textobj, similar to targets.vim
-                        lookahead = true,
-                        keymaps = {
-                            -- You can use the capture groups defined in textobjects.scm
-                            ["af"] = "@function.outer",
-                            ["if"] = "@function.inner",
-                            ["ac"] = "@class.outer",
-                            ["ic"] = "@class.inner",
-                        },
-                    },
-                    move = {
-                        enable = true,
-                        set_jumps = true,
-                        goto_next_start = {
-                            [']f'] = '@function.outer',
-                            [']c'] = '@class.outer'
-                        },
-                        goto_previous_start = {
-                            ['[f'] = '@function.outer',
-                            ['[c'] = '@class.outer'
-                        },
-                    },
-                    swap = {
-                        enable = true,
-                        swap_next = { ["<leader>sw"] = "@parameter.inner" },
-                    }
-                }
+                -- textobjects = {
+                --     enable = true,
+                --     select = {
+                --         enable = true,
+                --         -- Automatically jump forward to textobj, similar to targets.vim
+                --         lookahead = true,
+                --         keymaps = {
+                --             -- You can use the capture groups defined in textobjects.scm
+                --             ["af"] = "@function.outer",
+                --             ["if"] = "@function.inner",
+                --             ["ac"] = "@class.outer",
+                --             ["ic"] = "@class.inner",
+                --         },
+                --     },
+                --     move = {
+                --         enable = true,
+                --         set_jumps = true,
+                --         goto_next_start = {
+                --             [']f'] = '@function.outer',
+                --             [']c'] = '@class.outer'
+                --         },
+                --         goto_previous_start = {
+                --             ['[f'] = '@function.outer',
+                --             ['[c'] = '@class.outer'
+                --         },
+                --     },
+                --     swap = {
+                --         enable = true,
+                --         swap_next = { ["<leader>sw"] = "@parameter.inner" },
+                --     }
+                -- }
             }
         end,
     },
@@ -245,7 +241,8 @@ local plugins = {
 
     { ----Telescope
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
+        -- branch = '0.1.x',
+        branch = 'master',
         dependencies = { 'nvim-lua/plenary.nvim' },
         cmd = 'Telescope',
         config = function()
@@ -828,18 +825,6 @@ local plugins = {
     --                 \ ],
     --                 \}
     --         ]])
-    --     end
-    -- },
-
-    -- {
-    --     'github/copilot.vim',
-    --     event = 'InsertEnter',
-    --     config = function()
-    --         vim.keymap.set('i', '<C-y>', 'copilot#Accept("<CR>")', {
-    --             expr = true,
-    --             replace_keycodes = false
-    --         })
-    --         vim.g.copilot_no_tab_map = true
     --     end
     -- },
 }
