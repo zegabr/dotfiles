@@ -35,7 +35,8 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install <
 # tmux
 sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 
-bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/v.sh)
+# if 0.9.x is not enough, use this script
+# bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/v.sh)
 
 # simlinks dotfiles
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/d.sh)

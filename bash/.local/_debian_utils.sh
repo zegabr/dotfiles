@@ -23,20 +23,29 @@ function vs(){
     fi
 }
 
-# probably works only on gnome
-alias bsaver='powerprofilesctl set power-saver'
-alias bbalanced='powerprofilesctl set balanced'
-alias bperf='powerprofilesctl set performance'
+if [[ "$OSTYPE" == "linux-gnu"* ]] && command -v apt >/dev/null; then
+    # Power profiles (requires power-profiles-daemon)
+    alias bsaver='powerprofilesctl set power-saver'
+    alias bbalanced='powerprofilesctl set balanced'
+    alias bperf='powerprofilesctl set performance'
 
-alias sap='sudo apt purge -y'
-alias sai='sudo apt install -y'
-alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
+    # APT helpers
+    alias sap='sudo apt purge -y'
+    alias sai='sudo apt install -y'
+    alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
+    alias update-node='source ~/dotfiles/scripts/scripts/stuff/node.sh'
+fi
 
-alias via-ui='~/Downloads/via*.AppImage'
-alias vial-ui='~/Downloads/Vial*.AppImage'
-alias qmk='/home/ze/.local/bin/qmk'
-alias update-nvim='source ~/dotfiles/scripts/scripts/stuff/v.sh'
-alias update-node='source ~/dotfiles/scripts/scripts/stuff/node.sh'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Homebrew equivalents to apt
+    alias sap='brew uninstall --zap'
+    alias sai='brew install'
+    alias update='brew update && brew upgrade && brew cleanup'
+fi
+
+# alias via-ui='~/Downloads/via*.AppImage'
+# alias vial-ui='~/Downloads/Vial*.AppImage'
+# alias qmk='/home/ze/.local/bin/qmk'
 alias update-rust-tools='source ~/dotfiles/scripts/scripts/stuff/r.sh'
 alias update-golang='source ~/dotfiles/scripts/scripts/stuff/g.sh'
 
@@ -68,12 +77,12 @@ extract(){
 }
 
 deb-install(){
-   # telegram.deb
+   # deb-install telegram.deb
    sudo dpkg -i $1
 }
 
 deb-uninstall(){
-    # telegram
+    # deb-uninstall telegram
    sudo dpkg -r $1
 }
 
