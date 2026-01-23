@@ -26,19 +26,19 @@ Comment=A cross-platform, GPU enhanced terminal emulator
 EOF
 
 # utils
-$HOME/.cargo/bin/cargo install bat exa tree-sitter-cli
+$HOME/.cargo/bin/cargo install bat exa
 
 # starship
-$HOME/.cargo/bin/cargo install starship
-# if starship is not being started, add it to bashrc
-if ! grep -q 'eval "$(starship init bash)"' ~/.bashrc; then
-    echo 'export STARSHIP_LOG=error' >> ~/.bashrc
-    echo 'eval "$(starship init bash)"' >> ~/.bashrc
-fi
+# $HOME/.cargo/bin/cargo install starship
+# # if starship is not being started, add it to bashrc
+# if ! grep -q 'eval "$(starship init bash)"' ~/.bashrc; then
+#     echo 'export STARSHIP_LOG=error' >> ~/.bashrc
+#     echo 'eval "$(starship init bash)"' >> ~/.bashrc
+# fi
 
-if ! grep -q 'export STARSHIP_LOG=error' ~/.bashrc; then
-    echo 'export STARSHIP_LOG=error' >> ~/.bashrc
-fi
+# if ! grep -q 'export STARSHIP_LOG=error' ~/.bashrc; then
+#     echo 'export STARSHIP_LOG=error' >> ~/.bashrc
+# fi
 
 # sccache
 # check if RUSTC_WRAPPER is not an exported variable
