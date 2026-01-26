@@ -3,25 +3,8 @@
 export EDITOR=nvim
 
 alias lag='alias | grep'
-
 alias v='nvim'
 
-function vs(){
-    if [ -d ".git" ]; then
-        if ! grep -q "*.session.vim" ".git/info/exclude"; then
-            echo "*.session.vim" >> ".git/info/exclude"
-        fi
-    else
-        if [ ! -f ".session.vim" ]; then  # Check if .session.vim file exists
-            echo "No .git folder found in the current directory, .session.vim will be created here"
-        fi
-    fi
-    if [ -e .session.vim ]; then
-        nvim -S .session.vim
-    else
-        nvim . -c "Obsession .session.vim"
-    fi
-}
 
 if [[ "$OSTYPE" == "linux-gnu"* ]] && command -v apt >/dev/null; then
     # Power profiles (requires power-profiles-daemon)
@@ -37,11 +20,30 @@ if [[ "$OSTYPE" == "linux-gnu"* ]] && command -v apt >/dev/null; then
 fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias v='vim'
     # Homebrew equivalents to apt
     alias sap='brew uninstall --zap'
     alias sai='brew install'
     alias update='brew update && brew upgrade && brew cleanup'
 fi
+
+function vs(){
+    if [ -d ".git" ]; then
+        if ! grep -q "*.session.vim" ".git/info/exclude"; then
+            echo "*.session.vim" >> ".git/info/exclude"
+        fi
+    else
+        if [ ! -f ".session.vim" ]; then  # Check if .session.vim file exists
+            echo "No .git folder found in the current directory, .session.vim will be created here"
+        fi
+    fi
+    if [ -e .session.vim ]; then
+        v -S .session.vim
+    else
+        v . -c "Obsession .session.vim"
+    fi
+}
+
 
 # alias via-ui='~/Downloads/via*.AppImage'
 # alias vial-ui='~/Downloads/Vial*.AppImage'
