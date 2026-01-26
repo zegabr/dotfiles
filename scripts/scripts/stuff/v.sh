@@ -1,4 +1,4 @@
-# v for (neo)vim TODO: yo udon't need this if the package manager has neovim 0.9.x
+# v for (neo)vim TODO: yo udon't need this if the package manager has neovim 0.9.x (brew has it)
 
 (
 # dependencies

@@ -6,6 +6,7 @@ cd ~/Downloads
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew update
 brew install bash
+chsh -s /opt/homebrew/bin/bash
 brew install git
 brew install stow
 brew install btop
@@ -16,12 +17,7 @@ brew install fd
 brew install rectangle
 brew install devtoys
 brew install iterm2
-
-# FZF with install script
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install <<<"y\nn\ny\n"
-
-# rust and cargo and cargo tools
-sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
+brew install fzf
 
 # simlinks dotfiles
 /bin/bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/d.sh)
@@ -33,4 +29,3 @@ if grep zegabr ~/.ssh/config; then
 fi
 cd ~/dotfiles
 
-chsh -s /opt/homebrew/bin/bash

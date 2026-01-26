@@ -20,7 +20,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]] && command -v apt >/dev/null; then
 fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    alias v='vim'
     # Homebrew equivalents to apt
     alias sap='brew uninstall --zap'
     alias sai='brew install'
