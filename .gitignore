@@ -8,3 +8,5 @@ startuptime.txt
 /bin/.local/include/
 /bin/.local/lib/
 *lazy-lock.json
+bash/.local/share/
+bash/.local/state/

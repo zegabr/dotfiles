@@ -9,11 +9,6 @@ source ~/.local/_tmux_utils.sh
 source ~/.local/_python_utils.sh
 source ~/.local/_note_system.sh
 
-# Rust
-alias l='exa -l'
-alias la='exa -la'
-alias cat='bat'
-
 #-----------------------config files shortcuts
 alias dot='cd ~/dotfiles'
 alias ev='dot && v ~/.config/nvim/init.lua'
