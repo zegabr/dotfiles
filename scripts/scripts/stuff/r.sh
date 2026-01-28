@@ -7,7 +7,7 @@
 rustc --version
 rustup component add rust-docs
 rustup component add rust-analyzer
-$HOME/.cargo/bin/cargo install bacon
+# $HOME/.cargo/bin/cargo install bacon
 
 # alacritty
 sai libfontconfig-dev
@@ -26,7 +26,7 @@ Comment=A cross-platform, GPU enhanced terminal emulator
 EOF
 
 # utils
-$HOME/.cargo/bin/cargo install bat exa
+# $HOME/.cargo/bin/cargo install bat exa
 
 # starship
 # $HOME/.cargo/bin/cargo install starship

@@ -2,7 +2,7 @@
 # custom scripts (aka modules)
 # source ~/.local/_competitive.sh
 source ~/.local/_git_utils.sh
-source ~/.local/_debian_macos_utils.sh
+source ~/.local/_debian_utils.sh
 source ~/.local/_java_utils.sh
 source ~/.local/_fzf_utils.sh
 source ~/.local/_tmux_utils.sh
