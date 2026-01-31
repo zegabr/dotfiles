@@ -10,20 +10,20 @@ rustup component add rust-analyzer
 # $HOME/.cargo/bin/cargo install bacon
 
 # alacritty
-sai libfontconfig-dev
-$HOME/.cargo/bin/cargo install alacritty
-cat <<EOF > ~/Desktop/Alacritty.desktop
-[Desktop Entry]
-Type=Application
-TryExec=alacritty
-Exec=~/.cargo/bin/alacritty
-Icon=Alacritty
-Terminal=false
-Categories=System;TerminalEmulator;
-Name=Alacritty
-GenericName=Terminal
-Comment=A cross-platform, GPU enhanced terminal emulator
-EOF
+# sai libfontconfig-dev
+# $HOME/.cargo/bin/cargo install alacritty
+# cat <<EOF > ~/Desktop/Alacritty.desktop
+# [Desktop Entry]
+# Type=Application
+# TryExec=alacritty
+# Exec=~/.cargo/bin/alacritty
+# Icon=Alacritty
+# Terminal=false
+# Categories=System;TerminalEmulator;
+# Name=Alacritty
+# GenericName=Terminal
+# Comment=A cross-platform, GPU enhanced terminal emulator
+# EOF
 
 # utils
 # $HOME/.cargo/bin/cargo install bat exa

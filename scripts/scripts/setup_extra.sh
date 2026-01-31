@@ -23,6 +23,12 @@ if [ "$ans" == "y" ]; then
     CHROME=1
 fi
 
+ALACRITTY=0
+read -p "Type y if you want ALACRITTY to be installed (y/<anything else>): " ans
+if [ "$ans" == "y" ]; then
+    ALACRITTY=1
+fi
+
 DOCKER=0
 read -p "Type y if you want Docker to be installed (y/<anything else>): " ans
 if [ "$ans" == "y" ]; then
@@ -176,6 +182,11 @@ if [ "$CHROME" == 1 ]; then
     sudo dpkg -i google-chrome-stable_current_amd64.deb
     sudo rm -rf google-chrome-stable_current_amd64.deb
     sensible-browser 'chrome://flags/#enable-force-dark'
+fi
+
+if [ "$ALACRITTY" == 1 ]; then
+    sudo apt update -y
+    sudo apt install alacritty -y
 fi
 
 # DOCKER
