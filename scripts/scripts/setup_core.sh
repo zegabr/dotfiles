@@ -37,6 +37,7 @@ sudo apt install libevent-dev libncurses-dev build-essential xclip tmux -y
 
 # if 0.9.x is not enough, use this script
 # bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/v.sh)
+sudo apt install -y nvim
 
 # simlinks dotfiles
 bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/stuff/d.sh)
