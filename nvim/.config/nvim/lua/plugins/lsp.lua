@@ -20,7 +20,7 @@ return { ----LSP (code editing)
             { "L3MON4D3/LuaSnip" },
         },
         config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()     -- from luasnip
+            require("luasnip.loaders.from_vscode").lazy_load() -- from luasnip
             local cmp = require('cmp')
             cmp.setup({
                 mapping = cmp.mapping.preset.insert({
@@ -59,7 +59,7 @@ return { ----LSP (code editing)
                 sources = {
                     { name = 'path' },
                     { name = 'nvim_lsp', keyword_length = 1 },
-                    { name = 'luasnip',  keyword_length = 2 },     -- from luasnip
+                    { name = 'luasnip',  keyword_length = 2 }, -- from luasnip
                     { name = 'nvim_lua', keyword_length = 3 },
                     { name = 'buffer',   keyword_length = 3 },
                 },
@@ -170,20 +170,21 @@ return { ----LSP (code editing)
 
                     local bufopts = { buffer = ev.buf, noremap = true, silent = true }
                     vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, bufopts)
-                    if vim.bo.filetype == 'java' then     -- fix for java
+                    if vim.bo.filetype == 'java' then -- fix for java
                         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
                     end
                     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
                     vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols, bufopts)
                     vim.keymap.set('n', 'gws', require('telescope.builtin').lsp_workspace_symbols, bufopts)
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)     -- use it twice to enter hover buffer, :bd or :bp or :bn to get out
+                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts) -- use it twice to enter hover buffer, :bd or :bp or :bn to get out
                     vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
                     vim.keymap.set('n', '<leader>A', vim.lsp.buf.code_action, bufopts)
                     vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, bufopts)
                     vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, bufopts)
                     vim.keymap.set('n', '<leader>Q', vim.diagnostic.setqflist, bufopts)
-                    vim.keymap.set('n', '<leader>d', function() vim.diagnostic.jump({count=1}) end, bufopts)
+                    vim.keymap.set('n', '<leader>d', function() vim.diagnostic.jump({ count = 1 }) end, bufopts)
+                    vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
                 end,
             })
 
