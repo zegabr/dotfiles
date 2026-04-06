@@ -185,6 +185,15 @@ return { ----LSP (code editing)
                     vim.keymap.set('n', '<leader>Q', vim.diagnostic.setqflist, bufopts)
                     vim.keymap.set('n', '<leader>d', function() vim.diagnostic.jump({ count = 1 }) end, bufopts)
                     vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, bufopts)
+                    vim.diagnostic.config({
+                        jump = {
+                            on_jump = function()
+                                -- focus = false ensures your cursor stays in the main buffer
+                                -- so you can keep spamming your jump key without getting trapped in the float
+                                vim.diagnostic.open_float({ focus = false, scope = "cursor" })
+                            end
+                        }
+                    })
                 end,
             })
 
