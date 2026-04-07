@@ -11,6 +11,7 @@ vim.keymap.set("n", "Y", "y$", { silent = true, desc = 'yank to the end' })
 vim.keymap.set('x', '<leader>p', '"0p', { silent = true, desc = 'paste last yanked text without losing content' })
 vim.keymap.set('x', '<leader>p', [["_dP]], { silent = true, desc = 'paste last yanked text without losing content' })
 vim.keymap.set("n", "<leader>w", ":wa<CR>", { desc = 'save all files' })
+vim.keymap.set("n", "ZZ", ":xa<CR>", { desc = 'save and exit all files' })
 vim.keymap.set("n", "<leader>v", "<C-v>", { desc = 'enter visual-block mode' })
 vim.keymap.set("n", "gv", "`[v`]", { desc = 'select last pasted text' })
 
