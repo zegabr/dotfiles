@@ -19,13 +19,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]] && command -v apt >/dev/null; then
     alias update-node='source ~/dotfiles/scripts/scripts/stuff/node.sh'
 fi
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    # Homebrew equivalents to apt
-    alias sap='brew uninstall --zap'
-    alias sai='brew install'
-    alias update='brew update && brew upgrade && brew cleanup'
-fi
-
 function vs(){
     if [ -d ".git" ]; then
         if ! grep -q "*.session.vim" ".git/info/exclude"; then
