@@ -27,6 +27,8 @@ bind '"\C-b":"fg\n"'
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
 
+alias jet='/home/zegabr/.local/bin/agy'
+
 a ()
 {
     FUNCTIONS=$(declare -f | grep "()" | awk '{print $1}' | awk '!/^_/ && !/[=;]/ && !/local/ && !/eval/ {print $0}')
