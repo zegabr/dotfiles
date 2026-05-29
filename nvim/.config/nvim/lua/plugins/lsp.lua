@@ -16,7 +16,6 @@ vim.pack.add({
     'https://github.com/williamboman/mason.nvim',
     'https://github.com/williamboman/mason-lspconfig.nvim',
     'https://github.com/neovim/nvim-lspconfig',
-    'https://github.com/folke/neodev.nvim',
     'https://github.com/nvim-lua/plenary.nvim',
     'https://github.com/nvim-telescope/telescope.nvim',
 })
@@ -80,7 +79,6 @@ cmp.setup({
     },
 })
 
-require("neodev").setup({})
 require("mason").setup()
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup {

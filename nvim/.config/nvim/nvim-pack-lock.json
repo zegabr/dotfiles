@@ -66,10 +66,6 @@
       "rev": "bb639d4bf385a4d89f478b83af4d770be05ab7eb",
       "src": "https://github.com/williamboman/mason.nvim"
     },
-    "neodev.nvim": {
-      "rev": "46aa467dca16cf3dfe27098042402066d2ae242d",
-      "src": "https://github.com/folke/neodev.nvim"
-    },
     "nvim-cmp": {
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
       "src": "https://github.com/hrsh7th/nvim-cmp"
@@ -97,10 +93,6 @@
     "undotree": {
       "rev": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d",
       "src": "https://github.com/mbbill/undotree"
-    },
-    "vim-better-whitespace": {
-      "rev": "de99b55a6fe8c96a69f9376f16b1d5d627a56e81",
-      "src": "https://github.com/ntpeters/vim-better-whitespace"
     },
     "vim-commentary": {
       "rev": "64a654ef4a20db1727938338310209b6a63f60c9",

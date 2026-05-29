@@ -1,7 +1,6 @@
 -- Editor (things I'll hardly modify)
 vim.pack.add({
     'https://github.com/zegabr/toolbox.nvim',
-    'https://github.com/ntpeters/vim-better-whitespace',
     { src = 'https://github.com/j-hui/fidget.nvim', version = 'v1.0.0' },
     'https://github.com/uga-rosa/ccc.nvim',
     'https://github.com/mbbill/undotree',
@@ -48,3 +47,8 @@ vim.keymap.set("n", "<leader><leader>u", vim.cmd.UndotreeToggle)
 -- 1) ds<surrounding pair>
 -- TO CHANGE PAIR:
 -- 1) cs<pair to be changed><new closing pair>
+
+-- Strip trailing whitespace command
+vim.api.nvim_create_user_command("StripWhiteSpace", function()
+    vim.cmd([[keeppatterns %s/\s\+$//e]])
+end, { desc = "Strip trailing whitespace" })
