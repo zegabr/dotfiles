@@ -4,25 +4,17 @@ local is_git_repo = function()
     return vim.fn.isdirectory(git_dir) == 1
 end
 
-return {                            -- specific plugins to work with git, currently not for mercurial or jujutsu
-    {
-        'ruifm/gitlinker.nvim',     -- get premalink by <leader>gy (works in visuali mode)
-        keys = '<leader>gy',
-        enabled = is_git_repo(),
-        config = function()
-            require("gitlinker").setup({
-                mappings = "<leader>gy",
-            })
-        end
-    },
+vim.pack.add({
+    'https://github.com/nvim-lua/plenary.nvim',
+    'https://github.com/ruifm/gitlinker.nvim',
+    'https://github.com/mhinz/vim-signify',
+})
 
-    {
-        'mhinz/vim-signify',
-        event = { 'BufReadPre', 'BufNewFile' },
-        config = function()
-            vim.keymap.set("n", "[h", "<plug>(signify-prev-hunk)", { desc = 'prev hunk' })
-            vim.keymap.set("n", "]h", "<plug>(signify-next-hunk)", { desc = 'next hunk' })
-        end,
-    },
+if is_git_repo() then
+    require("gitlinker").setup({
+        mappings = "<leader>gy",
+    })
+end
 
-}
+vim.keymap.set("n", "[h", "<plug>(signify-prev-hunk)", { desc = 'prev hunk' })
+vim.keymap.set("n", "]h", "<plug>(signify-next-hunk)", { desc = 'next hunk' })

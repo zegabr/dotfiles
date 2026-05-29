@@ -1,0 +1,131 @@
+{
+  "plugins": {
+    "LuaSnip": {
+      "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
+      "src": "https://github.com/L3MON4D3/LuaSnip",
+      "version": "'master'"
+    },
+    "bufferline.nvim": {
+      "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
+      "src": "https://github.com/akinsho/bufferline.nvim"
+    },
+    "ccc.nvim": {
+      "rev": "9d1a256e006decc574789dfc7d628ca11644d4c2",
+      "src": "https://github.com/uga-rosa/ccc.nvim"
+    },
+    "cmp-buffer": {
+      "rev": "b74fab3656eea9de20a9b8116afa3cfc4ec09657",
+      "src": "https://github.com/hrsh7th/cmp-buffer"
+    },
+    "cmp-nvim-lsp": {
+      "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
+      "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
+    },
+    "cmp-nvim-lua": {
+      "rev": "e3a22cb071eb9d6508a156306b102c45cd2d573d",
+      "src": "https://github.com/hrsh7th/cmp-nvim-lua"
+    },
+    "cmp-path": {
+      "rev": "c642487086dbd9a93160e1679a1327be111cbc25",
+      "src": "https://github.com/hrsh7th/cmp-path"
+    },
+    "cmp_luasnip": {
+      "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
+      "src": "https://github.com/saadparwaiz1/cmp_luasnip"
+    },
+    "fidget.nvim": {
+      "rev": "fa1445fe7230845ea66b2c8bec3398fe5d900307",
+      "src": "https://github.com/j-hui/fidget.nvim",
+      "version": "'v1.0.0'"
+    },
+    "friendly-snippets": {
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
+    },
+    "fzy-lua-native": {
+      "rev": "9d720745d5c2fb563c0d86c17d77612a3519c506",
+      "src": "https://github.com/romgrk/fzy-lua-native"
+    },
+    "gitlinker.nvim": {
+      "rev": "cc59f732f3d043b626c8702cb725c82e54d35c25",
+      "src": "https://github.com/ruifm/gitlinker.nvim"
+    },
+    "gruvbox.nvim": {
+      "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim"
+    },
+    "lualine.nvim": {
+      "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "mason-lspconfig.nvim": {
+      "rev": "7b01e2974a47d489bb92f47a41e4c0088ea8f86e",
+      "src": "https://github.com/williamboman/mason-lspconfig.nvim"
+    },
+    "mason.nvim": {
+      "rev": "bb639d4bf385a4d89f478b83af4d770be05ab7eb",
+      "src": "https://github.com/williamboman/mason.nvim"
+    },
+    "neodev.nvim": {
+      "rev": "46aa467dca16cf3dfe27098042402066d2ae242d",
+      "src": "https://github.com/folke/neodev.nvim"
+    },
+    "nvim-cmp": {
+      "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
+      "src": "https://github.com/hrsh7th/nvim-cmp"
+    },
+    "nvim-lspconfig": {
+      "rev": "9573948c38bfabeec353ae7dd7d3ffec4c506a6b",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "oil.nvim": {
+      "rev": "b91ee5a77a6a9605d9c1aaf4fda74b66082c8297",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "telescope.nvim": {
+      "rev": "7d324792b7943e4aa16ad007212e6acc6f9fe335",
+      "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "toolbox.nvim": {
+      "rev": "3a69784e84ac26f0da79bf4f1882fd272b8b6448",
+      "src": "https://github.com/zegabr/toolbox.nvim"
+    },
+    "undotree": {
+      "rev": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d",
+      "src": "https://github.com/mbbill/undotree"
+    },
+    "vim-better-whitespace": {
+      "rev": "de99b55a6fe8c96a69f9376f16b1d5d627a56e81",
+      "src": "https://github.com/ntpeters/vim-better-whitespace"
+    },
+    "vim-commentary": {
+      "rev": "64a654ef4a20db1727938338310209b6a63f60c9",
+      "src": "https://github.com/tpope/vim-commentary"
+    },
+    "vim-obsession": {
+      "rev": "ed9dfc7c2cc917ace8b24f4f9f80a91e05614b63",
+      "src": "https://github.com/tpope/vim-obsession"
+    },
+    "vim-signify": {
+      "rev": "3b5ae37eb2b77c3ae58d60dfdc3fc30258078663",
+      "src": "https://github.com/mhinz/vim-signify"
+    },
+    "vim-surround": {
+      "rev": "3d188ed2113431cf8dac77be61b842acb64433d9",
+      "src": "https://github.com/tpope/vim-surround"
+    },
+    "vimwiki": {
+      "rev": "a54a3002e229c4b43d69ced170ff77663a5b2c40",
+      "src": "https://github.com/vimwiki/vimwiki",
+      "version": "'dev'"
+    },
+    "wilder.nvim": {
+      "rev": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf",
+      "src": "https://github.com/gelguy/wilder.nvim"
+    }
+  }
+}
