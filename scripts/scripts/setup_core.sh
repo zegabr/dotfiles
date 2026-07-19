@@ -23,6 +23,7 @@ sudo apt install -y wget
 sudo apt install -y zip
 sudo apt install -y starship
 sudo apt install -y gnome-shell-extension-manager
+sudo apt install -y npm # for vimls
 
 
 # install and update tldr
