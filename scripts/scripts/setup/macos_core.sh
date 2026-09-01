@@ -37,6 +37,10 @@ if [ -f ~/.ssh/config ] && grep -q zegabr ~/.ssh/config; then
     fi
 fi
 
+if [ ! -f "$HOME/.bash_aliases_work" ]; then
+    echo -e "#!/bin/bash\n" > "$HOME/.bash_aliases_work"
+fi
+
 cd ~/dotfiles
 
 echo ""
