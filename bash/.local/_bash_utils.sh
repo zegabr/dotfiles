@@ -29,6 +29,25 @@ if [[ "$OSTYPE" == "linux-gnu"* ]] && command -v apt >/dev/null; then
     }
 fi
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Homebrew package manager helpers
+    if command -v brew >/dev/null; then
+        # Update Homebrew, upgrade packages, and remove outdated cached versions
+        alias update='brew update && brew upgrade && brew cleanup'
+        # Install a Homebrew formula or cask (e.g., sai wget)
+        alias sai='brew install'
+        # Uninstall a Homebrew formula or cask (e.g., sap wget)
+        alias sap='brew uninstall'
+        # Clean up old downloads and purge unused dependencies
+        alias brew-clean='brew cleanup && brew autoremove'
+    fi
+
+    # Flush macOS DNS resolver cache
+    alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+    # Show hidden files in macOS Finder automatically when sourced
+    defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder
+fi
+
 function vs(){
     if [ -d ".git" ]; then
         if ! grep -q "*.session.vim" ".git/info/exclude"; then
