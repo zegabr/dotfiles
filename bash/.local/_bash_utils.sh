@@ -17,6 +17,16 @@ if [[ "$OSTYPE" == "linux-gnu"* ]] && command -v apt >/dev/null; then
     alias sai='sudo apt install -y'
     alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
     alias update-node='source ~/dotfiles/scripts/scripts/stuff/node.sh'
+
+    deb-install(){
+       # deb-install telegram.deb
+       sudo dpkg -i $1
+    }
+
+    deb-uninstall(){
+        # deb-uninstall telegram
+       sudo dpkg -r $1
+    }
 fi
 
 function vs(){
@@ -70,15 +80,6 @@ extract(){
      fi
 }
 
-deb-install(){
-   # deb-install telegram.deb
-   sudo dpkg -i $1
-}
-
-deb-uninstall(){
-    # deb-uninstall telegram
-   sudo dpkg -r $1
-}
 
 check-truecolor(){
 awk -v term_cols="${width:-$(tput cols || echo 80)}" 'BEGIN{

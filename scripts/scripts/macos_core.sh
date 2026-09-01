@@ -13,7 +13,6 @@ brew install tree
 brew install neovim
 brew install tmux
 brew install fd
-brew install rectangle
 brew install devtoys
 brew install iterm2
 brew install fzf
