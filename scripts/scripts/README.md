@@ -1,10 +1,9 @@
 # What the scripts do
-Run `bash setup_core.sh` for basic setup including bash aliases, nvim, tmux, starship, rust tooling like ripgrep, bat etc. I'll use this for a initial setup in work ubuntu/debian machines
 
-Run `bash setup_extra.sh` for extra stuff I use in dual boot setup for a personal computer
+- Run `bash setup/core.sh` for basic setup including bash aliases, nvim, tmux, starship, rust tooling like ripgrep, bat, etc. (ideal for initial setup on Ubuntu/Debian machines).
+- Run `bash setup/extra.sh` for extra tools and desktop applications.
+- Run `bash setup/macos_core.sh` for macOS bootstrap.
+- Run `bash setup/wsl.sh` for WSL bootstrap.
+- Run `bash installers/setup_cp.sh` for competitive programming setup.
 
-Run `bash c.sh` if you want my competitive setup (vim, c++ and [cp](https://github.com/zegabr/cp)) (you probably won't want it)
-
-Run `bash m.sh` to get full setup (one liner it is!)
-
-See stuff/ for other configuration scripts i use inside the ones mentioned above
+See `setup/` and `installers/` for individual module scripts.

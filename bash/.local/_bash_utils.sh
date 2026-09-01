@@ -16,7 +16,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]] && command -v apt >/dev/null; then
     alias sap='sudo apt purge -y'
     alias sai='sudo apt install -y'
     alias update='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
-    alias update-node='source ~/dotfiles/scripts/scripts/stuff/node.sh'
+    alias update-node='source ~/dotfiles/scripts/scripts/installers/install_node.sh'
 
     deb-install(){
        # deb-install telegram.deb
@@ -44,8 +44,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # Flush macOS DNS resolver cache
     alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
-    # Show hidden files in macOS Finder automatically when sourced
-    defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder
 fi
 
 function vs(){
@@ -68,9 +66,9 @@ function vs(){
 
 # alias via-ui='~/Downloads/via*.AppImage'
 # alias vial-ui='~/Downloads/Vial*.AppImage'
-# alias qmk='/home/ze/.local/bin/qmk'
-alias update-rust-tools='source ~/dotfiles/scripts/scripts/stuff/r.sh'
-alias update-golang='source ~/dotfiles/scripts/scripts/stuff/g.sh'
+# alias qmk='$HOME/.local/bin/qmk'
+alias update-rust-tools='source ~/dotfiles/scripts/scripts/installers/install_rust_tools.sh'
+alias update-golang='source ~/dotfiles/scripts/scripts/installers/install_go.sh'
 
 alias mkdir='mkdir -p'
 alias ..='cd ..'

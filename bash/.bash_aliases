@@ -27,7 +27,7 @@ bind '"\C-b":"fg\n"'
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
 
-alias jet='/home/zegabr/.local/bin/agy'
+alias jet='$HOME/.local/bin/agy'
 
 a ()
 {

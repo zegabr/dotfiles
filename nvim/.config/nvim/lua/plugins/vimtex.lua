@@ -1,4 +1,4 @@
--- requires some cargo packages found on ../../../scripts/scripts/stuff/r.sh
+-- requires some cargo packages found on ../../../scripts/scripts/installers/install_rust_tools.sh
 -- vim.pack.add({
 --     'https://github.com/lervag/vimtex',
 -- })
