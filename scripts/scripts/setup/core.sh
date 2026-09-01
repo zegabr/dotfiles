@@ -6,26 +6,25 @@ cd ~/Downloads
 
 sudo apt update -y
 
-sudo apt install -y \
-  btop \
-  cmake \
-  curl \
-  diodon \
-  fd-find \
-  git \
-  gnome-shell-extension-manager \
-  jq \
-  neofetch \
-  npm \
-  ripgrep \
-  starship \
-  stow \
-  tidy \
-  tree \
-  unar \
-  unzip \
-  wget \
-  zip
+sudo apt install -y btop
+sudo apt install -y cmake
+sudo apt install -y curl
+sudo apt install -y diodon
+sudo apt install -y fd-find
+sudo apt install -y git
+sudo apt install -y gnome-shell-extension-manager
+sudo apt install -y jq
+sudo apt install -y neofetch
+sudo apt install -y npm
+sudo apt install -y ripgrep
+sudo apt install -y starship
+sudo apt install -y stow
+sudo apt install -y tidy
+sudo apt install -y tree
+sudo apt install -y unar
+sudo apt install -y unzip
+sudo apt install -y wget
+sudo apt install -y zip
 
 # install and update tldr
 sudo apt install -y tldr && tldr -u || true

@@ -9,8 +9,18 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 brew update
-brew install bash git stow btop tree neovim tmux fd fzf
-brew install --cask devtoys iterm2 maccy || true
+brew install bash
+brew install git
+brew install stow
+brew install btop
+brew install tree
+brew install neovim
+brew install tmux
+brew install fd
+brew install fzf
+brew install --cask devtoys || true
+brew install --cask iterm2 || true
+brew install --cask maccy || true
 
 if [ "$SHELL" != "/opt/homebrew/bin/bash" ] && [ -f /opt/homebrew/bin/bash ]; then
     chsh -s /opt/homebrew/bin/bash
