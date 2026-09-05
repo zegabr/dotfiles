@@ -70,9 +70,9 @@ echo "--> Configuring Windows-style Mouse controls..."
 # Disable "Natural" scrolling (scroll wheel up moves page up, Windows-style)
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
-# Disable macOS mouse acceleration curve (linear mouse response / standard scaling)
-defaults write NSGlobalDomain com.apple.mouse.linear -bool true 2>/dev/null || true
-defaults write NSGlobalDomain com.apple.mouse.scaling -float 1.5
+# Disable macOS mouse acceleration curve (flat/linear response on modern macOS versions)
+defaults write NSGlobalDomain com.apple.mouse.scaling -1
+defaults write NSGlobalDomain com.apple.mouse.acceleration -1
 
 # Keep Press-and-Hold ENABLED (default) so holding keys opens the accent picker popup menu (e.g. á, é, ç)
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true
