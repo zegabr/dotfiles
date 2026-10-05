@@ -16,7 +16,7 @@ brew install tree
 brew install neovim
 brew install fd
 brew install fzf
-brew install --cask devtoys || true
+# brew install --cask devtoys || true
 brew install --cask maccy || true
 
 if [ "$SHELL" != "/opt/homebrew/bin/bash" ] && [ -f /opt/homebrew/bin/bash ]; then
