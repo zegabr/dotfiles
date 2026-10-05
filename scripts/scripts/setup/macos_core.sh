@@ -10,16 +10,13 @@ fi
 
 brew update
 brew install bash
-brew install git
 brew install stow
 brew install btop
 brew install tree
 brew install neovim
-brew install tmux
 brew install fd
 brew install fzf
 brew install --cask devtoys || true
-brew install --cask iterm2 || true
 brew install --cask maccy || true
 
 if [ "$SHELL" != "/opt/homebrew/bin/bash" ] && [ -f /opt/homebrew/bin/bash ]; then
@@ -46,6 +43,7 @@ cd ~/dotfiles
 echo ""
 echo "=========================================================================="
 echo "macOS core setup complete!"
+echo "git was already installed. Install tmux, iterm2 and aerospace via internal link"
 echo "To configure macOS system defaults (show hidden files in Finder, etc.),"
 echo "run the one-time setup script later when ready:"
 echo "bash <(curl -sSL https://raw.githubusercontent.com/zegabr/dotfiles/main/scripts/scripts/setup/macos_defaults.sh)"
