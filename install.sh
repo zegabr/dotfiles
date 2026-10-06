@@ -1,6 +1,11 @@
 # define a list of directories to be stowed
 directories=(scripts nvim bash terminal)
 
+# stow macOS-specific additions only when running on macOS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  directories+=(macos)
+fi
+
 # iterate over the list of directories
 for dir in ${directories[@]}
 do
@@ -10,5 +15,6 @@ do
   stow --verbose=2 -t ~ $dir
 done
 
-source ~/.bashrc
-
+if [ -f ~/.bashrc ]; then
+  source ~/.bashrc
+fi

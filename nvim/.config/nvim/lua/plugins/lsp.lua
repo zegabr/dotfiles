@@ -85,7 +85,6 @@ mason_lspconfig.setup {
     ensure_installed = {
         'lua_ls',
         'vimls',
-        'bashls',
     },
 }
 

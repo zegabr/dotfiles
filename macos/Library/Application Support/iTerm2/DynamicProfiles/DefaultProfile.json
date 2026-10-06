@@ -1,0 +1,12 @@
+{
+  "Profiles": [
+    {
+      "Name": "Default",
+      "Guid": "Default",
+      "Option Key Sends": 2,
+      "Right Option Key Sends": 2,
+      "Allow Clipboard Access": true,
+      "Use Border": false
+    }
+  ]
+}

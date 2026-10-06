@@ -1,0 +1,10 @@
+#!/bin/sh
+# xclip compatibility wrapper for macOS using native pbcopy / pbpaste
+
+if [ -t 0 ]; then
+    # Terminal input (no pipe): paste to stdout
+    exec pbpaste "$@"
+else
+    # Piped input: copy stdin to system clipboard
+    exec pbcopy "$@"
+fi

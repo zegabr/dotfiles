@@ -10,4 +10,5 @@ startuptime.txt
 *lazy-lock.json
 bash/.local/share/
 bash/.local/state/
-terminal/*btop*
+terminal/**/btop*
+*btop.conf

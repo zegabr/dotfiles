@@ -9,15 +9,14 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 brew update
-brew install bash
-brew install stow
-brew install btop
-brew install tree
-brew install neovim
-brew install fd
-brew install fzf
-# brew install --cask devtoys || true
-brew install --cask maccy || true
+brew install bash -y
+brew install stow -y
+brew install btop -y
+brew install neovim -y
+brew install fd -y
+brew install rg -y
+brew install fzf -y
+brew install node -y
 
 if [ "$SHELL" != "/opt/homebrew/bin/bash" ] && [ -f /opt/homebrew/bin/bash ]; then
     chsh -s /opt/homebrew/bin/bash
@@ -36,6 +35,11 @@ fi
 
 if [ ! -f "$HOME/.bash_aliases_work" ]; then
     echo -e "#!/bin/bash\n" > "$HOME/.bash_aliases_work"
+fi
+
+
+if ! grep -Fxq "source .bash_aliases" "$HOME/.bash_profile"; then
+    echo -e "\nsource .bash_aliases" >> "$HOME/.bash_profile"
 fi
 
 cd ~/dotfiles
