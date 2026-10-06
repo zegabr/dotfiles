@@ -68,6 +68,8 @@ defaults read com.apple.symbolichotkeys >/dev/null 2>&1 || true
 echo "--> Setting window & keyboard navigation preferences..."
 defaults write NSGlobalDomain AppleWindowTabbingMode -string "always"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
+# Enable Cmd+` to cycle through windows of the current application
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 '<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>50</integer><integer>1048576</integer></array><key>type</key><string>standard</string></dict></dict>'
 
 # ------------------------------------------------------------------------------
 # 5. Finder & File Management QoL Defaults

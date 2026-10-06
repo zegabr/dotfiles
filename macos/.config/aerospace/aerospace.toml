@@ -19,9 +19,6 @@ after-startup-command = [
     'exec-and-forget open -a "/Users/zezin/Applications/Chrome Apps.localized/Nightride FM - The Home of Synthwave.app"'
 ]
 
-# Accordion layout padding (0 = full width when swapping stacked windows)
-accordion-padding = 0
-
 # Normalization settings (keeps layout trees clean)
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -160,9 +157,6 @@ ctrl-cmd-shift-right = 'move right'
 # --- Layout Management ---
 # Toggle between horizontal side-by-side and vertical stacked splits
 ctrl-cmd-slash = 'layout tiles horizontal vertical'
-
-# Toggle between side-by-side tiles and accordion (stacked full screen) layout
-ctrl-cmd-a = 'layout tiles accordion'
 
 # Toggle full screen for focused window (maximize single window in current space)
 ctrl-cmd-m = 'fullscreen'
