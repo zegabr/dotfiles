@@ -1,0 +1,195 @@
+# ==============================================================================
+# AeroSpace Configuration (~/.config/aerospace/aerospace.toml)
+# ==============================================================================
+# Config schema version
+config-version = 2
+
+# Automatically reload config on save
+auto-reload-config = true
+
+# Start AeroSpace at login
+start-at-login = true
+
+# Automatically launch your core apps when AeroSpace starts (auto-routed to Spaces 1-5)
+after-startup-command = [
+    'exec-and-forget open -a "/Applications/Google Chrome.app"',
+    'exec-and-forget open -a "/Applications/iTerm.app"',
+    'exec-and-forget open -a "/Users/zezin/Applications/Chrome Apps.localized/Google Chat.app"',
+    'exec-and-forget open -a "/Users/zezin/Applications/Chrome Apps.localized/Duckie.app"',
+    'exec-and-forget open -a "/Users/zezin/Applications/Chrome Apps.localized/Nightride FM - The Home of Synthwave.app"'
+]
+
+# Accordion layout padding (0 = full width when swapping stacked windows)
+accordion-padding = 0
+
+# Normalization settings (keeps layout trees clean)
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Layout & Orientation:
+# 'tiles' = standard tiling window manager
+# 'horizontal' = side-by-side tiling by default (new windows open as columns)
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'horizontal'
+
+# Window gaps (0 = borderless edge-to-edge windows)
+gaps.inner.horizontal = 0
+gaps.inner.vertical   = 0
+gaps.outer.left       = 0
+gaps.outer.bottom     = 0
+gaps.outer.top        = 0
+gaps.outer.right      = 0
+
+# ------------------------------------------------------------------------------
+# Persistent Workspaces
+# ------------------------------------------------------------------------------
+# Workspaces 1-6 remain alive even when all apps inside them are closed.
+# Workspace numbers never disappear or shift.
+# 1: Chrome (Side-by-side)
+# 2: iTerm2
+# 3: Chat (Chrome App)
+# 4: Duckie (Chrome App)
+# 5: Nightride.fm (Chrome App)
+# 6: General / Other apps
+persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
+
+# ------------------------------------------------------------------------------
+# Window Routing Rules (on-window-detected)
+# ------------------------------------------------------------------------------
+# Note: First matching rule wins. Specific Chrome apps are matched before
+# the main Google Chrome browser.
+
+# 1. Chat (Chrome App) -> Workspace 3
+[[on-window-detected]]
+if.app-name-regex-substring = '(?i)chat'
+run = ['layout tiling', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.window-title-regex-substring = '(?i)chat'
+run = ['layout tiling', 'move-node-to-workspace 3']
+
+# 2. Duckie (Chrome App) -> Workspace 4
+[[on-window-detected]]
+if.app-name-regex-substring = '(?i)duckie'
+run = ['layout tiling', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
+if.window-title-regex-substring = '(?i)duckie'
+run = ['layout tiling', 'move-node-to-workspace 4']
+
+# 3. Nightride.fm (Chrome App) -> Workspace 5
+[[on-window-detected]]
+if.app-name-regex-substring = '(?i)nightride'
+run = ['layout tiling', 'move-node-to-workspace 5']
+
+[[on-window-detected]]
+if.window-title-regex-substring = '(?i)nightride'
+run = ['layout tiling', 'move-node-to-workspace 5']
+
+# 4. iTerm2 -> Workspace 2
+[[on-window-detected]]
+if.app-id = 'com.googlecode.iterm2'
+run = ['layout tiling', 'move-node-to-workspace 2']
+
+# 5. Google Chrome Main Browser -> Workspace 1
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = ['layout tiling', 'move-node-to-workspace 1']
+
+# 6. Any other applications (Workspace 6)
+# Tip: In AeroSpace, any app you open while focused on Workspace 6 (Ctrl+6)
+# automatically stays in Workspace 6. You can also move any window to Space 6
+# with Ctrl+Shift+6.
+# If you want specific apps to ALWAYS go to Workspace 6 automatically,
+# add their app-id or app-name-regex-substring here.
+
+# ------------------------------------------------------------------------------
+# Keybindings (mode.main.binding)
+# ------------------------------------------------------------------------------
+# macOS Shortcut Conflicts & Overrides:
+# • Ctrl + 1..6:
+#   - Conflict: macOS Mission Control natively uses Ctrl+1..9 for "Switch to Desktop 1..9".
+#   - Status: Handled. scripts/scripts/setup/macos_defaults.sh disables those
+#     Mission Control symbolic hotkeys (118-127) so AeroSpace receives Ctrl+1..6 cleanly.
+# • Ctrl + Cmd + F:
+#   - Conflict: macOS native "Toggle Full Screen". AeroSpace intercepts this to toggle
+#     floating mode instead, which is standard for tiling window managers.
+# • Alt / Option (⌥):
+#   - Intentionally 100% UNBOUND in AeroSpace to prevent conflicts with tmux shortcuts
+#     (M-1..7, M-0/9, M-c, M-d, M-w), terminal word jumping (Alt+b/f/d), and Vim.
+# ------------------------------------------------------------------------------
+[mode.main.binding]
+
+# --- Direct Workspace Switching (Ctrl + Number) ---
+# Note: macOS Mission Control hotkeys for "Switch to Desktop 1-6" are disabled by macos_defaults.sh.
+ctrl-1 = 'workspace 1'
+ctrl-2 = 'workspace 2'
+ctrl-3 = 'workspace 3'
+ctrl-4 = 'workspace 4'
+ctrl-5 = 'workspace 5'
+ctrl-6 = 'workspace 6'
+
+# --- Move Focused Window to Workspace (Ctrl + Shift + Number) ---
+ctrl-shift-1 = 'move-node-to-workspace 1'
+ctrl-shift-2 = 'move-node-to-workspace 2'
+ctrl-shift-3 = 'move-node-to-workspace 3'
+ctrl-shift-4 = 'move-node-to-workspace 4'
+ctrl-shift-5 = 'move-node-to-workspace 5'
+ctrl-shift-6 = 'move-node-to-workspace 6'
+
+# --- Window Focus Navigation (Ctrl + Cmd + Vim / Arrow keys) ---
+ctrl-cmd-h = 'focus left'
+ctrl-cmd-j = 'focus down'
+ctrl-cmd-k = 'focus up'
+ctrl-cmd-l = 'focus right'
+ctrl-cmd-left  = 'focus left'
+ctrl-cmd-down  = 'focus down'
+ctrl-cmd-up    = 'focus up'
+ctrl-cmd-right = 'focus right'
+
+# --- Window Movement (Moving tiles around inside a workspace) ---
+ctrl-cmd-shift-h = 'move left'
+ctrl-cmd-shift-j = 'move down'
+ctrl-cmd-shift-k = 'move up'
+ctrl-cmd-shift-l = 'move right'
+ctrl-cmd-shift-left  = 'move left'
+ctrl-cmd-shift-down  = 'move down'
+ctrl-cmd-shift-up    = 'move up'
+ctrl-cmd-shift-right = 'move right'
+
+# --- Layout Management ---
+# Toggle between horizontal side-by-side and vertical stacked splits
+ctrl-cmd-slash = 'layout tiles horizontal vertical'
+
+# Toggle between side-by-side tiles and accordion (stacked full screen) layout
+ctrl-cmd-a = 'layout tiles accordion'
+
+# Toggle full screen for focused window (maximize single window in current space)
+ctrl-cmd-m = 'fullscreen'
+
+# Toggle floating mode for the current window (useful for small popups/dialogs)
+# Note: Overrides native macOS "Toggle Full Screen" (Ctrl+Cmd+F) in favor of floating window.
+ctrl-cmd-f = 'layout floating tiling'
+
+# Quick workspace back-and-forth toggle
+ctrl-cmd-tab = 'workspace-back-and-forth'
+
+# --- Management & Reload ---
+# Reload AeroSpace configuration
+ctrl-cmd-shift-r = 'reload-config'
+
+# Enter service mode for advanced tree operations
+ctrl-cmd-shift-semicolon = 'mode service'
+
+# ------------------------------------------------------------------------------
+# Service Mode (Binding Mode)
+# ------------------------------------------------------------------------------
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']
+f = ['layout floating tiling', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
+ctrl-cmd-shift-h = ['join-with left', 'mode main']
+ctrl-cmd-shift-j = ['join-with down', 'mode main']
+ctrl-cmd-shift-k = ['join-with up', 'mode main']
+ctrl-cmd-shift-l = ['join-with right', 'mode main']
