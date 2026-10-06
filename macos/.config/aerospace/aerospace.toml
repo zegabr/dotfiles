@@ -10,14 +10,6 @@ auto-reload-config = true
 # Start AeroSpace at login
 start-at-login = true
 
-# Automatically launch your core apps when AeroSpace starts (auto-routed to Spaces 1-5)
-after-startup-command = [
-    'exec-and-forget open -a "/Applications/Google Chrome.app"',
-    'exec-and-forget open -a "/Applications/iTerm.app"',
-    'exec-and-forget open -a "/Users/zezin/Applications/Chrome Apps.localized/Google Chat.app"',
-    'exec-and-forget open -a "/Users/zezin/Applications/Chrome Apps.localized/Duckie.app"',
-    'exec-and-forget open -a "/Users/zezin/Applications/Chrome Apps.localized/Nightride FM - The Home of Synthwave.app"'
-]
 
 # Normalization settings (keeps layout trees clean)
 enable-normalization-flatten-containers = true

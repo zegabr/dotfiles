@@ -114,7 +114,7 @@ set_or_warn "Disable Smart Quotes & Dashes" \
 # 7. Trackpad & Mouse Preferences
 # ------------------------------------------------------------------------------
 echo "--> Configuring Trackpad (Light click, speed 1.0, tap-to-click) & Mouse..."
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 defaults write NSGlobalDomain com.apple.mouse.scaling -1
 defaults write NSGlobalDomain com.apple.mouse.acceleration -1
 
