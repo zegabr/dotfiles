@@ -16,10 +16,11 @@ enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 # Layout & Orientation:
-# 'tiles' = standard tiling window manager
-# 'horizontal' = side-by-side tiling by default (new windows open as columns)
-default-root-container-layout = 'tiles'
+# 'accordion' with accordion-padding = 0 prevents side-by-side window tiling.
+# Every window opens maximized to full screen while keeping the macOS menu bar visible.
+default-root-container-layout = 'accordion'
 default-root-container-orientation = 'horizontal'
+accordion-padding = 0
 
 # Window gaps (0 = borderless edge-to-edge windows)
 gaps.inner.horizontal = 0
@@ -34,11 +35,11 @@ gaps.outer.right      = 0
 # ------------------------------------------------------------------------------
 # Workspaces 1-6 remain alive even when all apps inside them are closed.
 # Workspace numbers never disappear or shift.
-# 1: Chrome (Side-by-side)
+# 1: Chrome (Maximized)
 # 2: iTerm2
 # 3: Chat (Chrome App)
 # 4: Duckie (Chrome App)
-# 5: Nightride.fm (Chrome App)
+# 5: YouTube (Chrome App)
 # 6: General / Other apps
 persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
 
@@ -48,31 +49,31 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
 # Note: First matching rule wins. Specific Chrome apps are matched before
 # the main Google Chrome browser.
 
-# 1. Chat (Chrome App) -> Workspace 3
+# 1. Google Chat (Chrome App) -> Workspace 3
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome.app.pommaclcbfghclhalboakcipcmmndhcj'
+run = ['layout tiling', 'move-node-to-workspace 3']
+
 [[on-window-detected]]
 if.app-name-regex-substring = '(?i)chat'
 run = ['layout tiling', 'move-node-to-workspace 3']
 
-[[on-window-detected]]
-if.window-title-regex-substring = '(?i)chat'
-run = ['layout tiling', 'move-node-to-workspace 3']
-
 # 2. Duckie (Chrome App) -> Workspace 4
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome.app.ahdfkjhgpgcbfkeoehapbdafbjlnpejh'
+run = ['layout tiling', 'move-node-to-workspace 4']
+
 [[on-window-detected]]
 if.app-name-regex-substring = '(?i)duckie'
 run = ['layout tiling', 'move-node-to-workspace 4']
 
+# 3. YouTube (Chrome App) -> Workspace 5
 [[on-window-detected]]
-if.window-title-regex-substring = '(?i)duckie'
-run = ['layout tiling', 'move-node-to-workspace 4']
-
-# 3. Nightride.fm (Chrome App) -> Workspace 5
-[[on-window-detected]]
-if.app-name-regex-substring = '(?i)nightride'
+if.app-id = 'com.google.Chrome.app.agimnkijcaahngcdmfeangaknmldooml'
 run = ['layout tiling', 'move-node-to-workspace 5']
 
 [[on-window-detected]]
-if.window-title-regex-substring = '(?i)nightride'
+if.app-name-regex-substring = '(?i)youtube'
 run = ['layout tiling', 'move-node-to-workspace 5']
 
 # 4. iTerm2 -> Workspace 2
@@ -96,10 +97,12 @@ run = ['layout tiling', 'move-node-to-workspace 1']
 # Keybindings (mode.main.binding)
 # ------------------------------------------------------------------------------
 # macOS Shortcut Conflicts & Overrides:
-# • Ctrl + 1..6:
-#   - Conflict: macOS Mission Control natively uses Ctrl+1..9 for "Switch to Desktop 1..9".
-#   - Status: Handled. scripts/scripts/setup/macos_defaults.sh disables those
-#     Mission Control symbolic hotkeys (118-127) so AeroSpace receives Ctrl+1..6 cleanly.
+# • Cmd + 1..6:
+#   - Used for instant workspace switching. Overrides browser tab switching (Cmd+1..8)
+#     and Finder view modes, but has no conflicts with macOS system hotkeys.
+# • Ctrl + Shift + 1..6:
+#   - Kept on Ctrl+Shift to avoid conflicting with macOS native screenshot shortcuts
+#     (Cmd+Shift+3, Cmd+Shift+4, Cmd+Shift+5).
 # • Ctrl + Cmd + F:
 #   - Conflict: macOS native "Toggle Full Screen". AeroSpace intercepts this to toggle
 #     floating mode instead, which is standard for tiling window managers.
@@ -109,16 +112,16 @@ run = ['layout tiling', 'move-node-to-workspace 1']
 # ------------------------------------------------------------------------------
 [mode.main.binding]
 
-# --- Direct Workspace Switching (Ctrl + Number) ---
-# Note: macOS Mission Control hotkeys for "Switch to Desktop 1-6" are disabled by macos_defaults.sh.
-ctrl-1 = 'workspace 1'
-ctrl-2 = 'workspace 2'
-ctrl-3 = 'workspace 3'
-ctrl-4 = 'workspace 4'
-ctrl-5 = 'workspace 5'
-ctrl-6 = 'workspace 6'
+# --- Direct Workspace Switching (Cmd + Number) ---
+cmd-1 = 'workspace 1'
+cmd-2 = 'workspace 2'
+cmd-3 = 'workspace 3'
+cmd-4 = 'workspace 4'
+cmd-5 = 'workspace 5'
+cmd-6 = 'workspace 6'
 
 # --- Move Focused Window to Workspace (Ctrl + Shift + Number) ---
+# Note: Preserved as Ctrl+Shift to protect native macOS screenshot shortcuts (Cmd+Shift+3/4/5).
 ctrl-shift-1 = 'move-node-to-workspace 1'
 ctrl-shift-2 = 'move-node-to-workspace 2'
 ctrl-shift-3 = 'move-node-to-workspace 3'
@@ -126,31 +129,8 @@ ctrl-shift-4 = 'move-node-to-workspace 4'
 ctrl-shift-5 = 'move-node-to-workspace 5'
 ctrl-shift-6 = 'move-node-to-workspace 6'
 
-# --- Window Focus Navigation (Ctrl + Cmd + Vim / Arrow keys) ---
-ctrl-cmd-h = 'focus left'
-ctrl-cmd-j = 'focus down'
-ctrl-cmd-k = 'focus up'
-ctrl-cmd-l = 'focus right'
-ctrl-cmd-left  = 'focus left'
-ctrl-cmd-down  = 'focus down'
-ctrl-cmd-up    = 'focus up'
-ctrl-cmd-right = 'focus right'
-
-# --- Window Movement (Moving tiles around inside a workspace) ---
-ctrl-cmd-shift-h = 'move left'
-ctrl-cmd-shift-j = 'move down'
-ctrl-cmd-shift-k = 'move up'
-ctrl-cmd-shift-l = 'move right'
-ctrl-cmd-shift-left  = 'move left'
-ctrl-cmd-shift-down  = 'move down'
-ctrl-cmd-shift-up    = 'move up'
-ctrl-cmd-shift-right = 'move right'
-
-# --- Layout Management ---
-# Toggle between horizontal side-by-side and vertical stacked splits
-ctrl-cmd-slash = 'layout tiles horizontal vertical'
-
-# Toggle full screen for focused window (maximize single window in current space)
+# --- Window / Layout Management ---
+# Toggle full screen / maximize for focused window
 ctrl-cmd-m = 'fullscreen'
 
 # Toggle floating mode for the current window (useful for small popups/dialogs)
@@ -164,7 +144,7 @@ ctrl-cmd-tab = 'workspace-back-and-forth'
 # Reload AeroSpace configuration
 ctrl-cmd-shift-r = 'reload-config'
 
-# Enter service mode for advanced tree operations
+# Enter service mode for advanced management
 ctrl-cmd-shift-semicolon = 'mode service'
 
 # ------------------------------------------------------------------------------
@@ -175,7 +155,3 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
-ctrl-cmd-shift-h = ['join-with left', 'mode main']
-ctrl-cmd-shift-j = ['join-with down', 'mode main']
-ctrl-cmd-shift-k = ['join-with up', 'mode main']
-ctrl-cmd-shift-l = ['join-with right', 'mode main']

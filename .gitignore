@@ -12,3 +12,4 @@ bash/.local/share/
 bash/.local/state/
 terminal/**/btop*
 *btop.conf
+.DS_Store
