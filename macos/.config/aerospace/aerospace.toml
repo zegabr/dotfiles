@@ -1,28 +1,18 @@
 # ==============================================================================
 # AeroSpace Configuration (~/.config/aerospace/aerospace.toml)
 # ==============================================================================
-# Config schema version
 config-version = 2
-
-# Automatically reload config on save
 auto-reload-config = true
-
-# Start AeroSpace at login
 start-at-login = true
 
-
-# Normalization settings (keeps layout trees clean)
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-# Layout & Orientation:
-# 'accordion' with accordion-padding = 0 prevents side-by-side window tiling.
-# Every window opens maximized to full screen while keeping the macOS menu bar visible.
+# Sets the baseline rules for new containers
 default-root-container-layout = 'accordion'
 default-root-container-orientation = 'horizontal'
 accordion-padding = 0
 
-# Window gaps (0 = borderless edge-to-edge windows)
 gaps.inner.horizontal = 0
 gaps.inner.vertical   = 0
 gaps.outer.left       = 0
@@ -30,126 +20,79 @@ gaps.outer.bottom     = 0
 gaps.outer.top        = 0
 gaps.outer.right      = 0
 
-# ------------------------------------------------------------------------------
-# Persistent Workspaces
-# ------------------------------------------------------------------------------
-# Workspaces 1-6 remain alive even when all apps inside them are closed.
-# Workspace numbers never disappear or shift.
-# 1: Chrome (Maximized)
-# 2: iTerm2
-# 3: Chat (Chrome App)
-# 4: Duckie (Chrome App)
-# 5: YouTube (Chrome App)
-# 6: General / Other apps
 persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
 
 # ------------------------------------------------------------------------------
-# Window Routing Rules (on-window-detected)
+# Window Routing Rules (Aggressive Accordion Enforcement)
 # ------------------------------------------------------------------------------
-# Note: First matching rule wins. Specific Chrome apps are matched before
-# the main Google Chrome browser.
+# * Changed: Added 'layout accordion' to EVERY rule so that when a new window 
+#   is created (like pressing Cmd+N), it instantly forces the layout to stack.
 
-# 1. Google Chat (Chrome App) -> Workspace 3
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome.app.pommaclcbfghclhalboakcipcmmndhcj'
-run = ['layout tiling', 'move-node-to-workspace 3']
+run = ['move-node-to-workspace 3', 'layout accordion']
 
 [[on-window-detected]]
 if.app-name-regex-substring = '(?i)chat'
-run = ['layout tiling', 'move-node-to-workspace 3']
+run = ['move-node-to-workspace 3', 'layout accordion']
 
-# 2. Duckie (Chrome App) -> Workspace 4
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome.app.ahdfkjhgpgcbfkeoehapbdafbjlnpejh'
-run = ['layout tiling', 'move-node-to-workspace 4']
+run = ['move-node-to-workspace 4', 'layout accordion']
 
 [[on-window-detected]]
 if.app-name-regex-substring = '(?i)duckie'
-run = ['layout tiling', 'move-node-to-workspace 4']
+run = ['move-node-to-workspace 4', 'layout accordion']
 
-# 3. YouTube (Chrome App) -> Workspace 5
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome.app.agimnkijcaahngcdmfeangaknmldooml'
-run = ['layout tiling', 'move-node-to-workspace 5']
+run = ['move-node-to-workspace 5', 'layout accordion']
 
 [[on-window-detected]]
 if.app-name-regex-substring = '(?i)youtube'
-run = ['layout tiling', 'move-node-to-workspace 5']
+run = ['move-node-to-workspace 5', 'layout accordion']
 
-# 4. iTerm2 -> Workspace 2
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
-run = ['layout tiling', 'move-node-to-workspace 2']
+run = ['move-node-to-workspace 2', 'layout accordion']
 
-# 5. Google Chrome Main Browser -> Workspace 1
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = ['layout tiling', 'move-node-to-workspace 1']
-
-# 6. Any other applications (Workspace 6)
-# Tip: In AeroSpace, any app you open while focused on Workspace 6 (Ctrl+6)
-# automatically stays in Workspace 6. You can also move any window to Space 6
-# with Ctrl+Shift+6.
-# If you want specific apps to ALWAYS go to Workspace 6 automatically,
-# add their app-id or app-name-regex-substring here.
+run = ['move-node-to-workspace 1', 'layout accordion']
 
 # ------------------------------------------------------------------------------
-# Keybindings (mode.main.binding)
-# ------------------------------------------------------------------------------
-# macOS Shortcut Conflicts & Overrides:
-# • Cmd + 1..6:
-#   - Used for instant workspace switching. Overrides browser tab switching (Cmd+1..8)
-#     and Finder view modes, but has no conflicts with macOS system hotkeys.
-# • Ctrl + Shift + 1..6:
-#   - Kept on Ctrl+Shift to avoid conflicting with macOS native screenshot shortcuts
-#     (Cmd+Shift+3, Cmd+Shift+4, Cmd+Shift+5).
-# • Ctrl + Cmd + F:
-#   - Conflict: macOS native "Toggle Full Screen". AeroSpace intercepts this to toggle
-#     floating mode instead, which is standard for tiling window managers.
-# • Alt / Option (⌥):
-#   - Intentionally 100% UNBOUND in AeroSpace to prevent conflicts with tmux shortcuts
-#     (M-1..7, M-0/9, M-c, M-d, M-w), terminal word jumping (Alt+b/f/d), and Vim.
+# Keybindings
 # ------------------------------------------------------------------------------
 [mode.main.binding]
 
-# --- Direct Workspace Switching (Cmd + Number) ---
-cmd-1 = 'workspace 1'
-cmd-2 = 'workspace 2'
-cmd-3 = 'workspace 3'
-cmd-4 = 'workspace 4'
-cmd-5 = 'workspace 5'
-cmd-6 = 'workspace 6'
+# --- Direct Workspace Switching (Forces stack on arrival) ---
+cmd-1 = ['workspace 1', 'layout accordion']
+cmd-2 = ['workspace 2', 'layout accordion']
+cmd-3 = ['workspace 3', 'layout accordion']
+cmd-4 = ['workspace 4', 'layout accordion']
+cmd-5 = ['workspace 5', 'layout accordion']
+cmd-6 = ['workspace 6', 'layout accordion']
 
-# --- Move Focused Window to Workspace (Ctrl + Shift + Number) ---
-# Note: Preserved as Ctrl+Shift to protect native macOS screenshot shortcuts (Cmd+Shift+3/4/5).
-ctrl-shift-1 = 'move-node-to-workspace 1'
-ctrl-shift-2 = 'move-node-to-workspace 2'
-ctrl-shift-3 = 'move-node-to-workspace 3'
-ctrl-shift-4 = 'move-node-to-workspace 4'
-ctrl-shift-5 = 'move-node-to-workspace 5'
-ctrl-shift-6 = 'move-node-to-workspace 6'
+# --- Swap between maximized windows ---
+# * Changed: Forces the workspace to stay in accordion mode every time you swap
+cmd-left = ['focus left', 'layout accordion']
+cmd-right = ['focus right', 'layout accordion']
+
+# --- Move Focused Window to Workspace ---
+ctrl-shift-1 = ['move-node-to-workspace 1', 'layout accordion']
+ctrl-shift-2 = ['move-node-to-workspace 2', 'layout accordion']
+ctrl-shift-3 = ['move-node-to-workspace 3', 'layout accordion']
+ctrl-shift-4 = ['move-node-to-workspace 4', 'layout accordion']
+ctrl-shift-5 = ['move-node-to-workspace 5', 'layout accordion']
+ctrl-shift-6 = ['move-node-to-workspace 6', 'layout accordion']
 
 # --- Window / Layout Management ---
-# Toggle full screen / maximize for focused window
 ctrl-cmd-m = 'fullscreen'
-
-# Toggle floating mode for the current window (useful for small popups/dialogs)
-# Note: Overrides native macOS "Toggle Full Screen" (Ctrl+Cmd+F) in favor of floating window.
 ctrl-cmd-f = 'layout floating tiling'
-
-# Quick workspace back-and-forth toggle
 ctrl-cmd-tab = 'workspace-back-and-forth'
-
-# --- Management & Reload ---
-# Reload AeroSpace configuration
 ctrl-cmd-shift-r = 'reload-config'
-
-# Enter service mode for advanced management
 ctrl-cmd-shift-semicolon = 'mode service'
 
-# ------------------------------------------------------------------------------
-# Service Mode (Binding Mode)
-# ------------------------------------------------------------------------------
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
