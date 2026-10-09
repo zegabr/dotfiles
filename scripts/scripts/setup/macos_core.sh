@@ -17,6 +17,10 @@ brew install fd -y
 brew install rg -y
 brew install fzf -y
 brew install node -y
+brew install --cask stats -y
+brew install --cask maccy -y
+brew install --cask nikitabobko/tap/aerospace -y
+
 
 if [ "$SHELL" != "/opt/homebrew/bin/bash" ] && [ -f /opt/homebrew/bin/bash ]; then
     chsh -s /opt/homebrew/bin/bash
