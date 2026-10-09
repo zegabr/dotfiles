@@ -65,13 +65,13 @@ run = ['move-node-to-workspace 1', 'layout accordion']
 # ------------------------------------------------------------------------------
 [mode.main.binding]
 
-# --- Direct Workspace Switching (Forces stack on arrival) ---
-cmd-1 = ['workspace 1', 'layout accordion']
-cmd-2 = ['workspace 2', 'layout accordion']
-cmd-3 = ['workspace 3', 'layout accordion']
-cmd-4 = ['workspace 4', 'layout accordion']
-cmd-5 = ['workspace 5', 'layout accordion']
-cmd-6 = ['workspace 6', 'layout accordion']
+# --- Direct Workspace Switching (Forces stack on arrival & spawns app if empty) ---
+cmd-1 = ['workspace 1', 'layout accordion', 'exec-and-forget ~/.local/bin/aerospace-workspace-or-spawn 1']
+cmd-2 = ['workspace 2', 'layout accordion', 'exec-and-forget ~/.local/bin/aerospace-workspace-or-spawn 2']
+cmd-3 = ['workspace 3', 'layout accordion', 'exec-and-forget ~/.local/bin/aerospace-workspace-or-spawn 3']
+cmd-4 = ['workspace 4', 'layout accordion', 'exec-and-forget ~/.local/bin/aerospace-workspace-or-spawn 4']
+cmd-5 = ['workspace 5', 'layout accordion', 'exec-and-forget ~/.local/bin/aerospace-workspace-or-spawn 5']
+cmd-6 = ['workspace 6', 'layout accordion', 'exec-and-forget ~/.local/bin/aerospace-workspace-or-spawn 6']
 
 # --- Swap between maximized windows ---
 # * Changed: Forces the workspace to stay in accordion mode every time you swap
@@ -87,6 +87,7 @@ ctrl-shift-5 = ['move-node-to-workspace 5', 'layout accordion']
 ctrl-shift-6 = ['move-node-to-workspace 6', 'layout accordion']
 
 # --- Window / Layout Management ---
+cmd-m = []
 ctrl-cmd-m = 'fullscreen'
 ctrl-cmd-f = 'layout floating tiling'
 ctrl-cmd-tab = 'workspace-back-and-forth'
