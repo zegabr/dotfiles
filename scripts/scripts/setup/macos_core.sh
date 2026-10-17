@@ -11,13 +11,12 @@ fi
 brew update
 brew install bash -y
 brew install stow -y
-brew install btop -y
+brew install macmon -y
 brew install neovim -y
 brew install fd -y
 brew install rg -y
 brew install fzf -y
 brew install node -y
-brew install --cask stats -y
 brew install --cask maccy -y
 brew install --cask nikitabobko/tap/aerospace -y
 brew install --cask iterm2 -y
