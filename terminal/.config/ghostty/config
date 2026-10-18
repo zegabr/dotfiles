@@ -1,0 +1,41 @@
+# ==============================================================================
+# Ghostty Terminal Configuration (~/.config/ghostty/config)
+# ==============================================================================
+# Validate with:  ghostty +validate-config
+# Reload with:    Cmd+Shift+, (or restart Ghostty)
+
+# ------------------------------------------------------------------------------
+# macOS Keyboard & Clipboard Integration
+# ------------------------------------------------------------------------------
+# Treat both Left and Right Option keys as Alt (for tmux M-* bindings, vim, etc.)
+# Must be explicit: Ghostty only defaults this to true for the "U.S." layout,
+# and this machine uses the "ABC" layout.
+macos-option-as-alt = true
+
+# Allow applications (tmux, Neovim, SSH via OSC 52) to read & write the OS
+# clipboard without prompts
+clipboard-read = allow
+clipboard-write = allow
+
+# Copy selection straight to the OS clipboard (not just the primary selection)
+copy-on-select = clipboard
+
+# Note: Cmd+C / Cmd+V (copy_to_clipboard / paste_from_clipboard) and
+# Option+Left / Option+Right (Esc+b / Esc+f word navigation) are already
+# Ghostty's macOS defaults, so they don't need to be re-declared here.
+
+# ------------------------------------------------------------------------------
+# Font & Window Appearance
+# ------------------------------------------------------------------------------
+font-family = Monaco
+font-size = 12
+
+# Clean window appearance for AeroSpace tiling
+confirm-close-surface = false
+macos-titlebar-style = tabs
+
+# ------------------------------------------------------------------------------
+# Theme: Gruvbox Dark (dark theme with soft #282828 charcoal background;
+# same palette as the Kitty config and the Neovim colorscheme)
+# ------------------------------------------------------------------------------
+theme = Gruvbox Dark
