@@ -488,6 +488,20 @@ echo "--> Configuring AeroSpace and iTerm2 preferences..."
 # AeroSpace
 defaults write bobko.aerospace displayStyle -string "i3Ordered"
 
+# Login Items (System Settings > General > Login Items & Extensions)
+# Exactly these apps auto-start at login; the list is cleared first so nothing
+# else (Chrome, Google Chat, iTerm, kitty, ...) pops up on macOS startup.
+echo "--> Configuring Login Items..."
+LOGIN_ITEMS=(
+  "/Applications/AeroSpace.app"
+  "/Applications/Maccy.app"
+)
+osascript -e 'tell application "System Events" to delete every login item' >/dev/null 2>&1 || true
+for app in "${LOGIN_ITEMS[@]}"; do
+  [ -d "$app" ] || continue
+  osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"$app\", hidden:false}" >/dev/null 2>&1 || true
+done
+
 # iTerm2
 defaults write com.googlecode.iterm2 LeftOption -int 2
 defaults write com.googlecode.iterm2 RightOption -int 3

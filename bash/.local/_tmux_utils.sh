@@ -6,9 +6,12 @@ alias t='tmux attach -t base || tmux new -s base'
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 
 _remove_empty_trailing_lines() {
-    sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' $1
-    # below for macos
-    # sed -i '' -e ':a' -e '/^\n*$/{$d;N;};/\n$/ba' $1
+    # BSD sed (macOS) requires an explicit backup suffix for -i; GNU sed doesn't.
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        sed -i '' -e ':a' -e '/^\n*$/{$d;N;};/\n$/ba' "$1"
+    else
+        sed -i -e ':a' -e '/^\n*$/{$d;N;};/\n$/ba' "$1"
+    fi
 }
 
 

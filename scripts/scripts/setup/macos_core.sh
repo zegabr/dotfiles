@@ -19,7 +19,7 @@ brew install fzf -y
 brew install node -y
 brew install --cask maccy -y
 brew install --cask nikitabobko/tap/aerospace -y
-brew install --cask iterm2 -y
+brew install --cask kitty -y
 
 
 if [ "$SHELL" != "/opt/homebrew/bin/bash" ] && [ -f /opt/homebrew/bin/bash ]; then

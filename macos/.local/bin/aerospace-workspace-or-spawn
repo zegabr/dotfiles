@@ -14,51 +14,28 @@ fi
 WINDOW_COUNT=$(aerospace list-windows --workspace "$WS" --count 2>/dev/null || echo "")
 WINDOW_COUNT=$(echo "$WINDOW_COUNT" | tr -d '[:space:]')
 
-# If the workspace is empty (0 windows), spawn the designated fixed app
+# If the workspace is empty (0 windows), spawn the designated fixed app.
+# `open -na <App> --args <flag>` launches a new process which, for apps that
+# enforce a single instance (Chrome, kitty), simply asks the already-running
+# instance to open a new window and exits; if the app isn't running, it starts it.
 if [ "$WINDOW_COUNT" = "0" ]; then
     case "$WS" in
-        1)
-            # Workspace 1 -> Google Chrome
-            osascript -e '
-            if application "Google Chrome" is running then
-                tell application "Google Chrome"
-                    make new window
-                    activate
-                end tell
-            else
-                tell application "Google Chrome" to activate
-            end if' 2>/dev/null || open -a "Google Chrome"
+        1)  # Workspace 1 -> Google Chrome
+            open -na "Google Chrome" --args --new-window
             ;;
-        2)
-            # Workspace 2 -> iTerm2
-            osascript -e '
-            try
-                if application "iTerm" is running then
-                    tell application "iTerm"
-                        create window with default profile
-                        activate
-                    end tell
-                else
-                    tell application "iTerm" to activate
-                end if
-            on error
-                tell application "iTerm2" to activate
-            end try' 2>/dev/null || open -a "iTerm"
+        2)  # Workspace 2 -> kitty
+            open -na "kitty" --args --single-instance
             ;;
-        3)
-            # Workspace 3 -> Google Chat PWA
-            open -b com.google.Chrome.app.pommaclcbfghclhalboakcipcmmndhcj 2>/dev/null || open -a "Google Chat" 2>/dev/null || true
+        3)  # Workspace 3 -> Google Chat PWA
+            open -b com.google.Chrome.app.pommaclcbfghclhalboakcipcmmndhcj 2>/dev/null || open -a "Google Chat"
             ;;
-        4)
-            # Workspace 4 -> Duckie PWA
-            open -b com.google.Chrome.app.ahdfkjhgpgcbfkeoehapbdafbjlnpejh 2>/dev/null || open -a "Duckie" 2>/dev/null || true
+        4)  # Workspace 4 -> Duckie PWA
+            open -b com.google.Chrome.app.ahdfkjhgpgcbfkeoehapbdafbjlnpejh 2>/dev/null || open -a "Duckie"
             ;;
-        5)
-            # Workspace 5 -> YouTube PWA
-            open -b com.google.Chrome.app.agimnkijcaahngcdmfeangaknmldooml 2>/dev/null || open -a "YouTube" 2>/dev/null || true
+        5)  # Workspace 5 -> YouTube PWA
+            open -b com.google.Chrome.app.agimnkijcaahngcdmfeangaknmldooml 2>/dev/null || open -a "YouTube"
             ;;
-        *)
-            # Workspace 6 or others: unassigned
+        *)  # Workspace 6 or others: unassigned
             ;;
     esac
 fi
