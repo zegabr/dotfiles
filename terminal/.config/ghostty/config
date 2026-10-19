@@ -35,7 +35,13 @@ confirm-close-surface = false
 macos-titlebar-style = tabs
 
 # ------------------------------------------------------------------------------
-# Theme: Gruvbox Dark (dark theme with soft #282828 charcoal background;
-# same palette as the Kitty config and the Neovim colorscheme)
+# Theme
 # ------------------------------------------------------------------------------
-theme = Gruvbox Dark
+# Browse all built-in themes with a live preview:  ghostty +list-themes
+# GitHub Dark High Contrast: near-black #0a0c10 background with the highest
+# legibility of the built-in dark themes - text is 17.6:1 and every one of the
+# 16 ANSI colours is >= 9.2:1 against the background (WCAG AAA), so coloured
+# output (ls, git, diffs, vim) stays crisp.
+# Any colour key placed after this line (background, foreground,
+# palette = N=#rrggbb, ...) overrides the theme's value.
+theme = GitHub Dark High Contrast
