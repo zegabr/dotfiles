@@ -53,7 +53,7 @@ if.app-name-regex-substring = '(?i)youtube'
 run = ['move-node-to-workspace 5', 'layout accordion']
 
 [[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
+if.app-id = 'com.googlecode.iterm2'
 run = ['move-node-to-workspace 2', 'layout accordion']
 
 [[on-window-detected]]
