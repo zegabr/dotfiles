@@ -23,8 +23,14 @@ if [ "$WINDOW_COUNT" = "0" ]; then
         1)  # Workspace 1 -> Google Chrome
             open -na "Google Chrome" --args --new-window
             ;;
-        2)  # Workspace 2 -> kitty
-            open -na "kitty" --args --single-instance
+        2)  # Workspace 2 -> Ghostty
+            # Ghostty is single-instance on macOS and `+new-window` isn't supported
+            # there, so use its AppleScript dictionary when it's already running.
+            if pgrep -xq ghostty; then
+                osascript -e 'tell application "Ghostty" to new window' >/dev/null
+            else
+                open -a "Ghostty"
+            fi
             ;;
         3)  # Workspace 3 -> Google Chat PWA
             open -b com.google.Chrome.app.pommaclcbfghclhalboakcipcmmndhcj 2>/dev/null || open -a "Google Chat"
