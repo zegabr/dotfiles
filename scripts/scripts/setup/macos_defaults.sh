@@ -230,6 +230,11 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 164 '<di
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 190 '<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>113</integer><integer>12</integer><integer>8388608</integer></array><key>type</key><string>standard</string></dict></dict>'
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 260 '<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>53</integer><integer>1048576</integer></array><key>type</key><string>standard</string></dict></dict>'
 
+# Screenshot: "Copy picture of selected area to the clipboard" (31) on Ctrl+Opt+Cmd+P
+# parameters = (ASCII of "p" = 112, virtual keycode of "P" = 35,
+#               modifiers Ctrl 262144 + Opt 524288 + Cmd 1048576 = 1835008)
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 31 '<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>112</integer><integer>35</integer><integer>1835008</integer></array><key>type</key><string>standard</string></dict></dict>'
+
 defaults read com.apple.symbolichotkeys >/dev/null 2>&1 || true
 
 # ------------------------------------------------------------------------------
@@ -261,6 +266,8 @@ defaults write com.apple.screencapture showsCursor -bool true
 defaults write com.apple.screencapture video -bool true
 defaults write com.apple.screencapture target-screenshot -string "file"
 defaults write com.apple.screencapture target-screenrecording -string "file"
+# Don't show the floating thumbnail in the corner after taking a screenshot
+defaults write com.apple.screencapture show-thumbnail -bool false
 
 # ------------------------------------------------------------------------------
 # 7. Keyboard, Input Sources, Modifier Keys & Text Preferences
