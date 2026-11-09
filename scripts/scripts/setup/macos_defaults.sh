@@ -159,17 +159,25 @@ defaults write com.apple.ComfortSounds timerEnabled -bool false
 # ------------------------------------------------------------------------------
 # 4. Dock, Stage Manager & Window Management Preferences
 # ------------------------------------------------------------------------------
-echo "--> Configuring Dock (instant auto-hide, size 58, magnification 48, scale effect) & Stage Manager..."
-# Auto-hide Dock with instant response (0 delay, 0.1s animation)
+echo "--> Configuring Dock (effectively disabled for AeroSpace) & Stage Manager..."
+# macOS has no supported way to fully disable the Dock (Dock.app also owns
+# Mission Control, Spaces and Cmd+Tab, and launchd respawns it). Instead make
+# it unreachable: auto-hide on the right edge, a 1000s hover delay so it never
+# slides out, nothing pinned, and the keyboard shortcuts that could summon it
+# are disabled in section 5. Re-enable temporarily with:
+#   defaults write com.apple.dock autohide-delay -float 0 && killall Dock
 defaults write com.apple.dock autohide -bool true
-defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-delay -float 1000
 defaults write com.apple.dock autohide-time-modifier -float 0.1
+defaults write com.apple.dock orientation -string "right"
 defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock static-only -bool true
+defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-others -array
 
-# Dock size, magnification, and window behavior
-defaults write com.apple.dock tilesize -int 58
-defaults write com.apple.dock magnification -bool true
-defaults write com.apple.dock largesize -int 48
+# Dock size (minimum), no magnification, and window behavior
+defaults write com.apple.dock tilesize -int 16
+defaults write com.apple.dock magnification -bool false
 defaults write com.apple.dock mineffect -string "scale"
 defaults write com.apple.dock minimize-to-application -bool false
 defaults write com.apple.dock launchanim -bool false
@@ -223,6 +231,12 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 61 '<dic
 # Enable Move left/right a space shortcuts (79..82)
 for key in 79 80 81 82; do
     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$key" '<dict><key>enabled</key><true/></dict>'
+done
+
+# Disable Dock shortcuts so nothing can summon it: 52 = Cmd+Opt+D (toggle Dock
+# hiding), 8 = Ctrl+F3 (move focus to the Dock)
+for key in 8 52; do
+    defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$key" '<dict><key>enabled</key><false/></dict>'
 done
 
 # Disable Quick Note (190 = Fn+Q) and extra system hotkeys (164, 260)
@@ -286,10 +300,10 @@ defaults write com.apple.TextInputMenu visible -bool false
 defaults write com.apple.TextInputMenuAgent "NSStatusItem VisibleCC Item-0" -bool false
 defaults write com.apple.keyboard.preferences IsMixmojiSuggestionsEnabled -bool false
 
-# Modifier key mappings (currentHost)
-defaults -currentHost write NSGlobalDomain "com.apple.keyboard.modifiermapping.0-0-0" -array \
-    '<dict><key>HIDKeyboardModifierMappingDst</key><integer>30064771300</integer><key>HIDKeyboardModifierMappingSrc</key><integer>1095216660483</integer></dict>' \
-    '<dict><key>HIDKeyboardModifierMappingDst</key><integer>30064771296</integer><key>HIDKeyboardModifierMappingSrc</key><integer>280379760050179</integer></dict>'
+# Modifier key mappings (currentHost): keep macOS defaults.
+# Previously Fn/Globe was remapped to Control here, which made the OS stop
+# seeing the Fn key entirely (so Fn+Delete = forward delete no longer worked).
+defaults -currentHost delete NSGlobalDomain "com.apple.keyboard.modifiermapping.0-0-0" 2>/dev/null || true
 
 # Locale & Language
 defaults write NSGlobalDomain AppleLanguages -array "en-BR"
@@ -514,9 +528,12 @@ defaults write com.googlecode.iterm2 LeftOption -int 2
 defaults write com.googlecode.iterm2 RightOption -int 3
 defaults write com.googlecode.iterm2 LeftCommand -int 7
 defaults write com.googlecode.iterm2 RightCommand -int 8
-defaults write com.googlecode.iterm2 LeftControl -int 11
-defaults write com.googlecode.iterm2 RightControl -int 12
-defaults write com.googlecode.iterm2 FunctionKey -int 10
+# Keep iTerm2's default Control/Fn modifier handling (Settings -> Keys -> Remap Modifiers).
+# A previous FunctionKey=10 value remapped Fn -> Control inside iTerm2, which broke
+# Fn+Delete (forward delete) by turning it into Ctrl+Backspace (^H).
+defaults delete com.googlecode.iterm2 LeftControl 2>/dev/null || true
+defaults delete com.googlecode.iterm2 RightControl 2>/dev/null || true
+defaults delete com.googlecode.iterm2 FunctionKey 2>/dev/null || true
 defaults write com.googlecode.iterm2 UseBorder -bool false
 defaults write com.googlecode.iterm2 AllowClipboardAccess -bool true
 defaults write com.googlecode.iterm2 AllowSymbolicHotKeys -bool true
